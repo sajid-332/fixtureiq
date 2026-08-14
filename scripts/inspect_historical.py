@@ -1,27 +1,20 @@
 import pandas as pd
-from pathlib import Path
 
-raw_folder = Path("data/historical/raw")
+file_path = "data/historical/processed/epl_historical.csv"
 
-files = sorted(raw_folder.glob("epl_*.csv"))
+df = pd.read_csv(file_path)
 
-required_columns = [
-    "Date",
-    "HomeTeam",
-    "AwayTeam",
-    "FTHG",
-    "FTAG",
-    "FTR"
-]
+print("Shape:")
+print(df.shape)
 
-for file in files:
-    df = pd.read_csv(file)
+print("\nFirst 5 rows:")
+print(df.head())
 
-    print(f"\n--- {file.name} ---")
-    print("Matches:", len(df))
+print("\nLast 5 rows:")
+print(df.tail())
 
-    print("Missing values:")
-    print(df[required_columns].isnull().sum().sum())
+print("\nSeason counts:")
+print(df["Season"].value_counts().sort_index())
 
-    print("Duplicate rows:")
-    print(df.duplicated().sum())
+print("\nMissing values:")
+print(df.isnull().sum())
