@@ -33,21 +33,23 @@ print(
 )
 
 home = df[
-    ["Date", "HomeTeam", "HomePoints"]
+    ["Date", "Season", "HomeTeam", "HomePoints"]
 ].copy()
 
 home.columns = [
     "Date",
+    "Season",
     "Team",
     "Points"
 ]
 
 away = df[
-    ["Date", "AwayTeam", "AwayPoints"]
+    ["Date", "Season", "AwayTeam", "AwayPoints"]
 ].copy()
 
 away.columns = [
     "Date",
+    "Season",
     "Team",
     "Points"
 ]
@@ -58,12 +60,12 @@ team_matches = pd.concat(
 )
 
 team_matches = team_matches.sort_values(
-    ["Team", "Date"]
+    ["Team", "Season", "Date"]
 ).reset_index(drop=True)
 
 team_matches["Last5Points"] = (
     team_matches
-    .groupby("Team")["Points"]
+    .groupby(["Team", "Season"])["Points"]
     .transform(
         lambda x: x.shift(1).rolling(5).sum()
     )
@@ -73,14 +75,14 @@ print("\nLast 5 matches points:")
 print(team_matches.head(10))
 
 home_form = team_matches[
-    ["Date", "Team", "Last5Points"]
+    ["Date","Season", "Team", "Last5Points"]
 ].rename(columns={
     "Team": "HomeTeam",
     "Last5Points": "HomeLast5Points"
 })
 
 away_form = team_matches[
-    ["Date", "Team", "Last5Points"]
+    ["Date", "Season", "Team", "Last5Points"]
 ].rename(columns={
     "Team": "AwayTeam",
     "Last5Points": "AwayLast5Points"
@@ -88,13 +90,13 @@ away_form = team_matches[
 
 df = df.merge(
     home_form,
-    on=["Date", "HomeTeam"],
+    on=["Date", "Season", "HomeTeam"],
     how="left"
 )
 
 df = df.merge(
     away_form,
-    on=["Date", "AwayTeam"],
+    on=["Date", "Season", "AwayTeam"],
     how="left"
 )
 
