@@ -1,4 +1,8 @@
 import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
 
 
 # ================================================================
@@ -123,3 +127,197 @@ print(
     "→",
     test_df["Date"].max()
 )
+
+# ================================================================
+# BASELINE MODEL
+# ================================================================
+
+print("\nBaseline results:")
+
+
+# ------------------------------------------------
+# BASELINE 1: ALWAYS PREDICT HOME WIN
+# ------------------------------------------------
+
+home_baseline_predictions = ["H"] * len(validation_df)
+
+home_baseline_accuracy = (
+    validation_df["FTR"]
+    ==
+    home_baseline_predictions
+).mean()
+
+print(
+    "Always Home Win accuracy:",
+    round(home_baseline_accuracy, 4)
+)
+
+
+# ------------------------------------------------
+# BASELINE 2: MOST COMMON TRAINING RESULT
+# ------------------------------------------------
+
+most_common_result = (
+    train_df["FTR"]
+    .value_counts()
+    .idxmax()
+)
+
+print(
+    "Most common training result:",
+    most_common_result
+)
+
+
+common_baseline_predictions = (
+    [most_common_result]
+    * len(validation_df)
+)
+
+common_baseline_accuracy = (
+    validation_df["FTR"]
+    ==
+    common_baseline_predictions
+).mean()
+
+print(
+    "Most common result accuracy:",
+    round(common_baseline_accuracy, 4)
+)
+
+# ================================================================
+# SELECT MODEL FEATURES
+# ================================================================
+
+feature_columns = [
+
+    # Recent form
+    "HomeLast5Points",
+    "AwayLast5Points",
+    "Last5HomePoints",
+    "Last5AwayPoints",
+
+    # League situation
+    "LeaguePointsGap",
+    "GamesPlayedGap",
+    "HomePositionBefore",
+    "AwayPositionBefore",
+
+    # Head-to-head
+    "HomeH2HLast5Points",
+    "AwayH2HLast5Points",
+    "H2HMatchesUsed",
+
+    # Season + recent performance
+    "HomeSeasonPPG",
+    "AwaySeasonPPG",
+    "HomeRecentPPG",
+    "AwayRecentPPG",
+
+    # Momentum
+    "HomeMomentum",
+    "AwayMomentum",
+
+    # Upset signal
+    "UpsetPotential",
+    "UpsetDirection",
+
+    # League pressure
+    "HomeTitlePressure",
+    "AwayTitlePressure",
+
+    "HomeTop4Pressure",
+    "AwayTop4Pressure",
+
+    "HomeRelegationPressure",
+    "AwayRelegationPressure"
+]
+
+
+print("\nSelected features:")
+print("Total features:", len(feature_columns))
+
+
+for feature in feature_columns:
+    print("-", feature)
+
+# ================================================================
+# CHECK MISSING VALUES
+# ================================================================
+
+print("\nTraining missing values:")
+
+print(
+    train_df[
+        feature_columns
+    ]
+    .isnull()
+    .sum()
+)
+
+# ================================================================
+# CREATE X AND y
+# ================================================================
+
+X_train = train_df[feature_columns]
+y_train = train_df["FTR"]
+
+X_validation = validation_df[feature_columns]
+y_validation = validation_df["FTR"]
+
+X_test = test_df[feature_columns]
+y_test = test_df["FTR"]
+
+
+print("\nML dataset shapes:")
+
+print("X_train:", X_train.shape)
+print("y_train:", y_train.shape)
+
+print("X_validation:", X_validation.shape)
+print("y_validation:", y_validation.shape)
+
+print("X_test:", X_test.shape)
+print("y_test:", y_test.shape)
+
+# ================================================================
+# BUILD ML PIPELINE
+# ================================================================
+
+model = Pipeline([
+    (
+        "imputer",
+        SimpleImputer(
+            strategy="median",
+            add_indicator=True
+        )
+    ),
+
+    (
+        "scaler",
+        StandardScaler()
+    ),
+
+    (
+        "classifier",
+        LogisticRegression(
+            max_iter=2000
+        )
+    )
+])
+
+
+print("\nML pipeline created successfully!")
+
+# ================================================================
+# TRAIN MODEL
+# ================================================================
+
+print("\nTraining Logistic Regression model...")
+
+model.fit(
+    X_train,
+    y_train
+)
+
+print("Model training completed successfully!")
