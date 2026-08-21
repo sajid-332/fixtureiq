@@ -1,4 +1,4 @@
-git # FixtureIQ
+# FixtureIQ
 
 FixtureIQ is a full-stack football match intelligence and prediction platform focused on explainable pre-match forecasting for the English Premier League.
 
