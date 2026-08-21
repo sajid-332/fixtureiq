@@ -1,0 +1,47 @@
+{
+  "model_version": "0.5.0-stage5",
+  "model_status": "stage5_development",
+  "model_type": "multinomial_logistic_regression_pipeline",
+  "trained_at_utc": "2026-08-21T19:56:20.587967+00:00",
+  "dataset": "data\\historical\\processed\\epl_stage5_features.csv",
+  "training_seasons": [
+    "2021/22",
+    "2022/23",
+    "2023/24"
+  ],
+  "training_date_start": "2021-08-13",
+  "training_date_end": "2024-05-19",
+  "validation_season": "2024/25",
+  "locked_test_season": "2025/26",
+  "test_season_evaluated": false,
+  "selected_feature_set": "core_plus_previous_season",
+  "feature_columns": [
+    "HomeLast5Points",
+    "AwayLast5Points",
+    "Last5HomePoints",
+    "Last5AwayPoints",
+    "LeaguePointsGap",
+    "GamesPlayedGap",
+    "HomePositionBefore",
+    "AwayPositionBefore",
+    "HomePreviousSeasonPPG",
+    "AwayPreviousSeasonPPG"
+  ],
+  "target": "FTR",
+  "classes": [
+    "A",
+    "D",
+    "H"
+  ],
+  "probability_calibrated": false,
+  "calibration_status": "deferred_until_stage6/final_pipeline_validation",
+  "excluded_from_core_model": [
+    "H2H",
+    "momentum/upset",
+    "league pressure",
+    "bookmaker odds"
+  ],
+  "bookmaker_odds_policy": "excluded_from_training; optional external benchmark only",
+  "missing_value_policy": "training-median imputation with missingness indicators",
+  "leakage_policy": "pre-match features only; target result enters rolling history after feature snapshot"
+}

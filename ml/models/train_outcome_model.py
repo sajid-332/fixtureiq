@@ -1,949 +1,467 @@
-import pandas as pd
-import numpy as np
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
+"""Stage 5: train and validate FixtureIQ's leakage-safe EPL outcome model.
 
+Important development rule: the 2025/26 season is a locked final test set. This
+script deliberately does not score, tune, or report performance on that season.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Dict, Iterable, List, Sequence
+
+import joblib
+import numpy as np
+import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
-    log_loss,
     confusion_matrix,
-    classification_report,
+    f1_score,
+    log_loss,
     recall_score,
-    f1_score
 )
-
-# ================================================================
-# LOAD STAGE 4 DATASET
-# ================================================================
-
-file_path = "data/historical/processed/epl_stage4_features.csv"
-
-df = pd.read_csv(file_path)
-
-df["Date"] = pd.to_datetime(df["Date"])
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 
-print("Dataset loaded successfully!")
-print("Total matches:", len(df))
-print("Total columns:", len(df.columns))
+ROOT = Path(__file__).resolve().parents[2]
+DATA_FILE = ROOT / "data/historical/processed/epl_stage5_features.csv"
+MODEL_DIR = ROOT / "ml/models"
 
+TRAIN_SEASONS = ["2021/22", "2022/23", "2023/24"]
+VALIDATION_SEASON = "2024/25"
+LOCKED_TEST_SEASON = "2025/26"
+SELECTION_VALIDATION_SEASONS = ["2023/24", "2024/25"]
+MODEL_VERSION = "0.5.0-stage5"
 
-# ================================================================
-# CHECK AVAILABLE SEASONS
-# ================================================================
-
-print("\nSeasons:")
-
-print(
-    df["Season"]
-    .value_counts()
-    .sort_index()
-)
-
-
-# ================================================================
-# CHRONOLOGICAL SPLIT
-# ================================================================
-
-train_seasons = [
-    "2021/22",
-    "2022/23",
-    "2023/24"
-]
-
-validation_season = "2024/25"
-
-test_season = "2025/26"
-
-
-train_df = df[
-    df["Season"].isin(train_seasons)
-].copy()
-
-
-validation_df = df[
-    df["Season"] == validation_season
-].copy()
-
-
-test_df = df[
-    df["Season"] == test_season
-].copy()
-
-
-# ================================================================
-# SORT EACH SPLIT BY DATE
-# ================================================================
-
-train_df = train_df.sort_values(
-    "Date"
-).reset_index(drop=True)
-
-
-validation_df = validation_df.sort_values(
-    "Date"
-).reset_index(drop=True)
-
-
-test_df = test_df.sort_values(
-    "Date"
-).reset_index(drop=True)
-
-
-# ================================================================
-# DISPLAY SPLIT INFORMATION
-# ================================================================
-
-print("\nChronological split:")
-
-print(
-    "Train matches:",
-    len(train_df)
-)
-
-print(
-    "Validation matches:",
-    len(validation_df)
-)
-
-print(
-    "Test matches:",
-    len(test_df)
-)
-
-
-print("\nTrain period:")
-print(
-    train_df["Date"].min(),
-    "→",
-    train_df["Date"].max()
-)
-
-
-print("\nValidation period:")
-print(
-    validation_df["Date"].min(),
-    "→",
-    validation_df["Date"].max()
-)
-
-
-print("\nTest period:")
-print(
-    test_df["Date"].min(),
-    "→",
-    test_df["Date"].max()
-)
-
-# ================================================================
-# BASELINE MODEL
-# ================================================================
-
-print("\nBaseline results:")
-
-
-# ------------------------------------------------
-# BASELINE 1: ALWAYS PREDICT HOME WIN
-# ------------------------------------------------
-
-home_baseline_predictions = ["H"] * len(validation_df)
-
-home_baseline_accuracy = (
-    validation_df["FTR"]
-    ==
-    home_baseline_predictions
-).mean()
-
-print(
-    "Always Home Win accuracy:",
-    round(home_baseline_accuracy, 4)
-)
-
-
-# ------------------------------------------------
-# BASELINE 2: MOST COMMON TRAINING RESULT
-# ------------------------------------------------
-
-most_common_result = (
-    train_df["FTR"]
-    .value_counts()
-    .idxmax()
-)
-
-print(
-    "Most common training result:",
-    most_common_result
-)
-
-
-common_baseline_predictions = (
-    [most_common_result]
-    * len(validation_df)
-)
-
-common_baseline_accuracy = (
-    validation_df["FTR"]
-    ==
-    common_baseline_predictions
-).mean()
-
-print(
-    "Most common result accuracy:",
-    round(common_baseline_accuracy, 4)
-)
-
-# ================================================================
-# SELECT MODEL FEATURES
-# ================================================================
-
-feature_columns = [
-
-    # Recent form
+# Stage 4 contextual features remain available in the dataset but are excluded
+# from the core probability model until validation demonstrates an improvement.
+CORE_FEATURES = [
     "HomeLast5Points",
     "AwayLast5Points",
     "Last5HomePoints",
     "Last5AwayPoints",
-
-    # League situation
     "LeaguePointsGap",
     "GamesPlayedGap",
     "HomePositionBefore",
     "AwayPositionBefore",
+]
 
-    # Head-to-head
-    "HomeH2HLast5Points",
-    "AwayH2HLast5Points",
-    "H2HMatchesUsed",
+CANDIDATE_FEATURE_SETS: Dict[str, List[str]] = {
+    "core_form_table": CORE_FEATURES,
+    "core_plus_previous_season": CORE_FEATURES
+    + [
+        "HomePreviousSeasonPPG",
+        "AwayPreviousSeasonPPG",
+    ],
+    "core_plus_cross_season": CORE_FEATURES
+    + [
+        "HomeCrossSeasonRecentPPG",
+        "AwayCrossSeasonRecentPPG",
+        "HomeCrossSeasonMatchesUsed",
+        "AwayCrossSeasonMatchesUsed",
+    ],
+    "core_plus_all_historical": CORE_FEATURES
+    + [
+        "HomePreviousSeasonPPG",
+        "AwayPreviousSeasonPPG",
+        "HomeCrossSeasonRecentPPG",
+        "AwayCrossSeasonRecentPPG",
+        "HomeCrossSeasonMatchesUsed",
+        "AwayCrossSeasonMatchesUsed",
+    ],
+}
 
-    # Season + recent performance
-    "HomeSeasonPPG",
-    "AwaySeasonPPG",
-    "HomeRecentPPG",
-    "AwayRecentPPG",
-
-    # Momentum
-    "HomeMomentum",
-    "AwayMomentum",
-
-    # Upset signal
-    "UpsetPotential",
-    "UpsetDirection",
-
-    # League pressure
-    "HomeTitlePressure",
-    "AwayTitlePressure",
-
-    "HomeTop4Pressure",
-    "AwayTop4Pressure",
-
-    "HomeRelegationPressure",
-    "AwayRelegationPressure"
+EXCLUDED_CONTEXT_FEATURE_GROUPS = [
+    "H2H",
+    "momentum/upset",
+    "league pressure",
+    "bookmaker odds",
 ]
 
 
-print("\nSelected features:")
-print("Total features:", len(feature_columns))
-
-
-for feature in feature_columns:
-    print("-", feature)
-
-# ================================================================
-# CHECK MISSING VALUES
-# ================================================================
-
-print("\nTraining missing values:")
-
-print(
-    train_df[
-        feature_columns
-    ]
-    .isnull()
-    .sum()
-)
-
-# ================================================================
-# CREATE X AND y
-# ================================================================
-
-X_train = train_df[feature_columns]
-y_train = train_df["FTR"]
-
-X_validation = validation_df[feature_columns]
-y_validation = validation_df["FTR"]
-
-X_test = test_df[feature_columns]
-y_test = test_df["FTR"]
-
-
-print("\nML dataset shapes:")
-
-print("X_train:", X_train.shape)
-print("y_train:", y_train.shape)
-
-print("X_validation:", X_validation.shape)
-print("y_validation:", y_validation.shape)
-
-print("X_test:", X_test.shape)
-print("y_test:", y_test.shape)
-
-# ================================================================
-# BUILD ML PIPELINE
-# ================================================================
-
-model = Pipeline([
-    (
-        "imputer",
-        SimpleImputer(
-            strategy="median",
-            add_indicator=True
+def load_dataset(path: Path = DATA_FILE) -> pd.DataFrame:
+    """Load and chronologically sort the Stage 5 feature dataset."""
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Stage 5 feature dataset not found: {path}. "
+            "Run `python ml/features/build_stage5_features.py` first."
         )
-    ),
 
-    (
-        "scaler",
-        StandardScaler()
-    ),
+    df = pd.read_csv(path)
+    df["Date"] = pd.to_datetime(df["Date"], errors="raise")
+    df = df.sort_values("Date").reset_index(drop=True)
 
-    (
-        "classifier",
-        LogisticRegression(
-            max_iter=2000
+    required = {
+        "Date",
+        "Season",
+        "FTR",
+        "HomeGamesPlayedBefore",
+        "AwayGamesPlayedBefore",
+    }
+    required.update(
+        feature
+        for features in CANDIDATE_FEATURE_SETS.values()
+        for feature in features
+    )
+    missing = required.difference(df.columns)
+    if missing:
+        raise ValueError(
+            "Stage 5 dataset is missing required columns: "
+            + ", ".join(sorted(missing))
         )
+
+    return df
+
+
+def build_model() -> Pipeline:
+    """Create the deterministic Stage 5 multinomial logistic pipeline."""
+    return Pipeline(
+        [
+            (
+                "imputer",
+                SimpleImputer(strategy="median", add_indicator=True),
+            ),
+            ("scaler", StandardScaler()),
+            (
+                "classifier",
+                LogisticRegression(max_iter=3000, random_state=42),
+            ),
+        ]
     )
-])
 
 
-print("\nML pipeline created successfully!")
-
-# ================================================================
-# TRAIN MODEL
-# ================================================================
-
-print("\nTraining Logistic Regression model...")
-
-model.fit(
-    X_train,
-    y_train
-)
-
-print("Model training completed successfully!")
-
-# ================================================================
-# VALIDATION PREDICTIONS
-# ================================================================
-
-print("\nEvaluating on validation season...")
+def multiclass_brier_score(
+    y_true: Sequence[str],
+    probabilities: np.ndarray,
+    classes: Sequence[str],
+) -> float:
+    """Mean squared probability error across all outcome classes."""
+    class_to_index = {label: index for index, label in enumerate(classes)}
+    one_hot = np.zeros_like(probabilities, dtype=float)
+    for row_index, label in enumerate(y_true):
+        one_hot[row_index, class_to_index[label]] = 1.0
+    return float(np.mean(np.sum((probabilities - one_hot) ** 2, axis=1)))
 
 
-# Final predicted class: H / D / A
-validation_predictions = model.predict(
-    X_validation
-)
+def evaluate_model(
+    model: Pipeline,
+    frame: pd.DataFrame,
+    feature_columns: Sequence[str],
+) -> Dict[str, object]:
+    """Evaluate a fitted model on a development/validation frame."""
+    x = frame[list(feature_columns)]
+    y = frame["FTR"]
 
+    predictions = model.predict(x)
+    probabilities = model.predict_proba(x)
+    classes = list(model.classes_)
 
-# Probabilities for H / D / A
-validation_probabilities = model.predict_proba(
-    X_validation
-)
-
-
-# ================================================================
-# VALIDATION ACCURACY
-# ================================================================
-
-validation_accuracy = accuracy_score(
-    y_validation,
-    validation_predictions
-)
-
-
-print(
-    "Validation accuracy:",
-    round(validation_accuracy, 4)
-)
-
-
-print(
-    "Validation accuracy (%):",
-    round(validation_accuracy * 100, 2)
-)
-
-
-# ================================================================
-# VALIDATION LOG LOSS
-# ================================================================
-
-validation_log_loss = log_loss(
-    y_validation,
-    validation_probabilities,
-    labels=model.classes_
-)
-
-
-print(
-    "Validation log loss:",
-    round(validation_log_loss, 4)
-)
-
-# ================================================================
-# CLASS-BY-CLASS EVALUATION
-# ================================================================
-
-print("\nConfusion Matrix:")
-
-labels = ["H", "D", "A"]
-
-matrix = confusion_matrix(
-    y_validation,
-    validation_predictions,
-    labels=labels
-)
-
-confusion_df = pd.DataFrame(
-    matrix,
-    index=[
-        "Actual H",
-        "Actual D",
-        "Actual A"
-    ],
-    columns=[
-        "Predicted H",
-        "Predicted D",
-        "Predicted A"
-    ]
-)
-
-print(confusion_df)
-
-
-print("\nClassification Report:")
-
-print(
-    classification_report(
-        y_validation,
-        validation_predictions,
-        labels=labels,
-        target_names=[
-            "Home Win",
-            "Draw",
-            "Away Win"
-        ],
-        digits=3
+    ordered_labels = ["H", "D", "A"]
+    recalls = recall_score(
+        y,
+        predictions,
+        labels=ordered_labels,
+        average=None,
+        zero_division=0,
     )
-)
+    matrix = confusion_matrix(y, predictions, labels=ordered_labels)
 
-# ================================================================
-# COMPARE WITH BASELINE
-# ================================================================
-
-improvement = (
-    validation_accuracy
-    - home_baseline_accuracy
-)
-
-
-print(
-    "\nBaseline accuracy (%):",
-    round(home_baseline_accuracy * 100, 2)
-)
-
-
-print(
-    "Logistic Regression accuracy (%):",
-    round(validation_accuracy * 100, 2)
-)
-
-
-print(
-    "Accuracy improvement:",
-    round(improvement * 100, 2),
-    "percentage points"
-)
-
-# ================================================================
-# BALANCED LOGISTIC REGRESSION EXPERIMENT
-# ================================================================
-
-print("\n" + "=" * 60)
-print("BALANCED LOGISTIC REGRESSION")
-print("=" * 60)
-
-
-balanced_model = Pipeline([
-    (
-        "imputer",
-        SimpleImputer(
-            strategy="median",
-            add_indicator=True
-        )
-    ),
-
-    (
-        "scaler",
-        StandardScaler()
-    ),
-
-    (
-        "classifier",
-        LogisticRegression(
-            max_iter=2000,
-            class_weight="balanced"
-        )
-    )
-])
-
-
-# ================================================================
-# TRAIN BALANCED MODEL
-# ================================================================
-
-balanced_model.fit(
-    X_train,
-    y_train
-)
-
-
-# ================================================================
-# VALIDATION PREDICTIONS
-# ================================================================
-
-balanced_predictions = balanced_model.predict(
-    X_validation
-)
-
-
-balanced_probabilities = balanced_model.predict_proba(
-    X_validation
-)
-
-
-# ================================================================
-# ACCURACY
-# ================================================================
-
-balanced_accuracy = accuracy_score(
-    y_validation,
-    balanced_predictions
-)
-
-
-print(
-    "\nBalanced validation accuracy (%):",
-    round(balanced_accuracy * 100, 2)
-)
-
-
-# ================================================================
-# LOG LOSS
-# ================================================================
-
-balanced_log_loss = log_loss(
-    y_validation,
-    balanced_probabilities,
-    labels=balanced_model.classes_
-)
-
-
-print(
-    "Balanced validation log loss:",
-    round(balanced_log_loss, 4)
-)
-
-
-# ================================================================
-# CONFUSION MATRIX
-# ================================================================
-
-balanced_matrix = confusion_matrix(
-    y_validation,
-    balanced_predictions,
-    labels=["H", "D", "A"]
-)
-
-
-balanced_confusion_df = pd.DataFrame(
-    balanced_matrix,
-    index=[
-        "Actual H",
-        "Actual D",
-        "Actual A"
-    ],
-    columns=[
-        "Predicted H",
-        "Predicted D",
-        "Predicted A"
-    ]
-)
-
-
-print("\nBalanced Confusion Matrix:")
-
-print(
-    balanced_confusion_df
-)
-
-
-# ================================================================
-# CLASSIFICATION REPORT
-# ================================================================
-
-print("\nBalanced Classification Report:")
-
-
-print(
-    classification_report(
-        y_validation,
-        balanced_predictions,
-        labels=["H", "D", "A"],
-        target_names=[
-            "Home Win",
-            "Draw",
-            "Away Win"
-        ],
-        digits=3
-    )
-)
-
-
-# ================================================================
-# COMPARE BOTH MODELS
-# ================================================================
-
-print("\nModel comparison:")
-
-print(
-    "Normal accuracy (%):",
-    round(validation_accuracy * 100, 2)
-)
-
-print(
-    "Balanced accuracy (%):",
-    round(balanced_accuracy * 100, 2)
-)
-
-
-print(
-    "Normal log loss:",
-    round(validation_log_loss, 4)
-)
-
-print(
-    "Balanced log loss:",
-    round(balanced_log_loss, 4)
-)
-
-# ================================================================
-# DRAW WEIGHT TUNING
-# ================================================================
-
-print("\n" + "=" * 60)
-print("DRAW WEIGHT TUNING")
-print("=" * 60)
-
-
-draw_weights = [
-    1.0,
-    1.2,
-    1.4,
-    1.6,
-    1.8,
-    2.0
-]
-
-
-tuning_results = []
-
-
-for draw_weight in draw_weights:
-
-    tuned_model = Pipeline([
-        (
-            "imputer",
-            SimpleImputer(
-                strategy="median",
-                add_indicator=True
+    return {
+        "matches": int(len(frame)),
+        "accuracy": float(accuracy_score(y, predictions)),
+        "log_loss": float(log_loss(y, probabilities, labels=classes)),
+        "macro_f1": float(
+            f1_score(
+                y,
+                predictions,
+                labels=ordered_labels,
+                average="macro",
+                zero_division=0,
             )
         ),
+        "multiclass_brier": multiclass_brier_score(y, probabilities, classes),
+        "recall": {
+            "home": float(recalls[0]),
+            "draw": float(recalls[1]),
+            "away": float(recalls[2]),
+        },
+        "confusion_matrix_labels": ordered_labels,
+        "confusion_matrix": matrix.astype(int).tolist(),
+    }
 
-        (
-            "scaler",
-            StandardScaler()
-        ),
 
-        (
-            "classifier",
-            LogisticRegression(
-                max_iter=2000,
-                class_weight={
-                    "H": 1.0,
-                    "D": draw_weight,
-                    "A": 1.0
+def seasons_before(df: pd.DataFrame, validation_season: str) -> List[str]:
+    """Return all available seasons chronologically before validation_season."""
+    season_order = (
+        df.groupby("Season")["Date"].min().sort_values().index.astype(str).tolist()
+    )
+    if validation_season not in season_order:
+        raise ValueError(f"Unknown validation season: {validation_season}")
+    return season_order[: season_order.index(validation_season)]
+
+
+def compare_feature_sets(df: pd.DataFrame) -> pd.DataFrame:
+    """Compare candidate feature sets across chronological development windows.
+
+    We start with 2023/24 as a validation window so that previous-season PPG is
+    actually observable in the training data. 2025/26 is never used here.
+    """
+    rows = []
+
+    for candidate_name, features in CANDIDATE_FEATURE_SETS.items():
+        for validation_season in SELECTION_VALIDATION_SEASONS:
+            train_seasons = seasons_before(df, validation_season)
+
+            if LOCKED_TEST_SEASON in train_seasons:
+                raise AssertionError("Locked test season entered model selection")
+
+            train = df[df["Season"].isin(train_seasons)].copy()
+            validation = df[df["Season"] == validation_season].copy()
+
+            model = build_model()
+            model.fit(train[features], train["FTR"])
+            metrics = evaluate_model(model, validation, features)
+
+            rows.append(
+                {
+                    "candidate": candidate_name,
+                    "validation_season": validation_season,
+                    "train_seasons": ",".join(train_seasons),
+                    "feature_count": len(features),
+                    "accuracy": metrics["accuracy"],
+                    "log_loss": metrics["log_loss"],
+                    "macro_f1": metrics["macro_f1"],
+                    "draw_recall": metrics["recall"]["draw"],
                 }
             )
+
+    return pd.DataFrame(rows)
+
+
+def choose_feature_set(comparison: pd.DataFrame) -> str:
+    """Choose the lowest mean chronological validation log loss."""
+    summary = (
+        comparison.groupby("candidate", as_index=False)
+        .agg(
+            mean_log_loss=("log_loss", "mean"),
+            mean_accuracy=("accuracy", "mean"),
+            mean_macro_f1=("macro_f1", "mean"),
         )
-    ])
+        .sort_values(["mean_log_loss", "candidate"])
+        .reset_index(drop=True)
+    )
+    return str(summary.loc[0, "candidate"])
 
 
-    # Train using training seasons only
-    tuned_model.fit(
-        X_train,
-        y_train
+def probability_baseline_metrics(
+    train: pd.DataFrame,
+    validation: pd.DataFrame,
+) -> Dict[str, float]:
+    """Training-frequency probability baseline and always-home accuracy."""
+    frequencies = train["FTR"].value_counts(normalize=True)
+    class_order = ["A", "D", "H"]
+    probabilities = np.tile(
+        [float(frequencies[label]) for label in class_order],
+        (len(validation), 1),
     )
 
+    return {
+        "always_home_accuracy": float((validation["FTR"] == "H").mean()),
+        "training_frequency_log_loss": float(
+            log_loss(validation["FTR"], probabilities, labels=class_order)
+        ),
+    }
 
-    # Predict validation season
-    tuned_predictions = tuned_model.predict(
-        X_validation
+
+def save_json(path: Path, payload: Dict[str, object]) -> None:
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def main() -> None:
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    df = load_dataset()
+
+    # Chronology guard. We inspect dates/counts only for the locked test season;
+    # its labels are never used for fitting, selection, or evaluation here.
+    train = df[df["Season"].isin(TRAIN_SEASONS)].copy()
+    validation = df[df["Season"] == VALIDATION_SEASON].copy()
+    locked_test_rows = df[df["Season"] == LOCKED_TEST_SEASON].copy()
+
+    if train.empty or validation.empty or locked_test_rows.empty:
+        raise ValueError("Expected train/validation/locked-test seasons are missing")
+
+    if train["Date"].max() >= validation["Date"].min():
+        raise AssertionError("Training period overlaps validation period")
+    if validation["Date"].max() >= locked_test_rows["Date"].min():
+        raise AssertionError("Validation period overlaps locked test period")
+
+    print("=" * 72)
+    print("FIXTUREIQ STAGE 5 - OUTCOME MODEL")
+    print("=" * 72)
+    print("Train seasons:", ", ".join(TRAIN_SEASONS))
+    print("Validation season:", VALIDATION_SEASON)
+    print("Locked final test season:", LOCKED_TEST_SEASON, "(NOT EVALUATED)")
+
+    comparison = compare_feature_sets(df)
+    selected_name = choose_feature_set(comparison)
+    selected_features = CANDIDATE_FEATURE_SETS[selected_name]
+
+    summary = (
+        comparison.groupby("candidate", as_index=False)
+        .agg(
+            mean_log_loss=("log_loss", "mean"),
+            mean_accuracy=("accuracy", "mean"),
+            mean_macro_f1=("macro_f1", "mean"),
+        )
+        .sort_values("mean_log_loss")
     )
 
-    tuned_probabilities = tuned_model.predict_proba(
-        X_validation
+    print("\nChronological feature-set comparison:")
+    print(
+        comparison[
+            [
+                "candidate",
+                "validation_season",
+                "accuracy",
+                "log_loss",
+                "draw_recall",
+            ]
+        ].to_string(
+            index=False,
+            formatters={
+                "accuracy": lambda x: f"{x:.4f}",
+                "log_loss": lambda x: f"{x:.4f}",
+                "draw_recall": lambda x: f"{x:.4f}",
+            },
+        )
     )
 
+    print("\nMean development performance:")
+    print(
+        summary.to_string(
+            index=False,
+            formatters={
+                "mean_log_loss": lambda x: f"{x:.4f}",
+                "mean_accuracy": lambda x: f"{x:.4f}",
+                "mean_macro_f1": lambda x: f"{x:.4f}",
+            },
+        )
+    )
+    print("\nSelected feature set:", selected_name)
+    for feature in selected_features:
+        print(" -", feature)
 
-    # ------------------------------------------------------------
-    # ACCURACY
-    # ------------------------------------------------------------
+    model = build_model()
+    model.fit(train[selected_features], train["FTR"])
 
-    accuracy = accuracy_score(
-        y_validation,
-        tuned_predictions
+    validation_metrics = evaluate_model(model, validation, selected_features)
+    baseline_metrics = probability_baseline_metrics(train, validation)
+
+    # Explicit early-season diagnostic: both clubs have fewer than five current
+    # season matches before the fixture. This directly tests the August problem.
+    early_validation = validation[
+        (validation["HomeGamesPlayedBefore"] < 5)
+        & (validation["AwayGamesPlayedBefore"] < 5)
+    ].copy()
+    early_metrics = evaluate_model(model, early_validation, selected_features)
+
+    print("\n2024/25 validation metrics:")
+    print(f" Accuracy: {validation_metrics['accuracy']:.4f}")
+    print(f" Log loss: {validation_metrics['log_loss']:.4f}")
+    print(f" Macro F1: {validation_metrics['macro_f1']:.4f}")
+    print(f" Draw recall: {validation_metrics['recall']['draw']:.4f}")
+    print(f" Multiclass Brier: {validation_metrics['multiclass_brier']:.4f}")
+    print(" Confusion matrix [H, D, A]:")
+    print(np.array(validation_metrics["confusion_matrix"]))
+
+    print("\nEarly-season validation (<5 matches played by both teams):")
+    print(" Matches:", early_metrics["matches"])
+    print(f" Accuracy: {early_metrics['accuracy']:.4f}")
+    print(f" Log loss: {early_metrics['log_loss']:.4f}")
+
+    print("\nBaselines:")
+    print(
+        f" Always-home accuracy: {baseline_metrics['always_home_accuracy']:.4f}"
+    )
+    print(
+        " Training-frequency log loss: "
+        f"{baseline_metrics['training_frequency_log_loss']:.4f}"
     )
 
-
-    # ------------------------------------------------------------
-    # LOG LOSS
-    # ------------------------------------------------------------
-
-    loss = log_loss(
-        y_validation,
-        tuned_probabilities,
-        labels=tuned_model.classes_
+    # Save Stage 5 development artifacts. We intentionally do NOT refit using
+    # 2024/25 yet, because 2025/26 remains locked until the broader pipeline is
+    # finalized (including Stage 6 calibration/scoreline work).
+    joblib.dump(model, MODEL_DIR / "outcome_model.joblib")
+    (MODEL_DIR / "feature_columns.json").write_text(
+        json.dumps(selected_features, indent=2), encoding="utf-8"
     )
 
+    comparison_records = json.loads(comparison.to_json(orient="records"))
+    summary_records = json.loads(summary.to_json(orient="records"))
 
-    # ------------------------------------------------------------
-    # DRAW RECALL
-    # ------------------------------------------------------------
+    metrics_payload: Dict[str, object] = {
+        "model_version": MODEL_VERSION,
+        "selected_candidate": selected_name,
+        "selection_windows": SELECTION_VALIDATION_SEASONS,
+        "candidate_comparison": comparison_records,
+        "candidate_summary": summary_records,
+        "validation": {
+            "season": VALIDATION_SEASON,
+            **validation_metrics,
+        },
+        "early_season_validation": {
+            "definition": "both teams have fewer than 5 current-season matches before kickoff",
+            **early_metrics,
+        },
+        "baselines": baseline_metrics,
+        "locked_test": {
+            "season": LOCKED_TEST_SEASON,
+            "status": "locked_not_evaluated",
+            "metrics": None,
+        },
+    }
+    save_json(MODEL_DIR / "metrics.json", metrics_payload)
 
-    recalls = recall_score(
-        y_validation,
-        tuned_predictions,
-        labels=["H", "D", "A"],
-        average=None
-    )
+    metadata_payload: Dict[str, object] = {
+        "model_version": MODEL_VERSION,
+        "model_status": "stage5_development",
+        "model_type": "multinomial_logistic_regression_pipeline",
+        "trained_at_utc": datetime.now(timezone.utc).isoformat(),
+        "dataset": str(DATA_FILE.relative_to(ROOT)),
+        "training_seasons": TRAIN_SEASONS,
+        "training_date_start": train["Date"].min().date().isoformat(),
+        "training_date_end": train["Date"].max().date().isoformat(),
+        "validation_season": VALIDATION_SEASON,
+        "locked_test_season": LOCKED_TEST_SEASON,
+        "test_season_evaluated": False,
+        "selected_feature_set": selected_name,
+        "feature_columns": selected_features,
+        "target": "FTR",
+        "classes": list(model.classes_),
+        "probability_calibrated": False,
+        "calibration_status": "deferred_until_stage6/final_pipeline_validation",
+        "excluded_from_core_model": EXCLUDED_CONTEXT_FEATURE_GROUPS,
+        "bookmaker_odds_policy": "excluded_from_training; optional external benchmark only",
+        "missing_value_policy": "training-median imputation with missingness indicators",
+        "leakage_policy": "pre-match features only; target result enters rolling history after feature snapshot",
+    }
+    save_json(MODEL_DIR / "model_metadata.json", metadata_payload)
 
-    draw_recall = recalls[1]
+    print("\nSaved Stage 5 artifacts:")
+    for filename in [
+        "outcome_model.joblib",
+        "feature_columns.json",
+        "metrics.json",
+        "model_metadata.json",
+    ]:
+        print(" -", MODEL_DIR / filename)
 
-
-    # ------------------------------------------------------------
-    # MACRO F1
-    # ------------------------------------------------------------
-
-    macro_f1 = f1_score(
-        y_validation,
-        tuned_predictions,
-        labels=["H", "D", "A"],
-        average="macro"
-    )
-
-
-    tuning_results.append({
-
-        "DrawWeight":
-            draw_weight,
-
-        "Accuracy":
-            accuracy,
-
-        "LogLoss":
-            loss,
-
-        "DrawRecall":
-            draw_recall,
-
-        "MacroF1":
-            macro_f1
-    })
-
-
-# ================================================================
-# DISPLAY RESULTS
-# ================================================================
-
-tuning_df = pd.DataFrame(
-    tuning_results
-)
-
-
-print("\nValidation tuning results:")
-
-print(
-    tuning_df.to_string(
-        index=False,
-        formatters={
-
-            "Accuracy":
-                lambda x: f"{x * 100:.2f}%",
-
-            "LogLoss":
-                lambda x: f"{x:.4f}",
-
-            "DrawRecall":
-                lambda x: f"{x * 100:.2f}%",
-
-            "MacroF1":
-                lambda x: f"{x:.3f}"
-        }
-    )
-)
+    print("\n2025/26 remains LOCKED. No test metric was calculated.")
 
 
-# ================================================================
-# BEST MODEL BY VALIDATION LOG LOSS
-# ================================================================
-
-best_index = (
-    tuning_df["LogLoss"]
-    .idxmin()
-)
-
-
-best_result = tuning_df.loc[
-    best_index
-]
-
-
-print("\nBest Draw Weight by Log Loss:")
-
-print(
-    "Draw weight:",
-    best_result["DrawWeight"]
-)
-
-print(
-    "Accuracy (%):",
-    round(
-        best_result["Accuracy"] * 100,
-        2
-    )
-)
-
-print(
-    "Log Loss:",
-    round(
-        best_result["LogLoss"],
-        4
-    )
-)
-
-print(
-    "Draw Recall (%):",
-    round(
-        best_result["DrawRecall"] * 100,
-        2
-    )
-)
-
-print(
-    "Macro F1:",
-    round(
-        best_result["MacroF1"],
-        3
-    )
-)
-
-# ================================================================
-# PROBABILITY BASELINE
-# ================================================================
-
-print("\n" + "=" * 60)
-print("PROBABILITY BASELINE")
-print("=" * 60)
-
-
-# Result proportions from TRAINING data only
-train_result_probabilities = (
-    y_train
-    .value_counts(normalize=True)
-)
-
-
-home_probability = train_result_probabilities["H"]
-draw_probability = train_result_probabilities["D"]
-away_probability = train_result_probabilities["A"]
-
-
-print("\nTraining result probabilities:")
-
-print(
-    "Home Win:",
-    round(home_probability * 100, 2),
-    "%"
-)
-
-print(
-    "Draw:",
-    round(draw_probability * 100, 2),
-    "%"
-)
-
-print(
-    "Away Win:",
-    round(away_probability * 100, 2),
-    "%"
-)
-
-
-# Same naive probabilities for every validation match
-baseline_probabilities = np.tile(
-    [
-        away_probability,
-        draw_probability,
-        home_probability
-    ],
-    (
-        len(y_validation),
-        1
-    )
-)
-
-
-# model.classes_ is expected to be:
-# ['A', 'D', 'H']
-
-probability_baseline_log_loss = log_loss(
-    y_validation,
-    baseline_probabilities,
-    labels=["A", "D", "H"]
-)
-
-
-print(
-    "\nProbability baseline log loss:",
-    round(
-        probability_baseline_log_loss,
-        4
-    )
-)
-
-
-print(
-    "Normal Logistic Regression log loss:",
-    round(
-        validation_log_loss,
-        4
-    )
-)
-
-
-print(
-    "Draw weight 1.2 log loss:",
-    round(
-        best_result["LogLoss"],
-        4
-    )
-)
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,195 @@
+{
+  "model_version": "0.5.0-stage5",
+  "selected_candidate": "core_plus_previous_season",
+  "selection_windows": [
+    "2023/24",
+    "2024/25"
+  ],
+  "candidate_comparison": [
+    {
+      "candidate": "core_form_table",
+      "validation_season": "2023/24",
+      "train_seasons": "2021/22,2022/23",
+      "feature_count": 8,
+      "accuracy": 0.5657894737,
+      "log_loss": 0.9719679873,
+      "macro_f1": 0.4230748867,
+      "draw_recall": 0.012195122
+    },
+    {
+      "candidate": "core_form_table",
+      "validation_season": "2024/25",
+      "train_seasons": "2021/22,2022/23,2023/24",
+      "feature_count": 8,
+      "accuracy": 0.5342105263,
+      "log_loss": 1.0175383969,
+      "macro_f1": 0.3997424057,
+      "draw_recall": 0.0
+    },
+    {
+      "candidate": "core_plus_previous_season",
+      "validation_season": "2023/24",
+      "train_seasons": "2021/22,2022/23",
+      "feature_count": 10,
+      "accuracy": 0.5631578947,
+      "log_loss": 0.9618251087,
+      "macro_f1": 0.4380028265,
+      "draw_recall": 0.0487804878
+    },
+    {
+      "candidate": "core_plus_previous_season",
+      "validation_season": "2024/25",
+      "train_seasons": "2021/22,2022/23,2023/24",
+      "feature_count": 10,
+      "accuracy": 0.5236842105,
+      "log_loss": 1.0109360887,
+      "macro_f1": 0.3894024232,
+      "draw_recall": 0.0
+    },
+    {
+      "candidate": "core_plus_cross_season",
+      "validation_season": "2023/24",
+      "train_seasons": "2021/22,2022/23",
+      "feature_count": 12,
+      "accuracy": 0.5552631579,
+      "log_loss": 0.9683058313,
+      "macro_f1": 0.4167877974,
+      "draw_recall": 0.012195122
+    },
+    {
+      "candidate": "core_plus_cross_season",
+      "validation_season": "2024/25",
+      "train_seasons": "2021/22,2022/23,2023/24",
+      "feature_count": 12,
+      "accuracy": 0.5394736842,
+      "log_loss": 1.0071943151,
+      "macro_f1": 0.4034106199,
+      "draw_recall": 0.0
+    },
+    {
+      "candidate": "core_plus_all_historical",
+      "validation_season": "2023/24",
+      "train_seasons": "2021/22,2022/23",
+      "feature_count": 14,
+      "accuracy": 0.5605263158,
+      "log_loss": 0.9618608891,
+      "macro_f1": 0.4373024651,
+      "draw_recall": 0.0487804878
+    },
+    {
+      "candidate": "core_plus_all_historical",
+      "validation_season": "2024/25",
+      "train_seasons": "2021/22,2022/23,2023/24",
+      "feature_count": 14,
+      "accuracy": 0.5289473684,
+      "log_loss": 1.0114123885,
+      "macro_f1": 0.3928173155,
+      "draw_recall": 0.0
+    }
+  ],
+  "candidate_summary": [
+    {
+      "candidate": "core_plus_previous_season",
+      "mean_log_loss": 0.9863805987,
+      "mean_accuracy": 0.5434210526,
+      "mean_macro_f1": 0.4137026249
+    },
+    {
+      "candidate": "core_plus_all_historical",
+      "mean_log_loss": 0.9866366388,
+      "mean_accuracy": 0.5447368421,
+      "mean_macro_f1": 0.4150598903
+    },
+    {
+      "candidate": "core_plus_cross_season",
+      "mean_log_loss": 0.9877500732,
+      "mean_accuracy": 0.5473684211,
+      "mean_macro_f1": 0.4100992086
+    },
+    {
+      "candidate": "core_form_table",
+      "mean_log_loss": 0.9947531921,
+      "mean_accuracy": 0.55,
+      "mean_macro_f1": 0.4114086462
+    }
+  ],
+  "validation": {
+    "season": "2024/25",
+    "matches": 380,
+    "accuracy": 0.5236842105263158,
+    "log_loss": 1.0109360886803618,
+    "macro_f1": 0.38940242320711144,
+    "multiclass_brier": 0.605080831100851,
+    "recall": {
+      "home": 0.8451612903225807,
+      "draw": 0.0,
+      "away": 0.5151515151515151
+    },
+    "confusion_matrix_labels": [
+      "H",
+      "D",
+      "A"
+    ],
+    "confusion_matrix": [
+      [
+        131,
+        0,
+        24
+      ],
+      [
+        60,
+        0,
+        33
+      ],
+      [
+        64,
+        0,
+        68
+      ]
+    ]
+  },
+  "early_season_validation": {
+    "definition": "both teams have fewer than 5 current-season matches before kickoff",
+    "matches": 50,
+    "accuracy": 0.5,
+    "log_loss": 0.9829657177609878,
+    "macro_f1": 0.39107925129430504,
+    "multiclass_brier": 0.5891364934878262,
+    "recall": {
+      "home": 0.9411764705882353,
+      "draw": 0.0,
+      "away": 0.5
+    },
+    "confusion_matrix_labels": [
+      "H",
+      "D",
+      "A"
+    ],
+    "confusion_matrix": [
+      [
+        16,
+        0,
+        1
+      ],
+      [
+        12,
+        0,
+        3
+      ],
+      [
+        9,
+        0,
+        9
+      ]
+    ]
+  },
+  "baselines": {
+    "always_home_accuracy": 0.40789473684210525,
+    "training_frequency_log_loss": 1.0826402716069496
+  },
+  "locked_test": {
+    "season": "2025/26",
+    "status": "locked_not_evaluated",
+    "metrics": null
+  }
+}
