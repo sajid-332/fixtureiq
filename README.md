@@ -49,6 +49,55 @@ The first release supports the English Premier League only.
 FixtureIQ will provide probabilistic forecasts, not guaranteed outcomes.
 ## Current Development Status
 
+Stage 1 — Project Setup
+
+Goal: Establish a clean and scalable project foundation for the full FixtureIQ application.
+
+Completed Work
+Created the main FixtureIQ project repository.
+Initialized Git version control.
+Created the initial project folder structure.
+Set up a Python virtual environment.
+Added Python dependencies required for:
+data processing
+machine learning
+statistical modelling
+backend development
+automated testing
+Created the initial backend structure for Flask.
+Created the initial frontend structure for Next.js.
+Created separate areas for:
+historical data
+machine-learning code
+backend services
+frontend code
+scripts
+documentation
+Added .gitignore rules to prevent virtual environments, secrets, caches, build files and other unnecessary files from being committed.
+Established the README and project documentation.
+Defined the project as an English Premier League MVP before expanding to additional competitions.
+Project Structure
+FixtureIQ/
+├── backend/
+├── frontend/
+├── ml/
+├── data/
+├── scripts/
+├── docs/
+├── README.md
+├── .gitignore
+└── .env.example
+Core Design Rules Established
+Predictions must use pre-match information only.
+Historical data is used to train and validate the prediction models.
+No information generated during or after the target fixture may enter its feature vector.
+The project produces probabilities rather than guaranteed outcomes.
+Data-processing and modelling steps should remain reproducible.
+EPL functionality must work reliably before additional leagues are introduced.
+Stage 1 Result
+
+The repository, development environment and basic full-stack architecture were successfully established, allowing the project to move into the historical-data pipeline.
+
 FixtureIQ is currently at **Stage 5: Outcome ML Model**.
 
 Implemented Stage 5 decisions:
