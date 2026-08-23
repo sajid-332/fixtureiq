@@ -2,7 +2,7 @@
   "model_version": "0.5.0-stage5",
   "model_status": "stage5_development",
   "model_type": "multinomial_logistic_regression_pipeline",
-  "trained_at_utc": "2026-08-21T19:56:20.587967+00:00",
+  "trained_at_utc": "2026-08-23T19:07:46.775328+00:00",
   "dataset": "data\\historical\\processed\\epl_stage5_features.csv",
   "training_seasons": [
     "2021/22",
