@@ -1,0 +1,36 @@
+{
+    "validation_season": "2024/25",
+    "matches_analyzed": 380,
+    "average_lambda": {
+        "home": 1.6529,
+        "away": 1.3476
+    },
+    "average_actual_goals": {
+        "home": 1.5132,
+        "away": 1.4211
+    },
+    "metrics": {
+        "home": {
+            "mae": 1.0089,
+            "rmse": 1.2475
+        },
+        "away": {
+            "mae": 0.8708,
+            "rmse": 1.1281
+        }
+    },
+    "lambda_range": {
+        "home": {
+            "min": 0.7358,
+            "max": 3.712
+        },
+        "away": {
+            "min": 0.6046,
+            "max": 2.993
+        }
+    },
+    "extreme_predictions": {
+        "home_lambda_above_4": 0,
+        "away_lambda_above_4": 0
+    }
+}

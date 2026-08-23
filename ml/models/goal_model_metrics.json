@@ -1,0 +1,12 @@
+{
+    "validation_season": "2024/25",
+    "locked_test_season": "2025/26",
+    "home_goal_metrics": {
+        "mae": 1.0089,
+        "rmse": 1.2475
+    },
+    "away_goal_metrics": {
+        "mae": 0.8708,
+        "rmse": 1.1281
+    }
+}
