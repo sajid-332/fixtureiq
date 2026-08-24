@@ -1,0 +1,9 @@
+{
+    "validation_season": "2024/25",
+    "matches": 380,
+    "exact_score_accuracy": 0.1184,
+    "top3_score_accuracy": 0.3079,
+    "top5_score_accuracy": 0.4579,
+    "average_actual_score_probability": 6.3627,
+    "skipped_probability_checks": 0
+}
