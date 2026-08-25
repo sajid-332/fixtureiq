@@ -1,0 +1,259 @@
+{
+    "stage": "6.6",
+    "analysis": "Detailed final goal and scoreline analysis",
+    "test_season": "2025/26",
+    "matches": 380,
+    "frozen_model": {
+        "stage5_weight": 0.3,
+        "stage6_weight": 0.7,
+        "weights_locked": true
+    },
+    "outcome_performance": {
+        "accuracy": 0.4842,
+        "log_loss": 1.0473,
+        "brier_score": 0.6321,
+        "classes": {
+            "Home": {
+                "precision": 0.5163,
+                "recall": 0.784,
+                "f1": 0.6225,
+                "support": 162
+            },
+            "Draw": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 104
+            },
+            "Away": {
+                "precision": 0.4254,
+                "recall": 0.5,
+                "f1": 0.4597,
+                "support": 114
+            }
+        }
+    },
+    "confusion_matrix": {
+        "labels": [
+            "Home",
+            "Draw",
+            "Away"
+        ],
+        "matrix": [
+            [
+                127,
+                0,
+                35
+            ],
+            [
+                62,
+                0,
+                42
+            ],
+            [
+                57,
+                0,
+                57
+            ]
+        ]
+    },
+    "outcome_distribution": {
+        "actual": {
+            "Home": 162,
+            "Draw": 104,
+            "Away": 114
+        },
+        "predicted": {
+            "Home": 246,
+            "Draw": 0,
+            "Away": 134
+        }
+    },
+    "calibration": {
+        "expected_calibration_error": 0.0798,
+        "maximum_calibration_error": 0.2068,
+        "bins": [
+            {
+                "range": "0.00-0.40",
+                "matches": 40,
+                "average_confidence": 0.386,
+                "actual_accuracy": 0.325,
+                "calibration_gap": -0.061
+            },
+            {
+                "range": "0.40-0.50",
+                "matches": 146,
+                "average_confidence": 0.4516,
+                "actual_accuracy": 0.5,
+                "calibration_gap": 0.0484
+            },
+            {
+                "range": "0.50-0.60",
+                "matches": 99,
+                "average_confidence": 0.5474,
+                "actual_accuracy": 0.4545,
+                "calibration_gap": -0.0928
+            },
+            {
+                "range": "0.60-0.70",
+                "matches": 65,
+                "average_confidence": 0.6445,
+                "actual_accuracy": 0.5538,
+                "calibration_gap": -0.0907
+            },
+            {
+                "range": "0.70-0.80",
+                "matches": 26,
+                "average_confidence": 0.7453,
+                "actual_accuracy": 0.5385,
+                "calibration_gap": -0.2068
+            },
+            {
+                "range": "0.80-0.90",
+                "matches": 4,
+                "average_confidence": 0.8389,
+                "actual_accuracy": 0.75,
+                "calibration_gap": -0.0889
+            }
+        ]
+    },
+    "expected_goals": {
+        "actual_average": {
+            "home": 1.5263,
+            "away": 1.2237,
+            "total": 2.75
+        },
+        "predicted_average": {
+            "home": 1.6022,
+            "away": 1.3203,
+            "total": 2.9226
+        },
+        "mae": {
+            "home": 0.9798,
+            "away": 0.8548
+        },
+        "rmse": {
+            "home": 1.1655,
+            "away": 1.0726
+        },
+        "bias": {
+            "home": 0.0759,
+            "away": 0.0966
+        }
+    },
+    "scoreline_performance": {
+        "exact_score_accuracy": 0.1184,
+        "top3_score_accuracy": 0.3237,
+        "top5_score_accuracy": 0.4553,
+        "average_probability_of_actual_score": 0.0654,
+        "mean_rank_of_actual_score": 7.36,
+        "median_rank_of_actual_score": 6.0,
+        "average_scoreline_entropy_bits": 4.3329
+    },
+    "scoreline_distributions": {
+        "top_predicted_scorelines": [
+            {
+                "score": "1-1",
+                "matches": 268,
+                "frequency": 0.7053
+            },
+            {
+                "score": "2-0",
+                "matches": 49,
+                "frequency": 0.1289
+            },
+            {
+                "score": "1-0",
+                "matches": 21,
+                "frequency": 0.0553
+            },
+            {
+                "score": "2-1",
+                "matches": 18,
+                "frequency": 0.0474
+            },
+            {
+                "score": "0-2",
+                "matches": 11,
+                "frequency": 0.0289
+            },
+            {
+                "score": "0-1",
+                "matches": 7,
+                "frequency": 0.0184
+            },
+            {
+                "score": "1-2",
+                "matches": 4,
+                "frequency": 0.0105
+            },
+            {
+                "score": "3-0",
+                "matches": 2,
+                "frequency": 0.0053
+            }
+        ],
+        "top_actual_scorelines": [
+            {
+                "score": "1-1",
+                "matches": 47,
+                "frequency": 0.1237
+            },
+            {
+                "score": "2-1",
+                "matches": 37,
+                "frequency": 0.0974
+            },
+            {
+                "score": "0-1",
+                "matches": 31,
+                "frequency": 0.0816
+            },
+            {
+                "score": "2-0",
+                "matches": 29,
+                "frequency": 0.0763
+            },
+            {
+                "score": "3-0",
+                "matches": 27,
+                "frequency": 0.0711
+            },
+            {
+                "score": "0-0",
+                "matches": 27,
+                "frequency": 0.0711
+            },
+            {
+                "score": "1-2",
+                "matches": 27,
+                "frequency": 0.0711
+            },
+            {
+                "score": "2-2",
+                "matches": 26,
+                "frequency": 0.0684
+            },
+            {
+                "score": "1-0",
+                "matches": 22,
+                "frequency": 0.0579
+            },
+            {
+                "score": "3-1",
+                "matches": 20,
+                "frequency": 0.0526
+            }
+        ]
+    },
+    "model_agreement": {
+        "stage5_stage6_agreement_rate": 0.8526
+    },
+    "diagnostics": [
+        "Draw recall is weak on the final test season.",
+        "Outcome probabilities show noticeable calibration error.",
+        "The scoreline model provides useful top-5 score coverage.",
+        "Stage 5 and Stage 6 generally agree on the leading outcome.",
+        "2025/26 results are treated as final out-of-sample evidence and are not used for tuning."
+    ]
+}
