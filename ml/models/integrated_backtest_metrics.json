@@ -1,0 +1,107 @@
+{
+    "validation_season": "2024/25",
+    "matches": 380,
+    "stage5_outcome_model": {
+        "accuracy": 0.5237,
+        "log_loss": 1.0109,
+        "brier_score": 0.6051,
+        "average_probabilities": {
+            "home": 0.4898,
+            "draw": 0.2167,
+            "away": 0.2936
+        },
+        "calibration": [
+            {
+                "confidence_range": "0.00-0.40",
+                "matches": 33,
+                "average_confidence": 0.3795,
+                "actual_accuracy": 0.2727
+            },
+            {
+                "confidence_range": "0.40-0.50",
+                "matches": 108,
+                "average_confidence": 0.4513,
+                "actual_accuracy": 0.4907
+            },
+            {
+                "confidence_range": "0.50-0.60",
+                "matches": 87,
+                "average_confidence": 0.5492,
+                "actual_accuracy": 0.4828
+            },
+            {
+                "confidence_range": "0.60-0.70",
+                "matches": 68,
+                "average_confidence": 0.6528,
+                "actual_accuracy": 0.5588
+            },
+            {
+                "confidence_range": "0.70-0.80",
+                "matches": 56,
+                "average_confidence": 0.7392,
+                "actual_accuracy": 0.625
+            },
+            {
+                "confidence_range": "0.80-1.01",
+                "matches": 28,
+                "average_confidence": 0.8493,
+                "actual_accuracy": 0.7857
+            }
+        ]
+    },
+    "stage6_poisson_model": {
+        "accuracy": 0.5263,
+        "log_loss": 0.9985,
+        "brier_score": 0.5973,
+        "average_probabilities": {
+            "home": 0.4484,
+            "draw": 0.2219,
+            "away": 0.3297
+        },
+        "calibration": [
+            {
+                "confidence_range": "0.00-0.40",
+                "matches": 52,
+                "average_confidence": 0.3879,
+                "actual_accuracy": 0.3654
+            },
+            {
+                "confidence_range": "0.40-0.50",
+                "matches": 123,
+                "average_confidence": 0.4483,
+                "actual_accuracy": 0.4472
+            },
+            {
+                "confidence_range": "0.50-0.60",
+                "matches": 101,
+                "average_confidence": 0.549,
+                "actual_accuracy": 0.5941
+            },
+            {
+                "confidence_range": "0.60-0.70",
+                "matches": 65,
+                "average_confidence": 0.6483,
+                "actual_accuracy": 0.5692
+            },
+            {
+                "confidence_range": "0.70-0.80",
+                "matches": 24,
+                "average_confidence": 0.7426,
+                "actual_accuracy": 0.7083
+            },
+            {
+                "confidence_range": "0.80-1.01",
+                "matches": 15,
+                "average_confidence": 0.8306,
+                "actual_accuracy": 0.8
+            }
+        ]
+    },
+    "model_comparison": {
+        "outcome_model_better_accuracy": "stage6_poisson",
+        "better_log_loss": "stage6_poisson",
+        "better_brier_score": "stage6_poisson",
+        "prediction_agreement_rate": 0.8974,
+        "average_probability_difference": 0.056
+    }
+}

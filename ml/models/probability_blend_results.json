@@ -1,0 +1,104 @@
+{
+    "validation_season": "2024/25",
+    "matches": 380,
+    "tested_blends": [
+        {
+            "stage5_weight": 1.0,
+            "stage6_weight": 0.0,
+            "accuracy": 0.5237,
+            "log_loss": 1.0109,
+            "brier_score": 0.6051
+        },
+        {
+            "stage5_weight": 0.9,
+            "stage6_weight": 0.1,
+            "accuracy": 0.5263,
+            "log_loss": 1.0069,
+            "brier_score": 0.6028
+        },
+        {
+            "stage5_weight": 0.8,
+            "stage6_weight": 0.2,
+            "accuracy": 0.5289,
+            "log_loss": 1.0036,
+            "brier_score": 0.6009
+        },
+        {
+            "stage5_weight": 0.7,
+            "stage6_weight": 0.3,
+            "accuracy": 0.5342,
+            "log_loss": 1.001,
+            "brier_score": 0.5993
+        },
+        {
+            "stage5_weight": 0.6,
+            "stage6_weight": 0.4,
+            "accuracy": 0.5342,
+            "log_loss": 0.999,
+            "brier_score": 0.598
+        },
+        {
+            "stage5_weight": 0.5,
+            "stage6_weight": 0.5,
+            "accuracy": 0.5342,
+            "log_loss": 0.9976,
+            "brier_score": 0.5971
+        },
+        {
+            "stage5_weight": 0.4,
+            "stage6_weight": 0.6,
+            "accuracy": 0.5395,
+            "log_loss": 0.9968,
+            "brier_score": 0.5965
+        },
+        {
+            "stage5_weight": 0.3,
+            "stage6_weight": 0.7,
+            "accuracy": 0.5316,
+            "log_loss": 0.9965,
+            "brier_score": 0.5962
+        },
+        {
+            "stage5_weight": 0.2,
+            "stage6_weight": 0.8,
+            "accuracy": 0.5316,
+            "log_loss": 0.9966,
+            "brier_score": 0.5962
+        },
+        {
+            "stage5_weight": 0.1,
+            "stage6_weight": 0.9,
+            "accuracy": 0.5342,
+            "log_loss": 0.9973,
+            "brier_score": 0.5966
+        },
+        {
+            "stage5_weight": 0.0,
+            "stage6_weight": 1.0,
+            "accuracy": 0.5263,
+            "log_loss": 0.9985,
+            "brier_score": 0.5973
+        }
+    ],
+    "best_by_accuracy": {
+        "stage5_weight": 0.4,
+        "stage6_weight": 0.6,
+        "accuracy": 0.5395,
+        "log_loss": 0.9968,
+        "brier_score": 0.5965
+    },
+    "best_by_log_loss": {
+        "stage5_weight": 0.3,
+        "stage6_weight": 0.7,
+        "accuracy": 0.5316,
+        "log_loss": 0.9965,
+        "brier_score": 0.5962
+    },
+    "best_by_brier": {
+        "stage5_weight": 0.3,
+        "stage6_weight": 0.7,
+        "accuracy": 0.5316,
+        "log_loss": 0.9965,
+        "brier_score": 0.5962
+    }
+}
