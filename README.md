@@ -1127,3 +1127,57 @@ A future prediction should communicate:
 - Data update time
 
 All predictions should be treated as estimates rather than certainties.
+
+Stage 6 final status
+6.1       Goal feature preparation              DONE
+6.2       Goal prediction                       DONE
+6.2.2     Lambda analysis                       DONE
+6.3       Poisson scoreline engine              DONE
+6.4       Integrated prediction                 DONE
+6.4.2     Integrated backtest                   DONE
+6.4.3     Probability blend                     DONE
+6.5.1     Freeze 30/70 blend                    DONE
+6.5.2     Final production pipeline             DONE
+6.5.3     Validation reproduction                DONE
+6.5.4     2025/26 final test                    DONE
+6.5.5     Final evaluation                      DONE
+6.6       Detailed goal/scoreline analysis      DONE
+6.7       Documentation + final checkpoint      NEXT
+
+What we'll record as the official Stage 6 result
+
+Frozen blend:
+Stage 5 = 30%
+Stage 6 = 70%
+
+Validation: 2024/25
+Accuracy  = 53.16%
+Log Loss  = 0.9965
+Brier     = 0.5962
+
+Final Test: 2025/26
+Accuracy  = 48.42%
+Log Loss  = 1.0473
+Brier     = 0.6321
+
+Scoreline:
+Exact     = 11.84%
+Top-3     = 32.37%
+Top-5     = 45.53%
+
+Expected Goals:
+Home MAE  = 0.9798
+Away MAE  = 0.8548
+
+Calibration:
+ECE       = 0.0798
+MCE       = 0.2068
+
+Draw:
+Precision = 0.0000
+Recall    = 0.0000
+F1        = 0.0000
+
+Final Stage 6 conclusion
+
+Stage 6 successfully integrates goal prediction, Poisson scoreline probabilities, and the Stage 5 outcome model through a frozen 30/70 probability blend. On the untouched 2025/26 test season, the integrated system achieved 48.42% outcome accuracy, with 1.0473 log loss and a 0.6321 Brier score. The goal layer produced reasonably close expected-goal estimates, while the scoreline layer achieved 11.84% exact-score accuracy and 45.53% top-five coverage. The primary weakness is draw identification, with zero draw recall, alongside noticeable probability-calibration error. These final-test results are retained without post-test tuning.
