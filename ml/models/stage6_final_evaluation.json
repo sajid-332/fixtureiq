@@ -1,0 +1,199 @@
+{
+    "stage": "Stage 6",
+    "evaluation_status": "completed",
+    "frozen_model": {
+        "stage5_weight": 0.3,
+        "stage6_weight": 0.7,
+        "weights_locked": true
+    },
+    "seasons": {
+        "validation": "2024/25",
+        "final_test": "2025/26"
+    },
+    "stage_6_5_3_validation_reproduction": {
+        "expected": {
+            "accuracy": 0.5316,
+            "log_loss": 0.9965,
+            "brier_score": 0.5962
+        },
+        "actual": {
+            "accuracy": 0.5316,
+            "log_loss": 0.9965,
+            "brier_score": 0.5962
+        },
+        "accuracy_match": true,
+        "log_loss_match": true,
+        "brier_match": true,
+        "reproduction_success": true
+    },
+    "validation_2024_25": {
+        "season": "2024/25",
+        "matches": 380,
+        "probability_metrics": {
+            "accuracy": 0.5316,
+            "log_loss": 0.9965,
+            "brier_score": 0.5962
+        },
+        "scoreline_metrics": {
+            "exact_score_accuracy": 0.1184,
+            "top3_score_accuracy": 0.3079,
+            "top5_score_accuracy": 0.4579,
+            "average_actual_score_probability": 0.0636
+        },
+        "expected_goals": {
+            "average_home_lambda": 1.6529,
+            "average_away_lambda": 1.3476,
+            "average_total_lambda": 3.0005
+        },
+        "model_agreement": {
+            "stage5_stage6_agreement_rate": 0.8974
+        },
+        "calibration": [
+            {
+                "confidence_range": "0.00-0.40",
+                "matches": 44,
+                "average_confidence": 0.3854,
+                "actual_accuracy": 0.3409
+            },
+            {
+                "confidence_range": "0.40-0.50",
+                "matches": 121,
+                "average_confidence": 0.4492,
+                "actual_accuracy": 0.4711
+            },
+            {
+                "confidence_range": "0.50-0.60",
+                "matches": 92,
+                "average_confidence": 0.5457,
+                "actual_accuracy": 0.5761
+            },
+            {
+                "confidence_range": "0.60-0.70",
+                "matches": 73,
+                "average_confidence": 0.6414,
+                "actual_accuracy": 0.589
+            },
+            {
+                "confidence_range": "0.70-0.80",
+                "matches": 32,
+                "average_confidence": 0.7323,
+                "actual_accuracy": 0.5938
+            },
+            {
+                "confidence_range": "0.80-1.01",
+                "matches": 18,
+                "average_confidence": 0.8357,
+                "actual_accuracy": 0.8333
+            }
+        ],
+        "confusion_matrix": {
+            "labels": [
+                "H",
+                "D",
+                "A"
+            ],
+            "matrix": [
+                [
+                    129,
+                    0,
+                    26
+                ],
+                [
+                    57,
+                    0,
+                    36
+                ],
+                [
+                    59,
+                    0,
+                    73
+                ]
+            ]
+        }
+    },
+    "final_test_2025_26": {
+        "season": "2025/26",
+        "matches": 380,
+        "probability_metrics": {
+            "accuracy": 0.4842,
+            "log_loss": 1.0473,
+            "brier_score": 0.6321
+        },
+        "scoreline_metrics": {
+            "exact_score_accuracy": 0.1184,
+            "top3_score_accuracy": 0.3237,
+            "top5_score_accuracy": 0.4553,
+            "average_actual_score_probability": 0.0654
+        },
+        "expected_goals": {
+            "average_home_lambda": 1.6022,
+            "average_away_lambda": 1.3203,
+            "average_total_lambda": 2.9226
+        },
+        "model_agreement": {
+            "stage5_stage6_agreement_rate": 0.8526
+        },
+        "calibration": [
+            {
+                "confidence_range": "0.00-0.40",
+                "matches": 40,
+                "average_confidence": 0.386,
+                "actual_accuracy": 0.325
+            },
+            {
+                "confidence_range": "0.40-0.50",
+                "matches": 146,
+                "average_confidence": 0.4516,
+                "actual_accuracy": 0.5
+            },
+            {
+                "confidence_range": "0.50-0.60",
+                "matches": 99,
+                "average_confidence": 0.5474,
+                "actual_accuracy": 0.4545
+            },
+            {
+                "confidence_range": "0.60-0.70",
+                "matches": 65,
+                "average_confidence": 0.6445,
+                "actual_accuracy": 0.5538
+            },
+            {
+                "confidence_range": "0.70-0.80",
+                "matches": 26,
+                "average_confidence": 0.7453,
+                "actual_accuracy": 0.5385
+            },
+            {
+                "confidence_range": "0.80-1.01",
+                "matches": 4,
+                "average_confidence": 0.8389,
+                "actual_accuracy": 0.75
+            }
+        ],
+        "confusion_matrix": {
+            "labels": [
+                "H",
+                "D",
+                "A"
+            ],
+            "matrix": [
+                [
+                    127,
+                    0,
+                    35
+                ],
+                [
+                    62,
+                    0,
+                    42
+                ],
+                [
+                    57,
+                    0,
+                    57
+                ]
+            ]
+        }
+    }
+}

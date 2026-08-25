@@ -1,0 +1,73 @@
+{
+    "model_version": {
+        "stage5_weight": 0.3,
+        "stage6_weight": 0.7,
+        "weights_locked": true,
+        "validation_season": "2024/25",
+        "locked_test_season": "2025/26"
+    },
+    "fixture": {
+        "home_team": "Manchester United",
+        "away_team": "Fulham",
+        "season": "2024/25",
+        "date": "2024-08-16 00:00:00"
+    },
+    "final_prediction": {
+        "outcome": "Home Win",
+        "outcome_code": "H",
+        "confidence": 0.5046,
+        "home_win_probability": 0.5046,
+        "draw_probability": 0.222,
+        "away_win_probability": 0.2733
+    },
+    "expected_goals": {
+        "home": 1.8335,
+        "away": 1.3474,
+        "total": 3.1809
+    },
+    "predicted_score": "1-1",
+    "likely_scorelines": [
+        {
+            "score": "1-1",
+            "probability": 0.1026
+        },
+        {
+            "score": "2-1",
+            "probability": 0.0941
+        },
+        {
+            "score": "1-0",
+            "probability": 0.0762
+        },
+        {
+            "score": "2-0",
+            "probability": 0.0698
+        },
+        {
+            "score": "1-2",
+            "probability": 0.0691
+        }
+    ],
+    "stage5_probabilities": {
+        "home_win": 0.5404783536760573,
+        "draw": 0.20825729350399017,
+        "away_win": 0.2512643528199525
+    },
+    "stage6_poisson_probabilities": {
+        "home_win": 0.4892309223566732,
+        "draw": 0.22795712606355223,
+        "away_win": 0.2828119515797747
+    },
+    "stage5_vs_stage6_probability_gap": {
+        "home_win": 0.0512,
+        "draw": -0.0197,
+        "away_win": -0.0315
+    },
+    "validation_checks": {
+        "stage5_probability_sum": 1.0,
+        "stage6_probability_sum": 1.0,
+        "final_probability_sum": 1.0,
+        "probabilities_valid": true,
+        "expected_goals_non_negative": true
+    }
+}

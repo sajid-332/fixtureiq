@@ -1,37 +1,39 @@
 """
-FixtureIQ Stage 6.4.1
+FixtureIQ Stage 6.5.1 + 6.5.2
 
-Integrated Final Prediction Layer
+Final Production Prediction Pipeline
 
-Combines:
+Frozen probability rule:
 
-1. Stage 5 outcome model
-   - Home / Draw / Away probabilities
+    30% Stage 5 Outcome Model
+    70% Stage 6 Poisson Model
 
-2. Stage 6 goal models
-   - Expected home goals
-   - Expected away goals
+Pipeline:
 
-3. Stage 6 Poisson scoreline engine
-   - Scoreline probability matrix
-   - Top likely scorelines
-
-4. Consistency analysis
-   - Convert scoreline probabilities into
-     Home / Draw / Away probabilities
-
-Important:
-    We do NOT arbitrarily blend Stage 5 and
-    scoreline-derived outcome probabilities yet.
-
-    Calibration and validation must determine
-    whether a future blend is justified.
-
-Validation season:
-    2024/25
-
-Locked final test:
-    2025/26
+    Match
+       |
+       v
+    Stage 5 Outcome Model
+       |
+       +----> H/D/A probabilities
+       |
+       v
+    Stage 6 Goal Models
+       |
+       +----> Home Lambda
+       +----> Away Lambda
+       |
+       v
+    Poisson Score Matrix
+       |
+       +----> Scoreline probabilities
+       +----> H/D/A probabilities
+       |
+       v
+    Frozen 30/70 Blend
+       |
+       v
+    Final FixtureIQ Prediction
 """
 
 
@@ -39,9 +41,8 @@ from pathlib import Path
 import sys
 import json
 
-
-import pandas as pd
 import numpy as np
+import pandas as pd
 import joblib
 
 
@@ -106,23 +107,29 @@ FEATURE_COLUMNS_FILE = (
 
 OUTPUT_FILE = (
     MODEL_DIR
-    / "final_prediction_sample.json"
+    / "final_prediction.json"
 )
 
 
 # -------------------------------------------------
-# Configuration
+# Frozen configuration
 # -------------------------------------------------
 
-VALIDATION_SEASON = "2024/25"
+STAGE5_WEIGHT = 0.30
+
+STAGE6_WEIGHT = 0.70
 
 MAX_GOALS = 10
 
 TOP_SCORELINES = 5
 
+VALIDATION_SEASON = "2024/25"
+
+LOCKED_TEST_SEASON = "2025/26"
+
 
 # -------------------------------------------------
-# Stage 6 goal-model features
+# Stage 6 goal features
 # -------------------------------------------------
 
 GOAL_FEATURES = [
@@ -201,14 +208,6 @@ def load_outcome_features():
         data = json.load(f)
 
 
-    # Support either:
-    #
-    # ["feature1", "feature2"]
-    #
-    # or:
-    #
-    # {"features": [...]}
-
     if isinstance(data, list):
 
         return data
@@ -243,9 +242,11 @@ def load_data():
         DATA_FILE
     )
 
+
     df["Date"] = pd.to_datetime(
         df["Date"]
     )
+
 
     df = (
         df
@@ -253,11 +254,12 @@ def load_data():
         .reset_index(drop=True)
     )
 
+
     return df
 
 
 # -------------------------------------------------
-# Normalize outcome class name
+# Normalize outcome class
 # -------------------------------------------------
 
 def normalize_outcome_class(value):
@@ -273,7 +275,7 @@ def normalize_outcome_class(value):
         "1"
     ]:
 
-        return "home_win"
+        return "H"
 
 
     if text in [
@@ -283,7 +285,7 @@ def normalize_outcome_class(value):
         "0"
     ]:
 
-        return "draw"
+        return "D"
 
 
     if text in [
@@ -294,7 +296,7 @@ def normalize_outcome_class(value):
         "2"
     ]:
 
-        return "away_win"
+        return "A"
 
 
     raise ValueError(
@@ -303,15 +305,15 @@ def normalize_outcome_class(value):
 
 
 # -------------------------------------------------
-# Extract Stage 5 probabilities
+# Stage 5 outcome probabilities
 # -------------------------------------------------
 
-def get_outcome_probabilities(
+def get_stage5_probabilities(
     outcome_model,
     X
 ):
 
-    probabilities = (
+    raw_probabilities = (
         outcome_model
         .predict_proba(X)[0]
     )
@@ -323,68 +325,96 @@ def get_outcome_probabilities(
     )
 
 
-    result = {
-        "home_win": 0.0,
-        "draw": 0.0,
-        "away_win": 0.0
+    probabilities = {
+
+        "H": 0.0,
+
+        "D": 0.0,
+
+        "A": 0.0
+
     }
 
 
     for class_name, probability in zip(
         classes,
-        probabilities
+        raw_probabilities
     ):
 
         normalized = normalize_outcome_class(
             class_name
         )
 
-        result[normalized] = float(
+
+        probabilities[normalized] = float(
             probability
         )
 
 
-    return result
+    return np.array([
+
+        probabilities["H"],
+
+        probabilities["D"],
+
+        probabilities["A"]
+
+    ])
 
 
 # -------------------------------------------------
-# Convert scoreline matrix to H/D/A
+# Scoreline -> H/D/A
 # -------------------------------------------------
 
-def derive_outcome_probabilities(
+def scoreline_to_outcomes(
     score_matrix
 ):
 
-    home_win = score_matrix.loc[
+    home_probability = score_matrix.loc[
+
         score_matrix["HomeGoals"]
         >
         score_matrix["AwayGoals"],
+
         "Probability"
+
     ].sum()
 
 
-    draw = score_matrix.loc[
+    draw_probability = score_matrix.loc[
+
         score_matrix["HomeGoals"]
         ==
         score_matrix["AwayGoals"],
+
         "Probability"
+
     ].sum()
 
 
-    away_win = score_matrix.loc[
+    away_probability = score_matrix.loc[
+
         score_matrix["HomeGoals"]
         <
         score_matrix["AwayGoals"],
+
         "Probability"
+
     ].sum()
 
 
     total = (
-        home_win
+
+        home_probability
+
         +
-        draw
+
+        draw_probability
+
         +
-        away_win
+
+        away_probability
+
     )
 
 
@@ -395,66 +425,44 @@ def derive_outcome_probabilities(
         )
 
 
-    return {
+    return np.array([
 
-        "home_win":
-            float(home_win / total),
+        home_probability / total,
 
-        "draw":
-            float(draw / total),
+        draw_probability / total,
 
-        "away_win":
-            float(away_win / total)
+        away_probability / total
 
-    }
+    ])
 
 
 # -------------------------------------------------
-# Consistency comparison
+# Convert probabilities to names
 # -------------------------------------------------
 
-def calculate_probability_gaps(
-    outcome_probabilities,
-    scoreline_probabilities
+def probability_names(
+    probabilities
 ):
 
     return {
 
-        "home_win_gap":
+        "home_win":
+            float(probabilities[0]),
 
-            round(
-                outcome_probabilities["home_win"]
-                -
-                scoreline_probabilities["home_win"],
-                4
-            ),
+        "draw":
+            float(probabilities[1]),
 
-        "draw_gap":
-
-            round(
-                outcome_probabilities["draw"]
-                -
-                scoreline_probabilities["draw"],
-                4
-            ),
-
-        "away_win_gap":
-
-            round(
-                outcome_probabilities["away_win"]
-                -
-                scoreline_probabilities["away_win"],
-                4
-            )
+        "away_win":
+            float(probabilities[2])
 
     }
 
 
 # -------------------------------------------------
-# Build prediction
+# Main prediction function
 # -------------------------------------------------
 
-def build_prediction(
+def build_final_prediction(
     match
 ):
 
@@ -471,7 +479,7 @@ def build_prediction(
 
 
     # ---------------------------------------------
-    # Validate features
+    # Validate Stage 5 features
     # ---------------------------------------------
 
     missing_outcome_features = [
@@ -494,6 +502,10 @@ def build_prediction(
         )
 
 
+    # ---------------------------------------------
+    # Validate Stage 6 features
+    # ---------------------------------------------
+
     missing_goal_features = [
 
         feature
@@ -515,7 +527,7 @@ def build_prediction(
 
 
     # ---------------------------------------------
-    # Build feature vectors
+    # Prepare feature vectors
     # ---------------------------------------------
 
     outcome_X = pd.DataFrame(
@@ -533,11 +545,11 @@ def build_prediction(
 
 
     # ---------------------------------------------
-    # Stage 5 outcome probabilities
+    # Stage 5
     # ---------------------------------------------
 
-    outcome_probabilities = (
-        get_outcome_probabilities(
+    stage5_probabilities = (
+        get_stage5_probabilities(
             outcome_model,
             outcome_X
         )
@@ -549,18 +561,20 @@ def build_prediction(
     # ---------------------------------------------
 
     home_lambda = float(
+
         home_goal_model
         .predict(goal_X)[0]
+
     )
 
 
     away_lambda = float(
+
         away_goal_model
         .predict(goal_X)[0]
+
     )
 
-
-    # Safety guard
 
     home_lambda = max(
         0.0,
@@ -575,7 +589,7 @@ def build_prediction(
 
 
     # ---------------------------------------------
-    # Scoreline matrix
+    # Generate Poisson score matrix
     # ---------------------------------------------
 
     score_matrix = generate_score_matrix(
@@ -590,13 +604,93 @@ def build_prediction(
 
 
     # ---------------------------------------------
-    # Scoreline-derived outcomes
+    # Stage 6 outcome probabilities
     # ---------------------------------------------
 
-    scoreline_outcomes = (
-        derive_outcome_probabilities(
+    stage6_probabilities = (
+        scoreline_to_outcomes(
             score_matrix
         )
+    )
+
+
+    # ---------------------------------------------
+    # Frozen 30/70 blend
+    # ---------------------------------------------
+
+    final_probabilities = (
+
+        STAGE5_WEIGHT
+        *
+        stage5_probabilities
+
+        +
+
+        STAGE6_WEIGHT
+        *
+        stage6_probabilities
+
+    )
+
+
+    # Numerical normalization
+
+    final_probabilities = (
+
+        final_probabilities
+
+        /
+
+        final_probabilities.sum()
+
+    )
+
+
+    # ---------------------------------------------
+    # Final outcome
+    # ---------------------------------------------
+
+    outcome_labels = [
+        "H",
+        "D",
+        "A"
+    ]
+
+
+    predicted_index = int(
+        np.argmax(
+            final_probabilities
+        )
+    )
+
+
+    predicted_outcome = (
+        outcome_labels[
+            predicted_index
+        ]
+    )
+
+
+    outcome_name = {
+
+        "H":
+            "Home Win",
+
+        "D":
+            "Draw",
+
+        "A":
+            "Away Win"
+
+    }[
+        predicted_outcome
+    ]
+
+
+    confidence = float(
+        final_probabilities[
+            predicted_index
+        ]
     )
 
 
@@ -605,8 +699,11 @@ def build_prediction(
     # ---------------------------------------------
 
     top_scores = get_top_scorelines(
+
         score_matrix,
+
         top_n=TOP_SCORELINES
+
     )
 
 
@@ -622,7 +719,6 @@ def build_prediction(
                 f"{int(row['HomeGoals'])}"
                 "-"
                 f"{int(row['AwayGoals'])}",
-
 
             "probability":
 
@@ -640,10 +736,6 @@ def build_prediction(
         })
 
 
-    # ---------------------------------------------
-    # Predicted score
-    # ---------------------------------------------
-
     predicted_score = (
         likely_scorelines[0]["score"]
     )
@@ -653,36 +745,117 @@ def build_prediction(
     # Probability gaps
     # ---------------------------------------------
 
-    probability_gaps = (
-        calculate_probability_gaps(
+    probability_gaps = {
 
-            outcome_probabilities,
+        "home_win":
 
-            scoreline_outcomes
+            round(
+                float(
+                    stage5_probabilities[0]
+                    -
+                    stage6_probabilities[0]
+                ),
+                4
+            ),
 
-        )
+        "draw":
+
+            round(
+                float(
+                    stage5_probabilities[1]
+                    -
+                    stage6_probabilities[1]
+                ),
+                4
+            ),
+
+        "away_win":
+
+            round(
+                float(
+                    stage5_probabilities[2]
+                    -
+                    stage6_probabilities[2]
+                ),
+                4
+            )
+
+    }
+
+
+    # ---------------------------------------------
+    # Validation checks
+    # ---------------------------------------------
+
+    stage5_sum = float(
+        stage5_probabilities.sum()
+    )
+
+
+    stage6_sum = float(
+        stage6_probabilities.sum()
+    )
+
+
+    final_sum = float(
+        final_probabilities.sum()
+    )
+
+
+    probabilities_valid = bool(
+
+        abs(stage5_sum - 1.0)
+        < 0.000001
+
+        and
+
+        abs(stage6_sum - 1.0)
+        < 0.000001
+
+        and
+
+        abs(final_sum - 1.0)
+        < 0.000001
+
+    )
+
+
+    expected_goals_non_negative = bool(
+
+        home_lambda >= 0
+
+        and
+
+        away_lambda >= 0
+
     )
 
 
     # ---------------------------------------------
-    # Probability sums
-    # ---------------------------------------------
-
-    outcome_probability_sum = sum(
-        outcome_probabilities.values()
-    )
-
-
-    scoreline_probability_sum = sum(
-        scoreline_outcomes.values()
-    )
-
-
-    # ---------------------------------------------
-    # Final object
+    # Final prediction object
     # ---------------------------------------------
 
     prediction = {
+
+        "model_version": {
+
+            "stage5_weight":
+                float(STAGE5_WEIGHT),
+
+            "stage6_weight":
+                float(STAGE6_WEIGHT),
+
+            "weights_locked":
+                True,
+
+            "validation_season":
+                VALIDATION_SEASON,
+
+            "locked_test_season":
+                LOCKED_TEST_SEASON
+
+        },
+
 
         "fixture": {
 
@@ -701,29 +874,41 @@ def build_prediction(
         },
 
 
-        "probabilities": {
+        "final_prediction": {
 
-            "home_win":
+            "outcome":
+                outcome_name,
+
+            "outcome_code":
+                predicted_outcome,
+
+            "confidence":
                 round(
-                    outcome_probabilities[
-                        "home_win"
-                    ],
+                    confidence,
                     4
                 ),
 
-            "draw":
+            "home_win_probability":
                 round(
-                    outcome_probabilities[
-                        "draw"
-                    ],
+                    float(
+                        final_probabilities[0]
+                    ),
                     4
                 ),
 
-            "away_win":
+            "draw_probability":
                 round(
-                    outcome_probabilities[
-                        "away_win"
-                    ],
+                    float(
+                        final_probabilities[1]
+                    ),
+                    4
+                ),
+
+            "away_win_probability":
+                round(
+                    float(
+                        final_probabilities[2]
+                    ),
                     4
                 )
 
@@ -742,6 +927,14 @@ def build_prediction(
                 round(
                     away_lambda,
                     4
+                ),
+
+            "total":
+                round(
+                    home_lambda
+                    +
+                    away_lambda,
+                    4
                 )
 
         },
@@ -755,36 +948,19 @@ def build_prediction(
             likely_scorelines,
 
 
-        "scoreline_derived_probabilities": {
-
-            "home_win":
-                round(
-                    scoreline_outcomes[
-                        "home_win"
-                    ],
-                    4
-                ),
-
-            "draw":
-                round(
-                    scoreline_outcomes[
-                        "draw"
-                    ],
-                    4
-                ),
-
-            "away_win":
-                round(
-                    scoreline_outcomes[
-                        "away_win"
-                    ],
-                    4
-                )
-
-        },
+        "stage5_probabilities":
+            probability_names(
+                stage5_probabilities
+            ),
 
 
-        "probability_gaps":
+        "stage6_poisson_probabilities":
+            probability_names(
+                stage6_probabilities
+            ),
+
+
+        "stage5_vs_stage6_probability_gap":
             probability_gaps,
 
 
@@ -792,22 +968,27 @@ def build_prediction(
 
             "stage5_probability_sum":
                 round(
-                    outcome_probability_sum,
+                    stage5_sum,
                     6
                 ),
 
-            "scoreline_probability_sum":
+            "stage6_probability_sum":
                 round(
-                    scoreline_probability_sum,
+                    stage6_sum,
                     6
                 ),
+
+            "final_probability_sum":
+                round(
+                    final_sum,
+                    6
+                ),
+
+            "probabilities_valid":
+                probabilities_valid,
 
             "expected_goals_non_negative":
-                (
-                    home_lambda >= 0
-                    and
-                    away_lambda >= 0
-                )
+                expected_goals_non_negative
 
         }
 
@@ -841,12 +1022,9 @@ def main():
     if len(validation_df) == 0:
 
         raise ValueError(
-            "No validation matches found."
+            "No 2024/25 validation matches found."
         )
 
-
-    # Use first validation fixture
-    # as an integration test.
 
     match = validation_df.iloc[0]
 
@@ -857,23 +1035,26 @@ def main():
 
 
     print(
-        f"{match['HomeTeam']} "
-        f"vs "
+
+        f"{match['HomeTeam']}"
+        f" vs "
         f"{match['AwayTeam']}"
+
     )
 
 
-    prediction = build_prediction(
+    prediction = build_final_prediction(
         match
     )
 
 
     print(
-        "\nFinal Prediction Layer"
+        "\nFINAL FIXTUREIQ PREDICTION"
     )
 
+
     print(
-        "----------------------"
+        "==========================="
     )
 
 
@@ -900,6 +1081,7 @@ def main():
     print(
         "\nSaved:"
     )
+
 
     print(
         OUTPUT_FILE
