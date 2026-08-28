@@ -1,15 +1,18 @@
 """
 FixtureIQ API-Football provider.
 
-Stage 7.1.4 - 7.1.6
+Stage 7.1.4 - 7.1.9
 
-Provides a small reusable API request layer for:
-- API connectivity
-- Provider capability verification
-- Basic API error handling
+Responsibilities:
+- API-Football connectivity
+- Authentication
+- Request handling
+- Error handling
+- Basic response validation
+- Raw response caching
 
-The API key is loaded from backend.config
-and is never printed or logged.
+The API key is loaded from backend.config.
+The API key is never logged or stored in cache files.
 """
 
 from typing import Any, Dict, Optional
@@ -21,6 +24,13 @@ from backend.config import (
     API_FOOTBALL_KEY,
     API_FOOTBALL_TIMEOUT,
 )
+
+from backend.providers.cache import save_response
+
+
+# =================================================
+# Custom Exceptions
+# =================================================
 
 
 class APIFootballError(Exception):
@@ -43,11 +53,20 @@ class APIFootballResponseError(APIFootballError):
     """Raised when API returns an invalid response."""
 
 
+# =================================================
+# Provider
+# =================================================
+
+
 class APIFootballProvider:
     """
     Reusable API-Football provider.
 
-    Authentication uses the x-apisports-key header.
+    Authentication:
+        x-apisports-key HTTP header
+
+    Configuration:
+        Loaded from backend.config
     """
 
     def __init__(
@@ -61,10 +80,19 @@ class APIFootballProvider:
         self.api_key = api_key
         self.timeout = timeout
 
+    # -------------------------------------------------
+    # Request headers
+    # -------------------------------------------------
+
     def _headers(self) -> Dict[str, str]:
-        """Create API request headers."""
+        """
+        Build request headers.
+
+        The API key is never printed or logged.
+        """
 
         if not self.api_key:
+
             raise APIFootballAuthenticationError(
                 "API_FOOTBALL_KEY is not configured."
             )
@@ -73,6 +101,10 @@ class APIFootballProvider:
             "x-apisports-key": self.api_key
         }
 
+    # -------------------------------------------------
+    # Generic GET request
+    # -------------------------------------------------
+
     def get(
         self,
         endpoint: str,
@@ -80,82 +112,144 @@ class APIFootballProvider:
     ) -> Dict[str, Any]:
         """
         Send a GET request to API-Football.
+
+        Args:
+            endpoint:
+                API endpoint such as /fixtures.
+
+            params:
+                Query parameters.
+
+        Returns:
+            Parsed API-Football JSON response.
+
+        Raises:
+            APIFootballAuthenticationError
+            APIFootballRateLimitError
+            APIFootballConnectionError
+            APIFootballResponseError
         """
 
         endpoint = endpoint.lstrip("/")
 
         url = f"{self.base_url}/{endpoint}"
 
+        request_params = params or {}
+
         try:
+
             response = requests.get(
                 url,
                 headers=self._headers(),
-                params=params or {},
+                params=request_params,
                 timeout=self.timeout,
             )
 
         except requests.exceptions.Timeout as exc:
+
             raise APIFootballConnectionError(
                 "API-Football request timed out."
             ) from exc
 
         except requests.exceptions.ConnectionError as exc:
+
             raise APIFootballConnectionError(
                 "Could not connect to API-Football."
             ) from exc
 
         except requests.exceptions.RequestException as exc:
+
             raise APIFootballConnectionError(
                 f"API-Football request failed: {exc}"
             ) from exc
 
-        # Authentication errors
+        # -------------------------------------------------
+        # HTTP authentication errors
+        # -------------------------------------------------
+
         if response.status_code in (401, 403):
+
             raise APIFootballAuthenticationError(
                 "API-Football authentication failed."
             )
 
-        # Rate limit
+        # -------------------------------------------------
+        # Rate limit / quota
+        # -------------------------------------------------
+
         if response.status_code == 429:
+
             raise APIFootballRateLimitError(
                 "API-Football rate limit or quota exceeded."
             )
 
+        # -------------------------------------------------
         # Other HTTP errors
+        # -------------------------------------------------
+
         if response.status_code >= 400:
+
             raise APIFootballResponseError(
-                f"API-Football returned HTTP "
+                "API-Football returned HTTP "
                 f"{response.status_code}."
             )
 
+        # -------------------------------------------------
         # JSON parsing
+        # -------------------------------------------------
+
         try:
+
             data = response.json()
 
         except ValueError as exc:
+
             raise APIFootballResponseError(
                 "API-Football returned invalid JSON."
             ) from exc
 
+        # -------------------------------------------------
         # Basic response validation
+        # -------------------------------------------------
+
         if not isinstance(data, dict):
+
             raise APIFootballResponseError(
-                "API-Football returned an unexpected response format."
+                "API-Football returned an unexpected "
+                "response format."
             )
 
         if "response" not in data:
+
             raise APIFootballResponseError(
-                "API-Football response is missing the 'response' field."
+                "API-Football response is missing "
+                "the 'response' field."
             )
 
+        # -------------------------------------------------
+        # Cache successful response
+        # -------------------------------------------------
+
+        save_response(
+            endpoint=endpoint,
+            params=request_params,
+            response=data,
+        )
+
         return data
+
+    # =================================================
+    # League
+    # =================================================
 
     def get_leagues(
         self,
         league_id: int,
         season: int,
     ) -> Dict[str, Any]:
-        """Get league information."""
+        """
+        Retrieve league information.
+        """
 
         return self.get(
             "/leagues",
@@ -165,12 +259,18 @@ class APIFootballProvider:
             },
         )
 
+    # =================================================
+    # Fixtures
+    # =================================================
+
     def get_fixtures(
         self,
         league_id: int,
         season: int,
     ) -> Dict[str, Any]:
-        """Get fixtures for a league and season."""
+        """
+        Retrieve fixtures for a league and season.
+        """
 
         return self.get(
             "/fixtures",
@@ -180,12 +280,18 @@ class APIFootballProvider:
             },
         )
 
+    # =================================================
+    # Teams
+    # =================================================
+
     def get_teams(
         self,
         league_id: int,
         season: int,
     ) -> Dict[str, Any]:
-        """Get teams for a league and season."""
+        """
+        Retrieve teams for a league and season.
+        """
 
         return self.get(
             "/teams",
@@ -195,12 +301,18 @@ class APIFootballProvider:
             },
         )
 
+    # =================================================
+    # Standings
+    # =================================================
+
     def get_standings(
         self,
         league_id: int,
         season: int,
     ) -> Dict[str, Any]:
-        """Get standings for a league and season."""
+        """
+        Retrieve league standings.
+        """
 
         return self.get(
             "/standings",

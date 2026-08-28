@@ -1,0 +1,24 @@
+{
+  "cached_at": "2026-08-28T19:31:53.151205+00:00",
+  "endpoint": "fixtures",
+  "params": {
+    "league": 39,
+    "season": 2026
+  },
+  "response": {
+    "get": "fixtures",
+    "parameters": {
+      "league": "39",
+      "season": "2026"
+    },
+    "errors": {
+      "plan": "Free plans do not have access to this season, try from 2022 to 2024."
+    },
+    "results": 0,
+    "paging": {
+      "current": 1,
+      "total": 1
+    },
+    "response": []
+  }
+}
