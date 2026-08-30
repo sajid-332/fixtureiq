@@ -1,0 +1,381 @@
+fixture_id,date,timestamp,timezone,status_short,status_long,status_elapsed,league_id,league_name,country,season,round,home_team_id,home_team_name,home_team_code,away_team_id,away_team_name,away_team_code,home_goals,away_goals
+1208021,2024-08-16 19:00:00+00:00,1723834800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,33,Manchester United,,36,Fulham,,1,0
+1208022,2024-08-17 11:30:00+00:00,1723894200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,57,Ipswich,,40,Liverpool,,0,2
+1208023,2024-08-17 14:00:00+00:00,1723903200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,42,Arsenal,,39,Wolves,,2,0
+1208024,2024-08-17 14:00:00+00:00,1723903200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,45,Everton,,51,Brighton,,0,3
+1208025,2024-08-17 14:00:00+00:00,1723903200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,34,Newcastle,,41,Southampton,,1,0
+1208026,2024-08-17 14:00:00+00:00,1723903200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,65,Nottingham Forest,,35,Bournemouth,,1,1
+1208027,2024-08-17 16:30:00+00:00,1723912200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,48,West Ham,,66,Aston Villa,,1,2
+1208028,2024-08-18 13:00:00+00:00,1723986000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,55,Brentford,,52,Crystal Palace,,2,1
+1208029,2024-08-18 15:30:00+00:00,1723995000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,49,Chelsea,,50,Manchester City,,0,2
+1208030,2024-08-19 19:00:00+00:00,1724094000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 1,46,Leicester,,47,Tottenham,,1,1
+1208033,2024-08-24 11:30:00+00:00,1724499000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,51,Brighton,,33,Manchester United,,2,1
+1208034,2024-08-24 14:00:00+00:00,1724508000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,52,Crystal Palace,,48,West Ham,,0,2
+1208035,2024-08-24 14:00:00+00:00,1724508000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,36,Fulham,,46,Leicester,,2,1
+1208037,2024-08-24 14:00:00+00:00,1724508000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,50,Manchester City,,57,Ipswich,,4,1
+1208038,2024-08-24 14:00:00+00:00,1724508000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,41,Southampton,,65,Nottingham Forest,,0,1
+1208039,2024-08-24 14:00:00+00:00,1724508000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,47,Tottenham,,45,Everton,,4,0
+1208032,2024-08-24 16:30:00+00:00,1724517000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,66,Aston Villa,,42,Arsenal,,0,2
+1208031,2024-08-25 13:00:00+00:00,1724590800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,35,Bournemouth,,34,Newcastle,,1,1
+1208040,2024-08-25 13:00:00+00:00,1724590800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,39,Wolves,,49,Chelsea,,2,6
+1208036,2024-08-25 15:30:00+00:00,1724599800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 2,40,Liverpool,,55,Brentford,,2,0
+1208041,2024-08-31 11:30:00+00:00,1725103800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,42,Arsenal,,51,Brighton,,1,1
+1208042,2024-08-31 14:00:00+00:00,1725112800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,55,Brentford,,41,Southampton,,3,1
+1208044,2024-08-31 14:00:00+00:00,1725112800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,45,Everton,,35,Bournemouth,,2,3
+1208045,2024-08-31 14:00:00+00:00,1725112800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,57,Ipswich,,36,Fulham,,1,1
+1208046,2024-08-31 14:00:00+00:00,1725112800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,46,Leicester,,66,Aston Villa,,1,2
+1208049,2024-08-31 14:00:00+00:00,1725112800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,65,Nottingham Forest,,39,Wolves,,1,1
+1208050,2024-08-31 16:30:00+00:00,1725121800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,48,West Ham,,50,Manchester City,,1,3
+1208043,2024-09-01 12:30:00+00:00,1725193800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,49,Chelsea,,52,Crystal Palace,,1,1
+1208048,2024-09-01 12:30:00+00:00,1725193800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,34,Newcastle,,47,Tottenham,,2,1
+1208047,2024-09-01 15:00:00+00:00,1725202800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 3,33,Manchester United,,40,Liverpool,,0,3
+1208058,2024-09-14 11:30:00+00:00,1726313400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,41,Southampton,,33,Manchester United,,0,3
+1208053,2024-09-14 14:00:00+00:00,1726322400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,51,Brighton,,57,Ipswich,,0,0
+1208054,2024-09-14 14:00:00+00:00,1726322400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,52,Crystal Palace,,46,Leicester,,2,2
+1208055,2024-09-14 14:00:00+00:00,1726322400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,36,Fulham,,48,West Ham,,1,1
+1208056,2024-09-14 14:00:00+00:00,1726322400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,40,Liverpool,,65,Nottingham Forest,,0,1
+1208057,2024-09-14 14:00:00+00:00,1726322400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,50,Manchester City,,55,Brentford,,2,1
+1208052,2024-09-14 16:30:00+00:00,1726331400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,66,Aston Villa,,45,Everton,,3,2
+1208051,2024-09-14 19:00:00+00:00,1726340400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,35,Bournemouth,,49,Chelsea,,0,1
+1208059,2024-09-15 13:00:00+00:00,1726405200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,47,Tottenham,,42,Arsenal,,0,1
+1208060,2024-09-15 15:30:00+00:00,1726414200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 4,39,Wolves,,34,Newcastle,,1,2
+1208070,2024-09-21 11:30:00+00:00,1726918200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,48,West Ham,,49,Chelsea,,0,3
+1208061,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,66,Aston Villa,,39,Wolves,,3,1
+1208064,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,36,Fulham,,34,Newcastle,,3,1
+1208065,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,46,Leicester,,45,Everton,,1,1
+1208066,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,40,Liverpool,,35,Bournemouth,,3,0
+1208068,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,41,Southampton,,57,Ipswich,,1,1
+1208069,2024-09-21 14:00:00+00:00,1726927200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,47,Tottenham,,55,Brentford,,3,1
+1208063,2024-09-21 16:30:00+00:00,1726936200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,52,Crystal Palace,,33,Manchester United,,0,0
+1208062,2024-09-22 13:00:00+00:00,1727010000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,51,Brighton,,65,Nottingham Forest,,2,2
+1208067,2024-09-22 15:30:00+00:00,1727019000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 5,50,Manchester City,,42,Arsenal,,2,2
+1208078,2024-09-28 11:30:00+00:00,1727523000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,34,Newcastle,,50,Manchester City,,1,1
+1208072,2024-09-28 14:00:00+00:00,1727532000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,42,Arsenal,,46,Leicester,,4,2
+1208073,2024-09-28 14:00:00+00:00,1727532000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,55,Brentford,,48,West Ham,,1,1
+1208074,2024-09-28 14:00:00+00:00,1727532000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,49,Chelsea,,51,Brighton,,4,2
+1208075,2024-09-28 14:00:00+00:00,1727532000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,45,Everton,,52,Crystal Palace,,2,1
+1208079,2024-09-28 14:00:00+00:00,1727532000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,65,Nottingham Forest,,36,Fulham,,0,1
+1208080,2024-09-28 16:30:00+00:00,1727541000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,39,Wolves,,40,Liverpool,,1,2
+1208076,2024-09-29 13:00:00+00:00,1727614800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,57,Ipswich,,66,Aston Villa,,2,2
+1208077,2024-09-29 15:30:00+00:00,1727623800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,33,Manchester United,,47,Tottenham,,0,3
+1208071,2024-09-30 19:00:00+00:00,1727722800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 6,35,Bournemouth,,41,Southampton,,3,1
+1208086,2024-10-05 11:30:00+00:00,1728127800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,52,Crystal Palace,,40,Liverpool,,0,1
+1208081,2024-10-05 14:00:00+00:00,1728136800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,42,Arsenal,,41,Southampton,,3,1
+1208083,2024-10-05 14:00:00+00:00,1728136800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,55,Brentford,,39,Wolves,,5,3
+1208088,2024-10-05 14:00:00+00:00,1728136800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,46,Leicester,,35,Bournemouth,,1,0
+1208089,2024-10-05 14:00:00+00:00,1728136800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,50,Manchester City,,36,Fulham,,3,2
+1208090,2024-10-05 14:00:00+00:00,1728136800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,48,West Ham,,57,Ipswich,,4,1
+1208087,2024-10-05 16:30:00+00:00,1728145800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,45,Everton,,34,Newcastle,,0,0
+1208082,2024-10-06 13:00:00+00:00,1728219600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,66,Aston Villa,,33,Manchester United,,0,0
+1208085,2024-10-06 13:00:00+00:00,1728219600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,49,Chelsea,,65,Nottingham Forest,,1,1
+1208084,2024-10-06 15:30:00+00:00,1728228600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 7,51,Brighton,,47,Tottenham,,3,2
+1208099,2024-10-19 11:30:00+00:00,1729337400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,47,Tottenham,,48,West Ham,,4,1
+1208092,2024-10-19 14:00:00+00:00,1729346400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,36,Fulham,,66,Aston Villa,,1,3
+1208093,2024-10-19 14:00:00+00:00,1729346400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,57,Ipswich,,45,Everton,,0,2
+1208095,2024-10-19 14:00:00+00:00,1729346400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,33,Manchester United,,55,Brentford,,2,1
+1208096,2024-10-19 14:00:00+00:00,1729346400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,34,Newcastle,,51,Brighton,,0,1
+1208098,2024-10-19 14:00:00+00:00,1729346400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,41,Southampton,,46,Leicester,,2,3
+1208091,2024-10-19 16:30:00+00:00,1729355400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,35,Bournemouth,,42,Arsenal,,2,0
+1208100,2024-10-20 13:00:00+00:00,1729429200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,39,Wolves,,50,Manchester City,,1,2
+1208094,2024-10-20 15:30:00+00:00,1729438200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,40,Liverpool,,49,Chelsea,,2,1
+1208097,2024-10-21 19:00:00+00:00,1729537200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 8,65,Nottingham Forest,,52,Crystal Palace,,1,0
+1208110,2024-10-25 19:00:00+00:00,1729882800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,46,Leicester,,65,Nottingham Forest,,1,3
+1208104,2024-10-26 14:00:00+00:00,1729951200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,66,Aston Villa,,35,Bournemouth,,1,1
+1208105,2024-10-26 14:00:00+00:00,1729951200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,55,Brentford,,57,Ipswich,,4,3
+1208106,2024-10-26 14:00:00+00:00,1729951200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,51,Brighton,,39,Wolves,,2,2
+1208111,2024-10-26 14:00:00+00:00,1729951200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,50,Manchester City,,41,Southampton,,1,0
+1208109,2024-10-26 16:30:00+00:00,1729960200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,45,Everton,,36,Fulham,,1,1
+1208107,2024-10-27 13:00:00+00:00,1730034000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,49,Chelsea,,34,Newcastle,,2,1
+1208108,2024-10-27 13:00:00+00:00,1730034000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,52,Crystal Palace,,47,Tottenham,,1,0
+1208112,2024-10-27 13:00:00+00:00,1730034000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,48,West Ham,,33,Manchester United,,2,1
+1208103,2024-10-27 15:30:00+00:00,1730043000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 9,42,Arsenal,,40,Liverpool,,2,2
+1208118,2024-11-02 12:30:00+00:00,1730550600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,34,Newcastle,,42,Arsenal,,1,0
+1208113,2024-11-02 15:00:00+00:00,1730559600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,35,Bournemouth,,50,Manchester City,,2,1
+1208115,2024-11-02 15:00:00+00:00,1730559600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,57,Ipswich,,46,Leicester,,1,1
+1208116,2024-11-02 15:00:00+00:00,1730559600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,40,Liverpool,,51,Brighton,,2,1
+1208119,2024-11-02 15:00:00+00:00,1730559600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,65,Nottingham Forest,,48,West Ham,,3,0
+1208120,2024-11-02 15:00:00+00:00,1730559600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,41,Southampton,,45,Everton,,1,0
+1208122,2024-11-02 17:30:00+00:00,1730568600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,39,Wolves,,52,Crystal Palace,,2,2
+1208121,2024-11-03 14:00:00+00:00,1730642400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,47,Tottenham,,66,Aston Villa,,4,1
+1208117,2024-11-03 16:30:00+00:00,1730651400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,33,Manchester United,,49,Chelsea,,1,1
+1208114,2024-11-04 20:00:00+00:00,1730750400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 10,36,Fulham,,55,Brentford,,2,1
+1208123,2024-11-09 15:00:00+00:00,1731164400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,55,Brentford,,35,Bournemouth,,3,2
+1208126,2024-11-09 15:00:00+00:00,1731164400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,52,Crystal Palace,,36,Fulham,,0,2
+1208131,2024-11-09 15:00:00+00:00,1731164400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,48,West Ham,,45,Everton,,0,0
+1208132,2024-11-09 15:00:00+00:00,1731164400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,39,Wolves,,41,Southampton,,2,0
+1208124,2024-11-09 17:30:00+00:00,1731173400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,51,Brighton,,50,Manchester City,,2,1
+1208127,2024-11-09 20:00:00+00:00,1731182400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,40,Liverpool,,66,Aston Villa,,2,0
+1208128,2024-11-10 14:00:00+00:00,1731247200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,33,Manchester United,,46,Leicester,,3,0
+1208129,2024-11-10 14:00:00+00:00,1731247200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,65,Nottingham Forest,,34,Newcastle,,1,3
+1208130,2024-11-10 14:00:00+00:00,1731247200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,47,Tottenham,,57,Ipswich,,1,2
+1208125,2024-11-10 16:30:00+00:00,1731256200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 11,49,Chelsea,,42,Arsenal,,1,1
+1208139,2024-11-23 12:30:00+00:00,1732365000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,46,Leicester,,49,Chelsea,,1,2
+1208133,2024-11-23 15:00:00+00:00,1732374000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,35,Bournemouth,,51,Brighton,,1,2
+1208134,2024-11-23 15:00:00+00:00,1732374000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,42,Arsenal,,65,Nottingham Forest,,3,0
+1208135,2024-11-23 15:00:00+00:00,1732374000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,66,Aston Villa,,52,Crystal Palace,,2,2
+1208136,2024-11-23 15:00:00+00:00,1732374000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,45,Everton,,55,Brentford,,0,0
+1208137,2024-11-23 15:00:00+00:00,1732374000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,36,Fulham,,39,Wolves,,1,4
+1208140,2024-11-23 17:30:00+00:00,1732383000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,50,Manchester City,,47,Tottenham,,0,4
+1208142,2024-11-24 14:00:00+00:00,1732456800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,41,Southampton,,40,Liverpool,,2,3
+1208138,2024-11-24 16:30:00+00:00,1732465800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,57,Ipswich,,33,Manchester United,,1,1
+1208141,2024-11-25 20:00:00+00:00,1732564800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 12,34,Newcastle,,48,West Ham,,0,2
+1208144,2024-11-29 20:00:00+00:00,1732910400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,51,Brighton,,41,Southampton,,1,1
+1208143,2024-11-30 15:00:00+00:00,1732978800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,55,Brentford,,46,Leicester,,4,1
+1208146,2024-11-30 15:00:00+00:00,1732978800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,52,Crystal Palace,,34,Newcastle,,1,1
+1208149,2024-11-30 15:00:00+00:00,1732978800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,65,Nottingham Forest,,57,Ipswich,,1,0
+1208152,2024-11-30 15:00:00+00:00,1732978800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,39,Wolves,,35,Bournemouth,,2,4
+1208151,2024-11-30 17:30:00+00:00,1732987800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,48,West Ham,,42,Arsenal,,2,5
+1208145,2024-12-01 13:30:00+00:00,1733059800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,49,Chelsea,,66,Aston Villa,,3,0
+1208148,2024-12-01 13:30:00+00:00,1733059800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,33,Manchester United,,45,Everton,,4,0
+1208150,2024-12-01 13:30:00+00:00,1733059800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,47,Tottenham,,36,Fulham,,1,1
+1208147,2024-12-01 16:00:00+00:00,1733068800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 13,40,Liverpool,,50,Manchester City,,2,0
+1208158,2024-12-03 19:30:00+00:00,1733254200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,57,Ipswich,,52,Crystal Palace,,0,1
+1208159,2024-12-03 20:15:00+00:00,1733256900,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,46,Leicester,,48,West Ham,,3,1
+1208156,2024-12-04 19:30:00+00:00,1733340600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,45,Everton,,39,Wolves,,4,0
+1208160,2024-12-04 19:30:00+00:00,1733340600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,50,Manchester City,,65,Nottingham Forest,,3,0
+1208161,2024-12-04 19:30:00+00:00,1733340600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,34,Newcastle,,40,Liverpool,,3,3
+1208162,2024-12-04 19:30:00+00:00,1733340600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,41,Southampton,,49,Chelsea,,1,5
+1208154,2024-12-04 20:15:00+00:00,1733343300,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,42,Arsenal,,33,Manchester United,,2,0
+1208155,2024-12-04 20:15:00+00:00,1733343300,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,66,Aston Villa,,55,Brentford,,3,1
+1208157,2024-12-05 19:30:00+00:00,1733427000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,36,Fulham,,51,Brighton,,3,1
+1208153,2024-12-05 20:15:00+00:00,1733429700,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 14,35,Bournemouth,,47,Tottenham,,1,0
+1208163,2024-12-07 15:00:00+00:00,1733583600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,66,Aston Villa,,41,Southampton,,1,0
+1208164,2024-12-07 15:00:00+00:00,1733583600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,55,Brentford,,34,Newcastle,,4,2
+1208165,2024-12-07 15:00:00+00:00,1733583600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,52,Crystal Palace,,50,Manchester City,,2,2
+1208170,2024-12-07 17:30:00+00:00,1733592600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,33,Manchester United,,65,Nottingham Forest,,2,3
+1208167,2024-12-08 14:00:00+00:00,1733666400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,36,Fulham,,42,Arsenal,,1,1
+1208168,2024-12-08 14:00:00+00:00,1733666400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,57,Ipswich,,35,Bournemouth,,1,2
+1208169,2024-12-08 14:00:00+00:00,1733666400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,46,Leicester,,51,Brighton,,2,2
+1208171,2024-12-08 16:30:00+00:00,1733675400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,47,Tottenham,,49,Chelsea,,3,4
+1208172,2024-12-09 20:00:00+00:00,1733774400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,48,West Ham,,39,Wolves,,2,1
+1208174,2024-12-14 15:00:00+00:00,1734188400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,42,Arsenal,,45,Everton,,0,0
+1208177,2024-12-14 15:00:00+00:00,1734188400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,40,Liverpool,,36,Fulham,,2,2
+1208179,2024-12-14 15:00:00+00:00,1734188400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,34,Newcastle,,46,Leicester,,4,0
+1208182,2024-12-14 15:00:00+00:00,1734188400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,39,Wolves,,57,Ipswich,,1,2
+1208180,2024-12-14 17:30:00+00:00,1734197400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,65,Nottingham Forest,,66,Aston Villa,,2,1
+1208175,2024-12-15 14:00:00+00:00,1734271200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,51,Brighton,,52,Crystal Palace,,1,3
+1208178,2024-12-15 16:30:00+00:00,1734280200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,50,Manchester City,,33,Manchester United,,1,2
+1208176,2024-12-15 19:00:00+00:00,1734289200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,49,Chelsea,,55,Brentford,,2,1
+1208181,2024-12-15 19:00:00+00:00,1734289200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,41,Southampton,,47,Tottenham,,0,5
+1208173,2024-12-16 20:00:00+00:00,1734379200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 16,35,Bournemouth,,48,West Ham,,1,1
+1208183,2024-12-21 12:30:00+00:00,1734784200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,66,Aston Villa,,50,Manchester City,,2,1
+1208184,2024-12-21 15:00:00+00:00,1734793200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,55,Brentford,,65,Nottingham Forest,,0,2
+1208188,2024-12-21 15:00:00+00:00,1734793200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,57,Ipswich,,34,Newcastle,,0,4
+1208192,2024-12-21 15:00:00+00:00,1734793200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,48,West Ham,,51,Brighton,,1,1
+1208185,2024-12-21 17:30:00+00:00,1734802200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,52,Crystal Palace,,42,Arsenal,,1,5
+1208186,2024-12-22 14:00:00+00:00,1734876000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,45,Everton,,49,Chelsea,,0,0
+1208187,2024-12-22 14:00:00+00:00,1734876000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,36,Fulham,,41,Southampton,,0,0
+1208189,2024-12-22 14:00:00+00:00,1734876000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,46,Leicester,,39,Wolves,,0,3
+1208190,2024-12-22 14:00:00+00:00,1734876000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,33,Manchester United,,35,Bournemouth,,0,3
+1208191,2024-12-22 16:30:00+00:00,1734885000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 17,47,Tottenham,,40,Liverpool,,3,6
+1208198,2024-12-26 12:30:00+00:00,1735216200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,50,Manchester City,,45,Everton,,1,1
+1208193,2024-12-26 15:00:00+00:00,1735225200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,35,Bournemouth,,52,Crystal Palace,,0,0
+1208196,2024-12-26 15:00:00+00:00,1735225200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,49,Chelsea,,36,Fulham,,1,2
+1208199,2024-12-26 15:00:00+00:00,1735225200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,34,Newcastle,,66,Aston Villa,,3,0
+1208200,2024-12-26 15:00:00+00:00,1735225200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,65,Nottingham Forest,,47,Tottenham,,1,0
+1208201,2024-12-26 15:00:00+00:00,1735225200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,41,Southampton,,48,West Ham,,0,1
+1208202,2024-12-26 17:30:00+00:00,1735234200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,39,Wolves,,33,Manchester United,,2,0
+1208197,2024-12-26 20:00:00+00:00,1735243200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,40,Liverpool,,46,Leicester,,3,1
+1208195,2024-12-27 19:30:00+00:00,1735327800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,51,Brighton,,55,Brentford,,0,0
+1208194,2024-12-27 20:15:00+00:00,1735330500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 18,42,Arsenal,,57,Ipswich,,1,0
+1208209,2024-12-29 14:30:00+00:00,1735482600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,46,Leicester,,50,Manchester City,,0,2
+1208205,2024-12-29 15:00:00+00:00,1735484400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,52,Crystal Palace,,41,Southampton,,2,1
+1208206,2024-12-29 15:00:00+00:00,1735484400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,45,Everton,,65,Nottingham Forest,,0,2
+1208207,2024-12-29 15:00:00+00:00,1735484400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,36,Fulham,,35,Bournemouth,,2,2
+1208211,2024-12-29 15:00:00+00:00,1735484400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,47,Tottenham,,39,Wolves,,2,2
+1208212,2024-12-29 17:15:00+00:00,1735492500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,48,West Ham,,40,Liverpool,,0,5
+1208203,2024-12-30 19:45:00+00:00,1735587900,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,66,Aston Villa,,51,Brighton,,2,2
+1208208,2024-12-30 19:45:00+00:00,1735587900,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,57,Ipswich,,49,Chelsea,,2,0
+1208210,2024-12-30 20:00:00+00:00,1735588800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,33,Manchester United,,34,Newcastle,,0,2
+1208204,2025-01-01 17:30:00+00:00,1735752600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 19,55,Brentford,,42,Arsenal,,1,3
+1208221,2025-01-04 12:30:00+00:00,1735993800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,47,Tottenham,,34,Newcastle,,1,2
+1208213,2025-01-04 15:00:00+00:00,1736002800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,35,Bournemouth,,45,Everton,,1,0
+1208214,2025-01-04 15:00:00+00:00,1736002800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,66,Aston Villa,,46,Leicester,,2,1
+1208216,2025-01-04 15:00:00+00:00,1736002800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,52,Crystal Palace,,49,Chelsea,,1,1
+1208219,2025-01-04 15:00:00+00:00,1736002800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,50,Manchester City,,48,West Ham,,4,1
+1208220,2025-01-04 15:00:00+00:00,1736002800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,41,Southampton,,55,Brentford,,0,5
+1208215,2025-01-04 17:30:00+00:00,1736011800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,51,Brighton,,42,Arsenal,,1,1
+1208217,2025-01-05 14:00:00+00:00,1736085600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,36,Fulham,,57,Ipswich,,2,2
+1208218,2025-01-05 16:30:00+00:00,1736094600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,40,Liverpool,,33,Manchester United,,2,2
+1208222,2025-01-06 20:00:00+00:00,1736193600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 20,39,Wolves,,65,Nottingham Forest,,0,3
+1208224,2025-01-14 19:30:00+00:00,1736883000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,55,Brentford,,50,Manchester City,,2,2
+1208229,2025-01-14 19:30:00+00:00,1736883000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,48,West Ham,,36,Fulham,,3,2
+1208230,2025-01-14 19:30:00+00:00,1736883000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,49,Chelsea,,35,Bournemouth,,2,2
+1208228,2025-01-14 20:00:00+00:00,1736884800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,65,Nottingham Forest,,40,Liverpool,,1,1
+1208225,2025-01-15 19:30:00+00:00,1736969400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,45,Everton,,66,Aston Villa,,0,1
+1208227,2025-01-15 19:30:00+00:00,1736969400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,46,Leicester,,52,Crystal Palace,,0,2
+1208231,2025-01-15 19:30:00+00:00,1736969400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,34,Newcastle,,39,Wolves,,3,0
+1208223,2025-01-15 20:00:00+00:00,1736971200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,42,Arsenal,,47,Tottenham,,2,1
+1208226,2025-01-16 19:30:00+00:00,1737055800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,57,Ipswich,,51,Brighton,,0,2
+1208232,2025-01-16 20:00:00+00:00,1737057600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 21,33,Manchester United,,41,Southampton,,3,1
+1208240,2025-01-18 12:30:00+00:00,1737203400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,34,Newcastle,,35,Bournemouth,,1,4
+1208234,2025-01-18 15:00:00+00:00,1737212400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,55,Brentford,,40,Liverpool,,0,2
+1208238,2025-01-18 15:00:00+00:00,1737212400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,46,Leicester,,36,Fulham,,0,2
+1208242,2025-01-18 15:00:00+00:00,1737212400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,48,West Ham,,52,Crystal Palace,,0,2
+1208233,2025-01-18 17:30:00+00:00,1737221400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,42,Arsenal,,66,Aston Villa,,2,2
+1208236,2025-01-19 14:00:00+00:00,1737295200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,45,Everton,,47,Tottenham,,3,2
+1208239,2025-01-19 14:00:00+00:00,1737295200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,33,Manchester United,,51,Brighton,,1,3
+1208241,2025-01-19 14:00:00+00:00,1737295200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,65,Nottingham Forest,,41,Southampton,,3,2
+1208237,2025-01-19 16:30:00+00:00,1737304200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,57,Ipswich,,50,Manchester City,,0,6
+1208235,2025-01-20 20:00:00+00:00,1737403200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 22,49,Chelsea,,39,Wolves,,3,1
+1208243,2025-01-25 15:00:00+00:00,1737817200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,35,Bournemouth,,65,Nottingham Forest,,5,0
+1208245,2025-01-25 15:00:00+00:00,1737817200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,51,Brighton,,45,Everton,,0,1
+1208248,2025-01-25 15:00:00+00:00,1737817200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,40,Liverpool,,57,Ipswich,,4,1
+1208250,2025-01-25 15:00:00+00:00,1737817200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,41,Southampton,,34,Newcastle,,1,3
+1208252,2025-01-25 15:00:00+00:00,1737817200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,39,Wolves,,42,Arsenal,,0,1
+1208249,2025-01-25 17:30:00+00:00,1737826200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,50,Manchester City,,49,Chelsea,,3,1
+1208246,2025-01-26 14:00:00+00:00,1737900000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,52,Crystal Palace,,55,Brentford,,1,2
+1208251,2025-01-26 14:00:00+00:00,1737900000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,47,Tottenham,,46,Leicester,,1,2
+1208244,2025-01-26 16:30:00+00:00,1737909000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,66,Aston Villa,,48,West Ham,,1,1
+1208247,2025-01-26 19:00:00+00:00,1737918000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 23,36,Fulham,,33,Manchester United,,0,1
+1208261,2025-02-01 12:30:00+00:00,1738413000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,65,Nottingham Forest,,51,Brighton,,7,0
+1208253,2025-02-01 15:00:00+00:00,1738422000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,35,Bournemouth,,40,Liverpool,,0,2
+1208257,2025-02-01 15:00:00+00:00,1738422000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,45,Everton,,46,Leicester,,4,0
+1208258,2025-02-01 15:00:00+00:00,1738422000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,57,Ipswich,,41,Southampton,,1,2
+1208260,2025-02-01 15:00:00+00:00,1738422000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,34,Newcastle,,36,Fulham,,1,2
+1208262,2025-02-01 17:30:00+00:00,1738431000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,39,Wolves,,66,Aston Villa,,2,0
+1208255,2025-02-02 14:00:00+00:00,1738504800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,55,Brentford,,47,Tottenham,,0,2
+1208259,2025-02-02 14:00:00+00:00,1738504800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,33,Manchester United,,52,Crystal Palace,,0,2
+1208254,2025-02-02 16:30:00+00:00,1738513800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,42,Arsenal,,50,Manchester City,,5,1
+1208256,2025-02-03 20:00:00+00:00,1738612800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 24,49,Chelsea,,48,West Ham,,2,1
+1208166,2025-02-12 19:30:00+00:00,1739388600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 15,45,Everton,,40,Liverpool,,2,2
+1208264,2025-02-14 20:00:00+00:00,1739563200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,51,Brighton,,49,Chelsea,,3,0
+1208267,2025-02-15 12:30:00+00:00,1739622600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,46,Leicester,,42,Arsenal,,0,2
+1208263,2025-02-15 15:00:00+00:00,1739631600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,66,Aston Villa,,57,Ipswich,,1,1
+1208266,2025-02-15 15:00:00+00:00,1739631600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,36,Fulham,,65,Nottingham Forest,,2,1
+1208269,2025-02-15 15:00:00+00:00,1739631600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,50,Manchester City,,34,Newcastle,,4,0
+1208270,2025-02-15 15:00:00+00:00,1739631600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,41,Southampton,,35,Bournemouth,,1,3
+1208272,2025-02-15 15:00:00+00:00,1739631600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,48,West Ham,,55,Brentford,,0,1
+1208265,2025-02-15 17:30:00+00:00,1739640600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,52,Crystal Palace,,45,Everton,,1,2
+1208268,2025-02-16 14:00:00+00:00,1739714400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,40,Liverpool,,39,Wolves,,2,1
+1208271,2025-02-16 16:30:00+00:00,1739723400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 25,47,Tottenham,,33,Manchester United,,1,0
+1208305,2025-02-19 19:30:00+00:00,1739993400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,66,Aston Villa,,40,Liverpool,,2,2
+1208279,2025-02-21 20:00:00+00:00,1740168000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,46,Leicester,,55,Brentford,,0,4
+1208276,2025-02-22 12:30:00+00:00,1740227400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,45,Everton,,33,Manchester United,,2,2
+1208273,2025-02-22 15:00:00+00:00,1740236400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,35,Bournemouth,,39,Wolves,,0,1
+1208274,2025-02-22 15:00:00+00:00,1740236400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,42,Arsenal,,48,West Ham,,0,1
+1208277,2025-02-22 15:00:00+00:00,1740236400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,36,Fulham,,52,Crystal Palace,,0,2
+1208278,2025-02-22 15:00:00+00:00,1740236400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,57,Ipswich,,47,Tottenham,,1,4
+1208282,2025-02-22 15:00:00+00:00,1740236400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,41,Southampton,,51,Brighton,,0,4
+1208275,2025-02-22 17:30:00+00:00,1740245400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,66,Aston Villa,,49,Chelsea,,2,1
+1208281,2025-02-23 14:00:00+00:00,1740319200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,34,Newcastle,,65,Nottingham Forest,,4,3
+1208280,2025-02-23 16:30:00+00:00,1740328200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 26,50,Manchester City,,40,Liverpool,,0,2
+1208284,2025-02-25 19:30:00+00:00,1740511800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,51,Brighton,,35,Bournemouth,,2,1
+1208288,2025-02-25 19:30:00+00:00,1740511800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,39,Wolves,,36,Fulham,,1,2
+1208289,2025-02-25 19:30:00+00:00,1740511800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,52,Crystal Palace,,66,Aston Villa,,4,1
+1208290,2025-02-25 20:15:00+00:00,1740514500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,49,Chelsea,,41,Southampton,,4,0
+1208283,2025-02-26 19:30:00+00:00,1740598200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,55,Brentford,,45,Everton,,1,1
+1208285,2025-02-26 19:30:00+00:00,1740598200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,65,Nottingham Forest,,42,Arsenal,,0,0
+1208286,2025-02-26 19:30:00+00:00,1740598200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,47,Tottenham,,50,Manchester City,,0,1
+1208292,2025-02-26 19:30:00+00:00,1740598200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,33,Manchester United,,57,Ipswich,,3,2
+1208291,2025-02-26 20:15:00+00:00,1740600900,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,40,Liverpool,,34,Newcastle,,2,0
+1208287,2025-02-27 20:00:00+00:00,1740686400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 27,48,West Ham,,46,Leicester,,2,0
+1208299,2025-03-08 12:30:00+00:00,1741437000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,65,Nottingham Forest,,50,Manchester City,,1,0
+1208294,2025-03-08 15:00:00+00:00,1741446000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,51,Brighton,,36,Fulham,,2,1
+1208296,2025-03-08 15:00:00+00:00,1741446000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,52,Crystal Palace,,57,Ipswich,,1,0
+1208297,2025-03-08 15:00:00+00:00,1741446000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,40,Liverpool,,41,Southampton,,3,1
+1208293,2025-03-08 17:30:00+00:00,1741455000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,55,Brentford,,66,Aston Villa,,0,1
+1208302,2025-03-08 20:00:00+00:00,1741464000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,39,Wolves,,45,Everton,,1,1
+1208295,2025-03-09 14:00:00+00:00,1741528800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,49,Chelsea,,46,Leicester,,1,0
+1208300,2025-03-09 14:00:00+00:00,1741528800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,47,Tottenham,,35,Bournemouth,,2,2
+1208298,2025-03-09 16:30:00+00:00,1741537800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,33,Manchester United,,42,Arsenal,,1,1
+1208301,2025-03-10 20:00:00+00:00,1741636800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 28,48,West Ham,,34,Newcastle,,0,1
+1208306,2025-03-15 15:00:00+00:00,1742050800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,45,Everton,,48,West Ham,,1,1
+1208308,2025-03-15 15:00:00+00:00,1742050800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,57,Ipswich,,65,Nottingham Forest,,2,4
+1208310,2025-03-15 15:00:00+00:00,1742050800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,50,Manchester City,,51,Brighton,,2,2
+1208312,2025-03-15 15:00:00+00:00,1742050800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,41,Southampton,,39,Wolves,,1,2
+1208303,2025-03-15 17:30:00+00:00,1742059800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,35,Bournemouth,,55,Brentford,,1,2
+1208304,2025-03-16 13:30:00+00:00,1742131800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,42,Arsenal,,49,Chelsea,,1,0
+1208307,2025-03-16 13:30:00+00:00,1742131800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,36,Fulham,,47,Tottenham,,2,0
+1208309,2025-03-16 19:00:00+00:00,1742151600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,46,Leicester,,33,Manchester United,,0,3
+1208314,2025-04-01 18:45:00+00:00,1743533100,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,42,Arsenal,,36,Fulham,,2,1
+1208317,2025-04-01 18:45:00+00:00,1743533100,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,39,Wolves,,48,West Ham,,1,0
+1208316,2025-04-01 19:00:00+00:00,1743534000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,65,Nottingham Forest,,33,Manchester United,,1,0
+1208313,2025-04-02 18:45:00+00:00,1743619500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,35,Bournemouth,,57,Ipswich,,1,2
+1208315,2025-04-02 18:45:00+00:00,1743619500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,51,Brighton,,66,Aston Villa,,0,3
+1208319,2025-04-02 18:45:00+00:00,1743619500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,50,Manchester City,,46,Leicester,,2,0
+1208320,2025-04-02 18:45:00+00:00,1743619500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,34,Newcastle,,55,Brentford,,2,1
+1208321,2025-04-02 18:45:00+00:00,1743619500,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,41,Southampton,,52,Crystal Palace,,1,1
+1208322,2025-04-02 19:00:00+00:00,1743620400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,40,Liverpool,,45,Everton,,1,0
+1208318,2025-04-03 19:00:00+00:00,1743706800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 30,49,Chelsea,,47,Tottenham,,1,0
+1208326,2025-04-05 11:30:00+00:00,1743852600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,45,Everton,,42,Arsenal,,1,1
+1208325,2025-04-05 14:00:00+00:00,1743861600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,52,Crystal Palace,,51,Brighton,,2,1
+1208328,2025-04-05 14:00:00+00:00,1743861600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,57,Ipswich,,39,Wolves,,1,2
+1208332,2025-04-05 14:00:00+00:00,1743861600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,48,West Ham,,35,Bournemouth,,2,2
+1208323,2025-04-05 16:30:00+00:00,1743870600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,66,Aston Villa,,65,Nottingham Forest,,2,1
+1208324,2025-04-06 13:00:00+00:00,1743944400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,55,Brentford,,49,Chelsea,,0,0
+1208327,2025-04-06 13:00:00+00:00,1743944400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,36,Fulham,,40,Liverpool,,3,2
+1208331,2025-04-06 13:00:00+00:00,1743944400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,47,Tottenham,,41,Southampton,,3,1
+1208330,2025-04-06 15:30:00+00:00,1743953400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,33,Manchester United,,50,Manchester City,,0,0
+1208329,2025-04-07 19:00:00+00:00,1744052400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 31,46,Leicester,,34,Newcastle,,0,3
+1208338,2025-04-12 11:30:00+00:00,1744457400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,50,Manchester City,,52,Crystal Palace,,5,2
+1208335,2025-04-12 14:00:00+00:00,1744466400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,51,Brighton,,46,Leicester,,2,2
+1208340,2025-04-12 14:00:00+00:00,1744466400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,65,Nottingham Forest,,45,Everton,,0,1
+1208341,2025-04-12 14:00:00+00:00,1744466400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,41,Southampton,,66,Aston Villa,,0,3
+1208334,2025-04-12 16:30:00+00:00,1744475400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,42,Arsenal,,55,Brentford,,1,1
+1208336,2025-04-13 13:00:00+00:00,1744549200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,49,Chelsea,,57,Ipswich,,2,2
+1208337,2025-04-13 13:00:00+00:00,1744549200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,40,Liverpool,,48,West Ham,,2,1
+1208342,2025-04-13 13:00:00+00:00,1744549200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,39,Wolves,,47,Tottenham,,4,2
+1208339,2025-04-13 15:30:00+00:00,1744558200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,34,Newcastle,,33,Manchester United,,4,1
+1208333,2025-04-14 19:00:00+00:00,1744657200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 32,35,Bournemouth,,36,Fulham,,1,0
+1208311,2025-04-16 18:30:00+00:00,1744828200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 29,34,Newcastle,,52,Crystal Palace,,5,0
+1208344,2025-04-19 14:00:00+00:00,1745071200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,55,Brentford,,51,Brighton,,4,2
+1208345,2025-04-19 14:00:00+00:00,1745071200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,52,Crystal Palace,,35,Bournemouth,,0,0
+1208346,2025-04-19 14:00:00+00:00,1745071200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,45,Everton,,50,Manchester City,,0,2
+1208352,2025-04-19 14:00:00+00:00,1745071200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,48,West Ham,,41,Southampton,,1,1
+1208343,2025-04-19 16:30:00+00:00,1745080200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,66,Aston Villa,,34,Newcastle,,4,1
+1208347,2025-04-20 13:00:00+00:00,1745154000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,36,Fulham,,49,Chelsea,,1,2
+1208348,2025-04-20 13:00:00+00:00,1745154000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,57,Ipswich,,42,Arsenal,,0,4
+1208350,2025-04-20 13:00:00+00:00,1745154000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,33,Manchester United,,39,Wolves,,0,1
+1208349,2025-04-20 15:30:00+00:00,1745163000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,46,Leicester,,40,Liverpool,,0,1
+1208351,2025-04-21 19:00:00+00:00,1745262000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 33,47,Tottenham,,65,Nottingham Forest,,1,2
+1208358,2025-04-22 19:00:00+00:00,1745348400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,50,Manchester City,,66,Aston Villa,,2,1
+1208354,2025-04-23 19:00:00+00:00,1745434800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,42,Arsenal,,52,Crystal Palace,,2,2
+1208356,2025-04-26 11:30:00+00:00,1745667000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,49,Chelsea,,45,Everton,,1,0
+1208355,2025-04-26 14:00:00+00:00,1745676000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,51,Brighton,,48,West Ham,,3,2
+1208359,2025-04-26 14:00:00+00:00,1745676000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,34,Newcastle,,57,Ipswich,,3,0
+1208361,2025-04-26 14:00:00+00:00,1745676000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,41,Southampton,,36,Fulham,,1,2
+1208362,2025-04-26 14:00:00+00:00,1745676000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,39,Wolves,,46,Leicester,,3,0
+1208353,2025-04-27 13:00:00+00:00,1745758800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,35,Bournemouth,,33,Manchester United,,1,1
+1208357,2025-04-27 15:30:00+00:00,1745767800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,40,Liverpool,,47,Tottenham,,5,1
+1208360,2025-05-01 18:30:00+00:00,1746124200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 34,65,Nottingham Forest,,55,Brentford,,0,2
+1208371,2025-05-02 19:00:00+00:00,1746212400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,50,Manchester City,,39,Wolves,,1,0
+1208364,2025-05-03 11:30:00+00:00,1746271800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,66,Aston Villa,,36,Fulham,,1,0
+1208369,2025-05-03 14:00:00+00:00,1746280800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,45,Everton,,57,Ipswich,,2,2
+1208370,2025-05-03 14:00:00+00:00,1746280800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,46,Leicester,,41,Southampton,,2,0
+1208363,2025-05-03 16:30:00+00:00,1746289800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,42,Arsenal,,35,Bournemouth,,1,2
+1208365,2025-05-04 13:00:00+00:00,1746363600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,55,Brentford,,33,Manchester United,,4,3
+1208366,2025-05-04 13:00:00+00:00,1746363600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,51,Brighton,,34,Newcastle,,1,1
+1208372,2025-05-04 13:00:00+00:00,1746363600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,48,West Ham,,47,Tottenham,,1,1
+1208367,2025-05-04 15:30:00+00:00,1746372600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,49,Chelsea,,40,Liverpool,,3,1
+1208368,2025-05-05 19:00:00+00:00,1746471600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 35,52,Crystal Palace,,65,Nottingham Forest,,1,1
+1208374,2025-05-10 14:00:00+00:00,1746885600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,36,Fulham,,45,Everton,,1,3
+1208375,2025-05-10 14:00:00+00:00,1746885600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,57,Ipswich,,55,Brentford,,0,1
+1208380,2025-05-10 14:00:00+00:00,1746885600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,41,Southampton,,50,Manchester City,,0,0
+1208382,2025-05-10 14:00:00+00:00,1746885600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,39,Wolves,,51,Brighton,,0,2
+1208373,2025-05-10 16:30:00+00:00,1746894600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,35,Bournemouth,,66,Aston Villa,,0,1
+1208378,2025-05-11 11:00:00+00:00,1746961200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,34,Newcastle,,49,Chelsea,,2,0
+1208377,2025-05-11 13:15:00+00:00,1746969300,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,33,Manchester United,,48,West Ham,,0,2
+1208379,2025-05-11 13:15:00+00:00,1746969300,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,65,Nottingham Forest,,46,Leicester,,2,2
+1208381,2025-05-11 13:15:00+00:00,1746969300,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,47,Tottenham,,52,Crystal Palace,,0,2
+1208376,2025-05-11 15:30:00+00:00,1746977400,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 36,40,Liverpool,,42,Arsenal,,2,2
+1208384,2025-05-16 18:30:00+00:00,1747420200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,66,Aston Villa,,47,Tottenham,,2,0
+1208387,2025-05-16 19:15:00+00:00,1747422900,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,49,Chelsea,,33,Manchester United,,1,0
+1208389,2025-05-18 11:00:00+00:00,1747566000,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,45,Everton,,41,Southampton,,2,0
+1208392,2025-05-18 13:15:00+00:00,1747574100,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,48,West Ham,,65,Nottingham Forest,,1,2
+1208385,2025-05-18 14:00:00+00:00,1747576800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,55,Brentford,,36,Fulham,,2,3
+1208390,2025-05-18 14:00:00+00:00,1747576800,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,46,Leicester,,57,Ipswich,,2,0
+1208383,2025-05-18 15:30:00+00:00,1747582200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,42,Arsenal,,34,Newcastle,,1,0
+1208386,2025-05-19 19:00:00+00:00,1747681200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,51,Brighton,,40,Liverpool,,3,2
+1208388,2025-05-20 19:00:00+00:00,1747767600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,52,Crystal Palace,,39,Wolves,,4,2
+1208391,2025-05-20 19:00:00+00:00,1747767600,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 37,50,Manchester City,,35,Bournemouth,,3,1
+1208393,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,35,Bournemouth,,46,Leicester,,2,0
+1208394,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,36,Fulham,,50,Manchester City,,0,2
+1208395,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,57,Ipswich,,48,West Ham,,1,3
+1208396,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,40,Liverpool,,52,Crystal Palace,,1,1
+1208397,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,33,Manchester United,,66,Aston Villa,,2,0
+1208398,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,34,Newcastle,,45,Everton,,0,1
+1208399,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,65,Nottingham Forest,,49,Chelsea,,0,1
+1208400,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,41,Southampton,,42,Arsenal,,1,2
+1208401,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,47,Tottenham,,51,Brighton,,1,4
+1208402,2025-05-25 15:00:00+00:00,1748185200,UTC,FT,Match Finished,90,39,Premier League,England,2024,Regular Season - 38,39,Wolves,,55,Brentford,,1,1
