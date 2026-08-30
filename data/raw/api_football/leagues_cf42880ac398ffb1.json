@@ -1,14 +1,14 @@
 {
-  "cached_at": "2026-08-30T14:04:56.161288+00:00",
-  "endpoint": "fixtures",
+  "cached_at": "2026-08-30T14:05:04.998357+00:00",
+  "endpoint": "leagues",
   "params": {
-    "league": 39,
+    "id": 39,
     "season": 2026
   },
   "response": {
-    "get": "fixtures",
+    "get": "leagues",
     "parameters": {
-      "league": "39",
+      "id": "39",
       "season": "2026"
     },
     "errors": {
