@@ -1,0 +1,52 @@
+{
+  "stage": "7.3.3",
+  "dataset": "D:\\FixtureIQ\\data\\processed\\historical_fixtures.csv",
+  "total_fixtures": 760,
+  "valid_fixtures": 760,
+  "invalid_fixtures": 0,
+  "duplicate_fixture_ids": 0,
+  "missing_critical_values": 0,
+  "quality_percentage": 100.0,
+  "checks": {
+    "schema": true,
+    "fixture_ids": true,
+    "seasons": true,
+    "teams": true,
+    "dates": true,
+    "scores": true,
+    "status": true,
+    "critical_missing_values": true
+  },
+  "season_summary": {
+    "2023": {
+      "fixtures": 380,
+      "unique_fixture_ids": 380
+    },
+    "2024": {
+      "fixtures": 380,
+      "unique_fixture_ids": 380
+    }
+  },
+  "details": {
+    "missing_fixture_ids": 0,
+    "missing_seasons": 0,
+    "invalid_seasons": 0,
+    "missing_home_teams": 0,
+    "missing_away_teams": 0,
+    "same_team_records": 0,
+    "invalid_dates": 0,
+    "negative_home_goals": 0,
+    "negative_away_goals": 0,
+    "missing_status": 0,
+    "missing_critical_fields": {
+      "fixture_id": 0,
+      "season": 0,
+      "date": 0,
+      "home_team_id": 0,
+      "home_team_name": 0,
+      "away_team_id": 0,
+      "away_team_name": 0
+    }
+  },
+  "overall_pass": true
+}

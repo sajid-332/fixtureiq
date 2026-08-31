@@ -1,0 +1,44 @@
+{
+  "stage": "7.3.4",
+  "requested_seasons": [
+    2023,
+    2024
+  ],
+  "dataset": "D:\\FixtureIQ\\data\\processed\\historical_fixtures.csv",
+  "dataset_records": 760,
+  "dataset_seasons": [
+    2023,
+    2024
+  ],
+  "dataset_fixture_ids_unique": true,
+  "requested_seasons_present": true,
+  "season_reports": [
+    {
+      "season": 2023,
+      "source_records": 380,
+      "processed_records": 380,
+      "missing_records": 0,
+      "unexpected_records": 0,
+      "team_mismatches": 0,
+      "score_mismatches": 0,
+      "season_mismatches": 0,
+      "missing_fixture_ids": [],
+      "unexpected_fixture_ids": [],
+      "overall_pass": true
+    },
+    {
+      "season": 2024,
+      "source_records": 380,
+      "processed_records": 380,
+      "missing_records": 0,
+      "unexpected_records": 0,
+      "team_mismatches": 0,
+      "score_mismatches": 0,
+      "season_mismatches": 0,
+      "missing_fixture_ids": [],
+      "unexpected_fixture_ids": [],
+      "overall_pass": true
+    }
+  ],
+  "overall_pass": true
+}
