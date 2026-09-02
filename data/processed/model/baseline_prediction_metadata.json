@@ -1,0 +1,20 @@
+{
+  "stage": "7.5.3",
+  "model_type": "LogisticRegression",
+  "validation_rows": 380,
+  "feature_count": 86,
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "prediction_columns": [
+    "fixture_id",
+    "actual",
+    "predicted",
+    "prob_home",
+    "prob_draw",
+    "prob_away"
+  ],
+  "probability_sum_tolerance": 1e-08
+}
