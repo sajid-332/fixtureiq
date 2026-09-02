@@ -1,0 +1,26 @@
+{
+  "stage": "7.4.2",
+  "leakage_rule": "Only matches before the current fixture are used to calculate features.",
+  "features": {
+    "matches": "Number of previous matches.",
+    "wins": "Previous wins.",
+    "draws": "Previous draws.",
+    "losses": "Previous losses.",
+    "points": "Previous league points.",
+    "points_per_match": "Previous points divided by previous matches.",
+    "goals_for": "Previous goals scored.",
+    "goals_against": "Previous goals conceded.",
+    "goal_difference": "Previous goals scored minus conceded.",
+    "home_*": "Historical home-performance statistics.",
+    "away_*": "Historical away-performance statistics.",
+    "last5_*": "Statistics from the previous five matches.",
+    "last10_*": "Statistics from the previous ten matches.",
+    "diff_*": "Home-team feature minus away-team feature.",
+    "prior_*": "Historical cross-season information available before the fixture."
+  },
+  "targets": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  }
+}
