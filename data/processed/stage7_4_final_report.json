@@ -1,0 +1,33 @@
+{
+  "stage": "7.4.6",
+  "overall_pass": true,
+  "checks": {
+    "model_features": true,
+    "train_features": true,
+    "validation_features": true,
+    "file_X_train": true,
+    "file_y_train": true,
+    "file_X_validation": true,
+    "file_y_validation": true,
+    "file_feature_schema": true,
+    "file_dataset_metadata": true,
+    "training_row_count": true,
+    "validation_row_count": true,
+    "training_target_alignment": true,
+    "validation_target_alignment": true,
+    "training_schema": true,
+    "validation_schema": true,
+    "same_feature_columns": true,
+    "feature_leakage": true,
+    "numeric_integrity": true,
+    "target_integrity": true,
+    "train_validation_separation": true,
+    "previous_quality_gate": true,
+    "final_test_protected": true
+  },
+  "training_records": 380,
+  "validation_records": 380,
+  "feature_count": 86,
+  "train_validation_overlap": 0,
+  "final_test_protected": true
+}

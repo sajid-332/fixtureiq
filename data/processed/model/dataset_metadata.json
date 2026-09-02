@@ -1,0 +1,28 @@
+{
+  "stage": "7.4.5",
+  "training": {
+    "records": 380,
+    "feature_count": 86,
+    "target_distribution": {
+      "0": 82,
+      "1": 175,
+      "2": 123
+    },
+    "first_fixture_id": 1035037,
+    "last_fixture_id": 1035553
+  },
+  "validation": {
+    "records": 380,
+    "feature_count": 86,
+    "target_distribution": {
+      "0": 93,
+      "1": 155,
+      "2": 132
+    },
+    "first_fixture_id": 1208021,
+    "last_fixture_id": 1208402
+  },
+  "feature_count": 86,
+  "random_shuffle": false,
+  "final_test_touched": false
+}
