@@ -1,0 +1,22 @@
+{
+  "stage": "7.4.3",
+  "input": "D:\\FixtureIQ\\data\\processed\\model_features.csv",
+  "training_seasons": [
+    2023
+  ],
+  "validation_seasons": [
+    2024
+  ],
+  "training_records": 380,
+  "validation_records": 380,
+  "total_records": 760,
+  "train_validation_overlap": 0,
+  "training_first_date": "2023-08-11 19:00:00+00:00",
+  "training_last_date": "2024-05-19 15:00:00+00:00",
+  "validation_first_date": "2024-08-16 19:00:00+00:00",
+  "validation_last_date": "2025-05-25 15:00:00+00:00",
+  "chronological": true,
+  "random_shuffle": false,
+  "final_test_season": "2025/26",
+  "final_test_touched": false
+}
