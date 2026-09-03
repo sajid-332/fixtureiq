@@ -1,0 +1,28 @@
+{
+  "stage": "7.7.1",
+  "purpose": "Formally lock the model selected during Stage 7.6.5.",
+  "selected_candidate": "random_forest",
+  "selected_model": "Random Forest",
+  "status": "LOCKED",
+  "training_season": 2023,
+  "training_rows": 380,
+  "validation_season": 2024,
+  "validation_rows": 380,
+  "feature_count": 86,
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "model_source": "data/processed/model/candidates/random_forest.joblib",
+  "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+  "selection_source": "data/processed/model/candidate_comparison.json",
+  "final_test_season": "2025/26",
+  "final_test_used": false,
+  "lock_policy": [
+    "Do not retrain after lock.",
+    "Do not modify model weights.",
+    "Do not use 2025/26 for selection.",
+    "Do not tune using final-test results."
+  ]
+}

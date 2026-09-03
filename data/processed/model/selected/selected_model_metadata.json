@@ -1,0 +1,20 @@
+{
+  "stage": "7.7.2",
+  "package_status": "PRODUCTION_READY",
+  "selected_candidate": "random_forest",
+  "selected_model": "Random Forest",
+  "training_season": 2023,
+  "validation_season": 2024,
+  "training_rows": 380,
+  "validation_rows": 380,
+  "feature_count": 86,
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "final_test_season": "2025/26",
+  "final_test_used": false,
+  "source_metadata_stage": "7.6.3",
+  "source_model": "candidates/random_forest.joblib"
+}
