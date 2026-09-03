@@ -1,0 +1,535 @@
+{
+  "stage": "7.6.1",
+  "purpose": "Diagnose the Stage 7.5 baseline before candidate-model experimentation.",
+  "data_protection": {
+    "training_season": 2023,
+    "validation_season": 2024,
+    "final_test_season": "2025/26",
+    "final_test_used": false
+  },
+  "dataset": {
+    "training_rows": 380,
+    "validation_rows": 380,
+    "feature_count": 86
+  },
+  "class_distribution": {
+    "training": {
+      "draw": {
+        "class_id": 0,
+        "count": 82,
+        "proportion": 0.21578947368421053
+      },
+      "home_win": {
+        "class_id": 1,
+        "count": 175,
+        "proportion": 0.4605263157894737
+      },
+      "away_win": {
+        "class_id": 2,
+        "count": 123,
+        "proportion": 0.3236842105263158
+      }
+    },
+    "validation": {
+      "draw": {
+        "class_id": 0,
+        "count": 93,
+        "proportion": 0.24473684210526317
+      },
+      "home_win": {
+        "class_id": 1,
+        "count": 155,
+        "proportion": 0.40789473684210525
+      },
+      "away_win": {
+        "class_id": 2,
+        "count": 132,
+        "proportion": 0.3473684210526316
+      }
+    }
+  },
+  "feature_scale": {
+    "numeric_feature_count": 86,
+    "features_with_large_scale": [
+      "home_matches",
+      "home_wins",
+      "home_draws",
+      "home_losses",
+      "home_points",
+      "home_goals_for",
+      "home_goals_against",
+      "home_goal_difference",
+      "home_home_matches",
+      "home_home_wins",
+      "home_home_losses",
+      "home_home_goals_for",
+      "home_home_goals_against",
+      "home_away_matches",
+      "home_away_wins",
+      "home_away_losses",
+      "home_away_goals_for",
+      "home_away_goals_against",
+      "home_last10_points",
+      "home_last10_goals_for",
+      "home_last10_goals_against",
+      "home_last5_points",
+      "home_last5_goals_for",
+      "home_last5_goals_against",
+      "away_matches",
+      "away_wins",
+      "away_draws",
+      "away_losses",
+      "away_points",
+      "away_goals_for",
+      "away_goals_against",
+      "away_goal_difference",
+      "away_home_matches",
+      "away_home_wins",
+      "away_home_losses",
+      "away_home_goals_for",
+      "away_home_goals_against",
+      "away_away_matches",
+      "away_away_wins",
+      "away_away_losses",
+      "away_away_goals_for",
+      "away_away_goals_against",
+      "away_last10_points",
+      "away_last10_goals_for",
+      "away_last10_goals_against",
+      "away_last5_points",
+      "away_last5_goals_for",
+      "away_last5_goals_against",
+      "diff_goal_difference",
+      "diff_last5_points",
+      "diff_last10_points",
+      "diff_last5_goals_for",
+      "diff_last10_goals_for",
+      "home_prior_matches",
+      "away_prior_matches",
+      "home_prior_points",
+      "away_prior_points"
+    ],
+    "features_with_zero_variance": [],
+    "max_absolute_feature_value": 101.0,
+    "max_std": 24.823528262550873,
+    "median_std": 3.851526769505748
+  },
+  "baseline_convergence": {
+    "convergence_warning_observed": true,
+    "description": "The Stage 7.5 Logistic Regression training emitted an lbfgs convergence warning after reaching max_iter=2000.",
+    "recommended_diagnostic": "Evaluate feature scaling and solver behavior in a separate candidate experiment."
+  },
+  "baseline_metrics": {
+    "sample_count": 380,
+    "accuracy": 0.37105263157894736,
+    "log_loss": 3.8789096095622524,
+    "brier_score": 0.9377273789456951,
+    "precision_macro": 0.3604268827011463,
+    "recall_macro": 0.3682306940371456,
+    "f1_macro": 0.3558144049699088,
+    "per_class": {
+      "draw": {
+        "precision": 0.23853211009174313,
+        "recall": 0.27956989247311825,
+        "f1": 0.25742574257425743,
+        "support": 93
+      },
+      "home_win": {
+        "precision": 0.41,
+        "recall": 0.2645161290322581,
+        "f1": 0.3215686274509804,
+        "support": 155
+      },
+      "away_win": {
+        "precision": 0.4327485380116959,
+        "recall": 0.5606060606060606,
+        "f1": 0.4884488448844885,
+        "support": 132
+      }
+    },
+    "confusion_matrix": [
+      [
+        26,
+        23,
+        44
+      ],
+      [
+        61,
+        41,
+        53
+      ],
+      [
+        22,
+        36,
+        74
+      ]
+    ],
+    "class_order": [
+      "draw",
+      "home_win",
+      "away_win"
+    ]
+  },
+  "baseline_calibration": {
+    "sample_count": 380,
+    "bin_count": 10,
+    "binning_method": "equal_width_10_bins",
+    "ece_definition": "macro-average of one-vs-rest weighted absolute calibration errors",
+    "mce_definition": "macro-average of one-vs-rest maximum absolute calibration error",
+    "ece": 0.2733658476119217,
+    "mce": 0.5928372293965646,
+    "class_order": [
+      "draw",
+      "home_win",
+      "away_win"
+    ],
+    "per_class": {
+      "draw": {
+        "class_id": 0,
+        "class_name": "draw",
+        "bin_count": 10,
+        "bins": [
+          {
+            "bin": 1,
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 179,
+            "mean_predicted": 0.01905034179605681,
+            "observed_frequency": 0.2569832402234637,
+            "calibration_error": 0.2379328984274069
+          },
+          {
+            "bin": 2,
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 37,
+            "mean_predicted": 0.1450109776286035,
+            "observed_frequency": 0.1891891891891892,
+            "calibration_error": 0.04417821156058571
+          },
+          {
+            "bin": 3,
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 28,
+            "mean_predicted": 0.24694665713186978,
+            "observed_frequency": 0.2857142857142857,
+            "calibration_error": 0.03876762858241592
+          },
+          {
+            "bin": 4,
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 24,
+            "mean_predicted": 0.33922569104438494,
+            "observed_frequency": 0.20833333333333334,
+            "calibration_error": 0.1308923577110516
+          },
+          {
+            "bin": 5,
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 10,
+            "mean_predicted": 0.45279488889417807,
+            "observed_frequency": 0.4,
+            "calibration_error": 0.05279488889417805
+          },
+          {
+            "bin": 6,
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "count": 19,
+            "mean_predicted": 0.5424248397976229,
+            "observed_frequency": 0.15789473684210525,
+            "calibration_error": 0.38453010295551765
+          },
+          {
+            "bin": 7,
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 14,
+            "mean_predicted": 0.6441924664181987,
+            "observed_frequency": 0.2857142857142857,
+            "calibration_error": 0.358478180703913
+          },
+          {
+            "bin": 8,
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 7,
+            "mean_predicted": 0.7279032013562446,
+            "observed_frequency": 0.42857142857142855,
+            "calibration_error": 0.2993317727848161
+          },
+          {
+            "bin": 9,
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 9,
+            "mean_predicted": 0.851155242496071,
+            "observed_frequency": 0.2222222222222222,
+            "calibration_error": 0.6289330202738488
+          },
+          {
+            "bin": 10,
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 53,
+            "mean_predicted": 0.9979038499279368,
+            "observed_frequency": 0.20754716981132076,
+            "calibration_error": 0.790356680116616
+          }
+        ],
+        "ece": 0.29197061011765996,
+        "mce": 0.790356680116616
+      },
+      "home_win": {
+        "class_id": 1,
+        "class_name": "home_win",
+        "bin_count": 10,
+        "bins": [
+          {
+            "bin": 1,
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 162,
+            "mean_predicted": 0.023527765217129532,
+            "observed_frequency": 0.4074074074074074,
+            "calibration_error": 0.38387964219027787
+          },
+          {
+            "bin": 2,
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 42,
+            "mean_predicted": 0.14983365332981474,
+            "observed_frequency": 0.38095238095238093,
+            "calibration_error": 0.2311187276225662
+          },
+          {
+            "bin": 3,
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 37,
+            "mean_predicted": 0.24660397414748864,
+            "observed_frequency": 0.40540540540540543,
+            "calibration_error": 0.1588014312579168
+          },
+          {
+            "bin": 4,
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 22,
+            "mean_predicted": 0.3484597070719367,
+            "observed_frequency": 0.5,
+            "calibration_error": 0.1515402929280633
+          },
+          {
+            "bin": 5,
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 32,
+            "mean_predicted": 0.45176788713457067,
+            "observed_frequency": 0.34375,
+            "calibration_error": 0.10801788713457067
+          },
+          {
+            "bin": 6,
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "count": 21,
+            "mean_predicted": 0.5596492903960145,
+            "observed_frequency": 0.3333333333333333,
+            "calibration_error": 0.2263159570626812
+          },
+          {
+            "bin": 7,
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 13,
+            "mean_predicted": 0.6556409371929477,
+            "observed_frequency": 0.38461538461538464,
+            "calibration_error": 0.27102555257756306
+          },
+          {
+            "bin": 8,
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 17,
+            "mean_predicted": 0.7528962945008763,
+            "observed_frequency": 0.29411764705882354,
+            "calibration_error": 0.4587786474420527
+          },
+          {
+            "bin": 9,
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 12,
+            "mean_predicted": 0.8375994952188562,
+            "observed_frequency": 0.5833333333333334,
+            "calibration_error": 0.25426616188552287
+          },
+          {
+            "bin": 10,
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 22,
+            "mean_predicted": 0.9516646475427968,
+            "observed_frequency": 0.5454545454545454,
+            "calibration_error": 0.40621010208825137
+          }
+        ],
+        "ece": 0.2963805812135439,
+        "mce": 0.4587786474420527
+      },
+      "away_win": {
+        "class_id": 2,
+        "class_name": "away_win",
+        "bin_count": 10,
+        "bins": [
+          {
+            "bin": 1,
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 110,
+            "mean_predicted": 0.0235116302358829,
+            "observed_frequency": 0.11818181818181818,
+            "calibration_error": 0.09467018794593528
+          },
+          {
+            "bin": 2,
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 24,
+            "mean_predicted": 0.15262106197731953,
+            "observed_frequency": 0.5833333333333334,
+            "calibration_error": 0.43071227135601386
+          },
+          {
+            "bin": 3,
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 38,
+            "mean_predicted": 0.24598384974447537,
+            "observed_frequency": 0.47368421052631576,
+            "calibration_error": 0.2277003607818404
+          },
+          {
+            "bin": 4,
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 25,
+            "mean_predicted": 0.36065466816454506,
+            "observed_frequency": 0.36,
+            "calibration_error": 0.0006546681645450692
+          },
+          {
+            "bin": 5,
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 25,
+            "mean_predicted": 0.4439966092305344,
+            "observed_frequency": 0.36,
+            "calibration_error": 0.08399660923053442
+          },
+          {
+            "bin": 6,
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "count": 25,
+            "mean_predicted": 0.5482878645432632,
+            "observed_frequency": 0.4,
+            "calibration_error": 0.14828786454326315
+          },
+          {
+            "bin": 7,
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 23,
+            "mean_predicted": 0.6363237291282483,
+            "observed_frequency": 0.30434782608695654,
+            "calibration_error": 0.33197590304129176
+          },
+          {
+            "bin": 8,
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 27,
+            "mean_predicted": 0.752783946555912,
+            "observed_frequency": 0.48148148148148145,
+            "calibration_error": 0.2713024650744305
+          },
+          {
+            "bin": 9,
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 28,
+            "mean_predicted": 0.8508049320595965,
+            "observed_frequency": 0.32142857142857145,
+            "calibration_error": 0.5293763606310251
+          },
+          {
+            "bin": 10,
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 55,
+            "mean_predicted": 0.9646101036789009,
+            "observed_frequency": 0.5454545454545454,
+            "calibration_error": 0.41915555822435546
+          }
+        ],
+        "ece": 0.2317463515045613,
+        "mce": 0.5293763606310251
+      }
+    }
+  },
+  "prediction_diagnostics": {
+    "predicted_class_distribution": {
+      "draw": {
+        "class_id": 0,
+        "count": 109,
+        "proportion": 0.2868421052631579
+      },
+      "home_win": {
+        "class_id": 1,
+        "count": 100,
+        "proportion": 0.2631578947368421
+      },
+      "away_win": {
+        "class_id": 2,
+        "count": 171,
+        "proportion": 0.45
+      }
+    },
+    "actual_class_distribution": {
+      "draw": {
+        "class_id": 0,
+        "count": 93,
+        "proportion": 0.24473684210526317
+      },
+      "home_win": {
+        "class_id": 1,
+        "count": 155,
+        "proportion": 0.40789473684210525
+      },
+      "away_win": {
+        "class_id": 2,
+        "count": 132,
+        "proportion": 0.3473684210526316
+      }
+    },
+    "mean_max_probability": 0.7635003724126188,
+    "median_max_probability": 0.7737086999858364,
+    "minimum_max_probability": 0.3638735692449326,
+    "maximum_max_probability": 0.9999999999701767,
+    "correct_prediction_count": 141,
+    "incorrect_prediction_count": 239
+  },
+  "diagnostic_conclusions": [
+    "The current Logistic Regression baseline is reproducible but weak.",
+    "Feature magnitude and convergence behavior should be investigated before selecting an improved model.",
+    "The existing baseline artifact must remain unchanged for benchmark comparison.",
+    "Candidate models must use identical training and validation partitions.",
+    "The 2025/26 final test season remains protected."
+  ]
+}

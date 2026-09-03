@@ -1,0 +1,76 @@
+{
+  "stage": "7.6.2",
+  "purpose": "Define controlled candidate models for baseline improvement.",
+  "selection_principles": [
+    "Use only the 2023 training dataset.",
+    "Evaluate only on the 2024 validation dataset.",
+    "Use the same 86-feature input.",
+    "Use the same target mapping.",
+    "Generate three-class probabilities.",
+    "Do not use the 2025/26 final test set.",
+    "Do not modify the existing baseline artifact."
+  ],
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "training_data": {
+    "season": 2023,
+    "rows": 380,
+    "features": 86
+  },
+  "validation_data": {
+    "season": 2024,
+    "rows": 380,
+    "features": 86
+  },
+  "candidates": [
+    {
+      "id": "scaled_logistic",
+      "name": "Scaled Logistic Regression",
+      "family": "linear_probability_classifier",
+      "reason": "Addresses feature-scale differences and the observed Logistic Regression convergence warning.",
+      "preprocessing": "StandardScaler",
+      "classifier": "LogisticRegression",
+      "probability_output": true
+    },
+    {
+      "id": "regularized_logistic",
+      "name": "Regularized Logistic Regression",
+      "family": "linear_probability_classifier",
+      "reason": "Tests whether stronger regularization improves generalization and probability quality.",
+      "preprocessing": "StandardScaler",
+      "classifier": "LogisticRegression",
+      "probability_output": true
+    },
+    {
+      "id": "random_forest",
+      "name": "Random Forest",
+      "family": "tree_ensemble",
+      "reason": "Provides a non-linear comparison against the linear baseline.",
+      "preprocessing": "None",
+      "classifier": "RandomForestClassifier",
+      "probability_output": true
+    }
+  ],
+  "comparison_metrics": [
+    "accuracy",
+    "log_loss",
+    "brier_score",
+    "precision_macro",
+    "recall_macro",
+    "f1_macro",
+    "ece",
+    "mce"
+  ],
+  "selection_priority": [
+    "log_loss",
+    "brier_score",
+    "ece",
+    "mce",
+    "accuracy"
+  ],
+  "selection_rule": "Select a candidate only after comparing all candidates against the frozen baseline using the identical 2024 validation set. No candidate may be selected using the 2025/26 final test set.",
+  "next_stage": "7.6.3 Candidate Model Training"
+}
