@@ -1,0 +1,11 @@
+{
+  "stage": "7.7.4",
+  "status": "CONSUMED",
+  "dataset": "2025/26",
+  "records": 380,
+  "model": "Random Forest",
+  "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+  "evaluated": true,
+  "training_after_evaluation_allowed": false,
+  "model_selection_after_evaluation_allowed": false
+}

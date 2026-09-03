@@ -1,0 +1,22 @@
+{
+  "stage": "7.7.4",
+  "execution": "completed",
+  "dataset": "2025/26 final test",
+  "sample_count": 380,
+  "model": "Random Forest",
+  "candidate_id": "random_forest",
+  "model_status": "LOCKED",
+  "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+  "model_hash_verified": true,
+  "feature_count": 86,
+  "feature_schema_verified": true,
+  "training_season": 2023,
+  "validation_season": 2024,
+  "final_test_season": "2025/26",
+  "retrained": false,
+  "selected_again": false,
+  "final_test_evaluated": true,
+  "final_test_consumed": true,
+  "2025_26_used_for_training": false,
+  "2025_26_used_for_selection": false
+}

@@ -1,0 +1,36 @@
+{
+  "stage": "7.7.3",
+  "season": "2025/26",
+  "records": 380,
+  "expected_records": 380,
+  "record_count_pass": true,
+  "fixture_ids_unique": true,
+  "feature_count": 86,
+  "feature_schema_pass": true,
+  "missing_values": 0,
+  "infinite_values": 0,
+  "target_leakage": false,
+  "historical_overlap": 0,
+  "chronological_order": true,
+  "historical_to_final_chronology": true,
+  "model_locked": true,
+  "model_retrained": false,
+  "model_selection_performed": false,
+  "final_test_evaluated": false,
+  "historical_dataset_modified": false,
+  "final_test_ready": true,
+  "new_teams": [
+    {
+      "name": "Leeds",
+      "id": -51751004159627,
+      "source": "2025/26 final-test",
+      "historical_state": "first_observation"
+    },
+    {
+      "name": "Sunderland",
+      "id": -149663367893914,
+      "source": "2025/26 final-test",
+      "historical_state": "first_observation"
+    }
+  ]
+}

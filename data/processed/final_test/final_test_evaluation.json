@@ -1,0 +1,77 @@
+{
+  "stage": "7.7.4",
+  "dataset": "2025/26 final test",
+  "sample_count": 380,
+  "model": "Random Forest",
+  "candidate_id": "random_forest",
+  "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+  "training_season": 2023,
+  "validation_season": 2024,
+  "final_test_season": "2025/26",
+  "feature_count": 86,
+  "metrics": {
+    "accuracy": 0.4421052631578947,
+    "log_loss": 1.0466550411358069,
+    "brier_score": 0.6297813695863985,
+    "precision_macro": 0.29668338907469344,
+    "recall_macro": 0.4106562703053931,
+    "f1_macro": 0.3410030491797145,
+    "ece": 0.0707870956219562,
+    "mce": 0.2748375420875422
+  },
+  "per_class_metrics": {
+    "draw": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "home_win": {
+      "precision": 0.5054347826086957,
+      "recall": 0.5740740740740741,
+      "f1": 0.5375722543352601
+    },
+    "away_win": {
+      "precision": 0.38461538461538464,
+      "recall": 0.6578947368421053,
+      "f1": 0.4854368932038835
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      52,
+      52
+    ],
+    [
+      1,
+      93,
+      68
+    ],
+    [
+      0,
+      39,
+      75
+    ]
+  ],
+  "per_class_calibration": {
+    "draw": {
+      "ece": 0.050042207559382476,
+      "mce": 0.06412645729856067,
+      "bins": 10
+    },
+    "home_win": {
+      "ece": 0.08374600990169105,
+      "mce": 0.26681226551226545,
+      "bins": 10
+    },
+    "away_win": {
+      "ece": 0.0998447217393889,
+      "mce": 0.2788501803751805,
+      "bins": 10
+    }
+  },
+  "model_retrained": false,
+  "model_selection_performed": false,
+  "final_test_used": true,
+  "final_test_is_now_consumed": true
+}

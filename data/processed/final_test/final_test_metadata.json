@@ -1,0 +1,45 @@
+{
+  "stage": "7.7.3",
+  "purpose": "Prepare isolated 2025/26 final-test data.",
+  "source": "data\\historical\\raw\\epl_2025_26.csv",
+  "season": "2025/26",
+  "season_id": 2025,
+  "records": 380,
+  "feature_count": 86,
+  "feature_schema_source": "data/processed/model/X_train.csv",
+  "feature_constructor": "backend.features.historical_features.build_historical_features",
+  "historical_context": [
+    2023,
+    2024
+  ],
+  "training_season": 2023,
+  "validation_season": 2024,
+  "selected_candidate": "random_forest",
+  "selected_model": "Random Forest",
+  "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+  "model_locked": true,
+  "model_retrained": false,
+  "model_selection_performed": false,
+  "historical_dataset_modified": false,
+  "final_test_evaluated": false,
+  "final_test_ready": true,
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "new_teams": [
+    {
+      "name": "Leeds",
+      "id": -51751004159627,
+      "source": "2025/26 final-test",
+      "historical_state": "first_observation"
+    },
+    {
+      "name": "Sunderland",
+      "id": -149663367893914,
+      "source": "2025/26 final-test",
+      "historical_state": "first_observation"
+    }
+  ]
+}
