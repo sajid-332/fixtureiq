@@ -1,0 +1,130 @@
+{
+  "stage": "7.6.5",
+  "purpose": "Compare candidate models against the frozen Stage 7.5 baseline.",
+  "validation_season": 2024,
+  "training_season": 2023,
+  "final_test_season": "2025/26",
+  "final_test_used": false,
+  "selection_priority": [
+    "log_loss",
+    "brier_score",
+    "ece",
+    "mce",
+    "accuracy"
+  ],
+  "direction": {
+    "log_loss": "lower_is_better",
+    "brier_score": "lower_is_better",
+    "ece": "lower_is_better",
+    "mce": "lower_is_better",
+    "accuracy": "higher_is_better"
+  },
+  "models": [
+    {
+      "candidate_id": "baseline",
+      "model_name": "Stage 7.5 Baseline Logistic Regression",
+      "validation_season": 2024,
+      "sample_count": 380,
+      "accuracy": 0.37105263157894736,
+      "log_loss": 3.8789096095622524,
+      "brier_score": 0.9377273789456951,
+      "precision_macro": 0.3604268827011463,
+      "recall_macro": 0.3682306940371456,
+      "f1_macro": 0.3558144049699088,
+      "ece": 0.0,
+      "mce": 0.0,
+      "training_season": 2023,
+      "final_test_season": "2025/26",
+      "final_test_used": false
+    },
+    {
+      "candidate_id": "scaled_logistic",
+      "model_name": "Scaled Logistic Regression",
+      "validation_season": 2024,
+      "sample_count": 380,
+      "accuracy": 0.3605263157894737,
+      "log_loss": 2.5098834340728033,
+      "brier_score": 0.9526120891619362,
+      "precision_macro": 0.3528770706190061,
+      "recall_macro": 0.3558162267839687,
+      "f1_macro": 0.3518836946858131,
+      "ece": 0.2732206044804711,
+      "mce": 0.6813390201764745,
+      "training_season": 2023,
+      "final_test_season": "2025/26",
+      "final_test_used": false
+    },
+    {
+      "candidate_id": "regularized_logistic",
+      "model_name": "Regularized Logistic Regression",
+      "validation_season": 2024,
+      "sample_count": 380,
+      "accuracy": 0.4052631578947368,
+      "log_loss": 1.4068730222968022,
+      "brier_score": 0.8041867747967754,
+      "precision_macro": 0.3909014253402656,
+      "recall_macro": 0.3928804170739655,
+      "f1_macro": 0.38938275217981894,
+      "ece": 0.1926991446031702,
+      "mce": 0.6243242655907774,
+      "training_season": 2023,
+      "final_test_season": "2025/26",
+      "final_test_used": false
+    },
+    {
+      "candidate_id": "random_forest",
+      "model_name": "Random Forest",
+      "validation_season": 2024,
+      "sample_count": 380,
+      "accuracy": 0.5131578947368421,
+      "log_loss": 1.003299909179344,
+      "brier_score": 0.6000993695627694,
+      "precision_macro": 0.5095248767368893,
+      "recall_macro": 0.4552623004235907,
+      "f1_macro": 0.3957465736658275,
+      "ece": 0.05423950178705598,
+      "mce": 0.4041972903639571,
+      "training_season": 2023,
+      "final_test_season": "2025/26",
+      "final_test_used": false
+    }
+  ],
+  "baseline_improvements": [
+    {
+      "candidate_id": "scaled_logistic",
+      "model_name": "Scaled Logistic Regression",
+      "accuracy_delta": -0.010526315789473661,
+      "log_loss_improvement": 1.369026175489449,
+      "brier_score_improvement": -0.014884710216241048,
+      "ece_improvement": -0.2732206044804711,
+      "mce_improvement": -0.6813390201764745
+    },
+    {
+      "candidate_id": "regularized_logistic",
+      "model_name": "Regularized Logistic Regression",
+      "accuracy_delta": 0.03421052631578947,
+      "log_loss_improvement": 2.47203658726545,
+      "brier_score_improvement": 0.13354060414891977,
+      "ece_improvement": -0.1926991446031702,
+      "mce_improvement": -0.6243242655907774
+    },
+    {
+      "candidate_id": "random_forest",
+      "model_name": "Random Forest",
+      "accuracy_delta": 0.1421052631578948,
+      "log_loss_improvement": 2.8756097003829084,
+      "brier_score_improvement": 0.3376280093829257,
+      "ece_improvement": -0.05423950178705598,
+      "mce_improvement": -0.4041972903639571
+    }
+  ],
+  "ranking": [
+    "random_forest",
+    "regularized_logistic",
+    "scaled_logistic"
+  ],
+  "selected_candidate": "random_forest",
+  "selected_model": "Random Forest",
+  "selection_reason": "Best validation result under the predefined metric priority.",
+  "final_test_protection": true
+}
