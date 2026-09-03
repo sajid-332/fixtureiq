@@ -1,0 +1,31 @@
+{
+  "stage": "7.6.3",
+  "candidate_id": "scaled_logistic",
+  "model_name": "Scaled Logistic Regression",
+  "model_type": "LogisticRegression",
+  "preprocessing": "StandardScaler",
+  "parameters": {
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "random_state": 42
+  },
+  "training_season": 2023,
+  "training_rows": 380,
+  "feature_count": 86,
+  "feature_count_excludes_fixture_id": true,
+  "target_classes": [
+    0,
+    1,
+    2
+  ],
+  "target_mapping": {
+    "0": "draw",
+    "1": "home_win",
+    "2": "away_win"
+  },
+  "validation_season": 2024,
+  "validation_rows": 380,
+  "final_test_season": "2025/26",
+  "final_test_used": false
+}
