@@ -1,0 +1,37 @@
+{
+  "stage": "7.8.3",
+  "status": "PASS",
+  "prediction_count": 352,
+  "feature_count": 86,
+  "fixture_alignment": true,
+  "fixture_ids_unique": true,
+  "schema_integrity": true,
+  "numeric_integrity": true,
+  "model_hash_verified": true,
+  "model_classes": [
+    0,
+    1,
+    2
+  ],
+  "class_mapping": {
+    "0": "Draw",
+    "1": "Home Win",
+    "2": "Away Win"
+  },
+  "probability_range_valid": true,
+  "probability_sum_valid": true,
+  "confidence_integrity": true,
+  "predicted_target_counts": {
+    "0": 1,
+    "1": 179,
+    "2": 172
+  },
+  "average_confidence": 0.50038208525814,
+  "minimum_confidence": 0.3668223665223665,
+  "maximum_confidence": 0.7274871572871575,
+  "model_retrained": false,
+  "model_reselected": false,
+  "hyperparameter_tuned": false,
+  "final_test_evaluation_artifacts_used": false,
+  "prediction_sha256": "623aba5b50b60623da135cf2b18742d5902a2624df4879a7fbfe973b40181133"
+}
