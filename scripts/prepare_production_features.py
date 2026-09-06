@@ -2,11 +2,22 @@
 FixtureIQ Stage 7.8.2
 Production Fixture Feature Preparation.
 
-Consumes ONLY:
+Inputs:
+- production_history.csv
+- upcoming_fixtures.csv
 
-data/processed/production/upcoming_fixtures.csv
+Output:
+- production_features.csv
+- production_fixture_metadata.csv
+- production_feature_report.json
 
-It never treats historical fixtures.csv as production input.
+Rules:
+- Uses the locked Stage 7.8.1 feature contract.
+- Uses only completed production history.
+- Upcoming fixtures never update state.
+- No target/result leakage.
+- No retraining, tuning or model selection.
+- Consumed final-test evaluation artifacts are not accessed.
 """
 
 from __future__ import annotations
@@ -20,6 +31,10 @@ import numpy as np
 import pandas as pd
 
 
+# ============================================================
+# Project root
+# ============================================================
+
 BASE_DIR = (
     Path(__file__)
     .resolve()
@@ -32,17 +47,18 @@ sys.path.insert(
 )
 
 
+# ============================================================
+# FixtureIQ imports
+# ============================================================
+
 from backend.services.production_feature_service import (
     build_production_features,
 )
 
 
-HISTORY_FILE = (
-    BASE_DIR
-    / "data"
-    / "processed"
-    / "historical_fixtures.csv"
-)
+# ============================================================
+# Paths
+# ============================================================
 
 PRODUCTION_DIR = (
     BASE_DIR
@@ -51,9 +67,24 @@ PRODUCTION_DIR = (
     / "production"
 )
 
+HISTORY_FILE = (
+    PRODUCTION_DIR
+    / "production_history.csv"
+)
+
+HISTORY_REPORT_FILE = (
+    PRODUCTION_DIR
+    / "production_history_report.json"
+)
+
 UPCOMING_FILE = (
     PRODUCTION_DIR
     / "upcoming_fixtures.csv"
+)
+
+FETCH_REPORT_FILE = (
+    PRODUCTION_DIR
+    / "production_fixture_fetch_report.json"
 )
 
 FEATURE_FILE = (
@@ -82,10 +113,13 @@ CONTRACT_FILE = (
 
 UPCOMING_STATUSES = {
     "NS",
-    "TBD",
     "PST",
 }
 
+
+# ============================================================
+# Helpers
+# ============================================================
 
 def sha256_file(
     path: Path,
@@ -111,28 +145,45 @@ def sha256_file(
     return digest.hexdigest()
 
 
-def load_contract() -> dict:
+def load_json(
+    path: Path,
+) -> dict:
 
-    if not CONTRACT_FILE.exists():
+    if not path.exists():
 
         raise FileNotFoundError(
-            f"Production contract not found: "
-            f"{CONTRACT_FILE}"
+            f"Required JSON file missing: "
+            f"{path}"
         )
 
-    with CONTRACT_FILE.open(
+    with path.open(
         "r",
         encoding="utf-8",
     ) as file:
 
-        return json.load(
+        payload = json.load(
             file
         )
 
+    if not isinstance(
+        payload,
+        dict,
+    ):
+
+        raise RuntimeError(
+            f"Invalid JSON object: {path}"
+        )
+
+    return payload
+
+
+# ============================================================
+# Main
+# ============================================================
 
 def main():
 
-    print("=" * 55)
+    print("=" * 60)
 
     print(
         "FixtureIQ Stage 7.8.2"
@@ -142,17 +193,19 @@ def main():
         "Production Fixture Feature Preparation"
     )
 
-    print("=" * 55)
+    print("=" * 60)
 
     # ========================================================
-    # 1. CONTRACT
+    # 1. Production contract
     # ========================================================
 
     print(
         "\n1. PRODUCTION CONTRACT"
     )
 
-    contract = load_contract()
+    contract = load_json(
+        CONTRACT_FILE
+    )
 
     if contract.get(
         "stage"
@@ -167,27 +220,46 @@ def main():
     ) != "LOCKED_CONTRACT":
 
         raise RuntimeError(
-            "Production inference contract is not locked."
+            "Production inference contract "
+            "is not locked."
         )
 
-    if contract.get(
+    model_contract = contract.get(
         "model",
-        {}
-    ).get(
+        {},
+    )
+
+    if model_contract.get(
+        "candidate_id"
+    ) != "random_forest":
+
+        raise RuntimeError(
+            "Production model is not the "
+            "locked Random Forest."
+        )
+
+    if model_contract.get(
         "status"
     ) != "LOCKED":
 
         raise RuntimeError(
-            "Production model is not locked."
+            "Production model status is not LOCKED."
         )
 
-    if contract.get(
-        "feature_count"
+    contract_features = (
+        contract.get(
+            "feature_columns",
+            [],
+        )
+    )
+
+    if len(
+        contract_features
     ) != 86:
 
         raise RuntimeError(
-            "Production contract does not contain "
-            "86 features."
+            "Production contract does not "
+            "contain 86 features."
         )
 
     print(
@@ -207,24 +279,178 @@ def main():
     )
 
     # ========================================================
-    # 2. INPUT FILES
+    # 2. Production-history provenance
     # ========================================================
 
     print(
-        "\n2. INPUT DATA"
+        "\n2. PRODUCTION HISTORY"
     )
 
     if not HISTORY_FILE.exists():
 
-        raise FileNotFoundError(
-            f"Historical dataset missing: "
-            f"{HISTORY_FILE}"
+        print(
+            "Production history: MISSING"
         )
+
+        print(
+            "\nRun first:"
+        )
+
+        print(
+            "python scripts\\build_production_history.py"
+        )
+
+        raise FileNotFoundError(
+            "Production historical context "
+            "has not been built."
+        )
+
+    history_report = load_json(
+        HISTORY_REPORT_FILE
+    )
+
+    if history_report.get(
+        "status"
+    ) != "PASS":
+
+        raise RuntimeError(
+            "Production historical context "
+            "report is not PASS."
+        )
+
+    if history_report.get(
+        "final_test_evaluation_artifacts_used"
+    ) is not False:
+
+        raise RuntimeError(
+            "Production history provenance "
+            "violates final-test protection."
+        )
+
+    if history_report.get(
+        "model_retrained"
+    ) is not False:
+
+        raise RuntimeError(
+            "Production history unexpectedly "
+            "reports model retraining."
+        )
+
+    history = pd.read_csv(
+        HISTORY_FILE
+    )
+
+    if history.empty:
+
+        raise RuntimeError(
+            "Production history is empty."
+        )
+
+    required_history_columns = {
+        "fixture_id",
+        "date",
+        "status_short",
+        "home_team_id",
+        "home_team_name",
+        "away_team_id",
+        "away_team_name",
+        "home_goals",
+        "away_goals",
+    }
+
+    missing_history = (
+        required_history_columns
+        -
+        set(
+            history.columns
+        )
+    )
+
+    if missing_history:
+
+        raise RuntimeError(
+            "Production history missing columns: "
+            f"{sorted(missing_history)}"
+        )
+
+    if not history[
+        "fixture_id"
+    ].is_unique:
+
+        raise RuntimeError(
+            "Production historical fixture IDs "
+            "are not unique."
+        )
+
+    history_dates = pd.to_datetime(
+        history[
+            "date"
+        ],
+        errors="coerce",
+        utc=True,
+    )
+
+    if history_dates.isna().any():
+
+        raise RuntimeError(
+            "Production history contains "
+            "invalid dates."
+        )
+
+    history_goals_home = pd.to_numeric(
+        history[
+            "home_goals"
+        ],
+        errors="coerce",
+    )
+
+    history_goals_away = pd.to_numeric(
+        history[
+            "away_goals"
+        ],
+        errors="coerce",
+    )
+
+    if (
+        history_goals_home.isna().any()
+        or
+        history_goals_away.isna().any()
+    ):
+
+        raise RuntimeError(
+            "Production history contains "
+            "missing match scores."
+        )
+
+    print(
+        f"Historical records: "
+        f"{len(history)}"
+    )
+
+    print(
+        "Fixture IDs unique: PASS"
+    )
+
+    print(
+        "Completed scores available: PASS"
+    )
+
+    print(
+        "Production-history provenance: PASS"
+    )
+
+    # ========================================================
+    # 3. Upcoming fixture snapshot
+    # ========================================================
+
+    print(
+        "\n3. UPCOMING FIXTURE SNAPSHOT"
+    )
 
     if not UPCOMING_FILE.exists():
 
         print(
-            "Upcoming production fixture file: MISSING"
+            "Upcoming fixture snapshot: MISSING"
         )
 
         print(
@@ -236,47 +462,53 @@ def main():
         )
 
         raise FileNotFoundError(
-            "No valid production upcoming fixture "
-            "snapshot exists."
+            "No valid upcoming production "
+            "fixture snapshot exists."
         )
 
-    history = pd.read_csv(
-        HISTORY_FILE
+    fetch_report = load_json(
+        FETCH_REPORT_FILE
     )
+
+    if fetch_report.get(
+        "status"
+    ) != "PASS":
+
+        raise RuntimeError(
+            "Production fixture fetch "
+            "report is not PASS."
+        )
+
+    if fetch_report.get(
+        "fallback_season_used"
+    ) is not False:
+
+        raise RuntimeError(
+            "Production fixture feed used "
+            "a fallback season."
+        )
+
+    if fetch_report.get(
+        "final_test_evaluation_artifacts_used"
+    ) is not False:
+
+        raise RuntimeError(
+            "Production fixture feed violated "
+            "final-test protection."
+        )
 
     upcoming = pd.read_csv(
         UPCOMING_FILE
     )
 
-    print(
-        f"Historical records: {len(history)}"
-    )
-
-    print(
-        f"Upcoming fixtures: {len(upcoming)}"
-    )
-
-    if history.empty:
-
-        raise RuntimeError(
-            "Historical dataset is empty."
-        )
-
     if upcoming.empty:
 
         raise RuntimeError(
-            "Upcoming fixture dataset is empty."
+            "Upcoming production fixture "
+            "snapshot is empty."
         )
 
-    # ========================================================
-    # 3. UPCOMING FIXTURE SAFETY
-    # ========================================================
-
-    print(
-        "\n3. UPCOMING FIXTURE SAFETY"
-    )
-
-    required = {
+    required_upcoming = {
         "fixture_id",
         "date",
         "status_short",
@@ -286,22 +518,32 @@ def main():
         "away_team_name",
     }
 
-    missing = (
-        required
+    missing_upcoming = (
+        required_upcoming
         -
         set(
             upcoming.columns
         )
     )
 
-    if missing:
+    if missing_upcoming:
 
         raise RuntimeError(
-            "Upcoming fixture file is missing "
-            f"required columns: {sorted(missing)}"
+            "Upcoming fixture snapshot "
+            "missing columns: "
+            f"{sorted(missing_upcoming)}"
         )
 
-    status_values = set(
+    if not upcoming[
+        "fixture_id"
+    ].is_unique:
+
+        raise RuntimeError(
+            "Upcoming fixture IDs "
+            "are not unique."
+        )
+
+    statuses = set(
         upcoming[
             "status_short"
         ]
@@ -310,25 +552,29 @@ def main():
         .unique()
     )
 
-    if not status_values.issubset(
+    if not statuses.issubset(
         UPCOMING_STATUSES
     ):
 
         raise RuntimeError(
-            "Completed or invalid fixture status "
-            f"detected: {sorted(status_values)}"
+            "Invalid fixture statuses "
+            "in upcoming snapshot: "
+            f"{sorted(statuses)}"
         )
 
-    dates = pd.to_datetime(
-        upcoming["date"],
+    upcoming_dates = pd.to_datetime(
+        upcoming[
+            "date"
+        ],
         errors="coerce",
         utc=True,
     )
 
-    if dates.isna().any():
+    if upcoming_dates.isna().any():
 
         raise RuntimeError(
-            "Invalid production fixture dates."
+            "Upcoming fixture snapshot "
+            "contains invalid dates."
         )
 
     now = pd.Timestamp.now(
@@ -336,21 +582,19 @@ def main():
     )
 
     if (
-        dates <= now
+        upcoming_dates
+        <= now
     ).any():
 
         raise RuntimeError(
-            "Past fixtures exist in the production "
+            "Past fixture detected in "
             "upcoming fixture snapshot."
         )
 
-    if not upcoming[
-        "fixture_id"
-    ].is_unique:
-
-        raise RuntimeError(
-            "Production fixture IDs are not unique."
-        )
+    print(
+        f"Upcoming fixtures: "
+        f"{len(upcoming)}"
+    )
 
     print(
         "Only upcoming statuses: PASS"
@@ -364,16 +608,115 @@ def main():
         "Fixture IDs unique: PASS"
     )
 
+    # ========================================================
+    # 4. Historical -> upcoming chronology
+    # ========================================================
+
     print(
-        "Completed matches used: NO"
+        "\n4. CHRONOLOGY"
+    )
+
+    latest_history = (
+        history_dates.max()
+    )
+
+    earliest_upcoming = (
+        upcoming_dates.min()
+    )
+
+    if latest_history >= earliest_upcoming:
+
+        raise RuntimeError(
+            "Historical/upcoming chronology failed.\n"
+            f"Latest completed match: {latest_history}\n"
+            f"Earliest upcoming match: {earliest_upcoming}"
+        )
+
+    print(
+        f"Latest completed match: "
+        f"{latest_history}"
+    )
+
+    print(
+        f"Earliest upcoming fixture: "
+        f"{earliest_upcoming}"
+    )
+
+    print(
+        "Historical -> upcoming boundary: PASS"
     )
 
     # ========================================================
-    # 4. FEATURE CONSTRUCTION
+    # 5. Team-state coverage
     # ========================================================
 
     print(
-        "\n4. FEATURE CONSTRUCTION"
+        "\n5. TEAM STATE COVERAGE"
+    )
+
+    history_teams = set(
+        history[
+            "home_team_name"
+        ].astype(str)
+    ) | set(
+        history[
+            "away_team_name"
+        ].astype(str)
+    )
+
+    upcoming_teams = set(
+        upcoming[
+            "home_team_name"
+        ].astype(str)
+    ) | set(
+        upcoming[
+            "away_team_name"
+        ].astype(str)
+    )
+
+    teams_with_history = (
+        upcoming_teams
+        &
+        history_teams
+    )
+
+    zero_state_teams = (
+        upcoming_teams
+        -
+        history_teams
+    )
+
+    print(
+        f"Upcoming teams: "
+        f"{len(upcoming_teams)}"
+    )
+
+    print(
+        f"Teams with historical state: "
+        f"{len(teams_with_history)}"
+    )
+
+    print(
+        f"Zero-state teams: "
+        f"{len(zero_state_teams)}"
+    )
+
+    if zero_state_teams:
+
+        for team in sorted(
+            zero_state_teams
+        ):
+
+            print(
+                f"  Zero state: {team}"
+            )
+
+    # ========================================================
+    # 6. Feature construction
+    # ========================================================
+
+    print(
+        "\n6. FEATURE CONSTRUCTION"
     )
 
     metadata, features = (
@@ -383,39 +726,62 @@ def main():
         )
     )
 
+    if len(
+        metadata
+    ) != len(
+        upcoming
+    ):
+
+        raise RuntimeError(
+            "Production metadata count "
+            "does not match fixture count."
+        )
+
+    if len(
+        features
+    ) != len(
+        upcoming
+    ):
+
+        raise RuntimeError(
+            "Production feature count "
+            "does not match fixture count."
+        )
+
     print(
-        f"Production records: {len(features)}"
+        f"Production records: "
+        f"{len(features)}"
     )
 
     print(
-        f"Model matrix: {features.shape}"
+        f"Model matrix: "
+        f"{features.shape}"
     )
 
     print(
         "Strict pre-match state: PASS"
     )
 
+    print(
+        "Upcoming fixtures update state: NO"
+    )
+
     # ========================================================
-    # 5. FEATURE SCHEMA
+    # 7. Feature schema
     # ========================================================
 
     print(
-        "\n5. FEATURE SCHEMA"
+        "\n7. FEATURE SCHEMA"
     )
 
-    contract_features = (
-        contract.get(
-            "feature_columns",
-            [],
-        )
-    )
-
-    if len(
-        contract_features
-    ) != 86:
+    if features.shape[
+        1
+    ] != 86:
 
         raise RuntimeError(
-            "Contract feature schema is invalid."
+            "Production feature count "
+            f"is {features.shape[1]}, "
+            "expected 86."
         )
 
     if list(
@@ -423,16 +789,9 @@ def main():
     ) != contract_features:
 
         raise RuntimeError(
-            "Production feature schema does not "
-            "match locked training schema."
-        )
-
-    if features.shape[
-        1
-    ] != 86:
-
-        raise RuntimeError(
-            "Production feature count is not 86."
+            "Production feature schema "
+            "does not match locked "
+            "training schema."
         )
 
     print(
@@ -448,11 +807,11 @@ def main():
     )
 
     # ========================================================
-    # 6. LEAKAGE
+    # 8. Leakage protection
     # ========================================================
 
     print(
-        "\n6. LEAKAGE PROTECTION"
+        "\n8. LEAKAGE PROTECTION"
     )
 
     forbidden = {
@@ -480,7 +839,7 @@ def main():
     if leaked:
 
         raise RuntimeError(
-            f"Leakage columns detected: "
+            "Leakage columns detected: "
             f"{sorted(leaked)}"
         )
 
@@ -493,7 +852,7 @@ def main():
     )
 
     print(
-        "fixture_id in matrix: NO"
+        "fixture_id in model matrix: NO"
     )
 
     print(
@@ -501,16 +860,23 @@ def main():
     )
 
     # ========================================================
-    # 7. NUMERIC INTEGRITY
+    # 9. Numeric integrity
     # ========================================================
 
     print(
-        "\n7. NUMERIC INTEGRITY"
+        "\n9. NUMERIC INTEGRITY"
     )
 
     values = features.to_numpy(
         dtype=float
     )
+
+    if values.size == 0:
+
+        raise RuntimeError(
+            "Production feature matrix "
+            "is empty."
+        )
 
     if not np.isfinite(
         values
@@ -534,11 +900,11 @@ def main():
     )
 
     # ========================================================
-    # 8. MODEL / FINAL-TEST PROTECTION
+    # 10. Model / final-test protection
     # ========================================================
 
     print(
-        "\n8. MODEL PROTECTION"
+        "\n10. MODEL PROTECTION"
     )
 
     final_test = contract.get(
@@ -551,8 +917,31 @@ def main():
     ) != "CONSUMED":
 
         raise RuntimeError(
-            "Final-test lifecycle state is invalid."
+            "Final-test lifecycle state "
+            "is not CONSUMED."
         )
+
+    if final_test.get(
+        "must_not_be_used_for_training"
+    ) is not True:
+
+        raise RuntimeError(
+            "Final-test training protection "
+            "is missing."
+        )
+
+    if final_test.get(
+        "must_not_be_used_for_selection"
+    ) is not True:
+
+        raise RuntimeError(
+            "Final-test selection protection "
+            "is missing."
+        )
+
+    print(
+        "Final test lifecycle: CONSUMED"
+    )
 
     print(
         "Model retrained: NO"
@@ -567,15 +956,15 @@ def main():
     )
 
     print(
-        "Consumed final-test artifacts used: NO"
+        "Final-test evaluation artifacts used: NO"
     )
 
     # ========================================================
-    # 9. SAVE
+    # 11. Save
     # ========================================================
 
     print(
-        "\n9. ARTIFACTS"
+        "\n11. SAVE ARTIFACTS"
     )
 
     PRODUCTION_DIR.mkdir(
@@ -594,14 +983,22 @@ def main():
     )
 
     report = {
-        "stage": "7.8.2",
-        "status": "PASS",
+
+        "stage":
+            "7.8.2",
+
+        "status":
+            "PASS",
 
         "historical_source":
-            str(HISTORY_FILE),
+            str(
+                HISTORY_FILE
+            ),
 
         "upcoming_source":
-            str(UPCOMING_FILE),
+            str(
+                UPCOMING_FILE
+            ),
 
         "historical_records":
             int(
@@ -618,8 +1015,32 @@ def main():
                 features.shape[1]
             ),
 
+        "upcoming_team_count":
+            int(
+                len(upcoming_teams)
+            ),
+
+        "teams_with_historical_state":
+            int(
+                len(teams_with_history)
+            ),
+
+        "zero_state_teams":
+            sorted(
+                zero_state_teams
+            ),
+
+        "latest_completed_fixture":
+            latest_history.isoformat(),
+
+        "earliest_upcoming_fixture":
+            earliest_upcoming.isoformat(),
+
         "strict_pre_match":
             True,
+
+        "upcoming_fixtures_update_state":
+            False,
 
         "upcoming_only":
             True,
@@ -628,6 +1049,9 @@ def main():
             False,
 
         "numeric_integrity":
+            True,
+
+        "chronological":
             True,
 
         "model_retrained":
@@ -639,14 +1063,29 @@ def main():
         "hyperparameter_tuned":
             False,
 
-        "final_test_artifacts_used":
+        "final_test_evaluation_artifacts_used":
             False,
 
-        "production_feature_sha256":
+        "production_history_sha256":
             sha256_file(
-                FEATURE_FILE
+                HISTORY_FILE
             ),
+
+        "upcoming_fixture_sha256":
+            sha256_file(
+                UPCOMING_FILE
+            ),
+
+        "production_feature_sha256":
+            None,
     }
+
+    # Save features before calculating their hash.
+    report[
+        "production_feature_sha256"
+    ] = sha256_file(
+        FEATURE_FILE
+    )
 
     with REPORT_FILE.open(
         "w",
@@ -660,27 +1099,35 @@ def main():
         )
 
     print(
-        f"Features:\n{FEATURE_FILE}"
+        f"Features:\n"
+        f"{FEATURE_FILE}"
     )
 
     print(
-        f"\nMetadata:\n{METADATA_FILE}"
+        f"\nMetadata:\n"
+        f"{METADATA_FILE}"
     )
 
     print(
-        f"\nReport:\n{REPORT_FILE}"
+        f"\nReport:\n"
+        f"{REPORT_FILE}"
     )
 
+    # ========================================================
+    # Final
+    # ========================================================
+
     print(
-        "\n" + "=" * 55
+        "\n" + "=" * 60
     )
 
     print(
         "STAGE 7.8.2: PASS"
     )
 
-    print("=" * 55)
+    print("=" * 60)
 
 
 if __name__ == "__main__":
+
     main()

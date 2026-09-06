@@ -1,12 +1,18 @@
 {
   "stage": "7.8.2",
   "component": "production_fixture_fetch",
-  "status": "PROVIDER_PLAN_BLOCKED",
-  "message": "Free plans do not have access to this season, try from 2022 to 2024.",
-  "league_id": 39,
+  "provider": "football-data.org",
   "configured_season": 2026,
-  "fixture_count": 0,
+  "status": "PASS",
+  "message": "Current Premier League upcoming fixtures fetched successfully.",
+  "provider_matches_received": 380,
+  "upcoming_fixture_count": 352,
+  "known_production_history_teams": 20,
+  "new_team_ids": {},
   "fallback_season_used": false,
   "completed_fixtures_used": false,
-  "final_test_artifacts_used": false
+  "final_test_evaluation_artifacts_used": false,
+  "model_retrained": false,
+  "model_reselected": false,
+  "hyperparameter_tuned": false
 }
