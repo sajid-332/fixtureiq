@@ -2,15 +2,15 @@
   "stage": "7.8.5",
   "stage_7_8_status": "COMPLETE",
   "status": "PASS",
-  "verified_at_utc": "2026-09-06T14:25:41.822603+00:00",
+  "verified_at_utc": "2026-09-07T05:47:01.538537+00:00",
   "model_id": "random_forest",
   "model_status": "LOCKED",
   "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
   "feature_count": 86,
-  "production_history_records": 1168,
-  "upcoming_fixture_count": 351,
-  "production_feature_count": 351,
-  "prediction_count": 351,
+  "production_history_records": 1170,
+  "upcoming_fixture_count": 350,
+  "production_feature_count": 350,
+  "prediction_count": 350,
   "model_hash_verified": true,
   "contract_schema_verified": true,
   "history_integrity": true,
@@ -27,7 +27,7 @@
   "final_test_evaluation_artifacts_used": false,
   "final_test_status": "CONSUMED",
   "draw_prediction_count": 1,
-  "draw_prediction_share": 0.002849002849002849,
+  "draw_prediction_share": 0.002857142857142857,
   "warnings": [
     "Draw predictions represent less than 1% of the current production snapshot. This is a model-behavior diagnostic, not a pipeline-integrity failure.",
     "Draw predictions represent less than 1% of the production snapshot. This remains a model-behavior diagnostic and does not invalidate pipeline integrity."
@@ -35,9 +35,9 @@
   "failures": [],
   "artifact_hashes": {
     "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
-    "production_history_sha256": "c5a57a793849a2e6ee9a4d7050e6a6b0142a3b87410506eb01a125644624a4d1",
-    "upcoming_fixture_sha256": "6862abab12a10aa774351510731bd54f4576f144e4223525576b905bd35d3baf",
-    "production_feature_sha256": "ce730ddd983bd1240cee37e882270c9dd229e934218a22180bf7fd8358395c0b",
-    "production_prediction_sha256": "e5fe4ab95bc90cfeee872e0059449e2690ee61c523b9f979106675bbf75b7e49"
+    "production_history_sha256": "b2d0ebcd0416dc722b4ce33c530ab9895d650b864a621c637b96242b7055dad7",
+    "upcoming_fixture_sha256": "9d4dcc0f2e5710b3dc261e15b622aaa7e1077045b281e27a6eeea4707afedd2b",
+    "production_feature_sha256": "02115ea697f6db85026906c6a95c6362f1b5de1f1d9a31df0b82afff01dfecdb",
+    "production_prediction_sha256": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628"
   }
 }

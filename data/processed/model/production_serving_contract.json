@@ -1,0 +1,141 @@
+{
+  "contract_version": "1.0.0",
+  "depends_on": {
+    "required_stage_7_8_status": "COMPLETE",
+    "required_status": "PASS",
+    "stage": "7.8.5"
+  },
+  "failure_behavior": {
+    "artifact_hash_mismatch": "NOT_READY",
+    "artifact_missing": "NOT_READY",
+    "model_provenance_failure": "NOT_READY",
+    "probability_integrity_failure": "NOT_READY",
+    "schema_mismatch": "NOT_READY",
+    "snapshot_stale": "NOT_READY",
+    "stage_7_8_unverified": "NOT_READY"
+  },
+  "model": {
+    "feature_count": 86,
+    "model_id": "random_forest",
+    "sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "status": "LOCKED"
+  },
+  "probability_mapping": {
+    "0": "prob_draw",
+    "1": "prob_home_win",
+    "2": "prob_away_win"
+  },
+  "protection": {
+    "feature_construction_allowed": false,
+    "final_test_evaluation_artifact_access_allowed": false,
+    "hyperparameter_tuning_allowed": false,
+    "model_loading_allowed": false,
+    "model_modification_allowed": false,
+    "model_selection_allowed": false,
+    "prediction_execution_allowed": false,
+    "provider_fetching_allowed": false,
+    "retraining_allowed": false,
+    "training_allowed": false
+  },
+  "public_prediction_schema": {
+    "field_order": [
+      "fixture_id",
+      "provider_fixture_id",
+      "date",
+      "round",
+      "home_team_id",
+      "home_team_name",
+      "away_team_id",
+      "away_team_name",
+      "predicted_target",
+      "predicted_label",
+      "prob_home_win",
+      "prob_draw",
+      "prob_away_win",
+      "confidence"
+    ],
+    "optional_fields": [
+      "provider_fixture_id",
+      "round"
+    ],
+    "required_fields": [
+      "fixture_id",
+      "date",
+      "home_team_id",
+      "home_team_name",
+      "away_team_id",
+      "away_team_name",
+      "predicted_target",
+      "predicted_label",
+      "prob_home_win",
+      "prob_draw",
+      "prob_away_win",
+      "confidence"
+    ]
+  },
+  "serving_policy": {
+    "allow_partial_stale_snapshot": false,
+    "fixture_order": "DATE_ASC",
+    "kickoff_rule": "FIXTURE_DATE_GT_CURRENT_UTC",
+    "mode": "READ_ONLY",
+    "snapshot_requirement": "VERIFIED_STAGE_7_8",
+    "stale_snapshot_action": "NOT_READY",
+    "team_matching": "CASE_INSENSITIVE_EXACT",
+    "unknown_fixture_result": "NONE",
+    "validation": "FAIL_CLOSED"
+  },
+  "source_artifacts": {
+    "production_features": {
+      "access": "HASH_ONLY",
+      "path": "data/processed/production/production_features.csv"
+    },
+    "production_prediction_metadata": {
+      "access": "READ_ONLY",
+      "path": "data/processed/production/production_prediction_metadata.json"
+    },
+    "production_prediction_report": {
+      "access": "READ_ONLY",
+      "path": "data/processed/production/production_prediction_report.json"
+    },
+    "production_predictions": {
+      "access": "READ_ONLY",
+      "path": "data/processed/production/production_predictions.csv"
+    },
+    "selected_model": {
+      "access": "HASH_ONLY",
+      "path": "data/processed/model/selected/selected_model.joblib"
+    },
+    "stage_7_8_final_verification": {
+      "access": "READ_ONLY",
+      "path": "data/processed/production/stage7_8_final_verification.json"
+    },
+    "upcoming_fixtures": {
+      "access": "HASH_ONLY",
+      "path": "data/processed/production/upcoming_fixtures.csv"
+    }
+  },
+  "source_required_columns": [
+    "fixture_id",
+    "date",
+    "home_team_id",
+    "home_team_name",
+    "away_team_id",
+    "away_team_name",
+    "predicted_target",
+    "predicted_label",
+    "prob_home_win",
+    "prob_draw",
+    "prob_away_win",
+    "confidence",
+    "model_id",
+    "model_sha256",
+    "feature_count"
+  ],
+  "stage": "7.9.1",
+  "status": "LOCKED_SERVING_CONTRACT",
+  "target_mapping": {
+    "0": "Draw",
+    "1": "Home Win",
+    "2": "Away Win"
+  }
+}

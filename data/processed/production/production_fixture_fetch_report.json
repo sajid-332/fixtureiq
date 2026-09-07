@@ -6,7 +6,7 @@
   "status": "PASS",
   "message": "Current Premier League upcoming fixtures fetched successfully.",
   "provider_matches_received": 380,
-  "upcoming_fixture_count": 351,
+  "upcoming_fixture_count": 350,
   "known_production_history_teams": 20,
   "new_team_ids": {},
   "fallback_season_used": false,

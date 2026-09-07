@@ -1,5 +1,4 @@
 fixture_id,provider_fixture_id,provider,date,timestamp,timezone,status_short,status_long,status_elapsed,league_id,league_name,country,season,round,home_team_id,home_team_name,home_team_code,provider_home_team_id,away_team_id,away_team_name,away_team_code,provider_away_team_id
--89262375271793,560570,football-data.org,2026-09-06 15:30:00+00:00,1788708600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 3,42,Arsenal,ARS,57,49,Chelsea,CHE,61
 -231630590965307,560581,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,49,Chelsea,CHE,61,-44103427291829,Hull City,HUL,322
 -151561678088964,560572,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,52,Crystal Palace,CRY,354,57,Ipswich,IPS,349
 -113111090543109,560574,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,66,Aston Villa,AVL,58,65,Nottingham Forest,NOT,351
