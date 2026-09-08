@@ -1,9 +1,9 @@
 """
-FixtureIQ Stage 7.9.3
-Production REST API.
+FixtureIQ Stage 7.9.3 / 7.9.4
+Production REST API with Runtime Safety Guard.
 
-Read-only Flask API layered on top of the verified
-Stage 7.9.2 ProductionPredictionRepository.
+Read-only Flask Blueprint layered on top of the verified
+ProductionPredictionRepository.
 """
 
 from __future__ import annotations
@@ -17,6 +17,10 @@ from backend.services.production_prediction_repository import (
     RepositoryNotReadyError,
 )
 
+
+# ============================================================
+# Paths
+# ============================================================
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 
@@ -62,25 +66,33 @@ WATCHED_ARTIFACTS = [
 ]
 
 
-def _artifact_signature():
+# ============================================================
+# Artifact signature
+# ============================================================
+
+def _artifact_signature() -> tuple:
 
     signature = []
 
     for path in WATCHED_ARTIFACTS:
 
-        if path.exists():
+        try:
 
             stat = path.stat()
 
             signature.append(
                 (
                     str(path),
-                    stat.st_mtime_ns,
-                    stat.st_size,
+                    int(
+                        stat.st_mtime_ns
+                    ),
+                    int(
+                        stat.st_size
+                    ),
                 )
             )
 
-        else:
+        except FileNotFoundError:
 
             signature.append(
                 (
@@ -90,8 +102,14 @@ def _artifact_signature():
                 )
             )
 
-    return tuple(signature)
+    return tuple(
+        signature
+    )
 
+
+# ============================================================
+# Public repository status
+# ============================================================
 
 def _public_status(
     status: dict,
@@ -163,9 +181,13 @@ def _public_status(
     }
 
 
+# ============================================================
+# Blueprint factory
+# ============================================================
+
 def create_production_prediction_blueprint(
     repository_factory=None,
-):
+) -> Blueprint:
 
     blueprint = Blueprint(
         "production_predictions_v1",
@@ -175,8 +197,8 @@ def create_production_prediction_blueprint(
 
     factory = (
         repository_factory
-        or
-        ProductionPredictionRepository
+        if repository_factory is not None
+        else ProductionPredictionRepository
     )
 
     auto_reload = (
@@ -184,6 +206,7 @@ def create_production_prediction_blueprint(
     )
 
     state = {
+
         "repository":
             None,
 
@@ -191,13 +214,20 @@ def create_production_prediction_blueprint(
             None,
     }
 
+    # ========================================================
+    # Repository loader
+    # ========================================================
+
     def get_repository():
 
         if not auto_reload:
 
-            if state[
-                "repository"
-            ] is None:
+            if (
+                state[
+                    "repository"
+                ]
+                is None
+            ):
 
                 state[
                     "repository"
@@ -214,8 +244,11 @@ def create_production_prediction_blueprint(
         if (
             state[
                 "repository"
-            ] is None
+            ]
+            is None
+
             or
+
             state[
                 "signature"
             ]
@@ -234,38 +267,50 @@ def create_production_prediction_blueprint(
             "repository"
         ]
 
+    # ========================================================
+    # NOT_READY response
+    # ========================================================
+
     def not_ready_response(
         repository,
-        reason=None,
+        extra_reason=None,
     ):
 
         status = _public_status(
             repository.get_status()
         )
 
-        errors = list(
+        reasons = list(
             status[
                 "errors"
             ]
         )
 
         if (
-            reason
+            extra_reason
             and
-            reason not in errors
+            str(
+                extra_reason
+            )
+            not in reasons
         ):
 
-            errors.append(
-                reason
+            reasons.append(
+                str(
+                    extra_reason
+                )
             )
 
         message = (
             "; ".join(
-                errors
+                reasons
             )
-            if errors
+            if reasons
             else
-            "Production prediction repository is not ready."
+            (
+                "Production prediction "
+                "repository is not ready."
+            )
         )
 
         return (
@@ -289,6 +334,10 @@ def create_production_prediction_blueprint(
             ),
             503,
         )
+
+    # ========================================================
+    # Readiness guard
+    # ========================================================
 
     def require_ready():
 
@@ -319,7 +368,11 @@ def create_production_prediction_blueprint(
             None,
         )
 
-    def success(
+    # ========================================================
+    # Success response
+    # ========================================================
+
+    def success_response(
         repository,
         data,
         count=None,
@@ -329,6 +382,7 @@ def create_production_prediction_blueprint(
             repository.get_status()
         )
 
+        # Re-check immediately before serving.
         if (
             status[
                 "status"
@@ -336,8 +390,10 @@ def create_production_prediction_blueprint(
             != "READY"
         ):
 
-            return not_ready_response(
-                repository
+            return (
+                not_ready_response(
+                    repository
+                )
             )
 
         payload = {
@@ -392,8 +448,12 @@ def create_production_prediction_blueprint(
             200,
         )
 
+    # ========================================================
+    # Response safety headers
+    # ========================================================
+
     @blueprint.after_request
-    def headers(
+    def add_safety_headers(
         response,
     ):
 
@@ -408,7 +468,85 @@ def create_production_prediction_blueprint(
         return response
 
     # ========================================================
-    # Status
+    # 7.9.4 Liveness
+    # ========================================================
+
+    @blueprint.get(
+        "/production/health"
+    )
+    def production_health():
+
+        return (
+            jsonify(
+                {
+                    "status":
+                        "ALIVE",
+
+                    "stage":
+                        "7.9.4",
+
+                    "service":
+                        "production_prediction_api",
+                }
+            ),
+            200,
+        )
+
+    # ========================================================
+    # 7.9.4 Readiness
+    # ========================================================
+
+    @blueprint.get(
+        "/production/readiness"
+    )
+    def production_readiness():
+
+        repository = (
+            get_repository()
+        )
+
+        status = _public_status(
+            repository.get_status()
+        )
+
+        payload = {
+
+            "status":
+                (
+                    "READY"
+                    if status[
+                        "status"
+                    ]
+                    == "READY"
+                    else "NOT_READY"
+                ),
+
+            "stage":
+                "7.9.4",
+
+            "service":
+                "production_prediction_api",
+
+            "repository":
+                status,
+        }
+
+        return (
+            jsonify(
+                payload
+            ),
+            (
+                200
+                if status[
+                    "status"
+                ]
+                == "READY"
+                else 503
+            ),
+        )
+
+    # ========================================================
+    # 7.9.3 Production status
     # ========================================================
 
     @blueprint.get(
@@ -469,22 +607,25 @@ def create_production_prediction_blueprint(
 
         except RepositoryNotReadyError as exc:
 
-            return not_ready_response(
-                repository,
-                str(exc),
+            return (
+                not_ready_response(
+                    repository,
+                    exc,
+                )
             )
 
-        return success(
-            repository,
-            records,
-            count=len(
-                records
-            ),
+        return (
+            success_response(
+                repository,
+                records,
+                count=len(
+                    records
+                ),
+            )
         )
 
     # ========================================================
     # Team lookup
-    # IMPORTANT: define this before fixture lookup
     # ========================================================
 
     @blueprint.get(
@@ -521,7 +662,10 @@ def create_production_prediction_blueprint(
                                     "INVALID_TEAM_NAME",
 
                                 "message":
-                                    "team_name cannot be empty.",
+                                    (
+                                        "team_name cannot "
+                                        "be empty."
+                                    ),
                             },
                     }
                 ),
@@ -539,9 +683,11 @@ def create_production_prediction_blueprint(
 
         except RepositoryNotReadyError as exc:
 
-            return not_ready_response(
-                repository,
-                str(exc),
+            return (
+                not_ready_response(
+                    repository,
+                    exc,
+                )
             )
 
         if not records:
@@ -560,7 +706,8 @@ def create_production_prediction_blueprint(
                                 "message":
                                     (
                                         "No current production "
-                                        "predictions found for team."
+                                        "predictions found "
+                                        "for team."
                                     ),
                             },
                     }
@@ -568,12 +715,14 @@ def create_production_prediction_blueprint(
                 404,
             )
 
-        return success(
-            repository,
-            records,
-            count=len(
-                records
-            ),
+        return (
+            success_response(
+                repository,
+                records,
+                count=len(
+                    records
+                ),
+            )
         )
 
     # ========================================================
@@ -619,7 +768,10 @@ def create_production_prediction_blueprint(
                                     "INVALID_FIXTURE_ID",
 
                                 "message":
-                                    "fixture_id must be an integer.",
+                                    (
+                                        "fixture_id must "
+                                        "be an integer."
+                                    ),
                             },
                     }
                 ),
@@ -637,9 +789,11 @@ def create_production_prediction_blueprint(
 
         except RepositoryNotReadyError as exc:
 
-            return not_ready_response(
-                repository,
-                str(exc),
+            return (
+                not_ready_response(
+                    repository,
+                    exc,
+                )
             )
 
         if record is None:
@@ -666,13 +820,19 @@ def create_production_prediction_blueprint(
                 404,
             )
 
-        return success(
-            repository,
-            record,
+        return (
+            success_response(
+                repository,
+                record,
+            )
         )
 
     return blueprint
 
+
+# ============================================================
+# Default Blueprint
+# ============================================================
 
 production_predictions_bp = (
     create_production_prediction_blueprint()
