@@ -1,0 +1,31 @@
+{
+  "stage": "7.9.3",
+  "status": "PASS",
+  "api_status": "READY",
+  "verified_at_utc": "2026-09-08T05:13:57.101562+00:00",
+  "prediction_count": 350,
+  "model_id": "random_forest",
+  "feature_count": 86,
+  "snapshot_fresh": true,
+  "status_endpoint_verified": true,
+  "upcoming_endpoint_verified": true,
+  "fixture_lookup_verified": true,
+  "team_lookup_verified": true,
+  "public_schema_verified": true,
+  "value_preservation_verified": true,
+  "probability_integrity_verified": true,
+  "read_only_http_verified": true,
+  "fail_closed_verified": true,
+  "model_loaded_by_api": false,
+  "prediction_executed_by_api": false,
+  "provider_fetched_by_api": false,
+  "training_executed": false,
+  "model_selected": false,
+  "hyperparameter_tuned": false,
+  "final_test_evaluation_artifacts_used": false,
+  "warnings": [
+    "Draw predictions represent less than 1% of the current production snapshot. This is a model-behavior diagnostic, not a pipeline-integrity failure.",
+    "Draw predictions represent less than 1% of the production snapshot. This remains a model-behavior diagnostic and does not invalidate pipeline integrity."
+  ],
+  "failures": []
+}

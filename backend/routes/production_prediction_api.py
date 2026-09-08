@@ -1,22 +1,14 @@
 """
 FixtureIQ Stage 7.9.3
-Production REST API for verified production predictions.
+Production REST API.
 
-This module is a read-only Flask Blueprint layered on top of the
+Read-only Flask API layered on top of the verified
 Stage 7.9.2 ProductionPredictionRepository.
-
-It never:
-- loads or executes the ML model
-- rebuilds features
-- fetches provider data
-- trains, tunes, or selects a model
-- reads final-test evaluation artifacts
 """
 
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Callable
 
 from flask import Blueprint, jsonify
 
@@ -70,31 +62,25 @@ WATCHED_ARTIFACTS = [
 ]
 
 
-def _artifact_signature() -> tuple:
-    """
-    Cheap artifact signature.
-
-    If a Stage 7.8 production refresh changes the snapshot,
-    the API automatically rebuilds the repository instance.
-    """
+def _artifact_signature():
 
     signature = []
 
     for path in WATCHED_ARTIFACTS:
 
-        try:
+        if path.exists():
 
             stat = path.stat()
 
             signature.append(
                 (
                     str(path),
-                    int(stat.st_mtime_ns),
-                    int(stat.st_size),
+                    stat.st_mtime_ns,
+                    stat.st_size,
                 )
             )
 
-        except FileNotFoundError:
+        else:
 
             signature.append(
                 (
@@ -107,7 +93,7 @@ def _artifact_signature() -> tuple:
     return tuple(signature)
 
 
-def _public_repository_status(
+def _public_status(
     status: dict,
 ) -> dict:
 
@@ -178,20 +164,8 @@ def _public_repository_status(
 
 
 def create_production_prediction_blueprint(
-    repository_factory:
-        Callable[
-            [],
-            ProductionPredictionRepository,
-        ]
-        | None = None,
-) -> Blueprint:
-    """
-    Build the Stage 7.9.3 production prediction API.
-
-    repository_factory is injectable so the independent
-    verifier can test fail-closed behavior without modifying
-    production artifacts.
-    """
+    repository_factory=None,
+):
 
     blueprint = Blueprint(
         "production_predictions_v1",
@@ -205,22 +179,21 @@ def create_production_prediction_blueprint(
         ProductionPredictionRepository
     )
 
-    use_artifact_reload = (
-        repository_factory
-        is None
+    auto_reload = (
+        repository_factory is None
     )
 
     state = {
         "repository":
             None,
 
-        "artifact_signature":
+        "signature":
             None,
     }
 
     def get_repository():
 
-        if not use_artifact_reload:
+        if not auto_reload:
 
             if state[
                 "repository"
@@ -242,11 +215,9 @@ def create_production_prediction_blueprint(
             state[
                 "repository"
             ] is None
-
             or
-
             state[
-                "artifact_signature"
+                "signature"
             ]
             != signature
         ):
@@ -256,7 +227,7 @@ def create_production_prediction_blueprint(
             ] = factory()
 
             state[
-                "artifact_signature"
+                "signature"
             ] = signature
 
         return state[
@@ -265,49 +236,36 @@ def create_production_prediction_blueprint(
 
     def not_ready_response(
         repository,
-        extra_reason: str | None = None,
+        reason=None,
     ):
 
-        status = (
+        status = _public_status(
             repository.get_status()
         )
 
-        public_status = (
-            _public_repository_status(
-                status
-            )
-        )
-
-        reasons = list(
-            public_status.get(
-                "errors",
-                [],
-            )
+        errors = list(
+            status[
+                "errors"
+            ]
         )
 
         if (
-            extra_reason
+            reason
             and
-            extra_reason
-            not in reasons
+            reason not in errors
         ):
 
-            reasons.append(
-                extra_reason
+            errors.append(
+                reason
             )
 
         message = (
             "; ".join(
-                reasons
+                errors
             )
-
-            if reasons
-
+            if errors
             else
-            (
-                "Production prediction "
-                "repository is not ready."
-            )
+            "Production prediction repository is not ready."
         )
 
         return (
@@ -326,13 +284,13 @@ def create_production_prediction_blueprint(
                         },
 
                     "repository":
-                        public_status,
+                        status,
                 }
             ),
             503,
         )
 
-    def ready_repository():
+    def require_ready():
 
         repository = (
             get_repository()
@@ -361,16 +319,14 @@ def create_production_prediction_blueprint(
             None,
         )
 
-    def success_response(
-        data,
+    def success(
         repository,
-        count: int | None = None,
+        data,
+        count=None,
     ):
 
-        status = (
-            _public_repository_status(
-                repository.get_status()
-            )
+        status = _public_status(
+            repository.get_status()
         )
 
         if (
@@ -380,10 +336,8 @@ def create_production_prediction_blueprint(
             != "READY"
         ):
 
-            return (
-                not_ready_response(
-                    repository
-                )
+            return not_ready_response(
+                repository
             )
 
         payload = {
@@ -438,12 +392,8 @@ def create_production_prediction_blueprint(
             200,
         )
 
-    # ========================================================
-    # Safety headers
-    # ========================================================
-
     @blueprint.after_request
-    def add_safety_headers(
+    def headers(
         response,
     ):
 
@@ -458,7 +408,7 @@ def create_production_prediction_blueprint(
         return response
 
     # ========================================================
-    # Production status
+    # Status
     # ========================================================
 
     @blueprint.get(
@@ -470,10 +420,8 @@ def create_production_prediction_blueprint(
             get_repository()
         )
 
-        status = (
-            _public_repository_status(
-                repository.get_status()
-            )
+        status = _public_status(
+            repository.get_status()
         )
 
         return (
@@ -492,7 +440,7 @@ def create_production_prediction_blueprint(
         )
 
     # ========================================================
-    # All current predictions
+    # Prediction feed
     # ========================================================
 
     @blueprint.get(
@@ -501,19 +449,16 @@ def create_production_prediction_blueprint(
     @blueprint.get(
         "/predictions/upcoming"
     )
-    def upcoming_predictions():
+    def prediction_feed():
 
         (
             repository,
-            error_response,
-        ) = ready_repository()
+            error,
+        ) = require_ready()
 
-        if (
-            error_response
-            is not None
-        ):
+        if error is not None:
 
-            return error_response
+            return error
 
         try:
 
@@ -524,21 +469,111 @@ def create_production_prediction_blueprint(
 
         except RepositoryNotReadyError as exc:
 
+            return not_ready_response(
+                repository,
+                str(exc),
+            )
+
+        return success(
+            repository,
+            records,
+            count=len(
+                records
+            ),
+        )
+
+    # ========================================================
+    # Team lookup
+    # IMPORTANT: define this before fixture lookup
+    # ========================================================
+
+    @blueprint.get(
+        "/predictions/team/<path:team_name>"
+    )
+    def team_predictions(
+        team_name,
+    ):
+
+        (
+            repository,
+            error,
+        ) = require_ready()
+
+        if error is not None:
+
+            return error
+
+        team_name = (
+            team_name.strip()
+        )
+
+        if not team_name:
+
             return (
-                not_ready_response(
-                    repository,
-                    str(exc),
+                jsonify(
+                    {
+                        "status":
+                            "ERROR",
+
+                        "error":
+                            {
+                                "code":
+                                    "INVALID_TEAM_NAME",
+
+                                "message":
+                                    "team_name cannot be empty.",
+                            },
+                    }
+                ),
+                400,
+            )
+
+        try:
+
+            records = (
+                repository
+                .get_team_predictions(
+                    team_name
                 )
             )
 
-        return (
-            success_response(
-                records,
+        except RepositoryNotReadyError as exc:
+
+            return not_ready_response(
                 repository,
-                count=len(
-                    records
-                ),
+                str(exc),
             )
+
+        if not records:
+
+            return (
+                jsonify(
+                    {
+                        "status":
+                            "NOT_FOUND",
+
+                        "error":
+                            {
+                                "code":
+                                    "TEAM_NOT_FOUND",
+
+                                "message":
+                                    (
+                                        "No current production "
+                                        "predictions found for team."
+                                    ),
+                            },
+                    }
+                ),
+                404,
+            )
+
+        return success(
+            repository,
+            records,
+            count=len(
+                records
+            ),
         )
 
     # ========================================================
@@ -548,25 +583,22 @@ def create_production_prediction_blueprint(
     @blueprint.get(
         "/predictions/<fixture_id>"
     )
-    def prediction_by_fixture(
-        fixture_id: str,
+    def fixture_prediction(
+        fixture_id,
     ):
 
         (
             repository,
-            error_response,
-        ) = ready_repository()
+            error,
+        ) = require_ready()
 
-        if (
-            error_response
-            is not None
-        ):
+        if error is not None:
 
-            return error_response
+            return error
 
         try:
 
-            numeric_fixture_id = int(
+            fixture_id = int(
                 fixture_id
             )
 
@@ -587,10 +619,7 @@ def create_production_prediction_blueprint(
                                     "INVALID_FIXTURE_ID",
 
                                 "message":
-                                    (
-                                        "fixture_id must "
-                                        "be an integer."
-                                    ),
+                                    "fixture_id must be an integer.",
                             },
                     }
                 ),
@@ -602,17 +631,15 @@ def create_production_prediction_blueprint(
             record = (
                 repository
                 .get_prediction(
-                    numeric_fixture_id
+                    fixture_id
                 )
             )
 
         except RepositoryNotReadyError as exc:
 
-            return (
-                not_ready_response(
-                    repository,
-                    str(exc),
-                )
+            return not_ready_response(
+                repository,
+                str(exc),
             )
 
         if record is None:
@@ -639,115 +666,9 @@ def create_production_prediction_blueprint(
                 404,
             )
 
-        return (
-            success_response(
-                record,
-                repository,
-            )
-        )
-
-    # ========================================================
-    # Team lookup
-    # ========================================================
-
-    @blueprint.get(
-        "/predictions/team/<path:team_name>"
-    )
-    def predictions_by_team(
-        team_name: str,
-    ):
-
-        (
+        return success(
             repository,
-            error_response,
-        ) = ready_repository()
-
-        if (
-            error_response
-            is not None
-        ):
-
-            return error_response
-
-        normalized_team = (
-            team_name.strip()
-        )
-
-        if not normalized_team:
-
-            return (
-                jsonify(
-                    {
-                        "status":
-                            "ERROR",
-
-                        "error":
-                            {
-                                "code":
-                                    "INVALID_TEAM_NAME",
-
-                                "message":
-                                    (
-                                        "team_name cannot "
-                                        "be empty."
-                                    ),
-                            },
-                    }
-                ),
-                400,
-            )
-
-        try:
-
-            records = (
-                repository
-                .get_team_predictions(
-                    normalized_team
-                )
-            )
-
-        except RepositoryNotReadyError as exc:
-
-            return (
-                not_ready_response(
-                    repository,
-                    str(exc),
-                )
-            )
-
-        if not records:
-
-            return (
-                jsonify(
-                    {
-                        "status":
-                            "NOT_FOUND",
-
-                        "error":
-                            {
-                                "code":
-                                    "TEAM_NOT_FOUND",
-
-                                "message":
-                                    (
-                                        "No current production "
-                                        "predictions found "
-                                        "for team."
-                                    ),
-                            },
-                    }
-                ),
-                404,
-            )
-
-        return (
-            success_response(
-                records,
-                repository,
-                count=len(
-                    records
-                ),
-            )
+            record,
         )
 
     return blueprint
