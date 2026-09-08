@@ -1,0 +1,61 @@
+{
+  "stage": "7.9.5",
+  "status": "PASS",
+  "stage_7_9_complete": true,
+  "stage_7_9_status": "COMPLETE",
+  "production_serving_stack": "VERIFIED",
+  "verified_at_utc": "2026-09-08T06:24:35.728316+00:00",
+  "sub_stages": {
+    "7.9.1": "PASS",
+    "7.9.2": "PASS",
+    "7.9.3": "PASS",
+    "7.9.4": "PASS",
+    "7.9.5": "PASS"
+  },
+  "repository": {
+    "status": "READY",
+    "snapshot_fresh": true,
+    "stage_7_8_verified": true,
+    "serving_contract_locked": true,
+    "model_id": "random_forest",
+    "feature_count": 86,
+    "prediction_count": 350
+  },
+  "application": {
+    "source": "backend.app:app",
+    "required_routes": [
+      "/api/v1/predictions",
+      "/api/v1/predictions/<fixture_id>",
+      "/api/v1/predictions/team/<path:team_name>",
+      "/api/v1/predictions/upcoming",
+      "/api/v1/production/health",
+      "/api/v1/production/readiness",
+      "/api/v1/production/status"
+    ],
+    "required_routes_verified": true
+  },
+  "safety": {
+    "read_only": true,
+    "fail_closed": true,
+    "model_loaded_by_api": false,
+    "prediction_executed_by_api": false,
+    "provider_fetched_by_api": false,
+    "training_executed": false,
+    "model_selection_executed": false,
+    "hyperparameter_tuning_executed": false,
+    "final_test_evaluation_artifacts_used": false
+  },
+  "evidence_sha256": {
+    "production_serving_contract": "5e76ff666cdeddedd91275c0f13b69088aaaae82325d5cc9a899619e489302ba",
+    "serving_contract_verification": "ba08919ee95dd2da8025631327e6e1804bc9260c35bb857120bc7f3bfbc50644",
+    "repository_verification": "501655e55154c1993551bb7054ff6c28f3c1c39224f940b10ea8aa069c86427c",
+    "api_verification": "969496adeba08795a78e4c691cd828c7f9a50b0cd162fefc930b52da7757dd12",
+    "runtime_safety_verification": "49194671bc70525fd8a92867047fde132d812257c823d25629f0a594da9a4899",
+    "stage7_8_final_verification": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+    "production_predictions": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628",
+    "prediction_repository_source": "1afeb38e4683957d207ef2195d4d76360e0586716943c79ad0e32982a445801b",
+    "prediction_api_source": "0fd0d3d49bf07b1c19a79db6447a18bf13905de0c60086ae39f630598854367b",
+    "flask_app_source": "f03c3924c119e9566ca1176c0a7777dc40267e4d9181ea83e6d1ba90a6d219f2"
+  },
+  "failures": []
+}
