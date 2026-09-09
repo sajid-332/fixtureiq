@@ -1,13 +1,13 @@
 {
   "stage": "8.2",
-  "status": "PARTIAL_PASS",
-  "stage_8_2_complete": false,
+  "status": "PASS",
+  "stage_8_2_complete": true,
   "sub_stages": {
     "8.2.1": "PASS",
     "8.2.2": "PASS",
     "8.2.3": "PASS",
-    "8.2.4": "PENDING",
-    "8.2.5": "PENDING"
+    "8.2.4": "PASS",
+    "8.2.5": "PASS"
   },
   "provider_fetch": "VERIFIED",
   "team_normalization": "VERIFIED",
@@ -212,5 +212,47 @@
       "team_name": "Coventry City"
     }
   ],
-  "failures": []
+  "failures": [],
+  "standings_service": "VERIFIED",
+  "service_freshness": {
+    "status": "VERIFIED",
+    "mode": "DEPENDENCY_BASED",
+    "fail_closed": true,
+    "artifact_hash_validation": true,
+    "contract_hash_validation": true,
+    "semantic_team_registry_validation": true,
+    "fixture_only_refresh_invalidates_standings": false,
+    "team_registry_change_invalidates_standings": true,
+    "invalid_provenance_not_ready": true,
+    "missing_artifact_not_ready": true
+  },
+  "stage_8_2_4_verified_at_utc": "2026-09-09T08:50:51.844506+00:00",
+  "stage_8_2_status": "COMPLETE",
+  "live_epl_standings_layer": "VERIFIED",
+  "stage_8_2_5_verified_at_utc": "2026-09-09T08:56:50.176165+00:00",
+  "final_gate": {
+    "status": "PASS",
+    "stage": "8.2.5",
+    "verified_at_utc": "2026-09-09T08:56:50.176203+00:00",
+    "canonical_team_count": 20,
+    "canonical_schema_verified": true,
+    "provider_verified": true,
+    "normalization_verified": true,
+    "standings_service_ready": true,
+    "dependency_freshness_verified": true,
+    "fail_closed_verified": true,
+    "locked_model_unchanged": true,
+    "feature_count": 86,
+    "stage7_write_protection": true,
+    "standings_context_only": true
+  },
+  "evidence_sha256": {
+    "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
+    "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
+    "current_standings": "1c32164ec1b63620dcaa5e39b13d167695693782796ffd0dc2cce372de2d5a88",
+    "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "stage7_8_final_verification": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+    "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f",
+    "upcoming_fixtures_snapshot": "9d4dcc0f2e5710b3dc261e15b622aaa7e1077045b281e27a6eeea4707afedd2b"
+  }
 }
