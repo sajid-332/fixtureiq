@@ -2,13 +2,15 @@
   "stage": "8.1",
   "contract_version": "1.0.0",
   "contract_type": "STAGE8_CONTEXT_CONTRACT",
-  "updated_at_utc": "2026-09-09T05:11:44.825942+00:00",
-  "stage_8_1_complete": false,
+  "updated_at_utc": "2026-09-09T05:24:53.847624+00:00",
+  "stage_8_1_complete": true,
   "sub_stages": {
     "8.1.2": "LOCKED",
     "8.1.3": "LOCKED",
     "8.1.1": "LOCKED",
-    "8.1.4": "LOCKED"
+    "8.1.4": "LOCKED",
+    "8.1.5": "LOCKED",
+    "8.1.6": "LOCKED"
   },
   "trusted_inputs": {
     "upstream_verification": {
@@ -447,5 +449,137 @@
       "historical_per_fixture_reconstruction_required_now": false,
       "historical_reconstruction_future_rule": "If historical per-fixture context is implemented later, only information strictly available before kickoff may be used."
     }
-  }
+  },
+  "output_artifact_contract": {
+    "contract_version": "1.0.0",
+    "output_root": "data/processed/context",
+    "owner": "STAGE_8",
+    "stage7_output_write_allowed": false,
+    "all_stage8_outputs_must_remain_under_output_root": true,
+    "outputs": {
+      "stage8_context_contract": {
+        "path": "data/processed/context/stage8_context_contract.json",
+        "owner_stage": "8.1",
+        "artifact_type": "CONTRACT",
+        "dynamic": false,
+        "required_for_stage8_final": true
+      },
+      "stage8_context_contract_verification": {
+        "path": "data/processed/context/stage8_context_contract_verification.json",
+        "owner_stage": "8.1",
+        "artifact_type": "VERIFICATION",
+        "dynamic": false,
+        "required_for_stage8_final": true
+      },
+      "current_standings": {
+        "path": "data/processed/context/current_standings.csv",
+        "owner_stage": "8.2",
+        "artifact_type": "DATA",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "standings_report": {
+        "path": "data/processed/context/standings_report.json",
+        "owner_stage": "8.2",
+        "artifact_type": "REPORT",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "current_team_form": {
+        "path": "data/processed/context/current_team_form.csv",
+        "owner_stage": "8.3",
+        "artifact_type": "DATA",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "team_form_report": {
+        "path": "data/processed/context/team_form_report.json",
+        "owner_stage": "8.3",
+        "artifact_type": "REPORT",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "team_context": {
+        "path": "data/processed/context/team_context.csv",
+        "owner_stage": "8.4",
+        "artifact_type": "DATA",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "team_context_report": {
+        "path": "data/processed/context/team_context_report.json",
+        "owner_stage": "8.4",
+        "artifact_type": "REPORT",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "enriched_upcoming_fixtures": {
+        "path": "data/processed/context/enriched_upcoming_fixtures.csv",
+        "owner_stage": "8.5",
+        "artifact_type": "DATA",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "fixture_context_report": {
+        "path": "data/processed/context/fixture_context_report.json",
+        "owner_stage": "8.5",
+        "artifact_type": "REPORT",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "context_api_verification": {
+        "path": "data/processed/context/context_api_verification.json",
+        "owner_stage": "8.6",
+        "artifact_type": "VERIFICATION",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "context_runtime_verification": {
+        "path": "data/processed/context/context_runtime_verification.json",
+        "owner_stage": "8.7",
+        "artifact_type": "VERIFICATION",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      },
+      "stage8_final_verification": {
+        "path": "data/processed/context/stage8_final_verification.json",
+        "owner_stage": "8.8",
+        "artifact_type": "FINAL_VERIFICATION",
+        "dynamic": true,
+        "required_for_stage8_final": true
+      }
+    },
+    "rules": {
+      "stage7_artifacts_may_be_overwritten": false,
+      "dynamic_context_artifacts_may_refresh": true,
+      "data_artifacts_require_companion_reports": true,
+      "derived_artifacts_require_provenance": true,
+      "derived_artifacts_require_dependency_identity": true,
+      "public_context_must_come_from_verified_artifacts": true,
+      "partial_unverified_output_serving_allowed": false,
+      "stage8_final_gate_must_hash_evidence": true,
+      "future_stage_artifacts_need_not_exist_during_stage8_1": true
+    },
+    "data_report_pairs": [
+      [
+        "current_standings",
+        "standings_report"
+      ],
+      [
+        "current_team_form",
+        "team_form_report"
+      ],
+      [
+        "team_context",
+        "team_context_report"
+      ],
+      [
+        "enriched_upcoming_fixtures",
+        "fixture_context_report"
+      ]
+    ]
+  },
+  "stage_8_1_status": "COMPLETE",
+  "contract_status": "LOCKED_CONTEXT_CONTRACT",
+  "locked_at_utc": "2026-09-09T05:24:53.847606+00:00"
 }

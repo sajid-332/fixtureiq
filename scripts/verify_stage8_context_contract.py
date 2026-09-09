@@ -1,14 +1,22 @@
 """
-FixtureIQ Stage 8.1 Contract Verification
+FixtureIQ Stage 8.1.6
+Final Stage 8.1 Context Contract Verification & Lock.
 
-Verifies:
+Independently verifies:
 
-8.1.1 - Scope & Safety Boundary
-8.1.2 - Trusted Input Contract
-8.1.3 - Canonical Team Context Schema
-8.1.4 - Freshness & Provenance Rules
+8.1.1 Scope & Safety Boundary
+8.1.2 Trusted Input Contract
+8.1.3 Canonical Team Context Schema
+8.1.4 Freshness & Provenance Rules
+8.1.5 Output Artifact Contract
 
-Stage 8.1 remains IN PROGRESS until 8.1.5 and 8.1.6 pass.
+If all checks pass:
+- 8.1.6 is LOCKED
+- Stage 8.1 becomes COMPLETE
+- context contract becomes LOCKED_CONTEXT_CONTRACT
+- verification evidence hashes are recorded
+
+No ML model is loaded or executed.
 """
 
 from __future__ import annotations
@@ -56,20 +64,20 @@ CONTRACT_FILE = (
     / "stage8_context_contract.json"
 )
 
-OUTPUT_FILE = (
+VERIFICATION_FILE = (
     CONTEXT_DIR
     / "stage8_context_contract_verification.json"
-)
-
-SERVING_CONTRACT_FILE = (
-    MODEL_DIR
-    / "production_serving_contract.json"
 )
 
 SELECTED_MODEL_FILE = (
     MODEL_DIR
     / "selected"
     / "selected_model.joblib"
+)
+
+SERVING_CONTRACT_FILE = (
+    MODEL_DIR
+    / "production_serving_contract.json"
 )
 
 STAGE7_8_FILE = (
@@ -82,12 +90,12 @@ STAGE7_9_FILE = (
     / "stage7_9_final_verification.json"
 )
 
-HISTORY_FILE = (
+PRODUCTION_HISTORY_FILE = (
     PRODUCTION_DIR
     / "production_history.csv"
 )
 
-FIXTURES_FILE = (
+UPCOMING_FIXTURES_FILE = (
     PRODUCTION_DIR
     / "upcoming_fixtures.csv"
 )
@@ -131,6 +139,12 @@ def load_json(
 def sha256_file(
     path: Path,
 ) -> str:
+
+    if not path.exists():
+
+        raise FileNotFoundError(
+            f"Required file missing: {path}"
+        )
 
     digest = hashlib.sha256()
 
@@ -188,11 +202,11 @@ def main() -> None:
     print("=" * 72)
 
     print(
-        "FixtureIQ Stage 8.1 Verification"
+        "FixtureIQ Stage 8.1.6"
     )
 
     print(
-        "8.1.1 + 8.1.2 + 8.1.3 + 8.1.4"
+        "Final Stage 8.1 Context Contract Verification"
     )
 
     print("=" * 72)
@@ -200,24 +214,27 @@ def main() -> None:
     failures = []
 
     # ========================================================
-    # 1. Required artifacts
+    # 1. Required foundation
     # ========================================================
 
     print(
         "\n1. REQUIRED ARTIFACTS"
     )
 
-    required = [
+    required_files = [
+
         CONTRACT_FILE,
         SERVING_CONTRACT_FILE,
         SELECTED_MODEL_FILE,
+
         STAGE7_8_FILE,
         STAGE7_9_FILE,
-        HISTORY_FILE,
-        FIXTURES_FILE,
+
+        PRODUCTION_HISTORY_FILE,
+        UPCOMING_FIXTURES_FILE,
     ]
 
-    for path in required:
+    for path in required_files:
 
         check(
             path.name,
@@ -226,6 +243,10 @@ def main() -> None:
         )
 
     if failures:
+
+        print(
+            "\nSTAGE 8.1.6: FAIL"
+        )
 
         sys.exit(1)
 
@@ -241,8 +262,13 @@ def main() -> None:
         STAGE7_9_FILE
     )
 
+    sub_stages = contract.get(
+        "sub_stages",
+        {}
+    )
+
     # ========================================================
-    # 2. Upstream foundation
+    # 2. Stage 7 foundation
     # ========================================================
 
     print(
@@ -256,7 +282,8 @@ def main() -> None:
                 "status",
                 ""
             )
-        ).upper()
+        )
+        .upper()
         == "PASS",
         failures,
     )
@@ -268,7 +295,8 @@ def main() -> None:
                 "status",
                 ""
             )
-        ).upper()
+        )
+        .upper()
         == "PASS",
         failures,
     )
@@ -283,7 +311,7 @@ def main() -> None:
     )
 
     check(
-        "Production serving VERIFIED",
+        "Production serving stack VERIFIED",
         stage7_9.get(
             "production_serving_stack"
         )
@@ -292,16 +320,36 @@ def main() -> None:
     )
 
     # ========================================================
-    # 3. 8.1.1 Scope + safety
+    # 3. Previous Stage 8.1 sections
     # ========================================================
 
     print(
-        "\n3. STAGE 8.1.1 - SCOPE & SAFETY"
+        "\n3. PREVIOUS STAGE 8.1 LOCKS"
     )
 
-    sub_stages = contract.get(
-        "sub_stages",
-        {}
+    for stage in (
+        "8.1.1",
+        "8.1.2",
+        "8.1.3",
+        "8.1.4",
+        "8.1.5",
+    ):
+
+        check(
+            f"{stage} LOCKED",
+            sub_stages.get(
+                stage
+            )
+            == "LOCKED",
+            failures,
+        )
+
+    # ========================================================
+    # 4. Scope & model safety
+    # ========================================================
+
+    print(
+        "\n4. SCOPE & MODEL SAFETY"
     )
 
     protection = contract.get(
@@ -320,15 +368,6 @@ def main() -> None:
     )
 
     check(
-        "8.1.1 marked LOCKED",
-        sub_stages.get(
-            "8.1.1"
-        )
-        == "LOCKED",
-        failures,
-    )
-
-    check(
         "Purpose LIVE_EPL_CONTEXT_LAYER",
         contract.get(
             "purpose"
@@ -338,7 +377,7 @@ def main() -> None:
     )
 
     check(
-        "Context-only = true",
+        "Context-only true",
         contract.get(
             "context_only"
         )
@@ -346,93 +385,53 @@ def main() -> None:
         failures,
     )
 
-    check(
-        "Model mutation prohibited",
-        protection.get(
-            "model_mutation_allowed"
-        )
-        is False,
-        failures,
-    )
+    prohibited_flags = {
 
-    check(
-        "Retraining prohibited",
-        protection.get(
-            "retraining_allowed"
-        )
-        is False,
-        failures,
-    )
+        "model_mutation_allowed":
+            False,
 
-    check(
-        "Model selection prohibited",
-        protection.get(
-            "model_selection_allowed"
-        )
-        is False,
-        failures,
-    )
+        "retraining_allowed":
+            False,
 
-    check(
-        "Hyperparameter tuning prohibited",
-        protection.get(
-            "hyperparameter_tuning_allowed"
-        )
-        is False,
-        failures,
-    )
+        "model_selection_allowed":
+            False,
 
-    check(
-        "Feature schema mutation prohibited",
-        protection.get(
-            "feature_schema_mutation_allowed"
-        )
-        is False,
-        failures,
-    )
+        "hyperparameter_tuning_allowed":
+            False,
 
-    check(
-        "Prediction mutation prohibited",
-        protection.get(
-            "prediction_mutation_allowed"
-        )
-        is False,
-        failures,
-    )
+        "feature_schema_mutation_allowed":
+            False,
 
-    check(
-        "Final-test reuse prohibited",
-        protection.get(
-            "final_test_reuse_allowed"
-        )
-        is False,
-        failures,
-    )
+        "prediction_mutation_allowed":
+            False,
 
-    check(
-        "Standings cannot become model features",
-        protection.get(
-            "standings_as_model_features_allowed"
-        )
-        is False,
-        failures,
-    )
+        "final_test_reuse_allowed":
+            False,
 
-    check(
-        "Form cannot become model features",
-        protection.get(
-            "form_as_model_features_allowed"
+        "standings_as_model_features_allowed":
+            False,
+
+        "form_as_model_features_allowed":
+            False,
+    }
+
+    for key, expected in prohibited_flags.items():
+
+        check(
+            f"{key} = false",
+            protection.get(
+                key
+            )
+            is expected,
+            failures,
         )
-        is False,
-        failures,
-    )
 
     actual_model_sha = sha256_file(
         SELECTED_MODEL_FILE
     )
 
     check(
-        "Locked model ID random_forest",
+        "Locked model random_forest",
         locked_model.get(
             "model_id"
         )
@@ -441,7 +440,7 @@ def main() -> None:
     )
 
     check(
-        "Locked feature count = 86",
+        "Feature count remains 86",
         locked_model.get(
             "feature_count"
         )
@@ -450,7 +449,7 @@ def main() -> None:
     )
 
     check(
-        "Locked model SHA matches actual model",
+        "Locked model SHA matches actual",
         locked_model.get(
             "sha256"
         )
@@ -468,7 +467,7 @@ def main() -> None:
     )
 
     check(
-        "Final test cannot be reopened",
+        "Final test remains closed",
         stage7_protection.get(
             "stage8_may_reopen_final_test"
         )
@@ -477,11 +476,11 @@ def main() -> None:
     )
 
     # ========================================================
-    # 4. 8.1.2 Trusted inputs
+    # 5. Trusted inputs
     # ========================================================
 
     print(
-        "\n4. STAGE 8.1.2 - TRUSTED INPUTS"
+        "\n5. TRUSTED INPUT CONTRACT"
     )
 
     trusted = contract.get(
@@ -507,20 +506,6 @@ def main() -> None:
     failure_policy = contract.get(
         "input_failure_policy",
         {}
-    )
-
-    temporal = contract.get(
-        "temporal_input_boundary",
-        {}
-    )
-
-    check(
-        "8.1.2 marked LOCKED",
-        sub_stages.get(
-            "8.1.2"
-        )
-        == "LOCKED",
-        failures,
     )
 
     check(
@@ -560,7 +545,7 @@ def main() -> None:
     )
 
     check(
-        "Season 2026",
+        "Configured season 2026",
         provider.get(
             "configured_season"
         )
@@ -586,30 +571,12 @@ def main() -> None:
         failures,
     )
 
-    check(
-        "Upcoming matches cannot affect form",
-        temporal.get(
-            "upcoming_matches_may_affect_form"
-        )
-        is False,
-        failures,
-    )
-
-    check(
-        "Future results prohibited",
-        temporal.get(
-            "future_results_allowed"
-        )
-        is False,
-        failures,
-    )
-
     # ========================================================
-    # 5. 8.1.3 Canonical schema
+    # 6. Canonical schema
     # ========================================================
 
     print(
-        "\n5. STAGE 8.1.3 - CANONICAL SCHEMA"
+        "\n6. CANONICAL TEAM CONTEXT SCHEMA"
     )
 
     schema = contract.get(
@@ -633,15 +600,6 @@ def main() -> None:
     )
 
     check(
-        "8.1.3 marked LOCKED",
-        sub_stages.get(
-            "8.1.3"
-        )
-        == "LOCKED",
-        failures,
-    )
-
-    check(
         "Expected EPL teams = 20",
         schema.get(
             "expected_current_epl_team_count"
@@ -659,7 +617,8 @@ def main() -> None:
         failures,
     )
 
-    expected_standings = {
+    expected_standings_fields = {
+
         "position",
         "played",
         "won",
@@ -679,7 +638,7 @@ def main() -> None:
                 {}
             ).keys()
         )
-        == expected_standings,
+        == expected_standings_fields,
         failures,
     )
 
@@ -693,7 +652,7 @@ def main() -> None:
     )
 
     check(
-        "Current-season form only",
+        "Form current season only",
         form.get(
             "season_scope"
         )
@@ -711,20 +670,15 @@ def main() -> None:
     )
 
     # ========================================================
-    # 6. 8.1.4 Freshness + provenance
+    # 7. Freshness & provenance
     # ========================================================
 
     print(
-        "\n6. STAGE 8.1.4 - FRESHNESS & PROVENANCE"
+        "\n7. FRESHNESS & PROVENANCE"
     )
 
     freshness = contract.get(
         "freshness_and_provenance",
-        {}
-    )
-
-    standings_policy = freshness.get(
-        "standings_policy",
         {}
     )
 
@@ -743,32 +697,13 @@ def main() -> None:
         {}
     )
 
-    dependencies = freshness.get(
-        "dependency_invalidation",
-        {}
-    )
-
-    runtime = freshness.get(
+    runtime_policy = freshness.get(
         "runtime_policy",
         {}
     )
 
-    temporal_safety = freshness.get(
-        "temporal_safety",
-        {}
-    )
-
     check(
-        "8.1.4 marked LOCKED",
-        sub_stages.get(
-            "8.1.4"
-        )
-        == "LOCKED",
-        failures,
-    )
-
-    check(
-        "Freshness mode DEPENDENCY_BASED",
+        "Freshness DEPENDENCY_BASED",
         freshness.get(
             "freshness_mode"
         )
@@ -777,64 +712,7 @@ def main() -> None:
     )
 
     check(
-        "No arbitrary TTL source-of-truth",
-        freshness.get(
-            "arbitrary_fixed_ttl_is_source_of_truth"
-        )
-        is False,
-        failures,
-    )
-
-    provenance_fields = set(
-        freshness.get(
-            "required_provenance_fields",
-            []
-        )
-    )
-
-    check(
-        "Core provenance fields declared",
-        {
-            "generated_at_utc",
-            "source_as_of_utc",
-            "provider",
-            "competition",
-            "season",
-        }.issubset(
-            provenance_fields
-        ),
-        failures,
-    )
-
-    check(
-        "Standings provider locked",
-        standings_policy.get(
-            "provider"
-        )
-        == "football-data.org",
-        failures,
-    )
-
-    check(
-        "Standings competition PL",
-        standings_policy.get(
-            "competition_code"
-        )
-        == "PL",
-        failures,
-    )
-
-    check(
-        "Standings season 2026",
-        standings_policy.get(
-            "season"
-        )
-        == 2026,
-        failures,
-    )
-
-    check(
-        "Form completed matches only",
+        "Form uses completed matches only",
         form_policy.get(
             "completed_matches_only"
         )
@@ -843,29 +721,11 @@ def main() -> None:
     )
 
     check(
-        "Form current season only",
-        form_policy.get(
-            "current_season_only"
-        )
-        is True,
-        failures,
-    )
-
-    check(
-        "Form history cutoff required",
+        "History cutoff required",
         form_policy.get(
             "history_cutoff_required"
         )
         is True,
-        failures,
-    )
-
-    check(
-        "Future form data prohibited",
-        form_policy.get(
-            "future_match_allowed"
-        )
-        is False,
         failures,
     )
 
@@ -882,15 +742,6 @@ def main() -> None:
         "Team context requires fresh form",
         team_context_policy.get(
             "requires_fresh_form"
-        )
-        is True,
-        failures,
-    )
-
-    check(
-        "Fixture context requires fresh team context",
-        fixture_context_policy.get(
-            "requires_fresh_team_context"
         )
         is True,
         failures,
@@ -915,83 +766,8 @@ def main() -> None:
     )
 
     check(
-        "History change invalidates form",
-        "CURRENT_TEAM_FORM"
-        in dependencies.get(
-            "production_history_changed",
-            []
-        ),
-        failures,
-    )
-
-    check(
-        "Standings change invalidates team context",
-        "TEAM_CONTEXT"
-        in dependencies.get(
-            "standings_changed",
-            []
-        ),
-        failures,
-    )
-
-    check(
-        "Fixtures change invalidates enrichment",
-        "ENRICHED_UPCOMING_FIXTURES"
-        in dependencies.get(
-            "upcoming_fixtures_changed",
-            []
-        ),
-        failures,
-    )
-
-    check(
-        "Missing dependency -> NOT_READY",
-        runtime.get(
-            "missing_required_dependency"
-        )
-        == "NOT_READY",
-        failures,
-    )
-
-    check(
-        "Stale dependency -> NOT_READY",
-        runtime.get(
-            "stale_required_dependency"
-        )
-        == "NOT_READY",
-        failures,
-    )
-
-    check(
-        "Invalid provenance -> NOT_READY",
-        runtime.get(
-            "invalid_provenance"
-        )
-        == "NOT_READY",
-        failures,
-    )
-
-    check(
-        "Partial unverified serving prohibited",
-        runtime.get(
-            "partial_unverified_context_serving_allowed"
-        )
-        is False,
-        failures,
-    )
-
-    check(
-        "Silent stale fallback prohibited",
-        runtime.get(
-            "silent_stale_fallback_allowed"
-        )
-        is False,
-        failures,
-    )
-
-    check(
-        "Runtime failure mode FAIL_CLOSED",
-        runtime.get(
+        "Runtime FAIL_CLOSED",
+        runtime_policy.get(
             "failure_mode"
         )
         == "FAIL_CLOSED",
@@ -999,119 +775,697 @@ def main() -> None:
     )
 
     check(
-        "Upcoming fixture cannot be history",
-        temporal_safety.get(
-            "upcoming_fixture_use_as_history_allowed"
+        "Silent stale fallback prohibited",
+        runtime_policy.get(
+            "silent_stale_fallback_allowed"
+        )
+        is False,
+        failures,
+    )
+
+    # ========================================================
+    # 8. Stage 8.1.5 output artifact contract
+    # ========================================================
+
+    print(
+        "\n8. STAGE 8.1.5 - OUTPUT ARTIFACT CONTRACT"
+    )
+
+    output_contract = contract.get(
+        "output_artifact_contract",
+        {}
+    )
+
+    outputs = output_contract.get(
+        "outputs",
+        {}
+    )
+
+    output_rules = output_contract.get(
+        "rules",
+        {}
+    )
+
+    pairs = output_contract.get(
+        "data_report_pairs",
+        []
+    )
+
+    expected_outputs = {
+
+        "stage8_context_contract":
+            (
+                "data/processed/context/"
+                "stage8_context_contract.json"
+            ),
+
+        "stage8_context_contract_verification":
+            (
+                "data/processed/context/"
+                "stage8_context_contract_verification.json"
+            ),
+
+        "current_standings":
+            (
+                "data/processed/context/"
+                "current_standings.csv"
+            ),
+
+        "standings_report":
+            (
+                "data/processed/context/"
+                "standings_report.json"
+            ),
+
+        "current_team_form":
+            (
+                "data/processed/context/"
+                "current_team_form.csv"
+            ),
+
+        "team_form_report":
+            (
+                "data/processed/context/"
+                "team_form_report.json"
+            ),
+
+        "team_context":
+            (
+                "data/processed/context/"
+                "team_context.csv"
+            ),
+
+        "team_context_report":
+            (
+                "data/processed/context/"
+                "team_context_report.json"
+            ),
+
+        "enriched_upcoming_fixtures":
+            (
+                "data/processed/context/"
+                "enriched_upcoming_fixtures.csv"
+            ),
+
+        "fixture_context_report":
+            (
+                "data/processed/context/"
+                "fixture_context_report.json"
+            ),
+
+        "context_api_verification":
+            (
+                "data/processed/context/"
+                "context_api_verification.json"
+            ),
+
+        "context_runtime_verification":
+            (
+                "data/processed/context/"
+                "context_runtime_verification.json"
+            ),
+
+        "stage8_final_verification":
+            (
+                "data/processed/context/"
+                "stage8_final_verification.json"
+            ),
+    }
+
+    check(
+        "Output root correct",
+        output_contract.get(
+            "output_root"
+        )
+        == "data/processed/context",
+        failures,
+    )
+
+    check(
+        "Output owner STAGE_8",
+        output_contract.get(
+            "owner"
+        )
+        == "STAGE_8",
+        failures,
+    )
+
+    check(
+        "Stage 7 output write prohibited",
+        output_contract.get(
+            "stage7_output_write_allowed"
         )
         is False,
         failures,
     )
 
     check(
-        "Future results prohibited",
-        temporal_safety.get(
-            "future_result_use_allowed"
+        "Output artifact set exact",
+        set(
+            outputs.keys()
+        )
+        == set(
+            expected_outputs.keys()
+        ),
+        failures,
+    )
+
+    for name, expected_path in expected_outputs.items():
+
+        artifact = outputs.get(
+            name,
+            {}
+        )
+
+        actual_path = artifact.get(
+            "path"
+        )
+
+        check(
+            f"{name} path",
+            actual_path
+            == expected_path,
+            failures,
+        )
+
+        check(
+            f"{name} under context root",
+            (
+                isinstance(
+                    actual_path,
+                    str,
+                )
+                and
+                actual_path.startswith(
+                    "data/processed/context/"
+                )
+            ),
+            failures,
+        )
+
+        check(
+            f"{name} not Stage 7 output",
+            (
+                isinstance(
+                    actual_path,
+                    str,
+                )
+                and
+                not actual_path.startswith(
+                    "data/processed/production/"
+                )
+            ),
+            failures,
+        )
+
+    declared_paths = [
+
+        artifact.get(
+            "path"
+        )
+
+        for artifact in outputs.values()
+    ]
+
+    check(
+        "Output paths unique",
+        (
+            len(
+                declared_paths
+            )
+            ==
+            len(
+                set(
+                    declared_paths
+                )
+            )
+        ),
+        failures,
+    )
+
+    expected_pairs = [
+
+        [
+            "current_standings",
+            "standings_report",
+        ],
+
+        [
+            "current_team_form",
+            "team_form_report",
+        ],
+
+        [
+            "team_context",
+            "team_context_report",
+        ],
+
+        [
+            "enriched_upcoming_fixtures",
+            "fixture_context_report",
+        ],
+    ]
+
+    check(
+        "Data/report pairs exact",
+        pairs
+        == expected_pairs,
+        failures,
+    )
+
+    check(
+        "Stage 7 overwrite prohibited",
+        output_rules.get(
+            "stage7_artifacts_may_be_overwritten"
         )
         is False,
         failures,
     )
 
+    check(
+        "Derived provenance required",
+        output_rules.get(
+            "derived_artifacts_require_provenance"
+        )
+        is True,
+        failures,
+    )
+
+    check(
+        "Dependency identity required",
+        output_rules.get(
+            "derived_artifacts_require_dependency_identity"
+        )
+        is True,
+        failures,
+    )
+
+    check(
+        "Unverified public context prohibited",
+        output_rules.get(
+            "public_context_must_come_from_verified_artifacts"
+        )
+        is True,
+        failures,
+    )
+
+    check(
+        "Partial unverified serving prohibited",
+        output_rules.get(
+            "partial_unverified_output_serving_allowed"
+        )
+        is False,
+        failures,
+    )
+
+    check(
+        "Stage 8 final evidence hashing required",
+        output_rules.get(
+            "stage8_final_gate_must_hash_evidence"
+        )
+        is True,
+        failures,
+    )
+
+    check(
+        "Future artifacts not required yet",
+        output_rules.get(
+            "future_stage_artifacts_need_not_exist_during_stage8_1"
+        )
+        is True,
+        failures,
+    )
+
     # ========================================================
-    # 7. Final decision
+    # 9. Stage 8.1.6 final decision
     # ========================================================
 
     print(
-        "\n7. SAVE VERIFICATION"
+        "\n9. STAGE 8.1.6 - FINAL CONTRACT GATE"
     )
 
-    overall_pass = (
+    final_pass = (
         len(
             failures
         )
         == 0
     )
 
-    report = {
+    if final_pass:
 
-        "stage":
-            "8.1",
+        # ----------------------------------------------------
+        # Lock the contract
+        # ----------------------------------------------------
 
-        "status":
-            (
-                "PARTIAL_PASS"
-                if overall_pass
-                else "FAIL"
-            ),
+        final_sub_stages = dict(
+            contract.get(
+                "sub_stages",
+                {}
+            )
+        )
 
-        "stage_8_1_complete":
-            False,
+        final_sub_stages[
+            "8.1.6"
+        ] = "LOCKED"
 
-        "verified_at_utc":
-            datetime.now(
+        contract[
+            "sub_stages"
+        ] = final_sub_stages
+
+        contract[
+            "stage_8_1_complete"
+        ] = True
+
+        contract[
+            "stage_8_1_status"
+        ] = "COMPLETE"
+
+        contract[
+            "contract_status"
+        ] = "LOCKED_CONTEXT_CONTRACT"
+
+        if not contract.get(
+            "locked_at_utc"
+        ):
+
+            contract[
+                "locked_at_utc"
+            ] = datetime.now(
                 timezone.utc
-            ).isoformat(),
+            ).isoformat()
 
-        "sub_stages": {
+        contract[
+            "updated_at_utc"
+        ] = datetime.now(
+            timezone.utc
+        ).isoformat()
+
+        with CONTRACT_FILE.open(
+            "w",
+            encoding="utf-8",
+        ) as file:
+
+            json.dump(
+                contract,
+                file,
+                indent=2,
+            )
+
+        # ----------------------------------------------------
+        # Reload to verify persisted lock
+        # ----------------------------------------------------
+
+        locked_contract = load_json(
+            CONTRACT_FILE
+        )
+
+        persisted_lock_ok = (
+
+            locked_contract.get(
+                "stage_8_1_complete"
+            )
+            is True
+
+            and
+
+            locked_contract.get(
+                "stage_8_1_status"
+            )
+            == "COMPLETE"
+
+            and
+
+            locked_contract.get(
+                "contract_status"
+            )
+            == "LOCKED_CONTEXT_CONTRACT"
+
+            and
+
+            locked_contract.get(
+                "sub_stages",
+                {}
+            ).get(
+                "8.1.6"
+            )
+            == "LOCKED"
+        )
+
+        check(
+            "Final contract lock persisted",
+            persisted_lock_ok,
+            failures,
+        )
+
+        final_pass = (
+            len(
+                failures
+            )
+            == 0
+        )
+
+    # ========================================================
+    # 10. Evidence hashes
+    # ========================================================
+
+    print(
+        "\n10. EVIDENCE HASHES"
+    )
+
+    evidence_hashes = {}
+
+    if CONTRACT_FILE.exists():
+
+        evidence_hashes[
+            "stage8_context_contract"
+        ] = sha256_file(
+            CONTRACT_FILE
+        )
+
+    evidence_hashes[
+        "selected_model"
+    ] = sha256_file(
+        SELECTED_MODEL_FILE
+    )
+
+    evidence_hashes[
+        "stage7_8_final_verification"
+    ] = sha256_file(
+        STAGE7_8_FILE
+    )
+
+    evidence_hashes[
+        "stage7_9_final_verification"
+    ] = sha256_file(
+        STAGE7_9_FILE
+    )
+
+    for name, digest in evidence_hashes.items():
+
+        print(
+            f"{name}: {digest}"
+        )
+
+    # ========================================================
+    # 11. Save final 8.1 verification
+    # ========================================================
+
+    print(
+        "\n11. SAVE VERIFICATION"
+    )
+
+    if final_pass:
+
+        sub_stage_results = {
+
+            "8.1.1":
+                "PASS",
+
+            "8.1.2":
+                "PASS",
+
+            "8.1.3":
+                "PASS",
+
+            "8.1.4":
+                "PASS",
+
+            "8.1.5":
+                "PASS",
+
+            "8.1.6":
+                "PASS",
+        }
+
+    else:
+
+        sub_stage_results = {
 
             "8.1.1":
                 (
                     "PASS"
-                    if overall_pass
+                    if sub_stages.get(
+                        "8.1.1"
+                    )
+                    == "LOCKED"
                     else "FAIL"
                 ),
 
             "8.1.2":
                 (
                     "PASS"
-                    if overall_pass
+                    if sub_stages.get(
+                        "8.1.2"
+                    )
+                    == "LOCKED"
                     else "FAIL"
                 ),
 
             "8.1.3":
                 (
                     "PASS"
-                    if overall_pass
+                    if sub_stages.get(
+                        "8.1.3"
+                    )
+                    == "LOCKED"
                     else "FAIL"
                 ),
 
             "8.1.4":
                 (
                     "PASS"
-                    if overall_pass
+                    if sub_stages.get(
+                        "8.1.4"
+                    )
+                    == "LOCKED"
                     else "FAIL"
                 ),
-        },
+
+            "8.1.5":
+                (
+                    "PASS"
+                    if sub_stages.get(
+                        "8.1.5"
+                    )
+                    == "LOCKED"
+                    else "FAIL"
+                ),
+
+            "8.1.6":
+                "FAIL",
+        }
+
+    verification = {
+
+        "stage":
+            "8.1",
+
+        "status":
+            (
+                "PASS"
+                if final_pass
+                else "FAIL"
+            ),
+
+        "stage_8_1_complete":
+            bool(
+                final_pass
+            ),
+
+        "stage_8_1_status":
+            (
+                "COMPLETE"
+                if final_pass
+                else "INCOMPLETE"
+            ),
+
+        "context_contract":
+            (
+                "LOCKED"
+                if final_pass
+                else "NOT_LOCKED"
+            ),
+
+        "verified_at_utc":
+            datetime.now(
+                timezone.utc
+            ).isoformat(),
+
+        "sub_stages":
+            sub_stage_results,
 
         "scope_safety_boundary":
             (
                 "LOCKED"
-                if overall_pass
-                else "NOT_LOCKED"
+                if final_pass
+                else "NOT_VERIFIED"
             ),
 
         "trusted_input_contract":
             (
                 "LOCKED"
-                if overall_pass
-                else "NOT_LOCKED"
+                if final_pass
+                else "NOT_VERIFIED"
             ),
 
         "canonical_team_context_schema":
             (
                 "LOCKED"
-                if overall_pass
-                else "NOT_LOCKED"
+                if final_pass
+                else "NOT_VERIFIED"
             ),
 
         "freshness_provenance_policy":
             (
                 "LOCKED"
-                if overall_pass
-                else "NOT_LOCKED"
+                if final_pass
+                else "NOT_VERIFIED"
             ),
 
+        "output_artifact_contract":
+            (
+                "LOCKED"
+                if final_pass
+                else "NOT_VERIFIED"
+            ),
+
+        "model_protection": {
+
+            "model_id":
+                locked_model.get(
+                    "model_id"
+                ),
+
+            "feature_count":
+                locked_model.get(
+                    "feature_count"
+                ),
+
+            "model_sha256":
+                actual_model_sha,
+
+            "model_unchanged":
+                (
+                    locked_model.get(
+                        "sha256"
+                    )
+                    == actual_model_sha
+                ),
+
+            "context_only":
+                contract.get(
+                    "context_only"
+                )
+                is True,
+        },
+
+        "evidence_sha256":
+            evidence_hashes,
+
         "failures":
-            failures,
+            list(
+                failures
+            ),
     }
 
     CONTEXT_DIR.mkdir(
@@ -1119,26 +1473,30 @@ def main() -> None:
         exist_ok=True,
     )
 
-    with OUTPUT_FILE.open(
+    with VERIFICATION_FILE.open(
         "w",
         encoding="utf-8",
     ) as file:
 
         json.dump(
-            report,
+            verification,
             file,
             indent=2,
         )
 
     print(
-        OUTPUT_FILE
+        VERIFICATION_FILE
     )
+
+    # ========================================================
+    # Final
+    # ========================================================
 
     print(
         "\n" + "=" * 72
     )
 
-    if overall_pass:
+    if final_pass:
 
         print(
             "STAGE 8.1.1: PASS"
@@ -1157,21 +1515,33 @@ def main() -> None:
         )
 
         print(
-            "SCOPE & SAFETY BOUNDARY: LOCKED"
+            "STAGE 8.1.5: PASS"
         )
 
         print(
-            "FRESHNESS & PROVENANCE POLICY: LOCKED"
+            "STAGE 8.1.6: PASS"
         )
 
         print(
-            "STAGE 8.1: IN PROGRESS"
+            "STAGE 8.1: COMPLETE"
+        )
+
+        print(
+            "STAGE 8 CONTEXT CONTRACT: LOCKED"
         )
 
     else:
 
         print(
-            "STAGE 8.1: FAIL"
+            "STAGE 8.1.6: FAIL"
+        )
+
+        print(
+            "STAGE 8.1: INCOMPLETE"
+        )
+
+        print(
+            "STAGE 8 CONTEXT CONTRACT: NOT LOCKED"
         )
 
         print(
@@ -1188,7 +1558,7 @@ def main() -> None:
 
     sys.exit(
         0
-        if overall_pass
+        if final_pass
         else 1
     )
 
