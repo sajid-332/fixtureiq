@@ -1,0 +1,151 @@
+{
+  "stage": "8.2",
+  "status": "PARTIAL_PASS",
+  "stage_8_2_complete": false,
+  "sub_stages": {
+    "8.2.1": "PASS",
+    "8.2.2": "PASS",
+    "8.2.3": "PENDING",
+    "8.2.4": "PENDING",
+    "8.2.5": "PENDING"
+  },
+  "provider_fetch": "VERIFIED",
+  "team_normalization": "VERIFIED",
+  "generated_at_utc": "2026-09-09T05:48:18.652173+00:00",
+  "source_as_of_utc": "2026-09-09T05:48:17.349961+00:00",
+  "provider": "football-data.org",
+  "competition": "Premier League",
+  "competition_code": "PL",
+  "season": 2026,
+  "provider_season_id": 2502,
+  "current_matchday": 4,
+  "provider_team_count": 20,
+  "canonical_team_count": 20,
+  "unknown_team_count": 0,
+  "duplicate_team_count": 0,
+  "current_standings_csv_written": false,
+  "current_standings_csv_owner": "8.2.3",
+  "team_mappings": [
+    {
+      "provider_team_id": 65,
+      "provider_team_name": "Manchester City FC",
+      "team_id": "50",
+      "team_name": "Manchester City"
+    },
+    {
+      "provider_team_id": 57,
+      "provider_team_name": "Arsenal FC",
+      "team_id": "42",
+      "team_name": "Arsenal"
+    },
+    {
+      "provider_team_id": 322,
+      "provider_team_name": "Hull City AFC",
+      "team_id": "-44103427291829",
+      "team_name": "Hull City"
+    },
+    {
+      "provider_team_id": 61,
+      "provider_team_name": "Chelsea FC",
+      "team_id": "49",
+      "team_name": "Chelsea"
+    },
+    {
+      "provider_team_id": 402,
+      "provider_team_name": "Brentford FC",
+      "team_id": "55",
+      "team_name": "Brentford"
+    },
+    {
+      "provider_team_id": 67,
+      "provider_team_name": "Newcastle United FC",
+      "team_id": "34",
+      "team_name": "Newcastle"
+    },
+    {
+      "provider_team_id": 64,
+      "provider_team_name": "Liverpool FC",
+      "team_id": "40",
+      "team_name": "Liverpool"
+    },
+    {
+      "provider_team_id": 62,
+      "provider_team_name": "Everton FC",
+      "team_id": "45",
+      "team_name": "Everton"
+    },
+    {
+      "provider_team_id": 341,
+      "provider_team_name": "Leeds United FC",
+      "team_id": "-156530674508954",
+      "team_name": "Leeds"
+    },
+    {
+      "provider_team_id": 397,
+      "provider_team_name": "Brighton & Hove Albion FC",
+      "team_id": "51",
+      "team_name": "Brighton"
+    },
+    {
+      "provider_team_id": 66,
+      "provider_team_name": "Manchester United FC",
+      "team_id": "33",
+      "team_name": "Manchester United"
+    },
+    {
+      "provider_team_id": 71,
+      "provider_team_name": "Sunderland AFC",
+      "team_id": "-218557486738561",
+      "team_name": "Sunderland"
+    },
+    {
+      "provider_team_id": 349,
+      "provider_team_name": "Ipswich Town FC",
+      "team_id": "57",
+      "team_name": "Ipswich"
+    },
+    {
+      "provider_team_id": 354,
+      "provider_team_name": "Crystal Palace FC",
+      "team_id": "52",
+      "team_name": "Crystal Palace"
+    },
+    {
+      "provider_team_id": 1044,
+      "provider_team_name": "AFC Bournemouth",
+      "team_id": "35",
+      "team_name": "Bournemouth"
+    },
+    {
+      "provider_team_id": 351,
+      "provider_team_name": "Nottingham Forest FC",
+      "team_id": "65",
+      "team_name": "Nottingham Forest"
+    },
+    {
+      "provider_team_id": 73,
+      "provider_team_name": "Tottenham Hotspur FC",
+      "team_id": "47",
+      "team_name": "Tottenham"
+    },
+    {
+      "provider_team_id": 58,
+      "provider_team_name": "Aston Villa FC",
+      "team_id": "66",
+      "team_name": "Aston Villa"
+    },
+    {
+      "provider_team_id": 63,
+      "provider_team_name": "Fulham FC",
+      "team_id": "36",
+      "team_name": "Fulham"
+    },
+    {
+      "provider_team_id": 1076,
+      "provider_team_name": "Coventry City FC",
+      "team_id": "-39195573837902",
+      "team_name": "Coventry City"
+    }
+  ],
+  "failures": []
+}
