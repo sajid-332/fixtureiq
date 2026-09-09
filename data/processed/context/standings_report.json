@@ -5,26 +5,91 @@
   "sub_stages": {
     "8.2.1": "PASS",
     "8.2.2": "PASS",
-    "8.2.3": "PENDING",
+    "8.2.3": "PASS",
     "8.2.4": "PENDING",
     "8.2.5": "PENDING"
   },
   "provider_fetch": "VERIFIED",
   "team_normalization": "VERIFIED",
-  "generated_at_utc": "2026-09-09T05:48:18.652173+00:00",
-  "source_as_of_utc": "2026-09-09T05:48:17.349961+00:00",
+  "canonical_standings": "VERIFIED",
+  "generated_at_utc": "2026-09-09T07:57:29.317798+00:00",
+  "source_as_of_utc": "2026-09-09T07:57:28.287087+00:00",
   "provider": "football-data.org",
   "competition": "Premier League",
   "competition_code": "PL",
   "season": 2026,
   "provider_season_id": 2502,
   "current_matchday": 4,
-  "provider_team_count": 20,
-  "canonical_team_count": 20,
-  "unknown_team_count": 0,
-  "duplicate_team_count": 0,
-  "current_standings_csv_written": false,
-  "current_standings_csv_owner": "8.2.3",
+  "season_start_date": "2026-08-21",
+  "season_end_date": "2027-05-30",
+  "provider_fetch_timestamp_utc": "2026-09-09T07:57:28.287087+00:00",
+  "current_standings": {
+    "path": "data/processed/context/current_standings.csv",
+    "sha256": "1c32164ec1b63620dcaa5e39b13d167695693782796ffd0dc2cce372de2d5a88",
+    "row_count": 20,
+    "column_count": 11,
+    "columns": [
+      "team_id",
+      "team_name",
+      "position",
+      "played",
+      "won",
+      "drawn",
+      "lost",
+      "goals_for",
+      "goals_against",
+      "goal_difference",
+      "points"
+    ],
+    "sort_order": "position ASC",
+    "team_namespace": "fixtureiq-team",
+    "provider_ids_in_public_csv": false
+  },
+  "integrity": {
+    "expected_team_count": 20,
+    "actual_team_count": 20,
+    "unique_team_ids": 20,
+    "unique_team_names": 20,
+    "positions_1_to_20": true,
+    "played_equation_valid": true,
+    "goal_difference_equation_valid": true,
+    "points_equation_valid": true,
+    "unknown_team_count": 0,
+    "duplicate_team_count": 0
+  },
+  "dependency_identity": {
+    "stage8_context_contract": {
+      "path": "data/processed/context/stage8_context_contract.json",
+      "sha256": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d"
+    },
+    "stage8_context_contract_verification": {
+      "path": "data/processed/context/stage8_context_contract_verification.json",
+      "sha256": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0"
+    },
+    "upcoming_fixtures_team_registry": {
+      "path": "data/processed/production/upcoming_fixtures.csv",
+      "sha256": "9d4dcc0f2e5710b3dc261e15b622aaa7e1077045b281e27a6eeea4707afedd2b",
+      "usage": "FIXTUREIQ_CANONICAL_TEAM_IDENTITY"
+    }
+  },
+  "freshness": {
+    "mode": "DEPENDENCY_BASED",
+    "snapshot_generated_at_utc": "2026-09-09T07:57:29.317798+00:00",
+    "source_as_of_utc": "2026-09-09T07:57:28.287087+00:00",
+    "provider_snapshot_valid": true,
+    "dependency_identity_recorded": true
+  },
+  "safety": {
+    "context_only": true,
+    "stage7_artifacts_modified": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "production_predictions_modified": false,
+    "feature_schema_modified": false,
+    "standings_used_as_model_features": false,
+    "final_test_accessed": false
+  },
   "team_mappings": [
     {
       "provider_team_id": 65,
