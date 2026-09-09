@@ -1,0 +1,451 @@
+{
+  "stage": "8.1",
+  "contract_version": "1.0.0",
+  "contract_type": "STAGE8_CONTEXT_CONTRACT",
+  "updated_at_utc": "2026-09-09T05:11:44.825942+00:00",
+  "stage_8_1_complete": false,
+  "sub_stages": {
+    "8.1.2": "LOCKED",
+    "8.1.3": "LOCKED",
+    "8.1.1": "LOCKED",
+    "8.1.4": "LOCKED"
+  },
+  "trusted_inputs": {
+    "upstream_verification": {
+      "stage7_8": {
+        "path": "data/processed/production/stage7_8_final_verification.json",
+        "required_status": "PASS",
+        "required_completion": "COMPLETE",
+        "access": "READ_ONLY"
+      },
+      "stage7_9": {
+        "path": "data/processed/production/stage7_9_final_verification.json",
+        "required_status": "PASS",
+        "required_completion": "COMPLETE",
+        "required_serving_stack": "VERIFIED",
+        "access": "READ_ONLY"
+      }
+    },
+    "production_history": {
+      "owner": "STAGE_7",
+      "purpose": "Verified completed-match history used for Stage 8 current form.",
+      "data_path": "data/processed/production/production_history.csv",
+      "report_path": "data/processed/production/production_history_report.json",
+      "access": "READ_ONLY",
+      "required": true,
+      "dynamic_operational_input": true,
+      "freeze_snapshot_hash": false,
+      "observation": {
+        "path": "data/processed/production/production_history.csv",
+        "exists": true,
+        "row_count_at_contract_build": 1170,
+        "columns_at_contract_build": [
+          "fixture_id",
+          "season",
+          "date",
+          "timestamp",
+          "timezone",
+          "status_short",
+          "status_long",
+          "status_elapsed",
+          "league_id",
+          "league_name",
+          "country",
+          "round",
+          "home_team_id",
+          "home_team_name",
+          "home_team_code",
+          "away_team_id",
+          "away_team_name",
+          "away_team_code",
+          "home_goals",
+          "away_goals"
+        ],
+        "snapshot_observation_only": true
+      }
+    },
+    "upcoming_fixtures": {
+      "owner": "STAGE_7",
+      "purpose": "Verified future fixtures that receive Stage 8 context enrichment.",
+      "data_path": "data/processed/production/upcoming_fixtures.csv",
+      "report_path": "data/processed/production/production_fixture_fetch_report.json",
+      "access": "READ_ONLY",
+      "required": true,
+      "dynamic_operational_input": true,
+      "freeze_snapshot_hash": false,
+      "observation": {
+        "path": "data/processed/production/upcoming_fixtures.csv",
+        "exists": true,
+        "row_count_at_contract_build": 350,
+        "columns_at_contract_build": [
+          "fixture_id",
+          "provider_fixture_id",
+          "provider",
+          "date",
+          "timestamp",
+          "timezone",
+          "status_short",
+          "status_long",
+          "status_elapsed",
+          "league_id",
+          "league_name",
+          "country",
+          "season",
+          "round",
+          "home_team_id",
+          "home_team_name",
+          "home_team_code",
+          "provider_home_team_id",
+          "away_team_id",
+          "away_team_name",
+          "away_team_code",
+          "provider_away_team_id"
+        ],
+        "snapshot_observation_only": true
+      }
+    },
+    "live_context_provider": {
+      "owner": "EXTERNAL_PROVIDER",
+      "provider": "football-data.org",
+      "role": "PRIMARY_LIVE_CONTEXT_PROVIDER",
+      "competition": "Premier League",
+      "competition_code": "PL",
+      "configured_season": 2026,
+      "stage8_usage": [
+        "LIVE_STANDINGS",
+        "LIVE_COMPETITION_CONTEXT"
+      ],
+      "write_access_to_stage7_artifacts": false,
+      "required_for_live_standings": true
+    },
+    "api_football": {
+      "provider": "API-Football",
+      "role": "HISTORICAL_LEGACY_SOURCE",
+      "primary_live_stage8_provider": false
+    }
+  },
+  "input_ownership_policy": {
+    "stage7_artifacts": "READ_ONLY",
+    "external_provider_response": "VALIDATE_BEFORE_STAGE8_USE",
+    "stage8_derived_artifacts": "STAGE8_OWNED",
+    "stage8_may_overwrite_stage7_artifacts": false
+  },
+  "trust_hierarchy": [
+    "VERIFIED_STAGE7_STATE",
+    "FIXTUREIQ_NORMALIZED_PRODUCTION_HISTORY",
+    "FOOTBALL_DATA_ORG_LIVE_CONTEXT",
+    "STAGE8_DERIVED_CONTEXT"
+  ],
+  "input_failure_policy": {
+    "missing_required_input": "FAIL_CLOSED",
+    "invalid_required_input": "FAIL_CLOSED",
+    "upstream_verification_failure": "FAIL_CLOSED",
+    "provider_failure": "FAIL_CLOSED",
+    "silent_fallback_to_unverified_source": false
+  },
+  "temporal_input_boundary": {
+    "completed_matches_may_affect_form": true,
+    "upcoming_matches_may_affect_form": false,
+    "upcoming_matches_receive_context": true,
+    "future_results_allowed": false,
+    "current_form_source": "VERIFIED_COMPLETED_MATCHES_ONLY",
+    "anti_leakage_rule": "A match may affect form only after it is completed and present in verified production history."
+  },
+  "canonical_team_context_schema": {
+    "schema_version": "1.0.0",
+    "expected_current_epl_team_count": 20,
+    "team_identity": {
+      "namespace": "fixtureiq-team",
+      "provider_ids_are_internal_ids": false,
+      "fields": {
+        "team_id": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "team_name": {
+          "type": "string",
+          "required": true,
+          "nullable": false
+        }
+      }
+    },
+    "standings": {
+      "fields": {
+        "position": {
+          "type": "integer",
+          "required": true,
+          "minimum": 1,
+          "maximum": 20
+        },
+        "played": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "won": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "drawn": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "lost": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "goals_for": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "goals_against": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "goal_difference": {
+          "type": "integer",
+          "required": true
+        },
+        "points": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        }
+      },
+      "invariants": [
+        "played == won + drawn + lost",
+        "goal_difference == goals_for - goals_against",
+        "points == (3 * won) + drawn",
+        "position values are unique within one standings snapshot",
+        "team_id values are unique within one standings snapshot"
+      ]
+    },
+    "current_form": {
+      "default_window": 5,
+      "season_scope": "CURRENT_PRODUCTION_SEASON_ONLY",
+      "allow_short_window": true,
+      "result_symbols": [
+        "W",
+        "D",
+        "L"
+      ],
+      "result_order": "OLDEST_TO_NEWEST",
+      "most_recent_result_position": "RIGHTMOST",
+      "fields": {
+        "form_matches_available": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "maximum": 5
+        },
+        "recent_results": {
+          "type": "string",
+          "required": true
+        },
+        "recent_points": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "maximum": 15
+        },
+        "recent_wins": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "maximum": 5
+        },
+        "recent_draws": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "maximum": 5
+        },
+        "recent_losses": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0,
+          "maximum": 5
+        },
+        "recent_goals_for": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "recent_goals_against": {
+          "type": "integer",
+          "required": true,
+          "minimum": 0
+        },
+        "recent_goal_difference": {
+          "type": "integer",
+          "required": true
+        }
+      },
+      "invariants": [
+        "form_matches_available == recent_wins + recent_draws + recent_losses",
+        "recent_points == (3 * recent_wins) + recent_draws",
+        "recent_goal_difference == recent_goals_for - recent_goals_against",
+        "length(recent_results) == form_matches_available",
+        "all recent_results symbols are one of W/D/L"
+      ]
+    },
+    "venue_form": {
+      "enabled": true,
+      "window": 5,
+      "allow_short_window": true
+    },
+    "schema_policy": {
+      "provider_team_id_allowed_as_internal_team_id": false,
+      "unknown_team_allowed": false,
+      "duplicate_team_allowed": false,
+      "fabricate_missing_form_matches": false,
+      "future_match_data_allowed": false,
+      "standings_or_form_are_model_features": false
+    }
+  },
+  "purpose": "LIVE_EPL_CONTEXT_LAYER",
+  "context_only": true,
+  "scope": {
+    "live_epl_standings": true,
+    "current_team_form": true,
+    "team_context_snapshot": true,
+    "fixture_context_enrichment": true,
+    "context_rest_api": true,
+    "model_development": false
+  },
+  "allowed_operations": [
+    "READ_VERIFIED_STAGE7_ARTIFACTS",
+    "READ_PRODUCTION_HISTORY",
+    "READ_UPCOMING_FIXTURES",
+    "READ_LOCKED_MODEL_IDENTITY",
+    "FETCH_LIVE_EPL_CONTEXT",
+    "DERIVE_CURRENT_TEAM_FORM",
+    "BUILD_STAGE8_CONTEXT_ARTIFACTS",
+    "SERVE_CONTEXT_READ_ONLY"
+  ],
+  "model_protection": {
+    "model_mutation_allowed": false,
+    "retraining_allowed": false,
+    "model_selection_allowed": false,
+    "hyperparameter_tuning_allowed": false,
+    "feature_schema_mutation_allowed": false,
+    "prediction_mutation_allowed": false,
+    "final_test_reuse_allowed": false,
+    "standings_as_model_features_allowed": false,
+    "form_as_model_features_allowed": false
+  },
+  "locked_model": {
+    "model_id": "random_forest",
+    "model_status": "LOCKED",
+    "feature_count": 86,
+    "sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "source_contract": "data/processed/model/production_serving_contract.json",
+    "model_path": "data/processed/model/selected/selected_model.joblib",
+    "mutation_allowed": false
+  },
+  "stage7_protection": {
+    "production_predictions_read_only": true,
+    "production_features_read_only": true,
+    "selected_model_read_only": true,
+    "stage7_verification_artifacts_read_only": true,
+    "stage8_may_change_existing_probabilities": false,
+    "stage8_may_change_feature_count": false,
+    "stage8_may_reopen_final_test": false
+  },
+  "freshness_and_provenance": {
+    "policy_version": "1.0.0",
+    "freshness_mode": "DEPENDENCY_BASED",
+    "arbitrary_fixed_ttl_is_source_of_truth": false,
+    "required_provenance_fields": [
+      "generated_at_utc",
+      "source_as_of_utc",
+      "provider",
+      "competition",
+      "season"
+    ],
+    "history_provenance_fields": [
+      "history_cutoff_utc",
+      "production_history_source"
+    ],
+    "fixture_provenance_fields": [
+      "fixture_snapshot_as_of_utc",
+      "upcoming_fixture_source"
+    ],
+    "standings_policy": {
+      "provider": "football-data.org",
+      "competition_code": "PL",
+      "season": 2026,
+      "must_record_generated_at_utc": true,
+      "must_record_source_as_of_utc": true,
+      "must_record_dependency_identity": true,
+      "stale_if_required_provider_snapshot_invalid": true
+    },
+    "form_policy": {
+      "source": "production_history.csv",
+      "completed_matches_only": true,
+      "current_season_only": true,
+      "default_window": 5,
+      "history_cutoff_required": true,
+      "history_cutoff_definition": "Latest completed match included in the form snapshot.",
+      "future_match_allowed": false,
+      "upcoming_fixture_allowed_to_affect_form": false
+    },
+    "team_context_policy": {
+      "requires_fresh_standings": true,
+      "requires_fresh_form": true,
+      "stale_if_standings_stale": true,
+      "stale_if_form_stale": true
+    },
+    "fixture_context_policy": {
+      "requires_fresh_team_context": true,
+      "requires_fresh_upcoming_fixtures": true,
+      "upcoming_fixture_must_be_future": true,
+      "fixture_may_affect_its_own_form": false,
+      "stale_if_team_context_stale": true,
+      "stale_if_upcoming_fixtures_changed": true
+    },
+    "dependency_invalidation": {
+      "production_history_changed": [
+        "CURRENT_TEAM_FORM",
+        "TEAM_CONTEXT",
+        "ENRICHED_UPCOMING_FIXTURES"
+      ],
+      "standings_changed": [
+        "TEAM_CONTEXT",
+        "ENRICHED_UPCOMING_FIXTURES"
+      ],
+      "current_team_form_changed": [
+        "TEAM_CONTEXT",
+        "ENRICHED_UPCOMING_FIXTURES"
+      ],
+      "upcoming_fixtures_changed": [
+        "ENRICHED_UPCOMING_FIXTURES"
+      ],
+      "team_context_changed": [
+        "ENRICHED_UPCOMING_FIXTURES"
+      ]
+    },
+    "runtime_policy": {
+      "missing_required_dependency": "NOT_READY",
+      "stale_required_dependency": "NOT_READY",
+      "invalid_provenance": "NOT_READY",
+      "partial_unverified_context_serving_allowed": false,
+      "silent_stale_fallback_allowed": false,
+      "failure_mode": "FAIL_CLOSED"
+    },
+    "temporal_safety": {
+      "completed_match_required_for_form": true,
+      "future_result_use_allowed": false,
+      "upcoming_fixture_use_as_history_allowed": false,
+      "fixture_context_is_snapshot_context": true,
+      "historical_per_fixture_reconstruction_required_now": false,
+      "historical_reconstruction_future_rule": "If historical per-fixture context is implemented later, only information strictly available before kickoff may be used."
+    }
+  }
+}
