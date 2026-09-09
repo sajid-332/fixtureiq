@@ -1,13 +1,13 @@
 {
   "stage": "8.3",
-  "status": "PARTIAL_PASS",
-  "stage_8_3_complete": false,
+  "status": "PASS",
+  "stage_8_3_complete": true,
   "sub_stages": {
     "8.3.1": "PASS",
     "8.3.2": "PASS",
     "8.3.3": "PASS",
     "8.3.4": "PASS",
-    "8.3.5": "PENDING"
+    "8.3.5": "PASS"
   },
   "current_season_source_gate": "VERIFIED",
   "overall_form_engine": "VERIFIED",
@@ -2285,5 +2285,40 @@
     "missing_artifact_not_ready": true,
     "fail_closed": true
   },
-  "stage_8_3_4_verified_at_utc": "2026-09-09T19:19:47.404613+00:00"
+  "stage_8_3_4_verified_at_utc": "2026-09-09T19:19:47.404613+00:00",
+  "stage_8_3_status": "COMPLETE",
+  "current_team_form_layer": "VERIFIED",
+  "stage_8_3_5_verified_at_utc": "2026-09-09T19:26:07.395842+00:00",
+  "final_gate": {
+    "stage": "8.3.5",
+    "status": "PASS",
+    "verified_at_utc": "2026-09-09T19:26:07.395842+00:00",
+    "canonical_team_count": 20,
+    "canonical_column_count": 29,
+    "current_season_source_verified": true,
+    "overall_form_verified": true,
+    "home_form_verified": true,
+    "away_form_verified": true,
+    "independent_history_recomputation_verified": true,
+    "previous_season_padding": 0,
+    "future_matches_used": 0,
+    "team_form_service_ready": true,
+    "dependency_freshness_verified": true,
+    "fail_closed_verified": true,
+    "locked_model_unchanged": true,
+    "locked_model_feature_count": 86,
+    "stage7_write_protection": true,
+    "form_context_only": true
+  },
+  "evidence_sha256": {
+    "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
+    "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
+    "standings_report": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc",
+    "current_team_form": "fcc9cb8b6e09b47f6e824592340174fbf825705d03f009226e6fb45042228666",
+    "production_history": "b2d0ebcd0416dc722b4ce33c530ab9895d650b864a621c637b96242b7055dad7",
+    "production_history_report": "9c3c2e67a91728eef9dc6b558e240477c77bb5de1e7b916a0cc0ab3cdaa6d64e",
+    "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "stage7_8_final_verification": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+    "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
+  }
 }
