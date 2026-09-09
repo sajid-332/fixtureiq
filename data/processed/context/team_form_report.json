@@ -6,7 +6,7 @@
     "8.3.1": "PASS",
     "8.3.2": "PASS",
     "8.3.3": "PASS",
-    "8.3.4": "PENDING",
+    "8.3.4": "PASS",
     "8.3.5": "PENDING"
   },
   "current_season_source_gate": "VERIFIED",
@@ -2260,5 +2260,30 @@
       ]
     }
   ],
-  "stage_8_3_3_verified_at_utc": "2026-09-09T16:48:03.598104+00:00"
+  "stage_8_3_3_verified_at_utc": "2026-09-09T16:48:03.598104+00:00",
+  "team_form_service": "VERIFIED",
+  "freshness": {
+    "mode": "DEPENDENCY_BASED",
+    "production_history_change_invalidates_form": true,
+    "production_history_report_change_invalidates_form": true,
+    "current_team_registry_change_invalidates_form": true,
+    "standings_numeric_change_invalidates_form": false,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "fail_closed": true
+  },
+  "service_freshness": {
+    "status": "VERIFIED",
+    "mode": "DEPENDENCY_BASED",
+    "artifact_hash_validation": true,
+    "production_history_hash_validation": true,
+    "production_history_report_hash_validation": true,
+    "semantic_team_registry_validation": true,
+    "standings_numeric_change_keeps_form_ready": true,
+    "team_registry_change_not_ready": true,
+    "invalid_provenance_not_ready": true,
+    "missing_artifact_not_ready": true,
+    "fail_closed": true
+  },
+  "stage_8_3_4_verified_at_utc": "2026-09-09T19:19:47.404613+00:00"
 }
