@@ -1,0 +1,21 @@
+team_id,team_name,form_matches_available,recent_results,recent_points,recent_wins,recent_draws,recent_losses,recent_goals_for,recent_goals_against,recent_goal_difference,home_form_matches_available,home_recent_results,home_recent_points,home_recent_wins,home_recent_draws,home_recent_losses,home_recent_goals_for,home_recent_goals_against,home_recent_goal_difference,away_form_matches_available,away_recent_results,away_recent_points,away_recent_wins,away_recent_draws,away_recent_losses,away_recent_goals_for,away_recent_goals_against,away_recent_goal_difference
+42,Arsenal,3,WWW,9,3,0,0,6,1,5,2,WW,6,2,0,0,5,1,4,1,W,3,1,0,0,1,0,1
+66,Aston Villa,3,LLD,1,0,1,2,0,5,-5,1,L,0,0,0,1,0,1,-1,2,LD,1,0,1,1,0,4,-4
+35,Bournemouth,3,LDD,2,0,2,1,4,5,-1,1,D,1,0,1,0,1,1,0,2,LD,1,0,1,1,3,4,-1
+55,Brentford,3,WDD,5,1,2,0,5,2,3,2,WD,4,1,1,0,4,1,3,1,D,1,0,1,0,1,1,0
+51,Brighton,3,WLD,4,1,1,1,8,5,3,2,WD,4,1,1,0,5,1,4,1,L,0,0,0,1,3,4,-1
+49,Chelsea,3,WWL,6,2,0,1,8,7,1,1,W,3,1,0,0,4,3,1,2,WL,3,1,0,1,4,4,0
+-39195573837902,Coventry City,3,LLL,0,0,0,3,0,5,-5,1,L,0,0,0,1,0,1,-1,2,LL,0,0,0,2,0,4,-4
+52,Crystal Palace,3,LLW,3,1,0,2,4,8,-4,1,L,0,0,0,1,1,4,-3,2,LW,3,1,0,1,3,4,-1
+45,Everton,3,WDD,5,1,2,0,5,3,2,2,WD,4,1,1,0,4,2,2,1,D,1,0,1,0,1,1,0
+36,Fulham,3,LLL,0,0,0,3,4,7,-3,2,LL,0,0,0,2,4,6,-2,1,L,0,0,0,1,0,1,-1
+-44103427291829,Hull City,3,WWD,7,2,1,0,3,0,3,2,WD,4,1,1,0,2,0,2,1,W,3,1,0,0,1,0,1
+57,Ipswich,3,WLL,3,1,0,2,4,8,-4,2,WL,3,1,0,1,2,3,-1,1,L,0,0,0,1,2,5,-3
+-156530674508954,Leeds,3,WDD,5,1,2,0,3,2,1,1,D,1,0,1,0,1,1,0,2,WD,4,1,1,0,2,1,1
+40,Liverpool,3,DDW,5,1,2,0,6,4,2,1,D,1,0,1,0,2,2,0,2,DW,4,1,1,0,4,2,2
+50,Manchester City,3,WWW,9,3,0,0,7,2,5,2,WW,6,2,0,0,3,1,2,1,W,3,1,0,0,4,1,3
+33,Manchester United,3,LWD,4,1,1,1,7,6,1,1,W,3,1,0,0,5,2,3,2,LD,1,0,1,1,2,4,-2
+34,Newcastle,3,DWD,5,1,2,0,6,4,2,2,DD,2,0,2,0,4,4,0,1,W,3,1,0,0,2,0,2
+65,Nottingham Forest,3,LDD,2,0,2,1,2,3,-1,2,LD,1,0,1,1,0,1,-1,1,D,1,0,1,0,2,2,0
+-218557486738561,Sunderland,3,LWD,4,1,1,1,3,3,0,1,W,3,1,0,0,1,0,1,2,LD,1,0,1,1,2,3,-1
+47,Tottenham,3,LLD,1,0,1,2,0,5,-5,1,L,0,0,0,1,0,2,-2,2,LD,1,0,1,1,0,3,-3

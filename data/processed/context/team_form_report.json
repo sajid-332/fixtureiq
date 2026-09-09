@@ -5,13 +5,13 @@
   "sub_stages": {
     "8.3.1": "PASS",
     "8.3.2": "PASS",
-    "8.3.3": "PENDING",
+    "8.3.3": "PASS",
     "8.3.4": "PENDING",
     "8.3.5": "PENDING"
   },
   "current_season_source_gate": "VERIFIED",
   "overall_form_engine": "VERIFIED",
-  "generated_at_utc": "2026-09-09T15:54:58.218996+00:00",
+  "generated_at_utc": "2026-09-09T16:48:03.598104+00:00",
   "source_as_of_utc": "2026-09-06T15:30:00+00:00",
   "history_cutoff_utc": "2026-09-06T15:30:00+00:00",
   "source": "FixtureIQ production_history.csv",
@@ -62,7 +62,8 @@
     "current_epl_team_registry": {
       "path": "data/processed/context/current_standings.csv",
       "usage": "CANONICAL_TEAM_IDENTITY_ONLY",
-      "team_count": 20
+      "team_count": 20,
+      "semantic_sha256": "5902c63f950cb506c1e760cb9e98c97ee4c2db36bea69ed41df1dab88ea8c69d"
     }
   },
   "overall_form": [
@@ -907,7 +908,7 @@
       ]
     }
   ],
-  "current_team_form_csv_written": false,
+  "current_team_form_csv_written": true,
   "current_team_form_csv_owner": "8.3.3",
   "safety": {
     "context_only": true,
@@ -923,5 +924,1341 @@
     "form_used_as_model_features": false,
     "final_test_accessed": false
   },
-  "failures": []
+  "failures": [],
+  "canonical_team_form": "VERIFIED",
+  "venue_form_engine": "VERIFIED",
+  "current_team_form": {
+    "path": "data/processed/context/current_team_form.csv",
+    "sha256": "fcc9cb8b6e09b47f6e824592340174fbf825705d03f009226e6fb45042228666",
+    "row_count": 20,
+    "column_count": 29,
+    "columns": [
+      "team_id",
+      "team_name",
+      "form_matches_available",
+      "recent_results",
+      "recent_points",
+      "recent_wins",
+      "recent_draws",
+      "recent_losses",
+      "recent_goals_for",
+      "recent_goals_against",
+      "recent_goal_difference",
+      "home_form_matches_available",
+      "home_recent_results",
+      "home_recent_points",
+      "home_recent_wins",
+      "home_recent_draws",
+      "home_recent_losses",
+      "home_recent_goals_for",
+      "home_recent_goals_against",
+      "home_recent_goal_difference",
+      "away_form_matches_available",
+      "away_recent_results",
+      "away_recent_points",
+      "away_recent_wins",
+      "away_recent_draws",
+      "away_recent_losses",
+      "away_recent_goals_for",
+      "away_recent_goals_against",
+      "away_recent_goal_difference"
+    ],
+    "sort_order": "team_name ASC",
+    "team_namespace": "fixtureiq-team"
+  },
+  "venue_form": {
+    "enabled": true,
+    "window": 5,
+    "allow_short_window": true,
+    "season_scope": "CURRENT_PRODUCTION_SEASON_ONLY",
+    "result_order": "OLDEST_TO_NEWEST",
+    "most_recent_result_position": "RIGHTMOST",
+    "home_min_matches_available": 1,
+    "home_max_matches_available": 2,
+    "away_min_matches_available": 1,
+    "away_max_matches_available": 2
+  },
+  "venue_form_evidence": [
+    {
+      "team_id": "42",
+      "team_name": "Arsenal",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-21T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 3,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-31T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-21T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 3,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-31T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "66",
+      "team_name": "Aston Villa",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 0,
+          "goals_against": 4,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-31T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-31T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 0,
+          "goals_against": 4,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "35",
+      "team_name": "Bournemouth",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-05T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "55",
+      "team_name": "Brentford",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 3,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-22T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 3,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "51",
+      "team_name": "Brighton",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 4,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 3,
+          "goals_against": 4,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 4,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 3,
+          "goals_against": 4,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team_id": "49",
+      "team_name": "Chelsea",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-24T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 3,
+          "goals_against": 2,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 4,
+          "goals_against": 3,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 4,
+          "goals_against": 3,
+          "result": "W"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-24T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 3,
+          "goals_against": 2,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team_id": "-39195573837902",
+      "team_name": "Coventry City",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-21T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 0,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-21T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "42",
+          "opponent_team_name": "Arsenal",
+          "goals_for": 0,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team_id": "52",
+      "team_name": "Crystal Palace",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-28T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 1,
+          "goals_against": 4,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 3,
+          "goals_against": 2,
+          "result": "W"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-28T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 1,
+          "goals_against": 4,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 3,
+          "goals_against": 2,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "45",
+      "team_name": "Everton",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-06T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "36",
+      "team_name": "Fulham",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-24T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 2,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 2,
+          "goals_against": 3,
+          "result": "L"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-24T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "49",
+          "opponent_team_name": "Chelsea",
+          "goals_for": 2,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 2,
+          "goals_against": 3,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team_id": "-44103427291829",
+      "team_name": "Hull City",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-22T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "66",
+          "opponent_team_name": "Aston Villa",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-29T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "57",
+      "team_name": "Ipswich",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-30T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 5,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-04T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-218557486738561",
+          "opponent_team_name": "Sunderland",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-04T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-30T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 2,
+          "goals_against": 5,
+          "result": "L"
+        }
+      ]
+    },
+    {
+      "team_id": "-156530674508954",
+      "team_name": "Leeds",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "51",
+          "opponent_team_name": "Brighton",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "40",
+      "team_name": "Liverpool",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-08-29T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-04T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-29T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-23T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-04T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "50",
+      "team_name": "Manchester City",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-08-28T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 4,
+          "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-23T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 2,
+          "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-39195573837902",
+          "opponent_team_name": "Coventry City",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-28T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "52",
+          "opponent_team_name": "Crystal Palace",
+          "goals_for": 4,
+          "goals_against": 1,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "33",
+      "team_name": "Manchester United",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-30T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 5,
+          "goals_against": 2,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-06T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-30T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 5,
+          "goals_against": 2,
+          "result": "W"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-22T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-44103427291829",
+          "opponent_team_name": "Hull City",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-06T13:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "45",
+          "opponent_team_name": "Everton",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "34",
+      "team_name": "Newcastle",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-23T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-08-29T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-23T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-05T11:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "35",
+          "opponent_team_name": "Bournemouth",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-29T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 2,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ]
+    },
+    {
+      "team_id": "65",
+      "team_name": "Nottingham Forest",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-29T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "47",
+          "opponent_team_name": "Tottenham",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-29T11:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "40",
+          "opponent_team_name": "Liverpool",
+          "goals_for": 2,
+          "goals_against": 2,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "-218557486738561",
+      "team_name": "Sunderland",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-30T13:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "36",
+          "opponent_team_name": "Fulham",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-22T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "57",
+          "opponent_team_name": "Ipswich",
+          "goals_for": 1,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 1,
+          "goals_against": 1,
+          "result": "D"
+        }
+      ]
+    },
+    {
+      "team_id": "47",
+      "team_name": "Tottenham",
+      "overall_selected_matches": [
+        {
+          "date_utc": "2026-08-22T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 0,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-08-29T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ],
+      "home_selected_matches": [
+        {
+          "date_utc": "2026-08-29T16:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 0,
+          "goals_against": 2,
+          "result": "L"
+        }
+      ],
+      "away_selected_matches": [
+        {
+          "date_utc": "2026-08-22T16:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "55",
+          "opponent_team_name": "Brentford",
+          "goals_for": 0,
+          "goals_against": 3,
+          "result": "L"
+        },
+        {
+          "date_utc": "2026-09-05T14:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "65",
+          "opponent_team_name": "Nottingham Forest",
+          "goals_for": 0,
+          "goals_against": 0,
+          "result": "D"
+        }
+      ]
+    }
+  ],
+  "stage_8_3_3_verified_at_utc": "2026-09-09T16:48:03.598104+00:00"
 }
