@@ -6,7 +6,7 @@
     "8.5.1": "PASS",
     "8.5.2": "PASS",
     "8.5.3": "PASS",
-    "8.5.4": "PENDING",
+    "8.5.4": "PASS",
     "8.5.5": "PENDING"
   },
   "upcoming_fixture_source_gate": "VERIFIED",
@@ -299,5 +299,26 @@
     "latest_fixture_kickoff_utc": "2027-05-30T15:00:00+00:00",
     "enriched_artifact_sha256": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462"
   },
-  "stage_8_5_3_verified_at_utc": "2026-09-11T15:06:20.801266+00:00"
+  "stage_8_5_3_verified_at_utc": "2026-09-11T15:06:20.801266+00:00",
+  "fixture_context_service": "VERIFIED",
+  "service_freshness": {
+    "status": "VERIFIED",
+    "mode": "DEPENDENCY_BASED_PLUS_TEMPORAL_BOUNDARY",
+    "enriched_fixture_validation": true,
+    "upcoming_fixture_hash_validation": true,
+    "fixture_fetch_report_hash_validation": true,
+    "team_context_hash_validation": true,
+    "team_context_report_hash_validation": true,
+    "upstream_team_context_service_validation": true,
+    "independent_validation_reuse": true,
+    "production_history_transitive_invalidation": true,
+    "fixture_kickoff_temporal_invalidation": true,
+    "invalid_provenance_not_ready": true,
+    "missing_artifact_not_ready": true,
+    "defensive_copy_validation": true,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "fail_closed": true
+  },
+  "stage_8_5_4_verified_at_utc": "2026-09-11T15:17:06.654731+00:00"
 }
