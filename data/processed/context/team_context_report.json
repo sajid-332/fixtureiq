@@ -6,7 +6,7 @@
     "8.4.1": "PASS",
     "8.4.2": "PASS",
     "8.4.3": "PASS",
-    "8.4.4": "PENDING",
+    "8.4.4": "PASS",
     "8.4.5": "PENDING"
   },
   "upstream_context_readiness": "VERIFIED",
@@ -152,5 +152,26 @@
     "provenance_verified": true,
     "safety_verified": true
   },
-  "stage_8_4_3_verified_at_utc": "2026-09-11T13:57:05.501326+00:00"
+  "stage_8_4_3_verified_at_utc": "2026-09-11T13:57:05.501326+00:00",
+  "team_context_service": "VERIFIED",
+  "service_freshness": {
+    "status": "VERIFIED",
+    "mode": "DEPENDENCY_BASED",
+    "team_context_hash_validation": true,
+    "current_standings_hash_validation": true,
+    "standings_report_hash_validation": true,
+    "current_team_form_hash_validation": true,
+    "team_form_report_hash_validation": true,
+    "upstream_standings_service_validation": true,
+    "upstream_team_form_service_validation": true,
+    "production_history_transitive_invalidation": true,
+    "team_registry_transitive_invalidation": true,
+    "independent_reconstruction_validation": true,
+    "invalid_provenance_not_ready": true,
+    "missing_artifact_not_ready": true,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "fail_closed": true
+  },
+  "stage_8_4_4_verified_at_utc": "2026-09-11T14:02:38.461273+00:00"
 }
