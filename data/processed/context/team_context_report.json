@@ -1,0 +1,141 @@
+{
+  "stage": "8.4",
+  "status": "PARTIAL_PASS",
+  "stage_8_4_complete": false,
+  "sub_stages": {
+    "8.4.1": "PASS",
+    "8.4.2": "PASS",
+    "8.4.3": "PENDING",
+    "8.4.4": "PENDING",
+    "8.4.5": "PENDING"
+  },
+  "upstream_context_readiness": "VERIFIED",
+  "unified_team_context_builder": "VERIFIED",
+  "generated_at_utc": "2026-09-11T13:43:49.429134+00:00",
+  "source_as_of_utc": "2026-09-09T07:57:28.287087+00:00",
+  "standings_source_as_of_utc": "2026-09-09T07:57:28.287087+00:00",
+  "form_source_as_of_utc": "2026-09-06T15:30:00+00:00",
+  "form_history_cutoff_utc": "2026-09-06T15:30:00+00:00",
+  "competition": "Premier League",
+  "competition_code": "PL",
+  "season": 2026,
+  "team_namespace": "fixtureiq-team",
+  "team_count": 20,
+  "join": {
+    "type": "ONE_TO_ONE",
+    "key": [
+      "team_id",
+      "team_name"
+    ],
+    "standings_rows": 20,
+    "form_rows": 20,
+    "output_rows": 20,
+    "identity_match": true,
+    "missing_standings_teams": 0,
+    "missing_form_teams": 0,
+    "duplicate_output_teams": 0
+  },
+  "team_context": {
+    "path": "data/processed/context/team_context.csv",
+    "sha256": "cfe77f492cd40986991a4ee32012ab18b624c0793731e722f93aa901264f066e",
+    "row_count": 20,
+    "column_count": 38,
+    "columns": [
+      "team_id",
+      "team_name",
+      "position",
+      "played",
+      "won",
+      "drawn",
+      "lost",
+      "goals_for",
+      "goals_against",
+      "goal_difference",
+      "points",
+      "form_matches_available",
+      "recent_results",
+      "recent_points",
+      "recent_wins",
+      "recent_draws",
+      "recent_losses",
+      "recent_goals_for",
+      "recent_goals_against",
+      "recent_goal_difference",
+      "home_form_matches_available",
+      "home_recent_results",
+      "home_recent_points",
+      "home_recent_wins",
+      "home_recent_draws",
+      "home_recent_losses",
+      "home_recent_goals_for",
+      "home_recent_goals_against",
+      "home_recent_goal_difference",
+      "away_form_matches_available",
+      "away_recent_results",
+      "away_recent_points",
+      "away_recent_wins",
+      "away_recent_draws",
+      "away_recent_losses",
+      "away_recent_goals_for",
+      "away_recent_goals_against",
+      "away_recent_goal_difference"
+    ],
+    "sort_order": "team_name ASC",
+    "team_namespace": "fixtureiq-team"
+  },
+  "dependency_identity": {
+    "stage8_context_contract": {
+      "path": "data/processed/context/stage8_context_contract.json",
+      "sha256": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d"
+    },
+    "stage8_context_contract_verification": {
+      "path": "data/processed/context/stage8_context_contract_verification.json",
+      "sha256": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0"
+    },
+    "current_standings": {
+      "path": "data/processed/context/current_standings.csv",
+      "sha256": "1c32164ec1b63620dcaa5e39b13d167695693782796ffd0dc2cce372de2d5a88",
+      "usage": "FULL_STANDINGS_CONTEXT"
+    },
+    "standings_report": {
+      "path": "data/processed/context/standings_report.json",
+      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc",
+      "usage": "VERIFIED_STANDINGS_PROVENANCE"
+    },
+    "current_team_form": {
+      "path": "data/processed/context/current_team_form.csv",
+      "sha256": "fcc9cb8b6e09b47f6e824592340174fbf825705d03f009226e6fb45042228666",
+      "usage": "FULL_CURRENT_FORM_CONTEXT"
+    },
+    "team_form_report": {
+      "path": "data/processed/context/team_form_report.json",
+      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280",
+      "usage": "VERIFIED_FORM_PROVENANCE"
+    }
+  },
+  "freshness": {
+    "mode": "DEPENDENCY_BASED",
+    "current_standings_change_invalidates_context": true,
+    "standings_report_change_invalidates_context": true,
+    "current_team_form_change_invalidates_context": true,
+    "team_form_report_change_invalidates_context": true,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "fail_closed": true
+  },
+  "safety": {
+    "context_only": true,
+    "stage7_artifacts_modified": false,
+    "provider_fetch_performed": false,
+    "standings_rebuilt": false,
+    "team_form_rebuilt": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "production_predictions_modified": false,
+    "feature_schema_modified": false,
+    "team_context_used_as_model_features": false,
+    "final_test_accessed": false
+  },
+  "failures": []
+}
