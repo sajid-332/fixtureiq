@@ -1,0 +1,102 @@
+{
+  "stage": "8.6",
+  "status": "PASS",
+  "stage_8_6_complete": true,
+  "stage_8_6_status": "COMPLETE",
+  "context_rest_api": "VERIFIED",
+  "verified_at_utc": "2026-09-11T17:51:47.556247+00:00",
+  "sub_stages": {
+    "8.6.1": "PASS",
+    "8.6.2": "PASS",
+    "8.6.3": "PASS",
+    "8.6.4": "PASS",
+    "8.6.5": "PASS"
+  },
+  "api_contract": {
+    "version": "v1",
+    "stage": "8.6",
+    "read_only": true,
+    "route_count": 10,
+    "routes": [
+      "/api/v1/context/status",
+      "/api/v1/context/standings",
+      "/api/v1/context/standings/<path:team_name>",
+      "/api/v1/context/form",
+      "/api/v1/context/form/<path:team_name>",
+      "/api/v1/context/teams",
+      "/api/v1/context/teams/<path:team_name>",
+      "/api/v1/context/fixtures",
+      "/api/v1/context/fixtures/<fixture_id>",
+      "/api/v1/context/fixtures/team/<path:team_name>"
+    ],
+    "allowed_methods": [
+      "GET"
+    ],
+    "unknown_resource_status": 404,
+    "not_ready_status": 503,
+    "write_method_status": 405
+  },
+  "layers": {
+    "standings": "READY",
+    "team_form": "READY",
+    "team_context": "READY",
+    "fixture_context": "READY"
+  },
+  "verification": {
+    "flask_registration_verified": true,
+    "status_endpoint_verified": true,
+    "standings_endpoints_verified": true,
+    "form_endpoints_verified": true,
+    "team_context_endpoints_verified": true,
+    "fixture_context_endpoints_verified": true,
+    "single_resource_lookup_verified": true,
+    "team_fixture_lookup_verified": true,
+    "not_found_behavior_verified": true,
+    "read_only_http_boundary_verified": true,
+    "public_field_boundary_verified": true,
+    "existing_health_route_preserved": true,
+    "existing_production_routes_preserved": true
+  },
+  "dependency_identity": {
+    "stage8_context_contract": {
+      "path": "data/processed/context/stage8_context_contract.json",
+      "sha256": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d"
+    },
+    "stage8_context_contract_verification": {
+      "path": "data/processed/context/stage8_context_contract_verification.json",
+      "sha256": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0"
+    },
+    "standings_report": {
+      "path": "data/processed/context/standings_report.json",
+      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc"
+    },
+    "team_form_report": {
+      "path": "data/processed/context/team_form_report.json",
+      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280"
+    },
+    "team_context_report": {
+      "path": "data/processed/context/team_context_report.json",
+      "sha256": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797"
+    },
+    "fixture_context_report": {
+      "path": "data/processed/context/fixture_context_report.json",
+      "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48"
+    }
+  },
+  "safety": {
+    "read_only": true,
+    "context_only": true,
+    "provider_fetch_performed": false,
+    "context_rebuilt": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "production_predictions_modified": false,
+    "feature_schema_modified": false,
+    "context_used_as_model_features": false,
+    "stage7_artifacts_modified": false,
+    "final_test_accessed": false,
+    "private_dependency_hashes_exposed": false
+  },
+  "failures": []
+}
