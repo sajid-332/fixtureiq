@@ -1,0 +1,92 @@
+{
+  "stage": "8.7",
+  "status": "PARTIAL_PASS",
+  "stage_8_7_complete": false,
+  "sub_stages": {
+    "8.7.1": "PASS",
+    "8.7.2": "PASS",
+    "8.7.3": "PENDING",
+    "8.7.4": "PENDING",
+    "8.7.5": "PENDING"
+  },
+  "runtime_freshness_contract": "VERIFIED",
+  "http_stale_state_fail_closed": "VERIFIED",
+  "verified_at_utc": "2026-09-11T18:01:37.066941+00:00",
+  "runtime_contract": {
+    "service_validation_timing": "REQUEST_TIME",
+    "stale_context_http_status": 503,
+    "unknown_resource_http_status": 404,
+    "write_method_http_status": 405,
+    "dependency_freshness_required": true,
+    "transitive_dependency_freshness_required": true,
+    "temporal_freshness_required": true,
+    "fixture_kickoff_boundary_enforced": true,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "private_failure_reason_exposed": false,
+    "fail_closed": true,
+    "provider_fetch_during_request": false,
+    "context_rebuild_during_request": false,
+    "model_execution_during_request": false
+  },
+  "http_fail_closed_verification": {
+    "baseline_http_ready": true,
+    "direct_fixture_staleness_to_503": true,
+    "direct_team_context_staleness_to_503": true,
+    "production_history_transitive_team_staleness_to_503": true,
+    "production_history_transitive_fixture_staleness_to_503": true,
+    "fixture_kickoff_expiry_to_503": true,
+    "missing_artifact_to_503": true,
+    "global_status_propagates_not_ready": true,
+    "not_ready_payload_public_safe": true,
+    "private_failure_reason_exposed": false,
+    "stale_data_served": false,
+    "fail_closed": true
+  },
+  "dependency_identity": {
+    "stage8_context_contract": {
+      "path": "data/processed/context/stage8_context_contract.json",
+      "sha256": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d"
+    },
+    "stage8_context_contract_verification": {
+      "path": "data/processed/context/stage8_context_contract_verification.json",
+      "sha256": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0"
+    },
+    "context_api_verification": {
+      "path": "data/processed/context/context_api_verification.json",
+      "sha256": "3a9842476a86e56fcda1a2bb04ebd7588eda75cc0b967567f8162730b27faa42"
+    },
+    "standings_report": {
+      "path": "data/processed/context/standings_report.json",
+      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc"
+    },
+    "team_form_report": {
+      "path": "data/processed/context/team_form_report.json",
+      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280"
+    },
+    "team_context_report": {
+      "path": "data/processed/context/team_context_report.json",
+      "sha256": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797"
+    },
+    "fixture_context_report": {
+      "path": "data/processed/context/fixture_context_report.json",
+      "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48"
+    }
+  },
+  "safety": {
+    "read_only": true,
+    "context_only": true,
+    "provider_fetch_performed": false,
+    "context_rebuilt": false,
+    "stage7_artifacts_modified": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "production_predictions_modified": false,
+    "feature_schema_modified": false,
+    "context_used_as_model_features": false,
+    "final_test_accessed": false,
+    "stale_data_served": false
+  },
+  "failures": []
+}
