@@ -1,13 +1,13 @@
 {
   "stage": "8.5",
-  "status": "PARTIAL_PASS",
-  "stage_8_5_complete": false,
+  "status": "PASS",
+  "stage_8_5_complete": true,
   "sub_stages": {
     "8.5.1": "PASS",
     "8.5.2": "PASS",
     "8.5.3": "PASS",
     "8.5.4": "PASS",
-    "8.5.5": "PENDING"
+    "8.5.5": "PASS"
   },
   "upcoming_fixture_source_gate": "VERIFIED",
   "home_away_context_join": "VERIFIED",
@@ -320,5 +320,49 @@
     "partial_unverified_output_allowed": false,
     "fail_closed": true
   },
-  "stage_8_5_4_verified_at_utc": "2026-09-11T15:17:06.654731+00:00"
+  "stage_8_5_4_verified_at_utc": "2026-09-11T15:17:06.654731+00:00",
+  "stage_8_5_status": "COMPLETE",
+  "fixture_context_enrichment_layer": "VERIFIED",
+  "stage_8_5_5_verified_at_utc": "2026-09-11T15:22:58.840186+00:00",
+  "final_gate": {
+    "stage": "8.5.5",
+    "status": "PASS",
+    "verified_at_utc": "2026-09-11T15:22:58.840186+00:00",
+    "fixture_count": 350,
+    "context_team_count": 20,
+    "home_context_fields": 36,
+    "away_context_fields": 36,
+    "total_context_fields": 72,
+    "source_fixture_preservation_verified": true,
+    "strict_home_identity_verified": true,
+    "strict_away_identity_verified": true,
+    "home_context_preservation_verified": true,
+    "away_context_preservation_verified": true,
+    "independent_reconstruction_verified": true,
+    "shared_context_snapshot_verified": true,
+    "future_fixture_state_propagation": false,
+    "fixture_context_service_ready": true,
+    "dependency_freshness_verified": true,
+    "transitive_freshness_verified": true,
+    "temporal_freshness_verified": true,
+    "fail_closed_verified": true,
+    "locked_model_unchanged": true,
+    "locked_model_feature_count": 86,
+    "fixture_context_used_as_model_features": false,
+    "stage7_write_protection": true,
+    "context_only": true,
+    "final_test_untouched": true
+  },
+  "evidence_sha256": {
+    "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
+    "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
+    "upcoming_fixtures": "9d4dcc0f2e5710b3dc261e15b622aaa7e1077045b281e27a6eeea4707afedd2b",
+    "production_fixture_fetch_report": "853f8e859d3f361e79e1a2b37388c9a94b5fde8935d6a2a71d58f2f09584484b",
+    "team_context": "cfe77f492cd40986991a4ee32012ab18b624c0793731e722f93aa901264f066e",
+    "team_context_report": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797",
+    "enriched_upcoming_fixtures": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462",
+    "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "stage7_8_final_verification": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+    "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
+  }
 }
