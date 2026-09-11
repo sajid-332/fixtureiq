@@ -1,0 +1,181 @@
+{
+  "stage": "8.8",
+  "status": "PASS",
+  "stage_8_complete": true,
+  "stage_8_status": "COMPLETE",
+  "stage8_context_layer": "VERIFIED",
+  "verified_at_utc": "2026-09-11T18:27:02.926278+00:00",
+  "sub_stages": {
+    "8.8.1": "PASS",
+    "8.8.2": "PASS",
+    "8.8.3": "PASS",
+    "8.8.4": "PASS",
+    "8.8.5": "PASS"
+  },
+  "stage_summary": {
+    "8.1_context_contract": "COMPLETE",
+    "8.2_live_epl_standings": "COMPLETE",
+    "8.3_current_team_form": "COMPLETE",
+    "8.4_unified_team_context": "COMPLETE",
+    "8.5_fixture_context_enrichment": "COMPLETE",
+    "8.6_context_rest_api": "COMPLETE",
+    "8.7_context_runtime_safety": "COMPLETE",
+    "8.8_final_verification_gate": "COMPLETE"
+  },
+  "context_stack": {
+    "standings_service": "READY",
+    "team_form_service": "READY",
+    "team_context_service": "READY",
+    "fixture_context_service": "READY",
+    "context_api": "READY",
+    "team_count": 20,
+    "fixture_count": 350,
+    "standings_columns": 11,
+    "team_form_columns": 29,
+    "team_context_columns": 38,
+    "fixture_context_columns_appended": 72
+  },
+  "api": {
+    "version": "v1",
+    "route_count": 10,
+    "read_only": true,
+    "baseline_http_status": 200,
+    "stale_http_status": 503,
+    "unknown_resource_status": 404,
+    "write_method_status": 405,
+    "no_store": true,
+    "request_time_revalidation": true,
+    "runtime_recovery_without_restart": true
+  },
+  "locked_model": {
+    "model_id": "random_forest",
+    "feature_count": 86,
+    "sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "contract_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "contract_identity_match": true,
+    "unchanged": true,
+    "used_by_stage8_context": false
+  },
+  "dependency_identity": {
+    "stage7_8_final_verification": {
+      "path": "data/processed/production/stage7_8_final_verification.json",
+      "sha256": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c"
+    },
+    "stage7_9_final_verification": {
+      "path": "data/processed/production/stage7_9_final_verification.json",
+      "sha256": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
+    },
+    "stage8_context_contract": {
+      "path": "data/processed/context/stage8_context_contract.json",
+      "sha256": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d"
+    },
+    "stage8_context_contract_verification": {
+      "path": "data/processed/context/stage8_context_contract_verification.json",
+      "sha256": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0"
+    },
+    "standings_report": {
+      "path": "data/processed/context/standings_report.json",
+      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc"
+    },
+    "team_form_report": {
+      "path": "data/processed/context/team_form_report.json",
+      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280"
+    },
+    "team_context_report": {
+      "path": "data/processed/context/team_context_report.json",
+      "sha256": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797"
+    },
+    "fixture_context_report": {
+      "path": "data/processed/context/fixture_context_report.json",
+      "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48"
+    },
+    "context_api_verification": {
+      "path": "data/processed/context/context_api_verification.json",
+      "sha256": "3a9842476a86e56fcda1a2bb04ebd7588eda75cc0b967567f8162730b27faa42"
+    },
+    "context_runtime_verification": {
+      "path": "data/processed/context/context_runtime_verification.json",
+      "sha256": "19a08e81a58eb320cc51973fa3ec73f5cac86ac4f61a23c7177f28e8cf4575bc"
+    },
+    "selected_model": {
+      "path": "data/processed/model/selected/selected_model.joblib",
+      "sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e"
+    }
+  },
+  "code_identity": {
+    "flask_app": {
+      "path": "backend/app.py",
+      "sha256": "65555f4407ed1bcb9808a737b8acb21beae55004f6926cd8f528ccecc92a51ac"
+    },
+    "context_api": {
+      "path": "backend/routes/context_api.py",
+      "sha256": "03f455515759c7bbbc5c69ce740bc7b1c37da6ce1b9c90451daf88fa23a4384c"
+    },
+    "standings_service": {
+      "path": "backend/services/standings_service.py",
+      "sha256": "37aff44e6c9e44046e8c8a41ca9274f4d6d34d2d88d391ce065a183a944172a8"
+    },
+    "team_form_service": {
+      "path": "backend/services/team_form_service.py",
+      "sha256": "9d787b6c1f4998a372b0c82d30d7156ece20fa9ec3ad4bf5f0cf688d5b9168f6"
+    },
+    "team_context_service": {
+      "path": "backend/services/team_context_service.py",
+      "sha256": "909af4c7f8376ad11ea39e3aa882761e9684f755e0c01c91fce6e22fe386c4d6"
+    },
+    "fixture_context_service": {
+      "path": "backend/services/fixture_context_service.py",
+      "sha256": "4a2b7e62aa0db74e099d92b61b4ff0eee35c69835f619e57c73a7a14f852f944"
+    },
+    "fixture_context_validator": {
+      "path": "backend/services/fixture_context_validator.py",
+      "sha256": "29be5451c16477570d9d63b532cd056770e32e1ffbf62254d822bf25284a85d5"
+    }
+  },
+  "safety": {
+    "context_only": true,
+    "read_only": true,
+    "fail_closed": true,
+    "provider_fetch_performed": false,
+    "context_rebuilt_by_final_gate": false,
+    "stage7_artifacts_modified": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "model_retrained": false,
+    "model_reselected": false,
+    "hyperparameter_tuned": false,
+    "production_predictions_modified": false,
+    "feature_schema_modified": false,
+    "context_used_as_model_features": false,
+    "standings_used_as_model_features": false,
+    "form_used_as_model_features": false,
+    "fixture_context_used_as_model_features": false,
+    "future_results_used": false,
+    "future_fixture_state_propagation": false,
+    "stale_data_served": false,
+    "http_cache_storage_allowed": false,
+    "final_test_accessed": false
+  },
+  "final_gate": {
+    "status": "PASS",
+    "stage8_contract_locked": true,
+    "all_stage8_layers_complete": true,
+    "all_context_services_ready": true,
+    "independent_fixture_validation_pass": true,
+    "dependency_chain_verified": true,
+    "context_api_verified": true,
+    "runtime_safety_verified": true,
+    "no_stale_cache_verified": true,
+    "runtime_recovery_verified": true,
+    "locked_model_identity_verified": true,
+    "locked_model_unchanged": true,
+    "locked_feature_count": 86,
+    "stage7_production_api_preserved": true,
+    "stage7_write_protection_verified": true,
+    "context_only_boundary_verified": true,
+    "final_test_untouched": true,
+    "fixtureiq_stage8_ready": true
+  },
+  "failures": []
+}
