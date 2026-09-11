@@ -5,7 +5,7 @@
   "sub_stages": {
     "8.5.1": "PASS",
     "8.5.2": "PASS",
-    "8.5.3": "PENDING",
+    "8.5.3": "PASS",
     "8.5.4": "PENDING",
     "8.5.5": "PENDING"
   },
@@ -267,5 +267,37 @@
     "fixture_context_used_as_model_features": false,
     "final_test_accessed": false
   },
-  "failures": []
+  "failures": [],
+  "independent_fixture_context_validation": "VERIFIED",
+  "independent_validation": {
+    "status": "VERIFIED",
+    "fixture_count": 350,
+    "source_column_count": 22,
+    "context_fields_per_team": 36,
+    "context_fields_appended": 72,
+    "enriched_column_count": 94,
+    "fixture_ids_unique": true,
+    "provider_fixture_ids_unique_when_present": true,
+    "source_fields_preserved": true,
+    "strict_home_identity_verified": true,
+    "strict_away_identity_verified": true,
+    "home_context_preservation_verified": true,
+    "away_context_preservation_verified": true,
+    "exact_independent_reconstruction_verified": true,
+    "row_count_preserved": true,
+    "deterministic_sort_verified": true,
+    "all_fixtures_future": true,
+    "form_cutoff_verified": true,
+    "team_context_temporal_boundary_verified": true,
+    "fixture_snapshot_provenance_verified": true,
+    "shared_context_snapshot_verified": true,
+    "future_fixture_state_propagation": false,
+    "dependency_identity_verified": true,
+    "freshness_contract_verified": true,
+    "safety_verified": true,
+    "earliest_fixture_kickoff_utc": "2026-09-12T14:00:00+00:00",
+    "latest_fixture_kickoff_utc": "2027-05-30T15:00:00+00:00",
+    "enriched_artifact_sha256": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462"
+  },
+  "stage_8_5_3_verified_at_utc": "2026-09-11T15:06:20.801266+00:00"
 }
