@@ -63,6 +63,38 @@ context_api_bp = Blueprint(
     url_prefix="/api/v1/context",
 )
 
+# ============================================================
+# Stage 8.7 Runtime Cache Safety
+# ============================================================
+
+@context_api_bp.after_request
+def context_runtime_cache_policy(
+    response,
+):
+    """
+    Context responses are dependency-sensitive and time-sensitive.
+
+    Never allow browsers or intermediary caches to reuse a
+    previously verified response after its underlying context
+    has become stale.
+    """
+
+    response.headers[
+        "Cache-Control"
+    ] = (
+        "no-store, no-cache, "
+        "must-revalidate, max-age=0"
+    )
+
+    response.headers[
+        "Pragma"
+    ] = "no-cache"
+
+    response.headers[
+        "Expires"
+    ] = "0"
+
+    return response
 
 # ============================================================
 # Public contract

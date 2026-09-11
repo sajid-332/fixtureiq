@@ -1,13 +1,13 @@
 {
   "stage": "8.7",
-  "status": "PARTIAL_PASS",
-  "stage_8_7_complete": false,
+  "status": "PASS",
+  "stage_8_7_complete": true,
   "sub_stages": {
     "8.7.1": "PASS",
     "8.7.2": "PASS",
-    "8.7.3": "PENDING",
-    "8.7.4": "PENDING",
-    "8.7.5": "PENDING"
+    "8.7.3": "PASS",
+    "8.7.4": "PASS",
+    "8.7.5": "PASS"
   },
   "runtime_freshness_contract": "VERIFIED",
   "http_stale_state_fail_closed": "VERIFIED",
@@ -86,7 +86,82 @@
     "feature_schema_modified": false,
     "context_used_as_model_features": false,
     "final_test_accessed": false,
-    "stale_data_served": false
+    "stale_data_served": false,
+    "http_cache_storage_allowed": false,
+    "runtime_recovery_verified": true
   },
-  "failures": []
+  "failures": [],
+  "stage_8_7_status": "COMPLETE",
+  "context_runtime_safety": "VERIFIED",
+  "stage_8_7_3_verified_at_utc": "2026-09-11T18:11:08.866037+00:00",
+  "stage_8_7_4_verified_at_utc": "2026-09-11T18:11:08.866037+00:00",
+  "stage_8_7_5_verified_at_utc": "2026-09-11T18:11:08.866037+00:00",
+  "cache_and_request_isolation": {
+    "status": "VERIFIED",
+    "cache_control": "no-store, no-cache, must-revalidate, max-age=0",
+    "pragma": "no-cache",
+    "expires": "0",
+    "ready_response_no_store": true,
+    "not_found_response_no_store": true,
+    "not_ready_response_no_store": true,
+    "service_constructed_per_request": true,
+    "runtime_state_rechecked_per_request": true,
+    "response_payload_reused": false,
+    "stale_response_reuse_allowed": false,
+    "http_cache_storage_allowed": false
+  },
+  "runtime_recovery": {
+    "status": "VERIFIED",
+    "initial_state": "NOT_READY",
+    "initial_http_status": 503,
+    "restored_state": "READY",
+    "restored_http_status": 200,
+    "same_flask_application": true,
+    "same_test_client": true,
+    "flask_restart_required": false,
+    "request_time_revalidation": true,
+    "global_status_recovered": true,
+    "recovered_payload_ready": true,
+    "recovered_response_no_store": true
+  },
+  "runtime_code_identity": {
+    "context_api": {
+      "path": "backend/routes/context_api.py",
+      "sha256": "03f455515759c7bbbc5c69ce740bc7b1c37da6ce1b9c90451daf88fa23a4384c"
+    },
+    "flask_app": {
+      "path": "backend/app.py",
+      "sha256": "65555f4407ed1bcb9808a737b8acb21beae55004f6926cd8f528ccecc92a51ac"
+    },
+    "fixture_context_service": {
+      "path": "backend/services/fixture_context_service.py",
+      "sha256": "4a2b7e62aa0db74e099d92b61b4ff0eee35c69835f619e57c73a7a14f852f944"
+    },
+    "team_context_service": {
+      "path": "backend/services/team_context_service.py",
+      "sha256": "909af4c7f8376ad11ea39e3aa882761e9684f755e0c01c91fce6e22fe386c4d6"
+    }
+  },
+  "final_gate": {
+    "stage": "8.7.5",
+    "status": "PASS",
+    "verified_at_utc": "2026-09-11T18:11:08.866037+00:00",
+    "runtime_freshness_contract_verified": true,
+    "http_stale_state_fail_closed_verified": true,
+    "no_stale_cache_verified": true,
+    "request_isolation_verified": true,
+    "runtime_recovery_verified": true,
+    "dependency_freshness_verified": true,
+    "transitive_freshness_verified": true,
+    "temporal_freshness_verified": true,
+    "http_503_fail_closed_verified": true,
+    "runtime_503_to_200_verified": true,
+    "all_context_services_ready": true,
+    "context_api_ready": true,
+    "stage7_routes_preserved": true,
+    "locked_model_unchanged": true,
+    "locked_feature_count": 86,
+    "context_only": true,
+    "fail_closed": true
+  }
 }
