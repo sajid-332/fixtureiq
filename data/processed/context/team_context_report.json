@@ -5,7 +5,7 @@
   "sub_stages": {
     "8.4.1": "PASS",
     "8.4.2": "PASS",
-    "8.4.3": "PENDING",
+    "8.4.3": "PASS",
     "8.4.4": "PENDING",
     "8.4.5": "PENDING"
   },
@@ -137,5 +137,20 @@
     "team_context_used_as_model_features": false,
     "final_test_accessed": false
   },
-  "failures": []
+  "failures": [],
+  "independent_context_validation": "VERIFIED",
+  "independent_validation": {
+    "status": "VERIFIED",
+    "team_count": 20,
+    "column_count": 38,
+    "independent_join_verified": true,
+    "standings_arithmetic_verified": true,
+    "overall_form_verified": true,
+    "home_form_verified": true,
+    "away_form_verified": true,
+    "dependency_identity_verified": true,
+    "provenance_verified": true,
+    "safety_verified": true
+  },
+  "stage_8_4_3_verified_at_utc": "2026-09-11T13:57:05.501326+00:00"
 }
