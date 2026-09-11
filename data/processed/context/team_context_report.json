@@ -1,13 +1,13 @@
 {
   "stage": "8.4",
-  "status": "PARTIAL_PASS",
-  "stage_8_4_complete": false,
+  "status": "PASS",
+  "stage_8_4_complete": true,
   "sub_stages": {
     "8.4.1": "PASS",
     "8.4.2": "PASS",
     "8.4.3": "PASS",
     "8.4.4": "PASS",
-    "8.4.5": "PENDING"
+    "8.4.5": "PASS"
   },
   "upstream_context_readiness": "VERIFIED",
   "unified_team_context_builder": "VERIFIED",
@@ -173,5 +173,42 @@
     "partial_unverified_output_allowed": false,
     "fail_closed": true
   },
-  "stage_8_4_4_verified_at_utc": "2026-09-11T14:02:38.461273+00:00"
+  "stage_8_4_4_verified_at_utc": "2026-09-11T14:02:38.461273+00:00",
+  "stage_8_4_status": "COMPLETE",
+  "unified_team_context_layer": "VERIFIED",
+  "stage_8_4_5_verified_at_utc": "2026-09-11T14:11:51.080908+00:00",
+  "final_gate": {
+    "stage": "8.4.5",
+    "status": "PASS",
+    "verified_at_utc": "2026-09-11T14:11:51.080908+00:00",
+    "canonical_team_count": 20,
+    "canonical_column_count": 38,
+    "one_to_one_join_verified": true,
+    "standings_preservation_verified": true,
+    "overall_form_preservation_verified": true,
+    "home_form_preservation_verified": true,
+    "away_form_preservation_verified": true,
+    "independent_context_validation_verified": true,
+    "team_context_service_ready": true,
+    "dependency_freshness_verified": true,
+    "transitive_freshness_verified": true,
+    "fail_closed_verified": true,
+    "locked_model_unchanged": true,
+    "locked_model_feature_count": 86,
+    "stage7_write_protection": true,
+    "context_only": true,
+    "final_test_untouched": true
+  },
+  "evidence_sha256": {
+    "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
+    "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
+    "current_standings": "1c32164ec1b63620dcaa5e39b13d167695693782796ffd0dc2cce372de2d5a88",
+    "standings_report": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc",
+    "current_team_form": "fcc9cb8b6e09b47f6e824592340174fbf825705d03f009226e6fb45042228666",
+    "team_form_report": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280",
+    "team_context": "cfe77f492cd40986991a4ee32012ab18b624c0793731e722f93aa901264f066e",
+    "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
+    "stage7_8_final_verification": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+    "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
+  }
 }
