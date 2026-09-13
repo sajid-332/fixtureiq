@@ -1,7 +1,7 @@
 {
   "stage": "9.1",
   "contract_type": "MATCH_INTELLIGENCE_CONTRACT",
-  "contract_version": "1.2.0",
+  "contract_version": "1.2.1",
   "status": "LOCKED_MATCH_INTELLIGENCE_CONTRACT",
   "stage_9_1_complete": true,
   "stage_9_1_status": "COMPLETE",
@@ -30,113 +30,157 @@
     "allowed_inputs": {
       "production_predictions": {
         "path": "data/processed/production/production_predictions.csv",
-        "sha256": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628",
         "artifact_type": "CSV",
         "role": "CANONICAL_PREDICTION_VALUES",
         "authority": "STAGE7_PREDICTION_SOURCE_OF_TRUTH",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "production_prediction_metadata": {
         "path": "data/processed/production/production_prediction_metadata.json",
-        "sha256": "b4d8f60f9be29f53f70296f37f5c6d2149229beef31d88c1a74bb9ba92c80a64",
         "artifact_type": "JSON",
         "role": "PREDICTION_PROVENANCE",
         "authority": "STAGE7_VERIFIED_PROVENANCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "b4d8f60f9be29f53f70296f37f5c6d2149229beef31d88c1a74bb9ba92c80a64",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "production_prediction_report": {
         "path": "data/processed/production/production_prediction_report.json",
-        "sha256": "559d3bbe98fe01d575e647c295b4f8fb2e67d7120f5dc8908888ae999c3dd42e",
         "artifact_type": "JSON",
         "role": "PREDICTION_BUILD_EVIDENCE",
         "authority": "STAGE7_VERIFIED_PROVENANCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "559d3bbe98fe01d575e647c295b4f8fb2e67d7120f5dc8908888ae999c3dd42e",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "production_prediction_verification": {
         "path": "data/processed/production/production_prediction_verification.json",
-        "sha256": "40cf60f9601269abd6b351613a0da7fe4383b461484ccfa4c5e70dba37d951c5",
         "artifact_type": "JSON",
         "role": "INDEPENDENT_PREDICTION_VALIDATION",
         "authority": "STAGE7_VERIFIED_PROVENANCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "40cf60f9601269abd6b351613a0da7fe4383b461484ccfa4c5e70dba37d951c5",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "stage7_8_final_verification": {
         "path": "data/processed/production/stage7_8_final_verification.json",
-        "sha256": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
         "artifact_type": "JSON",
         "role": "PRODUCTION_INFERENCE_FINAL_GATE",
         "authority": "STAGE7_FINAL_EVIDENCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "stage7_9_final_verification": {
         "path": "data/processed/production/stage7_9_final_verification.json",
-        "sha256": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f",
         "artifact_type": "JSON",
         "role": "PRODUCTION_SERVING_FINAL_GATE",
         "authority": "STAGE7_FINAL_EVIDENCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "enriched_upcoming_fixtures": {
         "path": "data/processed/context/enriched_upcoming_fixtures.csv",
-        "sha256": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462",
         "artifact_type": "CSV",
         "role": "CANONICAL_MATCH_CONTEXT",
         "authority": "STAGE8_CONTEXT_SOURCE_OF_TRUTH",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "fixture_context_report": {
         "path": "data/processed/context/fixture_context_report.json",
-        "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48",
         "artifact_type": "JSON",
         "role": "FIXTURE_CONTEXT_PROVENANCE",
         "authority": "STAGE8_VERIFIED_PROVENANCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "context_api_verification": {
         "path": "data/processed/context/context_api_verification.json",
-        "sha256": "3a9842476a86e56fcda1a2bb04ebd7588eda75cc0b967567f8162730b27faa42",
         "artifact_type": "JSON",
         "role": "CONTEXT_API_EVIDENCE",
         "authority": "STAGE8_VERIFICATION_EVIDENCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "3a9842476a86e56fcda1a2bb04ebd7588eda75cc0b967567f8162730b27faa42",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "context_runtime_verification": {
         "path": "data/processed/context/context_runtime_verification.json",
-        "sha256": "19a08e81a58eb320cc51973fa3ec73f5cac86ac4f61a23c7177f28e8cf4575bc",
         "artifact_type": "JSON",
         "role": "CONTEXT_RUNTIME_EVIDENCE",
         "authority": "STAGE8_VERIFICATION_EVIDENCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "19a08e81a58eb320cc51973fa3ec73f5cac86ac4f61a23c7177f28e8cf4575bc",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       },
       "stage8_final_verification": {
         "path": "data/processed/context/stage8_final_verification.json",
-        "sha256": "ba6bbdc9965d8e000e20389655a70677fefaa4a23cc1196678496a9248299e89",
         "artifact_type": "JSON",
         "role": "STAGE8_FINAL_GATE",
         "authority": "STAGE8_FINAL_EVIDENCE",
         "required": true,
         "read_only": true,
-        "stage9_write_allowed": false
+        "stage9_write_allowed": false,
+        "observed_sha256_at_contract_creation": "ba6bbdc9965d8e000e20389655a70677fefaa4a23cc1196678496a9248299e89",
+        "dependency_hash_policy": "CAPTURE_AT_DOWNSTREAM_BUILD",
+        "contract_runtime_hash_pin": false,
+        "downstream_snapshot_hash_required": true,
+        "runtime_content_may_change": true
       }
     },
     "input_authority": {
@@ -976,7 +1020,11 @@
       "automatic_best_effort_reconciliation_allowed": false,
       "rebuild_required_after_dependency_change": true,
       "runtime_revalidation_required": true,
-      "fail_closed": true
+      "fail_closed": true,
+      "dependency_hash_anchor": "DOWNSTREAM_STAGE_BUILD_REPORT",
+      "contract_creation_hash_is_runtime_freshness_anchor": false,
+      "current_dependency_hash_must_match_downstream_build_report": true,
+      "dependency_change_requires_downstream_rebuild": true
     },
     "provenance_contract": {
       "content_hash_algorithm": "SHA256",
@@ -998,7 +1046,9 @@
       "filesystem_mtime_as_provenance_allowed": false,
       "fabricated_source_timestamp_allowed": false,
       "provider_timestamp_fabrication_allowed": false,
-      "unverifiable_provenance_allowed": false
+      "unverifiable_provenance_allowed": false,
+      "downstream_build_report_captures_dependency_hashes": true,
+      "contract_pins_dynamic_snapshot_hashes": false
     },
     "runtime_readiness_contract": {
       "ready_state": "READY",
@@ -1040,5 +1090,24 @@
     "bookmaker_odds_prohibited": true,
     "fail_closed": true,
     "match_intelligence_contract_locked": true
-  }
+  },
+  "dependency_snapshot_policy": {
+    "mode": "CAPTURE_AT_DOWNSTREAM_BUILD",
+    "policy_contract_is_immutable": true,
+    "dynamic_source_content_may_refresh": true,
+    "contract_permanently_pins_dynamic_hashes": false,
+    "downstream_build_report_pins_snapshot_hashes": true,
+    "changed_dependency_invalidates_existing_downstream_artifact": true,
+    "changed_dependency_requires_downstream_rebuild": true
+  },
+  "maintenance_history": [
+    {
+      "version": "1.2.1",
+      "applied_at_utc": "2026-09-13T15:19:05.730164+00:00",
+      "type": "DYNAMIC_SNAPSHOT_POLICY_FIX",
+      "policy_semantics_changed": false,
+      "snapshot_hash_anchor_corrected": true,
+      "reason": "Separate immutable Stage 9 policy from refreshable Stage 7/8 snapshots."
+    }
+  ]
 }

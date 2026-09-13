@@ -1169,3 +1169,11 @@ fixture_id,season,date,timestamp,timezone,status_short,status_long,status_elapse
 -170418702085202,2026,2026-09-05 16:30:00+00:00,1788625800,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 3,-44103427291829,Hull City,HUL,66,Aston Villa,AVL,0,0
 -182366084053735,2026,2026-09-06 13:00:00+00:00,1788699600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 3,45,Everton,EVE,33,Manchester United,MUN,2,2
 -89262375271793,2026,2026-09-06 15:30:00+00:00,1788708600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 3,42,Arsenal,ARS,49,Chelsea,CHE,2,1
+-231630590965307,2026,2026-09-12 14:00:00+00:00,1789221600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,49,Chelsea,CHE,-44103427291829,Hull City,HUL,2,2
+-151561678088964,2026,2026-09-12 14:00:00+00:00,1789221600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,52,Crystal Palace,CRY,57,Ipswich,IPS,2,3
+-113111090543109,2026,2026-09-12 14:00:00+00:00,1789221600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,66,Aston Villa,AVL,65,Nottingham Forest,NOT,1,2
+-89933302505739,2026,2026-09-12 14:00:00+00:00,1789221600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,40,Liverpool,LIV,36,Fulham,FUL,0,0
+-38335611417492,2026,2026-09-12 14:00:00+00:00,1789221600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,35,Bournemouth,BOU,55,Brentford,BRE,2,2
+-154606826164875,2026,2026-09-12 16:30:00+00:00,1789230600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,47,Tottenham,TOT,45,Everton,EVE,0,0
+-180148936024882,2026,2026-09-12 19:00:00+00:00,1789239600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,-218557486738561,Sunderland,SUN,42,Arsenal,ARS,0,2
+-170597791555127,2026,2026-09-13 13:00:00+00:00,1789304400,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,-39195573837902,Coventry City,COV,51,Brighton,BHA,0,5

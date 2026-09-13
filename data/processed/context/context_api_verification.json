@@ -4,7 +4,7 @@
   "stage_8_6_complete": true,
   "stage_8_6_status": "COMPLETE",
   "context_rest_api": "VERIFIED",
-  "verified_at_utc": "2026-09-11T17:51:47.556247+00:00",
+  "verified_at_utc": "2026-09-13T15:19:41.278971+00:00",
   "sub_stages": {
     "8.6.1": "PASS",
     "8.6.2": "PASS",
@@ -68,19 +68,19 @@
     },
     "standings_report": {
       "path": "data/processed/context/standings_report.json",
-      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc"
+      "sha256": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10"
     },
     "team_form_report": {
       "path": "data/processed/context/team_form_report.json",
-      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280"
+      "sha256": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48"
     },
     "team_context_report": {
       "path": "data/processed/context/team_context_report.json",
-      "sha256": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797"
+      "sha256": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3"
     },
     "fixture_context_report": {
       "path": "data/processed/context/fixture_context_report.json",
-      "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48"
+      "sha256": "759110d07bf79df3e1b901e1aff3049ec9bd90428b878e1709ce85e7de46c8f7"
     }
   },
   "safety": {

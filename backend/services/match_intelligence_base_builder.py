@@ -877,16 +877,30 @@ class MatchIntelligenceBaseBuilder:
             )
 
             if (
-                current_sha
-                != item.get(
-                    "sha256"
+                item.get(
+                    "dependency_hash_policy"
                 )
+                != "CAPTURE_AT_DOWNSTREAM_BUILD"
             ):
 
                 raise MatchIntelligenceBaseBuildError(
                     (
-                        f"Locked dependency {name!r} "
-                        "changed before Stage 9.2.3 build."
+                        f"Dependency {name!r} does not use "
+                        "the locked downstream snapshot policy."
+                    )
+                )
+
+            if (
+                item.get(
+                    "contract_runtime_hash_pin"
+                )
+                is not False
+            ):
+
+                raise MatchIntelligenceBaseBuildError(
+                    (
+                        f"Dependency {name!r} incorrectly "
+                        "uses a permanent contract hash pin."
                     )
                 )
 

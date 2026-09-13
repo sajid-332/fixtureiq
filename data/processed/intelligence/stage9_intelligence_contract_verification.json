@@ -4,7 +4,7 @@
   "stage_9_1_complete": true,
   "stage_9_1_status": "COMPLETE",
   "verified_at_utc": "2026-09-13T14:25:05.650310+00:00",
-  "contract_sha256": "8437f89e80ab53191447f22e3ec11af246711b866184bae5e024c1f4e64eb546",
+  "contract_sha256": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d",
   "sub_stages": {
     "9.1.1": "PASS",
     "9.1.2": "PASS",
@@ -92,7 +92,7 @@
   },
   "match_intelligence_contract": "VERIFIED",
   "contract_status": "LOCKED_MATCH_INTELLIGENCE_CONTRACT",
-  "contract_version": "1.2.0",
+  "contract_version": "1.2.1",
   "final_gate": {
     "stage": "9.1.5",
     "status": "PASS",
@@ -112,5 +112,10 @@
     "runtime_contract_locked": true,
     "fail_closed": true,
     "stage9_ready_for_9_2": true
-  }
+  },
+  "dependency_snapshot_policy": "VERIFIED",
+  "dependency_snapshot_policy_mode": "CAPTURE_AT_DOWNSTREAM_BUILD",
+  "permanent_dynamic_hash_pinning": false,
+  "downstream_snapshot_hashing_required": true,
+  "policy_migrated_at_utc": "2026-09-13T15:19:05.730164+00:00"
 }

@@ -4,7 +4,7 @@
   "stage_8_complete": true,
   "stage_8_status": "COMPLETE",
   "stage8_context_layer": "VERIFIED",
-  "verified_at_utc": "2026-09-11T18:27:02.926278+00:00",
+  "verified_at_utc": "2026-09-13T15:19:51.172033+00:00",
   "sub_stages": {
     "8.8.1": "PASS",
     "8.8.2": "PASS",
@@ -29,7 +29,7 @@
     "fixture_context_service": "READY",
     "context_api": "READY",
     "team_count": 20,
-    "fixture_count": 350,
+    "fixture_count": 342,
     "standings_columns": 11,
     "team_form_columns": 29,
     "team_context_columns": 38,
@@ -59,7 +59,7 @@
   "dependency_identity": {
     "stage7_8_final_verification": {
       "path": "data/processed/production/stage7_8_final_verification.json",
-      "sha256": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c"
+      "sha256": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816"
     },
     "stage7_9_final_verification": {
       "path": "data/processed/production/stage7_9_final_verification.json",
@@ -75,27 +75,27 @@
     },
     "standings_report": {
       "path": "data/processed/context/standings_report.json",
-      "sha256": "742a146bf414132b69406f3bd7857c3614fa84e06a4b9919b845d25f83a7e8fc"
+      "sha256": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10"
     },
     "team_form_report": {
       "path": "data/processed/context/team_form_report.json",
-      "sha256": "da6d5e45f531c26d70aebc04f9cd92d5de89ceb20eff6cbf542be72ca3968280"
+      "sha256": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48"
     },
     "team_context_report": {
       "path": "data/processed/context/team_context_report.json",
-      "sha256": "e82cd422f1521c249a43c5cdde6e4c8f4efb90228919b2fb6472db0a2d08e797"
+      "sha256": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3"
     },
     "fixture_context_report": {
       "path": "data/processed/context/fixture_context_report.json",
-      "sha256": "838961513605ec321df3026597d25109b649b7d6f482ecce7b615f17aa160e48"
+      "sha256": "759110d07bf79df3e1b901e1aff3049ec9bd90428b878e1709ce85e7de46c8f7"
     },
     "context_api_verification": {
       "path": "data/processed/context/context_api_verification.json",
-      "sha256": "3a9842476a86e56fcda1a2bb04ebd7588eda75cc0b967567f8162730b27faa42"
+      "sha256": "5aa70c47d50e74eb7dcfe2ab2824b97f5b42813676e7e18c89a9a96d4b164c11"
     },
     "context_runtime_verification": {
       "path": "data/processed/context/context_runtime_verification.json",
-      "sha256": "19a08e81a58eb320cc51973fa3ec73f5cac86ac4f61a23c7177f28e8cf4575bc"
+      "sha256": "6c08f63f395c66642fc845d704974428e01153a8a09016de089e72e1d428e3c3"
     },
     "selected_model": {
       "path": "data/processed/model/selected/selected_model.joblib",

@@ -2,8 +2,8 @@
   "stage": "7.8.4",
   "component": "independent_production_prediction_validation",
   "status": "PASS",
-  "verified_at_utc": "2026-09-07T05:47:00.886866+00:00",
-  "prediction_count": 350,
+  "verified_at_utc": "2026-09-13T15:06:03.740670+00:00",
+  "prediction_count": 342,
   "feature_count": 86,
   "model_id": "random_forest",
   "model_sha256": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
@@ -26,27 +26,27 @@
   "prediction_distribution": {
     "draw": {
       "count": 1,
-      "share": 0.002857142857142857
+      "share": 0.0029239766081871343
     },
     "home_win": {
-      "count": 177,
-      "share": 0.5057142857142857
+      "count": 172,
+      "share": 0.5029239766081871
     },
     "away_win": {
-      "count": 172,
-      "share": 0.49142857142857144
+      "count": 169,
+      "share": 0.49415204678362573
     }
   },
   "confidence": {
-    "average": 0.5001881990688313,
-    "minimum": 0.3684606739665563,
-    "maximum": 0.7290776334776335
+    "average": 0.5018817526223336,
+    "minimum": 0.3526574092574094,
+    "maximum": 0.7424427128427131
   },
   "warnings": [
     "Draw predictions represent less than 1% of the current production snapshot. This is a model-behavior diagnostic, not a pipeline-integrity failure."
   ],
   "failures": [],
-  "prediction_sha256": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628",
-  "production_feature_sha256": "02115ea697f6db85026906c6a95c6362f1b5de1f1d9a31df0b82afff01dfecdb",
-  "upcoming_fixture_sha256": "9d4dcc0f2e5710b3dc261e15b622aaa7e1077045b281e27a6eeea4707afedd2b"
+  "prediction_sha256": "dec5cf0447594f91daff958f25bdb81726f003e7d5dfc74421fab31e27e40289",
+  "production_feature_sha256": "3c57c7650d17a9773c1c78904e68ab2b764bc912c66df89c6a02f8b917583616",
+  "upcoming_fixture_sha256": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef"
 }

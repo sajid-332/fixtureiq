@@ -645,19 +645,43 @@ class PredictionContextJoinService:
 
             if (
                 item.get(
-                    "sha256"
+                    "dependency_hash_policy"
                 )
-                !=
-                _sha256_file(
-                    path
-                )
+                != "CAPTURE_AT_DOWNSTREAM_BUILD"
             ):
 
                 raise PredictionContextJoinError(
                     (
-                        f"Allowed input {name!r} "
-                        "no longer matches the locked "
-                        "Stage 9.1 dependency hash."
+                        f"Allowed input {name!r} has "
+                        "invalid dynamic snapshot policy."
+                    )
+                )
+
+            if (
+                item.get(
+                    "contract_runtime_hash_pin"
+                )
+                is not False
+            ):
+
+                raise PredictionContextJoinError(
+                    (
+                        f"Allowed input {name!r} incorrectly "
+                        "uses a permanent runtime hash pin."
+                    )
+                )
+
+            if (
+                item.get(
+                    "downstream_snapshot_hash_required"
+                )
+                is not True
+            ):
+
+                raise PredictionContextJoinError(
+                    (
+                        f"Allowed input {name!r} does not "
+                        "require downstream snapshot hashing."
                     )
                 )
 
@@ -762,6 +786,86 @@ class PredictionContextJoinService:
                     (
                         f"{name} does not have "
                         "status PASS."
+                    )
+                )
+
+        # ----------------------------------------------------
+        # Dynamic Stage 7 snapshot integrity
+        #
+        # The Stage 9.1 policy contract no longer permanently
+        # pins production snapshot hashes. The current
+        # production prediction artifact must instead be
+        # cryptographically anchored by the current Stage 7
+        # prediction metadata and prediction report.
+        # ----------------------------------------------------
+
+        prediction_sha = _sha256_file(
+            self.predictions_file
+        )
+
+        def contains_exact_value(
+            value,
+            target: str,
+        ) -> bool:
+
+            if isinstance(
+                value,
+                dict,
+            ):
+
+                return any(
+                    contains_exact_value(
+                        child,
+                        target,
+                    )
+
+                    for child in value.values()
+                )
+
+            if isinstance(
+                value,
+                list,
+            ):
+
+                return any(
+                    contains_exact_value(
+                        child,
+                        target,
+                    )
+
+                    for child in value
+                )
+
+            return (
+                isinstance(
+                    value,
+                    str,
+                )
+                and
+                value
+                == target
+            )
+
+        hash_evidence = {
+
+            "production_prediction_metadata":
+                metadata,
+
+            "production_prediction_report":
+                report,
+        }
+
+        for name, payload in hash_evidence.items():
+
+            if not contains_exact_value(
+                payload,
+                prediction_sha,
+            ):
+
+                raise PredictionSourceNotReadyError(
+                    (
+                        f"{name} does not anchor the current "
+                        "production_predictions.csv SHA256."
                     )
                 )
 

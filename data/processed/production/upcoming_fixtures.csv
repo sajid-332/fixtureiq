@@ -1,12 +1,4 @@
 fixture_id,provider_fixture_id,provider,date,timestamp,timezone,status_short,status_long,status_elapsed,league_id,league_name,country,season,round,home_team_id,home_team_name,home_team_code,provider_home_team_id,away_team_id,away_team_name,away_team_code,provider_away_team_id
--231630590965307,560581,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,49,Chelsea,CHE,61,-44103427291829,Hull City,HUL,322
--151561678088964,560572,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,52,Crystal Palace,CRY,354,57,Ipswich,IPS,349
--113111090543109,560574,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,66,Aston Villa,AVL,58,65,Nottingham Forest,NOT,351
--89933302505739,560573,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,40,Liverpool,LIV,64,36,Fulham,FUL,63
--38335611417492,560576,football-data.org,2026-09-12 14:00:00+00:00,1789221600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,35,Bournemouth,BOU,1044,55,Brentford,BRE,402
--154606826164875,560575,football-data.org,2026-09-12 16:30:00+00:00,1789230600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,47,Tottenham,TOT,73,45,Everton,EVE,62
--180148936024882,560577,football-data.org,2026-09-12 19:00:00+00:00,1789239600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,-218557486738561,Sunderland,SUN,71,42,Arsenal,ARS,57
--170597791555127,560578,football-data.org,2026-09-13 13:00:00+00:00,1789304400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,-39195573837902,Coventry City,COV,1076,51,Brighton,BHA,397
 -23708102576785,560580,football-data.org,2026-09-13 15:30:00+00:00,1789313400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,33,Manchester United,MUN,66,50,Manchester City,MCI,65
 -211199180133122,560579,football-data.org,2026-09-14 19:00:00+00:00,1789412400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,-156530674508954,Leeds,LEE,341,34,Newcastle,NEW,67
 -250369013814812,560591,football-data.org,2026-09-18 19:00:00+00:00,1789758000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 5,55,Brentford,BRE,402,49,Chelsea,CHE,61
@@ -129,46 +121,46 @@ fixture_id,provider_fixture_id,provider,date,timestamp,timezone,status_short,sta
 -67688375487991,560699,football-data.org,2026-12-19 15:00:00+00:00,1797692400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 16,42,Arsenal,ARS,57,33,Manchester United,MUN,66
 -56523686801031,560701,football-data.org,2026-12-19 15:00:00+00:00,1797692400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 16,49,Chelsea,CHE,61,66,Aston Villa,AVL,58
 -6120737004971,560700,football-data.org,2026-12-19 15:00:00+00:00,1797692400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 16,40,Liverpool,LIV,64,47,Tottenham,TOT,73
--263303153250960,560704,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,52,Crystal Palace,CRY,354,42,Arsenal,ARS,57
--225060982988691,560710,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,-44103427291829,Hull City,HUL,322,40,Liverpool,LIV,64
+-150173229540830,560702,football-data.org,2026-12-26 12:30:00+00:00,1798288200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,66,Aston Villa,AVL,58,-156530674508954,Leeds,LEE,341
 -208590234542635,560711,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,57,Ipswich,IPS,349,55,Brentford,BRE,402
 -202570097184697,560709,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,47,Tottenham,TOT,73,35,Bournemouth,BOU,1044
 -185187531298524,560705,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,45,Everton,EVE,62,-218557486738561,Sunderland,SUN,71
 -161199794240286,560708,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,36,Fulham,FUL,63,51,Brighton,BHA,397
--150173229540830,560702,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,66,Aston Villa,AVL,58,-156530674508954,Leeds,LEE,341
--135757504596199,560707,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,34,Newcastle,NEW,67,50,Manchester City,MCI,65
--132909948668208,560703,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,33,Manchester United,MUN,66,65,Nottingham Forest,NOT,351
--33979042353135,560706,football-data.org,2026-12-26 15:00:00+00:00,1798297200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,-39195573837902,Coventry City,COV,1076,49,Chelsea,CHE,61
--251230946870793,560714,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,66,Aston Villa,AVL,58,40,Liverpool,LIV,64
--221854891029213,560720,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,45,Everton,EVE,62,50,Manchester City,MCI,65
--220459577594395,560715,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,34,Newcastle,NEW,67,65,Nottingham Forest,NOT,351
--185595093031419,560716,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,-44103427291829,Hull City,HUL,322,-156530674508954,Leeds,LEE,341
--167099295039088,560717,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,33,Manchester United,MUN,66,-218557486738561,Sunderland,SUN,71
--148821705270039,560712,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,36,Fulham,FUL,63,42,Arsenal,ARS,57
--145183159639614,560721,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,52,Crystal Palace,CRY,354,35,Bournemouth,BOU,1044
--141625386904826,560719,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,47,Tottenham,TOT,73,51,Brighton,BHA,397
--123898868156804,560718,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,57,Ipswich,IPS,349,49,Chelsea,CHE,61
--107637002179895,560713,football-data.org,2026-12-30 20:00:00+00:00,1798660800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,-39195573837902,Coventry City,COV,1076,55,Brentford,BRE,402
--253023321098939,560728,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,49,Chelsea,CHE,61,34,Newcastle,NEW,67
--240073706236767,560731,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,50,Manchester City,MCI,65,47,Tottenham,TOT,73
--234265256464948,560730,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,51,Brighton,BHA,397,33,Manchester United,MUN,66
+-225060982988691,560710,football-data.org,2026-12-26 17:30:00+00:00,1798306200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,-44103427291829,Hull City,HUL,322,40,Liverpool,LIV,64
+-135757504596199,560707,football-data.org,2026-12-26 20:00:00+00:00,1798315200,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,34,Newcastle,NEW,67,50,Manchester City,MCI,65
+-33979042353135,560706,football-data.org,2026-12-27 14:00:00+00:00,1798380000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,-39195573837902,Coventry City,COV,1076,49,Chelsea,CHE,61
+-132909948668208,560703,football-data.org,2026-12-27 16:30:00+00:00,1798389000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,33,Manchester United,MUN,66,65,Nottingham Forest,NOT,351
+-263303153250960,560704,football-data.org,2026-12-27 19:00:00+00:00,1798398000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 17,52,Crystal Palace,CRY,354,42,Arsenal,ARS,57
+-185595093031419,560716,football-data.org,2026-12-29 19:30:00+00:00,1798572600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,-44103427291829,Hull City,HUL,322,-156530674508954,Leeds,LEE,341
+-141625386904826,560719,football-data.org,2026-12-29 19:30:00+00:00,1798572600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,47,Tottenham,TOT,73,51,Brighton,BHA,397
+-221854891029213,560720,football-data.org,2026-12-29 20:15:00+00:00,1798575300,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,45,Everton,EVE,62,50,Manchester City,MCI,65
+-220459577594395,560715,football-data.org,2026-12-30 19:30:00+00:00,1798659000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,34,Newcastle,NEW,67,65,Nottingham Forest,NOT,351
+-167099295039088,560717,football-data.org,2026-12-30 19:30:00+00:00,1798659000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,33,Manchester United,MUN,66,-218557486738561,Sunderland,SUN,71
+-148821705270039,560712,football-data.org,2026-12-30 19:30:00+00:00,1798659000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,36,Fulham,FUL,63,42,Arsenal,ARS,57
+-145183159639614,560721,football-data.org,2026-12-30 19:30:00+00:00,1798659000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,52,Crystal Palace,CRY,354,35,Bournemouth,BOU,1044
+-107637002179895,560713,football-data.org,2026-12-30 19:30:00+00:00,1798659000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,-39195573837902,Coventry City,COV,1076,55,Brentford,BRE,402
+-251230946870793,560714,football-data.org,2026-12-30 20:15:00+00:00,1798661700,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,66,Aston Villa,AVL,58,40,Liverpool,LIV,64
+-123898868156804,560718,football-data.org,2026-12-30 20:15:00+00:00,1798661700,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 18,57,Ipswich,IPS,349,49,Chelsea,CHE,61
+-104248416792281,560724,football-data.org,2027-01-01 20:00:00+00:00,1798833600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,-156530674508954,Leeds,LEE,341,45,Everton,EVE,62
+-234265256464948,560730,football-data.org,2027-01-02 12:30:00+00:00,1798893000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,51,Brighton,BHA,397,33,Manchester United,MUN,66
 -231140930238687,560727,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,40,Liverpool,LIV,64,-39195573837902,Coventry City,COV,1076
 -209371354427053,560729,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,65,Nottingham Forest,NOT,351,36,Fulham,FUL,63
 -149167000563240,560723,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,55,Brentford,BRE,402,52,Crystal Palace,CRY,354
 -107340660371738,560726,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,-218557486738561,Sunderland,SUN,71,-44103427291829,Hull City,HUL,322
--104248416792281,560724,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,-156530674508954,Leeds,LEE,341,45,Everton,EVE,62
 -34053697320778,560725,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,42,Arsenal,ARS,57,57,Ipswich,IPS,349
--25322961083720,560722,football-data.org,2027-01-02 15:00:00+00:00,1798902000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,35,Bournemouth,BOU,1044,66,Aston Villa,AVL,58
--235401277779860,560740,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,52,Crystal Palace,CRY,354,49,Chelsea,CHE,61
--234243913840301,560735,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,51,Brighton,BHA,397,35,Bournemouth,BOU,1044
--233384039768567,560737,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,36,Fulham,FUL,63,47,Tottenham,TOT,73
--233266986931788,560732,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,42,Arsenal,ARS,57,55,Brentford,BRE,402
--177842502341192,560736,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,65,Nottingham Forest,NOT,351,-44103427291829,Hull City,HUL,322
--164773048589020,560733,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,-156530674508954,Leeds,LEE,341,50,Manchester City,MCI,65
--115720158347858,560739,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,-218557486738561,Sunderland,SUN,71,40,Liverpool,LIV,64
--73501513231513,560738,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,45,Everton,EVE,62,66,Aston Villa,AVL,58
--30497666255753,560734,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,33,Manchester United,MUN,66,34,Newcastle,NEW,67
--19253167411683,560741,football-data.org,2027-01-06 20:00:00+00:00,1799265600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,57,Ipswich,IPS,349,-39195573837902,Coventry City,COV,1076
+-25322961083720,560722,football-data.org,2027-01-02 17:30:00+00:00,1798911000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,35,Bournemouth,BOU,1044,66,Aston Villa,AVL,58
+-253023321098939,560728,football-data.org,2027-01-03 14:00:00+00:00,1798984800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,49,Chelsea,CHE,61,34,Newcastle,NEW,67
+-240073706236767,560731,football-data.org,2027-01-03 16:30:00+00:00,1798993800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 19,50,Manchester City,MCI,65,47,Tottenham,TOT,73
+-234243913840301,560735,football-data.org,2027-01-05 19:30:00+00:00,1799177400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,51,Brighton,BHA,397,35,Bournemouth,BOU,1044
+-233266986931788,560732,football-data.org,2027-01-05 19:30:00+00:00,1799177400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,42,Arsenal,ARS,57,55,Brentford,BRE,402
+-177842502341192,560736,football-data.org,2027-01-05 19:30:00+00:00,1799177400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,65,Nottingham Forest,NOT,351,-44103427291829,Hull City,HUL,322
+-73501513231513,560738,football-data.org,2027-01-05 19:30:00+00:00,1799177400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,45,Everton,EVE,62,66,Aston Villa,AVL,58
+-115720158347858,560739,football-data.org,2027-01-05 20:15:00+00:00,1799180100,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,-218557486738561,Sunderland,SUN,71,40,Liverpool,LIV,64
+-235401277779860,560740,football-data.org,2027-01-06 19:30:00+00:00,1799263800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,52,Crystal Palace,CRY,354,49,Chelsea,CHE,61
+-233384039768567,560737,football-data.org,2027-01-06 19:30:00+00:00,1799263800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,36,Fulham,FUL,63,47,Tottenham,TOT,73
+-19253167411683,560741,football-data.org,2027-01-06 19:30:00+00:00,1799263800,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,57,Ipswich,IPS,349,-39195573837902,Coventry City,COV,1076
+-164773048589020,560733,football-data.org,2027-01-06 20:15:00+00:00,1799266500,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,-156530674508954,Leeds,LEE,341,50,Manchester City,MCI,65
+-30497666255753,560734,football-data.org,2027-01-07 20:00:00+00:00,1799352000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 20,33,Manchester United,MUN,66,34,Newcastle,NEW,67
 -256655244270091,560743,football-data.org,2027-01-16 15:00:00+00:00,1800111600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 21,50,Manchester City,MCI,65,65,Nottingham Forest,NOT,351
 -219371824073340,560744,football-data.org,2027-01-16 15:00:00+00:00,1800111600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 21,49,Chelsea,CHE,61,-218557486738561,Sunderland,SUN,71
 -206979000257089,560748,football-data.org,2027-01-16 15:00:00+00:00,1800111600,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 21,-39195573837902,Coventry City,COV,1076,45,Everton,EVE,62

@@ -870,15 +870,29 @@ class MatchIntelligenceBaseValidator:
 
             if (
                 item.get(
-                    "sha256"
+                    "dependency_hash_policy"
                 )
-                != current_sha
+                != "CAPTURE_AT_DOWNSTREAM_BUILD"
             ):
 
                 raise MatchIntelligenceBaseValidationError(
                     (
-                        f"Locked dependency changed: "
-                        f"{name}"
+                        f"Dependency {name!r} has invalid "
+                        "snapshot hash policy."
+                    )
+                )
+
+            if (
+                item.get(
+                    "contract_runtime_hash_pin"
+                )
+                is not False
+            ):
+
+                raise MatchIntelligenceBaseValidationError(
+                    (
+                        f"Dependency {name!r} incorrectly "
+                        "uses a permanent contract hash pin."
                     )
                 )
 
