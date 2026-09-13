@@ -1,0 +1,115 @@
+{
+  "stage": "9.3",
+  "status": "PASS",
+  "stage_9_3_complete": true,
+  "stage_9_3_status": "COMPLETE",
+  "derived_match_intelligence": "VERIFIED",
+  "generated_at_utc": "2026-09-13T15:41:29.290166+00:00",
+  "rule_version": "STAGE9_3_DERIVED_INTELLIGENCE_V1",
+  "fixture_count": 342,
+  "column_count": 116,
+  "stage9_3_populated_field_count": 11,
+  "stage9_4_reserved_field_count": 4,
+  "stage9_5_reserved_field_count": 2,
+  "probability_metrics": {
+    "top_probability": "MAX_OF_STAGE7_PROBABILITIES",
+    "second_probability": "SECOND_HIGHEST_STAGE7_PROBABILITY",
+    "probability_margin": "TOP_PROBABILITY_MINUS_SECOND_PROBABILITY",
+    "probability_mutation": false
+  },
+  "context_gap_semantics": {
+    "positive": "HOME_ADVANTAGE",
+    "negative": "AWAY_ADVANTAGE",
+    "zero": "TIED",
+    "league_position_gap": "away_position-minus-home_position",
+    "points_gap": "home_points-minus-away_points",
+    "goal_difference_gap": "home_goal_difference-minus-away_goal_difference",
+    "recent_points_gap": "home_recent_points-minus-away_recent_points",
+    "recent_goal_difference_gap": "home_recent_goal_difference-minus-away_recent_goal_difference",
+    "venue_form_points_gap": "home_home_recent_points-minus-away_away_recent_points"
+  },
+  "context_support_rule": {
+    "component_count": 5,
+    "components": [
+      "league_position",
+      "points",
+      "goal_difference",
+      "recent_points",
+      "venue_recent_points"
+    ],
+    "home_advantage_vote": 1,
+    "away_advantage_vote": -1,
+    "tie_or_unavailable_vote": 0,
+    "minimum_score": -5,
+    "maximum_score": 5,
+    "missing_venue_sample_policy": "NEUTRAL_ZERO_VOTE",
+    "outcome_tuning_used": false
+  },
+  "context_alignment_rule": {
+    "Home Win": {
+      "SUPPORTIVE": "score >= 2",
+      "CONTRADICTORY": "score <= -2",
+      "NEUTRAL": "score == 0",
+      "MIXED": "score in {-1, 1}"
+    },
+    "Away Win": {
+      "SUPPORTIVE": "score <= -2",
+      "CONTRADICTORY": "score >= 2",
+      "NEUTRAL": "score == 0",
+      "MIXED": "score in {-1, 1}"
+    },
+    "Draw": {
+      "SUPPORTIVE": "abs(score) <= 1",
+      "MIXED": "abs(score) == 2",
+      "CONTRADICTORY": "abs(score) >= 3"
+    },
+    "outcome_tuning_used": false
+  },
+  "stage_ownership": {
+    "stage_9_3": "DERIVED_MATCH_INTELLIGENCE",
+    "stage_9_4": "CONFIDENCE_AND_UNCERTAINTY_PENDING",
+    "stage_9_5": "EXPLANATION_PENDING"
+  },
+  "output_artifact": {
+    "path": "data/processed/intelligence/match_intelligence.csv",
+    "sha256": "31d8b26deb44d0bc762ef4eebda07b441a37ecd907cd3832f1fa58b5394d0d9b"
+  },
+  "dependency_identity": {
+    "stage9_intelligence_contract": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract.json",
+      "sha256": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d"
+    },
+    "stage9_intelligence_contract_verification": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract_verification.json",
+      "sha256": "0ca41802170e6e91ccebb16eb10ef8bcccd94ceff0bf5fbffa5003c59948411a"
+    },
+    "match_intelligence_base": {
+      "path": "data/processed/intelligence/match_intelligence_base.csv",
+      "sha256": "7d5be5a4dc51ddb4a0fd222e3d7dd5078c903dcb56cbe390646350fd9ce31479"
+    },
+    "match_intelligence_base_report": {
+      "path": "data/processed/intelligence/match_intelligence_base_report.json",
+      "sha256": "a22b6dbf0deb5d8685212acebc5d86a84882874efcd6fc06e84c50ff6262cb31"
+    }
+  },
+  "safety": {
+    "interpretation_only": true,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "probabilities_modified": false,
+    "probabilities_recalibrated": false,
+    "prediction_labels_modified": false,
+    "source_confidence_modified": false,
+    "stage7_artifacts_modified": false,
+    "stage8_artifacts_modified": false,
+    "stage9_2_artifacts_modified": false,
+    "bookmaker_odds_used": false,
+    "future_results_used": false,
+    "final_test_accessed": false,
+    "outcome_based_tuning_used": false
+  },
+  "next_stage": "9.4",
+  "stage9_ready_for_9_4": true,
+  "failures": []
+}
