@@ -1,5 +1,5 @@
 {
-  "stage": "9.4",
+  "stage": "9.5",
   "status": "PASS",
   "stage_9_3_complete": true,
   "stage_9_3_status": "COMPLETE",
@@ -72,7 +72,7 @@
   },
   "output_artifact": {
     "path": "data/processed/intelligence/match_intelligence.csv",
-    "sha256": "ca2dcdb1084641e9515601622d092045494380d185d465fe233f8485bf4851d1"
+    "sha256": "a3bd0fdc93e02177462396d11ed1b7e172ff88d937955713ed927e2e619e9e04"
   },
   "dependency_identity": {
     "stage9_intelligence_contract": {
@@ -109,9 +109,14 @@
     "final_test_accessed": false,
     "outcome_based_tuning_used": false,
     "stage9_3_context_fields_modified": false,
-    "outcome_based_threshold_tuning": false
+    "outcome_based_threshold_tuning": false,
+    "deterministic_explanation_engine": true,
+    "llm_generation_used": false,
+    "context_intelligence_modified": false,
+    "confidence_uncertainty_modified": false,
+    "guaranteed_result_language_allowed": false
   },
-  "next_stage": "9.5",
+  "next_stage": "9.6",
   "stage9_ready_for_9_4": true,
   "failures": [],
   "stage_9_4_complete": true,
@@ -192,5 +197,69 @@
     "stage9_5_fields_blank": true,
     "dependency_identity_current": true,
     "tampered_uncertainty_rejected": true
+  },
+  "stage_9_5_complete": true,
+  "stage_9_5_status": "COMPLETE",
+  "match_explanation_engine": "VERIFIED",
+  "stage_9_5_generated_at_utc": "2026-09-13T17:54:07.120444+00:00",
+  "stage_9_5_rule_version": "STAGE9_5_DETERMINISTIC_EXPLANATION_V1",
+  "explanation_contract": {
+    "engine": "DETERMINISTIC_TEMPLATE_ENGINE",
+    "llm_generation": false,
+    "prediction_authority": "STAGE7_ONLY",
+    "explanation_may_change_prediction": false,
+    "explanation_may_change_probability": false,
+    "explanation_may_change_context": false,
+    "source_fields": [
+      "stage7_predicted_label",
+      "stage9_top_probability",
+      "stage9_probability_margin",
+      "stage9_context_support_score",
+      "stage9_context_alignment",
+      "stage9_confidence_band",
+      "stage9_uncertainty_band",
+      "stage9_league_position_gap",
+      "stage9_points_gap",
+      "stage9_goal_difference_gap",
+      "stage9_recent_points_gap",
+      "stage9_venue_form_points_gap"
+    ],
+    "context_signal_count": 5,
+    "language_rule": "DESCRIPTIVE_NON_GUARANTEED",
+    "outcome_tuning_used": false
+  },
+  "stage_9_5_statistics": {
+    "fixture_count": 342,
+    "prediction_counts": {
+      "Home Win": 172,
+      "Draw": 1,
+      "Away Win": 169
+    },
+    "alignment_counts": {
+      "SUPPORTIVE": 241,
+      "MIXED": 19,
+      "CONTRADICTORY": 82,
+      "NEUTRAL": 0
+    }
+  },
+  "stage_9_4_snapshot": {
+    "input_sha256": "ca2dcdb1084641e9515601622d092045494380d185d465fe233f8485bf4851d1",
+    "protected_columns_sha256": "414a005fb2c6b5d6b66b18989d2442c5e661986509cf82370f8217073c92862e",
+    "preserved": true
+  },
+  "stage9_ready_for_9_6": true,
+  "stage_9_5_verified_at_utc": "2026-09-13T17:54:15.277896+00:00",
+  "independent_stage_9_5_validation": {
+    "status": "VERIFIED",
+    "fixture_count": 342,
+    "schema_exact": true,
+    "fixture_ids_unique": true,
+    "protected_stage9_4_snapshot_exact": true,
+    "headlines_exact": true,
+    "summaries_exact": true,
+    "deterministic_templates_exact": true,
+    "context_score_reconstruction_exact": true,
+    "non_guaranteed_language_verified": true,
+    "tampered_explanation_rejected": true
   }
 }
