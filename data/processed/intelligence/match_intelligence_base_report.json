@@ -1,0 +1,101 @@
+{
+  "stage": "9.2",
+  "status": "PARTIAL_PASS",
+  "stage_9_2_complete": false,
+  "stage_9_2_status": "IN_PROGRESS",
+  "verified_at_utc": "2026-09-13T14:35:19.521971+00:00",
+  "sub_stages": {
+    "9.2.1": "PASS",
+    "9.2.2": "PASS",
+    "9.2.3": "PENDING",
+    "9.2.4": "PENDING",
+    "9.2.5": "PENDING"
+  },
+  "prediction_source_gate": "VERIFIED",
+  "fixture_identity_reconciliation": "VERIFIED",
+  "prediction_source": {
+    "path": "data/processed/production/production_predictions.csv",
+    "sha256": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628",
+    "fixture_count": 350,
+    "fixture_id_unique": true,
+    "probabilities_valid": true,
+    "probabilities_sum_to_one": true,
+    "prediction_labels_present": true,
+    "confidence_valid": true
+  },
+  "context_source": {
+    "path": "data/processed/context/enriched_upcoming_fixtures.csv",
+    "sha256": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462",
+    "fixture_count": 350
+  },
+  "identity_reconciliation": {
+    "status": "VERIFIED",
+    "fixture_sets_exact": true,
+    "fixture_count": 350,
+    "fixture_id_exact_match": true,
+    "home_team_id_exact_match": true,
+    "home_team_name_exact_match": true,
+    "away_team_id_exact_match": true,
+    "away_team_name_exact_match": true,
+    "season_exact_match_if_shared": true,
+    "shared_date_field": "date",
+    "shared_date_field_exact_match": true,
+    "unmatched_prediction_count": 0,
+    "unmatched_context_count": 0,
+    "identity_mismatch_count": 0,
+    "fuzzy_matching_used": false,
+    "best_effort_fallback_used": false
+  },
+  "negative_tests": {
+    "prediction_dependency_mutation_rejected": true,
+    "identity_mismatch_rejected": true,
+    "unmatched_fixture_rejected": true
+  },
+  "dependency_identity": {
+    "stage9_intelligence_contract": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract.json",
+      "sha256": "8437f89e80ab53191447f22e3ec11af246711b866184bae5e024c1f4e64eb546"
+    },
+    "stage9_intelligence_contract_verification": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract_verification.json",
+      "sha256": "7bfc31b728e3a8e2a79353688cae324d37fa65e8a2b87d3553c35e9d78b03457"
+    },
+    "production_predictions": {
+      "path": "data/processed/production/production_predictions.csv",
+      "sha256": "dc7b3861dd472ba9b822e175b9c12daae74d8a7a280af538c0acf8bbf66dc628"
+    },
+    "enriched_upcoming_fixtures": {
+      "path": "data/processed/context/enriched_upcoming_fixtures.csv",
+      "sha256": "c4dc99e06c68982e1e828096f8c4d4a9559ee81f3825805df037729e067ed462"
+    },
+    "stage7_8_final_verification": {
+      "path": "data/processed/production/stage7_8_final_verification.json",
+      "sha256": "843bcdf0b3a14be63484fc5b48367b5b1ac459f55c0aa3d2539371d98fd9e23c"
+    },
+    "stage7_9_final_verification": {
+      "path": "data/processed/production/stage7_9_final_verification.json",
+      "sha256": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
+    },
+    "stage8_final_verification": {
+      "path": "data/processed/context/stage8_final_verification.json",
+      "sha256": "ba6bbdc9965d8e000e20389655a70677fefaa4a23cc1196678496a9248299e89"
+    }
+  },
+  "safety": {
+    "read_only_upstream": true,
+    "interpretation_only": true,
+    "provider_fetch_performed": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "probabilities_modified": false,
+    "probabilities_recalibrated": false,
+    "prediction_labels_modified": false,
+    "stage7_artifacts_modified": false,
+    "stage8_artifacts_modified": false,
+    "fuzzy_matching_used": false,
+    "best_effort_identity_fallback_used": false,
+    "final_test_accessed": false
+  },
+  "failures": []
+}
