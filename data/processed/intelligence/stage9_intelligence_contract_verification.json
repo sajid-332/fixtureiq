@@ -4,12 +4,12 @@
   "stage_9_1_complete": false,
   "stage_9_1_status": "IN_PROGRESS",
   "verified_at_utc": "2026-09-13T14:05:50.358706+00:00",
-  "contract_sha256": "ae500ddf1e56ea11777b5e8ee0968b4d3a53923df0d4fd50ab9319b9814b2f13",
+  "contract_sha256": "77a74440a207f51455dfc27618e5ad2bfb417eb4ab975acef1252da372d6a49b",
   "sub_stages": {
     "9.1.1": "PASS",
     "9.1.2": "PASS",
-    "9.1.3": "PENDING",
-    "9.1.4": "PENDING",
+    "9.1.3": "PASS",
+    "9.1.4": "PASS",
     "9.1.5": "PENDING"
   },
   "allowed_inputs": "VERIFIED",
@@ -45,5 +45,39 @@
     "stage8_artifacts_modified": false,
     "final_test_accessed": false
   },
-  "failures": []
+  "failures": [],
+  "canonical_intelligence_schema": "VERIFIED",
+  "freshness_and_provenance_contract": "VERIFIED",
+  "stage_9_1_3_4_verified_at_utc": "2026-09-13T14:20:19.373948+00:00",
+  "schema_verification": {
+    "status": "VERIFIED",
+    "context_source_columns": 94,
+    "prediction_copy_fields": 5,
+    "base_columns": 99,
+    "derived_fields": 17,
+    "final_columns": 116,
+    "strict_identity_join": true,
+    "prediction_values_exact_copy": true,
+    "probability_mutation_allowed": false,
+    "fuzzy_join_allowed": false
+  },
+  "freshness_verification": {
+    "status": "VERIFIED",
+    "mode": "DUAL_UPSTREAM_DEPENDENCY_PLUS_TEMPORAL_BOUNDARY",
+    "all_current_input_hashes_verified": true,
+    "stage7_dependency_required": true,
+    "stage8_dependency_required": true,
+    "temporal_boundary_required": true,
+    "stale_fallback_allowed": false,
+    "partial_unverified_output_allowed": false,
+    "fail_closed": true
+  },
+  "provenance_verification": {
+    "status": "VERIFIED",
+    "hash_algorithm": "SHA256",
+    "all_dependency_hashes_required": true,
+    "filesystem_mtime_allowed": false,
+    "fabricated_timestamp_allowed": false,
+    "unverifiable_provenance_allowed": false
+  }
 }
