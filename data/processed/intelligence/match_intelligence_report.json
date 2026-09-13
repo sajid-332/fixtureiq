@@ -1,5 +1,5 @@
 {
-  "stage": "9.3",
+  "stage": "9.4",
   "status": "PASS",
   "stage_9_3_complete": true,
   "stage_9_3_status": "COMPLETE",
@@ -72,7 +72,7 @@
   },
   "output_artifact": {
     "path": "data/processed/intelligence/match_intelligence.csv",
-    "sha256": "31d8b26deb44d0bc762ef4eebda07b441a37ecd907cd3832f1fa58b5394d0d9b"
+    "sha256": "ca2dcdb1084641e9515601622d092045494380d185d465fe233f8485bf4851d1"
   },
   "dependency_identity": {
     "stage9_intelligence_contract": {
@@ -107,9 +107,90 @@
     "bookmaker_odds_used": false,
     "future_results_used": false,
     "final_test_accessed": false,
-    "outcome_based_tuning_used": false
+    "outcome_based_tuning_used": false,
+    "stage9_3_context_fields_modified": false,
+    "outcome_based_threshold_tuning": false
   },
-  "next_stage": "9.4",
+  "next_stage": "9.5",
   "stage9_ready_for_9_4": true,
-  "failures": []
+  "failures": [],
+  "stage_9_4_complete": true,
+  "stage_9_4_status": "COMPLETE",
+  "confidence_uncertainty_layer": "VERIFIED",
+  "stage_9_4_generated_at_utc": "2026-09-13T17:34:15.251329+00:00",
+  "stage_9_4_rule_version": "STAGE9_4_CONFIDENCE_UNCERTAINTY_V1",
+  "entropy_rule": {
+    "type": "SHANNON_ENTROPY",
+    "log_base": "NATURAL_LOG",
+    "formula": "-SUM(p_i * ln(p_i))",
+    "class_count": 3,
+    "maximum_entropy": "ln(3)",
+    "normalized_formula": "entropy / ln(3)",
+    "normalized_minimum": 0.0,
+    "normalized_maximum": 1.0,
+    "decimal_places": 12,
+    "outcome_tuning_used": false
+  },
+  "confidence_band_rule": {
+    "source": "stage7_confidence",
+    "meaning": "Descriptive bucket only; does not replace source confidence.",
+    "VERY_LOW": "[0.00, 0.40)",
+    "LOW": "[0.40, 0.50)",
+    "MODERATE": "[0.50, 0.60)",
+    "HIGH": "[0.60, 0.70)",
+    "VERY_HIGH": "[0.70, 1.00]",
+    "outcome_tuning_used": false
+  },
+  "uncertainty_band_rule": {
+    "source": "stage9_normalized_entropy",
+    "direction": "higher normalized entropy means greater uncertainty",
+    "VERY_LOW": "[0.00, 0.20)",
+    "LOW": "[0.20, 0.40)",
+    "MODERATE": "[0.40, 0.60)",
+    "HIGH": "[0.60, 0.80)",
+    "VERY_HIGH": "[0.80, 1.00]",
+    "outcome_tuning_used": false
+  },
+  "stage_9_4_statistics": {
+    "fixture_count": 342,
+    "entropy_min": 0.7484194711290364,
+    "entropy_max": 1.0977657147111637,
+    "normalized_entropy_min": 0.6812407605929607,
+    "normalized_entropy_max": 0.9992294151761469,
+    "confidence_band_counts": {
+      "HIGH": 43,
+      "LOW": 162,
+      "MODERATE": 112,
+      "VERY_HIGH": 4,
+      "VERY_LOW": 21
+    },
+    "uncertainty_band_counts": {
+      "HIGH": 15,
+      "LOW": 0,
+      "MODERATE": 0,
+      "VERY_HIGH": 327,
+      "VERY_LOW": 0
+    }
+  },
+  "stage_9_3_snapshot": {
+    "input_sha256": "31d8b26deb44d0bc762ef4eebda07b441a37ecd907cd3832f1fa58b5394d0d9b",
+    "preserved": true
+  },
+  "stage9_ready_for_9_5": true,
+  "stage_9_4_verified_at_utc": "2026-09-13T17:34:26.662732+00:00",
+  "independent_stage_9_4_validation": {
+    "status": "VERIFIED",
+    "fixture_count": 342,
+    "schema_exact": true,
+    "fixture_sets_exact": true,
+    "stage9_2_values_exact": true,
+    "stage9_3_values_preserved": true,
+    "entropy_exact": true,
+    "normalized_entropy_exact": true,
+    "confidence_bands_exact": true,
+    "uncertainty_bands_exact": true,
+    "stage9_5_fields_blank": true,
+    "dependency_identity_current": true,
+    "tampered_uncertainty_rejected": true
+  }
 }
