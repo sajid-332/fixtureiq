@@ -1,10 +1,10 @@
 {
   "stage": "9.1",
   "contract_type": "MATCH_INTELLIGENCE_CONTRACT",
-  "contract_version": "1.1.0-partial",
-  "status": "PARTIAL_LOCK",
-  "stage_9_1_complete": false,
-  "stage_9_1_status": "IN_PROGRESS",
+  "contract_version": "1.2.0",
+  "status": "LOCKED_MATCH_INTELLIGENCE_CONTRACT",
+  "stage_9_1_complete": true,
+  "stage_9_1_status": "COMPLETE",
   "purpose": "INTERPRET_VERIFIED_STAGE7_PREDICTIONS_WITH_VERIFIED_STAGE8_CONTEXT",
   "created_at_utc": "2026-09-13T14:05:37.432155+00:00",
   "principles": {
@@ -21,7 +21,7 @@
     "9.1.2": "PASS",
     "9.1.3": "PASS",
     "9.1.4": "PASS",
-    "9.1.5": "PENDING"
+    "9.1.5": "PASS"
   },
   "stage_9_1_1": {
     "name": "ALLOWED_INPUTS",
@@ -354,9 +354,7 @@
       "stage9_is_not_a_prediction_model": true
     }
   },
-  "pending_contract_sections": {
-    "9.1.5": "FINAL_STAGE_9_1_GATE"
-  },
+  "pending_contract_sections": {},
   "safety": {
     "interpretation_only": true,
     "read_only_upstream": true,
@@ -1019,5 +1017,28 @@
       "http_no_store_required": true,
       "fail_closed": true
     }
+  },
+  "locked_at_utc": "2026-09-13T14:25:05.650310+00:00",
+  "final_gate": {
+    "stage": "9.1.5",
+    "status": "PASS",
+    "locked_at_utc": "2026-09-13T14:25:05.650310+00:00",
+    "allowed_inputs_verified": true,
+    "forbidden_operations_verified": true,
+    "canonical_schema_verified": true,
+    "strict_fixture_identity_verified": true,
+    "prediction_integrity_verified": true,
+    "freshness_contract_verified": true,
+    "provenance_contract_verified": true,
+    "runtime_readiness_contract_verified": true,
+    "output_contract_verified": true,
+    "stage7_write_protection_verified": true,
+    "stage8_write_protection_verified": true,
+    "probability_mutation_prohibited": true,
+    "context_as_model_feature_prohibited": true,
+    "final_test_access_prohibited": true,
+    "bookmaker_odds_prohibited": true,
+    "fail_closed": true,
+    "match_intelligence_contract_locked": true
   }
 }
