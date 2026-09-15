@@ -11,7 +11,7 @@
   },
   "runtime_freshness_contract": "VERIFIED",
   "http_stale_state_fail_closed": "VERIFIED",
-  "verified_at_utc": "2026-09-13T15:19:44.475085+00:00",
+  "verified_at_utc": "2026-09-15T18:16:37.243706+00:00",
   "runtime_contract": {
     "service_validation_timing": "REQUEST_TIME",
     "stale_context_http_status": 503,
@@ -54,23 +54,23 @@
     },
     "context_api_verification": {
       "path": "data/processed/context/context_api_verification.json",
-      "sha256": "5aa70c47d50e74eb7dcfe2ab2824b97f5b42813676e7e18c89a9a96d4b164c11"
+      "sha256": "9eaa2301d06c826ad0d11fa88baead76010c488bd2b52100697369c72b36e31e"
     },
     "standings_report": {
       "path": "data/processed/context/standings_report.json",
-      "sha256": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10"
+      "sha256": "bd3f988c1b5295ca382afd8b3374f54a30a03353957d12eecb60cfd22a14a83c"
     },
     "team_form_report": {
       "path": "data/processed/context/team_form_report.json",
-      "sha256": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48"
+      "sha256": "cfe2dee847f73d53ef425e0492632f9bde9573c6d782569c73934ca462fc54fd"
     },
     "team_context_report": {
       "path": "data/processed/context/team_context_report.json",
-      "sha256": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3"
+      "sha256": "87f298b797575dc7ae360b7e137128d07d48571d76b0775f9cb26d66b67de213"
     },
     "fixture_context_report": {
       "path": "data/processed/context/fixture_context_report.json",
-      "sha256": "759110d07bf79df3e1b901e1aff3049ec9bd90428b878e1709ce85e7de46c8f7"
+      "sha256": "30b7a1703b8ea615ac0a6668f37f21d3261caae11b71a7709ea6942e09d653b4"
     }
   },
   "safety": {
@@ -93,9 +93,9 @@
   "failures": [],
   "stage_8_7_status": "COMPLETE",
   "context_runtime_safety": "VERIFIED",
-  "stage_8_7_3_verified_at_utc": "2026-09-13T15:19:48.159555+00:00",
-  "stage_8_7_4_verified_at_utc": "2026-09-13T15:19:48.159555+00:00",
-  "stage_8_7_5_verified_at_utc": "2026-09-13T15:19:48.159555+00:00",
+  "stage_8_7_3_verified_at_utc": "2026-09-15T18:16:40.899252+00:00",
+  "stage_8_7_4_verified_at_utc": "2026-09-15T18:16:40.899252+00:00",
+  "stage_8_7_5_verified_at_utc": "2026-09-15T18:16:40.899252+00:00",
   "cache_and_request_isolation": {
     "status": "VERIFIED",
     "cache_control": "no-store, no-cache, must-revalidate, max-age=0",
@@ -131,7 +131,7 @@
     },
     "flask_app": {
       "path": "backend/app.py",
-      "sha256": "65555f4407ed1bcb9808a737b8acb21beae55004f6926cd8f528ccecc92a51ac"
+      "sha256": "4af0e40b609bb88627c309421fb5c489dea8860e9ec677711e05012f7f8fb093"
     },
     "fixture_context_service": {
       "path": "backend/services/fixture_context_service.py",
@@ -145,7 +145,7 @@
   "final_gate": {
     "stage": "8.7.5",
     "status": "PASS",
-    "verified_at_utc": "2026-09-13T15:19:48.159555+00:00",
+    "verified_at_utc": "2026-09-15T18:16:40.899252+00:00",
     "runtime_freshness_contract_verified": true,
     "http_stale_state_fail_closed_verified": true,
     "no_stale_cache_verified": true,

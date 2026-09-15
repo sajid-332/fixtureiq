@@ -1,6 +1,4 @@
 fixture_id,provider_fixture_id,provider,date,timestamp,timezone,status_short,status_long,status_elapsed,league_id,league_name,country,season,round,home_team_id,home_team_name,home_team_code,provider_home_team_id,away_team_id,away_team_name,away_team_code,provider_away_team_id
--23708102576785,560580,football-data.org,2026-09-13 15:30:00+00:00,1789313400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,33,Manchester United,MUN,66,50,Manchester City,MCI,65
--211199180133122,560579,football-data.org,2026-09-14 19:00:00+00:00,1789412400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 4,-156530674508954,Leeds,LEE,341,34,Newcastle,NEW,67
 -250369013814812,560591,football-data.org,2026-09-18 19:00:00+00:00,1789758000,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 5,55,Brentford,BRE,402,49,Chelsea,CHE,61
 -277674714806938,560587,football-data.org,2026-09-19 11:30:00+00:00,1789817400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 5,47,Tottenham,TOT,73,66,Aston Villa,AVL,58
 -277111303519939,560588,football-data.org,2026-09-19 14:00:00+00:00,1789826400,UTC,NS,TIMED,,39,Premier League,England,2026,Regular Season - 5,34,Newcastle,NEW,67,-44103427291829,Hull City,HUL,322

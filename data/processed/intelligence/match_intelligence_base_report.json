@@ -3,7 +3,7 @@
   "status": "PASS",
   "stage_9_2_complete": true,
   "stage_9_2_status": "COMPLETE",
-  "verified_at_utc": "2026-09-13T15:20:30.800058+00:00",
+  "verified_at_utc": "2026-09-15T18:17:55.309533+00:00",
   "sub_stages": {
     "9.2.1": "PASS",
     "9.2.2": "PASS",
@@ -15,8 +15,8 @@
   "fixture_identity_reconciliation": "VERIFIED",
   "prediction_source": {
     "path": "data/processed/production/production_predictions.csv",
-    "sha256": "dec5cf0447594f91daff958f25bdb81726f003e7d5dfc74421fab31e27e40289",
-    "fixture_count": 342,
+    "sha256": "652ae4ee092b0005f9166183ffeff0f14a4fddd8a4612cdba7ff25ff15631d24",
+    "fixture_count": 340,
     "fixture_id_unique": true,
     "probabilities_valid": true,
     "probabilities_sum_to_one": true,
@@ -25,13 +25,13 @@
   },
   "context_source": {
     "path": "data/processed/context/enriched_upcoming_fixtures.csv",
-    "sha256": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914",
-    "fixture_count": 342
+    "sha256": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b",
+    "fixture_count": 340
   },
   "identity_reconciliation": {
     "status": "VERIFIED",
     "fixture_sets_exact": true,
-    "fixture_count": 342,
+    "fixture_count": 340,
     "fixture_id_exact_match": true,
     "home_team_id_exact_match": true,
     "home_team_name_exact_match": true,
@@ -62,23 +62,23 @@
     },
     "production_predictions": {
       "path": "data/processed/production/production_predictions.csv",
-      "sha256": "dec5cf0447594f91daff958f25bdb81726f003e7d5dfc74421fab31e27e40289"
+      "sha256": "652ae4ee092b0005f9166183ffeff0f14a4fddd8a4612cdba7ff25ff15631d24"
     },
     "production_prediction_metadata": {
       "path": "data/processed/production/production_prediction_metadata.json",
-      "sha256": "a0afb0e6803c93002fefc4bab84a5acdf430d613e0b220170202ca80d67176e4"
+      "sha256": "5d424719a482c13d5e118d49ea7a9615f176851cbb374f6073a62c95b3273c7b"
     },
     "production_prediction_report": {
       "path": "data/processed/production/production_prediction_report.json",
-      "sha256": "f10b5fd35fe788f2a396e573c726d5d8ea10e215488b004798439c4132eafff7"
+      "sha256": "6780a13f69db7c86794b17f6cf7fb1a5fb88933a93cadd1b754bfbc29ee89641"
     },
     "production_prediction_verification": {
       "path": "data/processed/production/production_prediction_verification.json",
-      "sha256": "19dfbf4ef03702d8cf3d7c2c233e64fb8cca187d23fc2b58c47b2238c8709f1f"
+      "sha256": "3c1ec751c1393fa248318457c82ffa8bd8006cfd0f253ef8e840340bb4332b16"
     },
     "stage7_8_final_verification": {
       "path": "data/processed/production/stage7_8_final_verification.json",
-      "sha256": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816"
+      "sha256": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575"
     },
     "stage7_9_final_verification": {
       "path": "data/processed/production/stage7_9_final_verification.json",
@@ -86,23 +86,23 @@
     },
     "enriched_upcoming_fixtures": {
       "path": "data/processed/context/enriched_upcoming_fixtures.csv",
-      "sha256": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914"
+      "sha256": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b"
     },
     "fixture_context_report": {
       "path": "data/processed/context/fixture_context_report.json",
-      "sha256": "759110d07bf79df3e1b901e1aff3049ec9bd90428b878e1709ce85e7de46c8f7"
+      "sha256": "30b7a1703b8ea615ac0a6668f37f21d3261caae11b71a7709ea6942e09d653b4"
     },
     "context_api_verification": {
       "path": "data/processed/context/context_api_verification.json",
-      "sha256": "5aa70c47d50e74eb7dcfe2ab2824b97f5b42813676e7e18c89a9a96d4b164c11"
+      "sha256": "9eaa2301d06c826ad0d11fa88baead76010c488bd2b52100697369c72b36e31e"
     },
     "context_runtime_verification": {
       "path": "data/processed/context/context_runtime_verification.json",
-      "sha256": "6c08f63f395c66642fc845d704974428e01153a8a09016de089e72e1d428e3c3"
+      "sha256": "8eadbe4f552cd4e83e7cc5f13e57fcb6b0d803585040dfaf5fbeda27e6f45ff5"
     },
     "stage8_final_verification": {
       "path": "data/processed/context/stage8_final_verification.json",
-      "sha256": "5767dc84766cd3c8a4197afa3777822a3c0aa83f9bd6374834f9f00e510b020d"
+      "sha256": "a14c8bf3bd9599fce0a69acbdc321dff97c28d386ed673c8651e4ff731ec8565"
     }
   },
   "safety": {
@@ -128,11 +128,11 @@
   },
   "failures": [],
   "strict_prediction_context_join": "VERIFIED",
-  "stage_9_2_3_verified_at_utc": "2026-09-13T15:20:31.011185+00:00",
+  "stage_9_2_3_verified_at_utc": "2026-09-15T18:17:55.521008+00:00",
   "base_artifact": {
     "path": "data/processed/intelligence/match_intelligence_base.csv",
-    "sha256": "7d5be5a4dc51ddb4a0fd222e3d7dd5078c903dcb56cbe390646350fd9ce31479",
-    "fixture_count": 342,
+    "sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca",
+    "fixture_count": 340,
     "column_count": 99,
     "context_column_count": 94,
     "prediction_copy_field_count": 5,
@@ -143,22 +143,22 @@
     "prediction_values_copied_exactly": true
   },
   "provenance": {
-    "generated_at_utc": "2026-09-13T15:20:31.011185+00:00",
+    "generated_at_utc": "2026-09-15T18:17:55.521008+00:00",
     "hash_algorithm": "SHA256",
     "prediction_source": "data/processed/production/production_predictions.csv",
     "context_source": "data/processed/context/enriched_upcoming_fixtures.csv",
-    "prediction_sha256": "dec5cf0447594f91daff958f25bdb81726f003e7d5dfc74421fab31e27e40289",
-    "context_sha256": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914",
-    "base_output_sha256": "7d5be5a4dc51ddb4a0fd222e3d7dd5078c903dcb56cbe390646350fd9ce31479",
+    "prediction_sha256": "652ae4ee092b0005f9166183ffeff0f14a4fddd8a4612cdba7ff25ff15631d24",
+    "context_sha256": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b",
+    "base_output_sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca",
     "fixture_identity_validation": "EXACT",
     "prediction_value_preservation": "EXACT",
     "context_value_preservation": "EXACT"
   },
   "independent_join_validation": "VERIFIED",
-  "stage_9_2_4_verified_at_utc": "2026-09-13T15:20:31.238014+00:00",
+  "stage_9_2_4_verified_at_utc": "2026-09-15T18:17:55.736137+00:00",
   "independent_validation": {
     "status": "VERIFIED",
-    "fixture_count": 342,
+    "fixture_count": 340,
     "column_count": 99,
     "fixture_sets_exact": true,
     "source_order_preserved": true,
@@ -172,19 +172,19 @@
     "exact_independent_reconstruction": true,
     "dependency_identity_current": true,
     "provenance_verified": true,
-    "context_value_comparisons": 32148,
-    "prediction_value_comparisons": 1710,
-    "probability_comparisons": 1026,
-    "label_comparisons": 342,
-    "confidence_comparisons": 342,
+    "context_value_comparisons": 31960,
+    "prediction_value_comparisons": 1700,
+    "probability_comparisons": 1020,
+    "label_comparisons": 340,
+    "confidence_comparisons": 340,
     "tampered_base_rejected": true
   },
   "prediction_context_join_layer": "VERIFIED",
-  "stage_9_2_completed_at_utc": "2026-09-13T15:20:31.653609+00:00",
+  "stage_9_2_completed_at_utc": "2026-09-15T18:17:56.146227+00:00",
   "final_gate": {
     "stage": "9.2.5",
     "status": "PASS",
-    "verified_at_utc": "2026-09-13T15:20:31.653609+00:00",
+    "verified_at_utc": "2026-09-15T18:17:56.146227+00:00",
     "prediction_source_gate_verified": true,
     "fixture_identity_reconciliation_verified": true,
     "strict_prediction_context_join_verified": true,

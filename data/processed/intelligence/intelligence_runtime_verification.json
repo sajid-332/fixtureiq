@@ -1,0 +1,88 @@
+{
+  "stage": "9.7",
+  "status": "PASS",
+  "stage_9_7_complete": true,
+  "stage_9_7_status": "COMPLETE",
+  "intelligence_runtime_safety": "VERIFIED",
+  "runtime_policy": "DUAL_UPSTREAM_DEPENDENCY_PLUS_TEMPORAL_BOUNDARY",
+  "verified_at_utc": "2026-09-15T18:18:50.152950+00:00",
+  "runtime_contract": {
+    "revalidate_on_every_read": true,
+    "stage7_dependency_hashes_revalidated": true,
+    "stage8_dependency_hashes_revalidated": true,
+    "fixture_context_readiness_propagated": true,
+    "temporal_boundary_inherited": true,
+    "stale_status_code": 503,
+    "stale_public_status": "NOT_READY",
+    "unknown_status_code": 404,
+    "write_status_code": 405,
+    "stale_fallback": false,
+    "partial_fallback": false,
+    "best_effort_fallback": false,
+    "restart_required_for_recovery": false,
+    "cache_control": "no-store"
+  },
+  "negative_tests": {
+    "fixture_context_not_ready_rejected": true,
+    "stale_read_rejected": true,
+    "dynamic_dependency_mutation_rejected": true,
+    "stage9_artifact_mutation_rejected": true,
+    "stale_api_returns_503": true,
+    "stale_api_payload_exact": true,
+    "stale_response_no_store": true
+  },
+  "recovery_tests": {
+    "fixture_context_stale_to_ready_same_service": true,
+    "dependency_stale_to_ready_same_service": true,
+    "artifact_stale_to_ready_same_service": true
+  },
+  "safety": {
+    "read_only": true,
+    "artifact_only": true,
+    "provider_fetch_performed": false,
+    "artifact_rebuild_performed": false,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "probabilities_modified": false,
+    "prediction_labels_modified": false,
+    "context_modified": false,
+    "stale_data_served": false,
+    "live_stage7_artifacts_modified": false,
+    "live_stage8_artifacts_modified": false,
+    "live_stage9_artifacts_modified": false
+  },
+  "dependency_identity": {
+    "stage9_intelligence_contract": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract.json",
+      "sha256": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d"
+    },
+    "stage9_intelligence_contract_verification": {
+      "path": "data/processed/intelligence/stage9_intelligence_contract_verification.json",
+      "sha256": "0ca41802170e6e91ccebb16eb10ef8bcccd94ceff0bf5fbffa5003c59948411a"
+    },
+    "match_intelligence_base": {
+      "path": "data/processed/intelligence/match_intelligence_base.csv",
+      "sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca"
+    },
+    "match_intelligence_base_report": {
+      "path": "data/processed/intelligence/match_intelligence_base_report.json",
+      "sha256": "e8ba31798519950e55855141b2da7e6bd0ae2f99a32e4f12a5434c6642e00ad5"
+    },
+    "match_intelligence": {
+      "path": "data/processed/intelligence/match_intelligence.csv",
+      "sha256": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d"
+    },
+    "match_intelligence_report": {
+      "path": "data/processed/intelligence/match_intelligence_report.json",
+      "sha256": "1a294a794a348580857e1f7a7d0eb56bb8cd71c9dca60235a03c55c679bbca71"
+    },
+    "intelligence_api_verification": {
+      "path": "data/processed/intelligence/intelligence_api_verification.json",
+      "sha256": "5aa065f4a8193c650a291714ff03aecb6a43c76177349d6f09baa98a108aa7c3"
+    }
+  },
+  "stage9_ready_for_9_8": true,
+  "next_stage": "9.8",
+  "failures": []
+}

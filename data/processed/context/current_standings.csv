@@ -1,17 +1,17 @@
 team_id,team_name,position,played,won,drawn,lost,goals_for,goals_against,goal_difference,points
 42,Arsenal,1,4,4,0,0,8,1,7,12
-50,Manchester City,2,3,3,0,0,7,2,5,9
--44103427291829,Hull City,3,4,2,2,0,5,2,3,8
-51,Brighton,4,4,2,1,1,13,5,8,7
-49,Chelsea,5,4,2,1,1,10,9,1,7
-55,Brentford,6,4,1,3,0,7,4,3,6
-40,Liverpool,7,4,1,3,0,6,4,2,6
-45,Everton,8,4,1,3,0,5,3,2,6
-57,Ipswich,9,4,2,0,2,7,10,-3,6
-34,Newcastle,10,3,1,2,0,6,4,2,5
--156530674508954,Leeds,11,3,1,2,0,3,2,1,5
-65,Nottingham Forest,12,4,1,2,1,4,4,0,5
-33,Manchester United,13,3,1,1,1,7,6,1,4
+50,Manchester City,2,4,4,0,0,8,2,6,12
+-156530674508954,Leeds,3,4,2,2,0,7,3,4,8
+-44103427291829,Hull City,4,4,2,2,0,5,2,3,8
+51,Brighton,5,4,2,1,1,13,5,8,7
+49,Chelsea,6,4,2,1,1,10,9,1,7
+55,Brentford,7,4,1,3,0,7,4,3,6
+40,Liverpool,8,4,1,3,0,6,4,2,6
+45,Everton,9,4,1,3,0,5,3,2,6
+57,Ipswich,10,4,2,0,2,7,10,-3,6
+65,Nottingham Forest,11,4,1,2,1,4,4,0,5
+34,Newcastle,12,4,1,2,1,7,8,-1,5
+33,Manchester United,13,4,1,1,2,7,7,0,4
 -218557486738561,Sunderland,14,4,1,1,2,3,5,-2,4
 35,Bournemouth,15,4,0,3,1,6,7,-1,3
 52,Crystal Palace,16,4,1,0,3,6,11,-5,3

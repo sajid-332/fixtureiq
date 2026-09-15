@@ -11,28 +11,28 @@
   },
   "upcoming_fixture_source_gate": "VERIFIED",
   "home_away_context_join": "VERIFIED",
-  "generated_at_utc": "2026-09-13T15:19:33.620054+00:00",
-  "fixture_snapshot_as_of_utc": "2026-09-13T15:19:33.536739+00:00",
+  "generated_at_utc": "2026-09-15T18:16:26.485227+00:00",
+  "fixture_snapshot_as_of_utc": "2026-09-15T18:16:26.399393+00:00",
   "fixture_snapshot_source_field": "STAGE8_VERIFIED_ARTIFACT_OBSERVED_AT_UTC",
   "fixture_provider_timestamp_available": false,
   "fixture_snapshot_provenance_mode": "STAGE8_VERIFIED_ARTIFACT_OBSERVATION",
   "legacy_fixture_report_timestamp_missing": true,
-  "fixture_artifact_observed_at_utc": "2026-09-13T15:19:33.536739+00:00",
-  "team_context_source_as_of_utc": "2026-09-13T15:19:29.417494+00:00",
-  "team_context_generated_at_utc": "2026-09-13T15:19:31.965554+00:00",
-  "form_history_cutoff_utc": "2026-09-13T13:00:00+00:00",
-  "earliest_fixture_kickoff_utc": "2026-09-13T15:30:00+00:00",
+  "fixture_artifact_observed_at_utc": "2026-09-15T18:16:26.399393+00:00",
+  "team_context_source_as_of_utc": "2026-09-15T18:16:21.719002+00:00",
+  "team_context_generated_at_utc": "2026-09-15T18:16:24.522127+00:00",
+  "form_history_cutoff_utc": "2026-09-14T19:00:00+00:00",
+  "earliest_fixture_kickoff_utc": "2026-09-18T19:00:00+00:00",
   "latest_fixture_kickoff_utc": "2027-05-30T15:00:00+00:00",
   "competition": "Premier League",
   "competition_code": "PL",
   "season": 2026,
   "team_namespace": "fixtureiq-team",
-  "fixture_count": 342,
+  "fixture_count": 340,
   "context_team_count": 20,
   "fixture_source": {
     "path": "data/processed/production/upcoming_fixtures.csv",
-    "sha256": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef",
-    "row_count": 342,
+    "sha256": "c38fc0670c0e8e08c6708f3cd1ee7f7a012ec661bafbc8079c1880333c39e926",
+    "row_count": 340,
     "column_count": 22,
     "columns": [
       "fixture_id",
@@ -70,10 +70,10 @@
     "all_fixtures_future": true,
     "form_history_cutoff_before_all_fixtures": true,
     "team_context_generated_before_all_fixtures": true,
-    "earliest_fixture_kickoff_utc": "2026-09-13T15:30:00+00:00",
+    "earliest_fixture_kickoff_utc": "2026-09-18T19:00:00+00:00",
     "latest_fixture_kickoff_utc": "2027-05-30T15:00:00+00:00",
-    "build_now_utc": "2026-09-13T15:19:33.537089+00:00",
-    "fixture_snapshot_as_of_utc": "2026-09-13T15:19:33.536739+00:00",
+    "build_now_utc": "2026-09-15T18:16:26.399892+00:00",
+    "fixture_snapshot_as_of_utc": "2026-09-15T18:16:26.399393+00:00",
     "fixture_snapshot_provenance_mode": "STAGE8_VERIFIED_ARTIFACT_OBSERVATION"
   },
   "context_join": {
@@ -88,8 +88,8 @@
     "home_context_fields_appended": 36,
     "away_context_fields_appended": 36,
     "total_context_fields_appended": 72,
-    "source_rows": 342,
-    "output_rows": 342,
+    "source_rows": 340,
+    "output_rows": 340,
     "row_count_preserved": true
   },
   "snapshot_policy": {
@@ -100,8 +100,8 @@
   },
   "enriched_upcoming_fixtures": {
     "path": "data/processed/context/enriched_upcoming_fixtures.csv",
-    "sha256": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914",
-    "row_count": 342,
+    "sha256": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b",
+    "row_count": 340,
     "column_count": 94,
     "source_column_count": 22,
     "context_column_count": 72,
@@ -215,23 +215,23 @@
     },
     "upcoming_fixtures": {
       "path": "data/processed/production/upcoming_fixtures.csv",
-      "sha256": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef",
+      "sha256": "c38fc0670c0e8e08c6708f3cd1ee7f7a012ec661bafbc8079c1880333c39e926",
       "usage": "UPCOMING_FIXTURE_SOURCE"
     },
     "production_fixture_fetch_report": {
       "path": "data/processed/production/production_fixture_fetch_report.json",
-      "sha256": "31a46d2091dcc0b544b7035373851a77a5383b1cb3a882109301dbf2debc6f81",
+      "sha256": "1d6bd57dec8d63778f7ab624c14938af29e10f0b2e5126174e881538db20b7aa",
       "usage": "FIXTURE_SOURCE_PROVENANCE",
       "legacy_timestamp_missing": true
     },
     "team_context": {
       "path": "data/processed/context/team_context.csv",
-      "sha256": "e1a4c8f97cdec74bb0a5b6ec77e23d3aea1894b325c6165fbc5063fcf7f3e8e7",
+      "sha256": "672ade0bd6536481d78c4e2a9e72c7dbf5519a8a8dc221606b1ee5f00bf70328",
       "usage": "FULL_HOME_AWAY_CONTEXT"
     },
     "team_context_report": {
       "path": "data/processed/context/team_context_report.json",
-      "sha256": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3",
+      "sha256": "87f298b797575dc7ae360b7e137128d07d48571d76b0775f9cb26d66b67de213",
       "usage": "VERIFIED_TEAM_CONTEXT_PROVENANCE"
     }
   },
@@ -271,7 +271,7 @@
   "independent_fixture_context_validation": "VERIFIED",
   "independent_validation": {
     "status": "VERIFIED",
-    "fixture_count": 342,
+    "fixture_count": 340,
     "source_column_count": 22,
     "context_fields_per_team": 36,
     "context_fields_appended": 72,
@@ -295,11 +295,11 @@
     "dependency_identity_verified": true,
     "freshness_contract_verified": true,
     "safety_verified": true,
-    "earliest_fixture_kickoff_utc": "2026-09-13T15:30:00+00:00",
+    "earliest_fixture_kickoff_utc": "2026-09-18T19:00:00+00:00",
     "latest_fixture_kickoff_utc": "2027-05-30T15:00:00+00:00",
-    "enriched_artifact_sha256": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914"
+    "enriched_artifact_sha256": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b"
   },
-  "stage_8_5_3_verified_at_utc": "2026-09-13T15:19:34.056800+00:00",
+  "stage_8_5_3_verified_at_utc": "2026-09-15T18:16:26.950675+00:00",
   "fixture_context_service": "VERIFIED",
   "service_freshness": {
     "status": "VERIFIED",
@@ -320,15 +320,15 @@
     "partial_unverified_output_allowed": false,
     "fail_closed": true
   },
-  "stage_8_5_4_verified_at_utc": "2026-09-13T15:19:36.523741+00:00",
+  "stage_8_5_4_verified_at_utc": "2026-09-15T18:16:29.564965+00:00",
   "stage_8_5_status": "COMPLETE",
   "fixture_context_enrichment_layer": "VERIFIED",
-  "stage_8_5_5_verified_at_utc": "2026-09-13T15:19:37.255367+00:00",
+  "stage_8_5_5_verified_at_utc": "2026-09-15T18:16:30.310760+00:00",
   "final_gate": {
     "stage": "8.5.5",
     "status": "PASS",
-    "verified_at_utc": "2026-09-13T15:19:37.255367+00:00",
-    "fixture_count": 342,
+    "verified_at_utc": "2026-09-15T18:16:30.310760+00:00",
+    "fixture_count": 340,
     "context_team_count": 20,
     "home_context_fields": 36,
     "away_context_fields": 36,
@@ -356,13 +356,13 @@
   "evidence_sha256": {
     "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
     "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
-    "upcoming_fixtures": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef",
-    "production_fixture_fetch_report": "31a46d2091dcc0b544b7035373851a77a5383b1cb3a882109301dbf2debc6f81",
-    "team_context": "e1a4c8f97cdec74bb0a5b6ec77e23d3aea1894b325c6165fbc5063fcf7f3e8e7",
-    "team_context_report": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3",
-    "enriched_upcoming_fixtures": "a1daf44c01d0b46b1173c0a9507ad07110d2e22edf25f32925cd12b6eae4b914",
+    "upcoming_fixtures": "c38fc0670c0e8e08c6708f3cd1ee7f7a012ec661bafbc8079c1880333c39e926",
+    "production_fixture_fetch_report": "1d6bd57dec8d63778f7ab624c14938af29e10f0b2e5126174e881538db20b7aa",
+    "team_context": "672ade0bd6536481d78c4e2a9e72c7dbf5519a8a8dc221606b1ee5f00bf70328",
+    "team_context_report": "87f298b797575dc7ae360b7e137128d07d48571d76b0775f9cb26d66b67de213",
+    "enriched_upcoming_fixtures": "febaaa56d2d8de9dc80639d2f9739f387832983510ffb6655ff2f22e00c3b20b",
     "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
-    "stage7_8_final_verification": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816",
+    "stage7_8_final_verification": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575",
     "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
   }
 }

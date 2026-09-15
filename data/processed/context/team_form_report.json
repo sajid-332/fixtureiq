@@ -11,9 +11,9 @@
   },
   "current_season_source_gate": "VERIFIED",
   "overall_form_engine": "VERIFIED",
-  "generated_at_utc": "2026-09-13T15:19:31.247702+00:00",
-  "source_as_of_utc": "2026-09-13T13:00:00+00:00",
-  "history_cutoff_utc": "2026-09-13T13:00:00+00:00",
+  "generated_at_utc": "2026-09-15T18:16:23.580317+00:00",
+  "source_as_of_utc": "2026-09-14T19:00:00+00:00",
+  "history_cutoff_utc": "2026-09-14T19:00:00+00:00",
   "source": "FixtureIQ production_history.csv",
   "competition": "Premier League",
   "competition_code": "PL",
@@ -33,9 +33,9 @@
     "status": null
   },
   "source_gate": {
-    "history_total_rows": 1178,
-    "current_season_source_rows": 38,
-    "completed_current_season_matches": 38,
+    "history_total_rows": 1180,
+    "current_season_source_rows": 40,
+    "completed_current_season_matches": 40,
     "rejected_non_completed_rows": 0,
     "future_matches_used": 0,
     "previous_season_matches_used": 0,
@@ -52,12 +52,12 @@
     },
     "production_history": {
       "path": "data/processed/production/production_history.csv",
-      "sha256": "5f79dd44f74b71a1fa57f5ff2156c3671db1ec8f376d3470d8516e14d6b2d8f0",
+      "sha256": "7a8088a5b0e76f3082c2c0664aff89d148815640cf02d3323cbb3f4fa27ad1c7",
       "usage": "CURRENT_SEASON_COMPLETED_MATCH_FORM"
     },
     "production_history_report": {
       "path": "data/processed/production/production_history_report.json",
-      "sha256": "e9475bbe335d104ce1749ba4dfecbaa279b2787480cc182f41537652c6596fe4"
+      "sha256": "051621eccdd4caccbe03ee0bbb08ea8bb43689315a485ff1524e184561173077"
     },
     "current_epl_team_registry": {
       "path": "data/processed/context/current_standings.csv",
@@ -682,15 +682,15 @@
     {
       "team_id": "-156530674508954",
       "team_name": "Leeds",
-      "form_matches_available": 3,
-      "recent_results": "WDD",
-      "recent_points": 5,
-      "recent_wins": 1,
+      "form_matches_available": 4,
+      "recent_results": "WDDW",
+      "recent_points": 8,
+      "recent_wins": 2,
       "recent_draws": 2,
       "recent_losses": 0,
-      "recent_goals_for": 3,
-      "recent_goals_against": 2,
-      "recent_goal_difference": 1,
+      "recent_goals_for": 7,
+      "recent_goals_against": 3,
+      "recent_goal_difference": 4,
       "selected_matches": [
         {
           "date_utc": "2026-08-22T14:00:00+00:00",
@@ -718,6 +718,15 @@
           "goals_for": 1,
           "goals_against": 1,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 4,
+          "goals_against": 1,
+          "result": "W"
         }
       ]
     },
@@ -775,15 +784,15 @@
     {
       "team_id": "50",
       "team_name": "Manchester City",
-      "form_matches_available": 3,
-      "recent_results": "WWW",
-      "recent_points": 9,
-      "recent_wins": 3,
+      "form_matches_available": 4,
+      "recent_results": "WWWW",
+      "recent_points": 12,
+      "recent_wins": 4,
       "recent_draws": 0,
       "recent_losses": 0,
-      "recent_goals_for": 7,
+      "recent_goals_for": 8,
       "recent_goals_against": 2,
-      "recent_goal_difference": 5,
+      "recent_goal_difference": 6,
       "selected_matches": [
         {
           "date_utc": "2026-08-23T13:00:00+00:00",
@@ -811,21 +820,30 @@
           "goals_for": 1,
           "goals_against": 0,
           "result": "W"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
         }
       ]
     },
     {
       "team_id": "33",
       "team_name": "Manchester United",
-      "form_matches_available": 3,
-      "recent_results": "LWD",
+      "form_matches_available": 4,
+      "recent_results": "LWDL",
       "recent_points": 4,
       "recent_wins": 1,
       "recent_draws": 1,
-      "recent_losses": 1,
+      "recent_losses": 2,
       "recent_goals_for": 7,
-      "recent_goals_against": 6,
-      "recent_goal_difference": 1,
+      "recent_goals_against": 7,
+      "recent_goal_difference": 0,
       "selected_matches": [
         {
           "date_utc": "2026-08-22T11:30:00+00:00",
@@ -853,21 +871,30 @@
           "goals_for": 2,
           "goals_against": 2,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
         }
       ]
     },
     {
       "team_id": "34",
       "team_name": "Newcastle",
-      "form_matches_available": 3,
-      "recent_results": "DWD",
+      "form_matches_available": 4,
+      "recent_results": "DWDL",
       "recent_points": 5,
       "recent_wins": 1,
       "recent_draws": 2,
-      "recent_losses": 0,
-      "recent_goals_for": 6,
-      "recent_goals_against": 4,
-      "recent_goal_difference": 2,
+      "recent_losses": 1,
+      "recent_goals_for": 7,
+      "recent_goals_against": 8,
+      "recent_goal_difference": -1,
       "selected_matches": [
         {
           "date_utc": "2026-08-23T15:30:00+00:00",
@@ -895,6 +922,15 @@
           "goals_for": 2,
           "goals_against": 2,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 4,
+          "result": "L"
         }
       ]
     },
@@ -1073,7 +1109,7 @@
   "venue_form_engine": "VERIFIED",
   "current_team_form": {
     "path": "data/processed/context/current_team_form.csv",
-    "sha256": "c1ce1fb2df7a70444019a47d05bf60b229f50500a81c265506498c3f489385da",
+    "sha256": "a5b076bf16cbe87cae9897254fb92fe479d8a493479b40343584c27434111e82",
     "row_count": 20,
     "column_count": 29,
     "columns": [
@@ -1117,9 +1153,9 @@
     "season_scope": "CURRENT_PRODUCTION_SEASON_ONLY",
     "result_order": "OLDEST_TO_NEWEST",
     "most_recent_result_position": "RIGHTMOST",
-    "home_min_matches_available": 1,
+    "home_min_matches_available": 2,
     "home_max_matches_available": 2,
-    "away_min_matches_available": 1,
+    "away_min_matches_available": 2,
     "away_max_matches_available": 2
   },
   "venue_form_evidence": [
@@ -2137,6 +2173,15 @@
           "goals_for": 1,
           "goals_against": 1,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 4,
+          "goals_against": 1,
+          "result": "W"
         }
       ],
       "home_selected_matches": [
@@ -2148,6 +2193,15 @@
           "goals_for": 1,
           "goals_against": 1,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "34",
+          "opponent_team_name": "Newcastle",
+          "goals_for": 4,
+          "goals_against": 1,
+          "result": "W"
         }
       ],
       "away_selected_matches": [
@@ -2283,6 +2337,15 @@
           "goals_for": 1,
           "goals_against": 0,
           "result": "W"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 1,
+          "goals_against": 0,
+          "result": "W"
         }
       ],
       "home_selected_matches": [
@@ -2313,6 +2376,15 @@
           "opponent_team_name": "Crystal Palace",
           "goals_for": 4,
           "goals_against": 1,
+          "result": "W"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "33",
+          "opponent_team_name": "Manchester United",
+          "goals_for": 1,
+          "goals_against": 0,
           "result": "W"
         }
       ]
@@ -2347,6 +2419,15 @@
           "goals_for": 2,
           "goals_against": 2,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
         }
       ],
       "home_selected_matches": [
@@ -2358,6 +2439,15 @@
           "goals_for": 5,
           "goals_against": 2,
           "result": "W"
+        },
+        {
+          "date_utc": "2026-09-13T15:30:00+00:00",
+          "venue": "HOME",
+          "opponent_team_id": "50",
+          "opponent_team_name": "Manchester City",
+          "goals_for": 0,
+          "goals_against": 1,
+          "result": "L"
         }
       ],
       "away_selected_matches": [
@@ -2411,6 +2501,15 @@
           "goals_for": 2,
           "goals_against": 2,
           "result": "D"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 4,
+          "result": "L"
         }
       ],
       "home_selected_matches": [
@@ -2442,6 +2541,15 @@
           "goals_for": 2,
           "goals_against": 0,
           "result": "W"
+        },
+        {
+          "date_utc": "2026-09-14T19:00:00+00:00",
+          "venue": "AWAY",
+          "opponent_team_id": "-156530674508954",
+          "opponent_team_name": "Leeds",
+          "goals_for": 1,
+          "goals_against": 4,
+          "result": "L"
         }
       ]
     },
@@ -2692,7 +2800,7 @@
       ]
     }
   ],
-  "stage_8_3_3_verified_at_utc": "2026-09-13T15:19:31.247702+00:00",
+  "stage_8_3_3_verified_at_utc": "2026-09-15T18:16:23.580317+00:00",
   "team_form_service": "VERIFIED",
   "freshness": {
     "mode": "DEPENDENCY_BASED",
@@ -2717,14 +2825,14 @@
     "missing_artifact_not_ready": true,
     "fail_closed": true
   },
-  "stage_8_3_4_verified_at_utc": "2026-09-13T15:19:31.623001+00:00",
+  "stage_8_3_4_verified_at_utc": "2026-09-15T18:16:24.092224+00:00",
   "stage_8_3_status": "COMPLETE",
   "current_team_form_layer": "VERIFIED",
-  "stage_8_3_5_verified_at_utc": "2026-09-13T15:19:31.807556+00:00",
+  "stage_8_3_5_verified_at_utc": "2026-09-15T18:16:24.334817+00:00",
   "final_gate": {
     "stage": "8.3.5",
     "status": "PASS",
-    "verified_at_utc": "2026-09-13T15:19:31.807556+00:00",
+    "verified_at_utc": "2026-09-15T18:16:24.334817+00:00",
     "canonical_team_count": 20,
     "canonical_column_count": 29,
     "current_season_source_verified": true,
@@ -2745,12 +2853,12 @@
   "evidence_sha256": {
     "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
     "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
-    "standings_report": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10",
-    "current_team_form": "c1ce1fb2df7a70444019a47d05bf60b229f50500a81c265506498c3f489385da",
-    "production_history": "5f79dd44f74b71a1fa57f5ff2156c3671db1ec8f376d3470d8516e14d6b2d8f0",
-    "production_history_report": "e9475bbe335d104ce1749ba4dfecbaa279b2787480cc182f41537652c6596fe4",
+    "standings_report": "bd3f988c1b5295ca382afd8b3374f54a30a03353957d12eecb60cfd22a14a83c",
+    "current_team_form": "a5b076bf16cbe87cae9897254fb92fe479d8a493479b40343584c27434111e82",
+    "production_history": "7a8088a5b0e76f3082c2c0664aff89d148815640cf02d3323cbb3f4fa27ad1c7",
+    "production_history_report": "051621eccdd4caccbe03ee0bbb08ea8bb43689315a485ff1524e184561173077",
     "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
-    "stage7_8_final_verification": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816",
+    "stage7_8_final_verification": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575",
     "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
   }
 }

@@ -1177,3 +1177,5 @@ fixture_id,season,date,timestamp,timezone,status_short,status_long,status_elapse
 -154606826164875,2026,2026-09-12 16:30:00+00:00,1789230600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,47,Tottenham,TOT,45,Everton,EVE,0,0
 -180148936024882,2026,2026-09-12 19:00:00+00:00,1789239600,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,-218557486738561,Sunderland,SUN,42,Arsenal,ARS,0,2
 -170597791555127,2026,2026-09-13 13:00:00+00:00,1789304400,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,-39195573837902,Coventry City,COV,51,Brighton,BHA,0,5
+-23708102576785,2026,2026-09-13 15:30:00+00:00,1789313400,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,33,Manchester United,MUN,50,Manchester City,MCI,0,1
+-211199180133122,2026,2026-09-14 19:00:00+00:00,1789412400,UTC,FT,Match Finished,90,39,Premier League,England,Regular Season - 4,-156530674508954,Leeds,LEE,34,Newcastle,NEW,4,1

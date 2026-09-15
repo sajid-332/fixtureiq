@@ -1,7 +1,7 @@
 {
   "stage": "7.8.3",
   "status": "PASS",
-  "prediction_count": 342,
+  "prediction_count": 340,
   "feature_count": 86,
   "fixture_alignment": true,
   "fixture_ids_unique": true,
@@ -23,15 +23,15 @@
   "confidence_integrity": true,
   "predicted_target_counts": {
     "0": 1,
-    "1": 172,
-    "2": 169
+    "1": 169,
+    "2": 170
   },
-  "average_confidence": 0.5018817526223336,
-  "minimum_confidence": 0.3526574092574094,
+  "average_confidence": 0.5010874154008994,
+  "minimum_confidence": 0.3526574092574093,
   "maximum_confidence": 0.7424427128427131,
   "model_retrained": false,
   "model_reselected": false,
   "hyperparameter_tuned": false,
   "final_test_evaluation_artifacts_used": false,
-  "prediction_sha256": "dec5cf0447594f91daff958f25bdb81726f003e7d5dfc74421fab31e27e40289"
+  "prediction_sha256": "652ae4ee092b0005f9166183ffeff0f14a4fddd8a4612cdba7ff25ff15631d24"
 }

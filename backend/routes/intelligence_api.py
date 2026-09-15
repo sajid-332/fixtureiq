@@ -1,10 +1,21 @@
 """
-FixtureIQ Stage 9.6
-Match Intelligence REST API.
+FixtureIQ Stage 9.7
+Runtime-Safe Match Intelligence REST API.
 
-Read-only artifact-serving routes.
+Healthy:
+    200 READY
 
-Runtime freshness / cache hardening belongs to Stage 9.7.
+Unknown identity:
+    404 NOT_FOUND
+
+Stale / invalid dependency / crossed temporal boundary:
+    503 NOT_READY
+
+Write methods:
+    405
+
+All intelligence responses:
+    Cache-Control: no-store
 """
 
 from __future__ import annotations
@@ -12,6 +23,7 @@ from __future__ import annotations
 from flask import (
     Blueprint,
     jsonify,
+    request,
 )
 
 from backend.services.match_intelligence_service import (
@@ -21,10 +33,6 @@ from backend.services.match_intelligence_service import (
 )
 
 
-# ============================================================
-# Blueprint
-# ============================================================
-
 intelligence_api_bp = Blueprint(
     "intelligence_api",
     __name__,
@@ -32,7 +40,38 @@ intelligence_api_bp = Blueprint(
 
 
 # ============================================================
-# Response helpers
+# No-store policy
+# ============================================================
+
+@intelligence_api_bp.after_app_request
+def intelligence_no_store(
+    response,
+):
+
+    if request.path.startswith(
+        "/api/v1/intelligence"
+    ):
+
+        response.headers[
+            "Cache-Control"
+        ] = (
+            "no-store, no-cache, "
+            "must-revalidate, max-age=0"
+        )
+
+        response.headers[
+            "Pragma"
+        ] = "no-cache"
+
+        response.headers[
+            "Expires"
+        ] = "0"
+
+    return response
+
+
+# ============================================================
+# Public error responses
 # ============================================================
 
 def _not_ready_response():
@@ -145,7 +184,7 @@ def intelligence_matches():
 
 
 # ============================================================
-# One fixture
+# Fixture
 # ============================================================
 
 @intelligence_api_bp.route(
@@ -162,10 +201,8 @@ def intelligence_match(
 
     try:
 
-        match = (
-            service.get_match(
-                fixture_id
-            )
+        match = service.get_match(
+            fixture_id
         )
 
     except MatchIntelligenceNotReadyError:
@@ -191,7 +228,7 @@ def intelligence_match(
 
 
 # ============================================================
-# Team fixtures
+# Team
 # ============================================================
 
 @intelligence_api_bp.route(
@@ -245,7 +282,7 @@ def intelligence_team(
 
 
 # ============================================================
-# Upcoming intelligence
+# Upcoming
 # ============================================================
 
 @intelligence_api_bp.route(
@@ -260,9 +297,7 @@ def intelligence_upcoming():
 
     try:
 
-        matches = (
-            service.get_upcoming()
-        )
+        matches = service.get_upcoming()
 
     except MatchIntelligenceNotReadyError:
 

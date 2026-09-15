@@ -12,8 +12,8 @@
   "provider_fetch": "VERIFIED",
   "team_normalization": "VERIFIED",
   "canonical_standings": "VERIFIED",
-  "generated_at_utc": "2026-09-13T15:19:30.421300+00:00",
-  "source_as_of_utc": "2026-09-13T15:19:29.417494+00:00",
+  "generated_at_utc": "2026-09-15T18:16:22.670492+00:00",
+  "source_as_of_utc": "2026-09-15T18:16:21.719002+00:00",
   "provider": "football-data.org",
   "competition": "Premier League",
   "competition_code": "PL",
@@ -22,10 +22,10 @@
   "current_matchday": 4,
   "season_start_date": "2026-08-21",
   "season_end_date": "2027-05-30",
-  "provider_fetch_timestamp_utc": "2026-09-13T15:19:29.417494+00:00",
+  "provider_fetch_timestamp_utc": "2026-09-15T18:16:21.719002+00:00",
   "current_standings": {
     "path": "data/processed/context/current_standings.csv",
-    "sha256": "870923ab711540e1dad15a2c97bd3d4410b10ea742a4e6fd03cca0d463428d66",
+    "sha256": "100c1aedf37568379e70ce8d27e21358d7eadd9c55c1b6c809f99d2c729fac91",
     "row_count": 20,
     "column_count": 11,
     "columns": [
@@ -68,14 +68,14 @@
     },
     "upcoming_fixtures_team_registry": {
       "path": "data/processed/production/upcoming_fixtures.csv",
-      "sha256": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef",
+      "sha256": "c38fc0670c0e8e08c6708f3cd1ee7f7a012ec661bafbc8079c1880333c39e926",
       "usage": "FIXTUREIQ_CANONICAL_TEAM_IDENTITY"
     }
   },
   "freshness": {
     "mode": "DEPENDENCY_BASED",
-    "snapshot_generated_at_utc": "2026-09-13T15:19:30.421300+00:00",
-    "source_as_of_utc": "2026-09-13T15:19:29.417494+00:00",
+    "snapshot_generated_at_utc": "2026-09-15T18:16:22.670492+00:00",
+    "source_as_of_utc": "2026-09-15T18:16:21.719002+00:00",
     "provider_snapshot_valid": true,
     "dependency_identity_recorded": true
   },
@@ -102,6 +102,12 @@
       "provider_team_name": "Manchester City FC",
       "team_id": "50",
       "team_name": "Manchester City"
+    },
+    {
+      "provider_team_id": 341,
+      "provider_team_name": "Leeds United FC",
+      "team_id": "-156530674508954",
+      "team_name": "Leeds"
     },
     {
       "provider_team_id": 322,
@@ -146,22 +152,16 @@
       "team_name": "Ipswich"
     },
     {
-      "provider_team_id": 67,
-      "provider_team_name": "Newcastle United FC",
-      "team_id": "34",
-      "team_name": "Newcastle"
-    },
-    {
-      "provider_team_id": 341,
-      "provider_team_name": "Leeds United FC",
-      "team_id": "-156530674508954",
-      "team_name": "Leeds"
-    },
-    {
       "provider_team_id": 351,
       "provider_team_name": "Nottingham Forest FC",
       "team_id": "65",
       "team_name": "Nottingham Forest"
+    },
+    {
+      "provider_team_id": 67,
+      "provider_team_name": "Newcastle United FC",
+      "team_id": "34",
+      "team_name": "Newcastle"
     },
     {
       "provider_team_id": 66,
@@ -226,14 +226,14 @@
     "invalid_provenance_not_ready": true,
     "missing_artifact_not_ready": true
   },
-  "stage_8_2_4_verified_at_utc": "2026-09-13T15:19:30.787857+00:00",
+  "stage_8_2_4_verified_at_utc": "2026-09-15T18:16:23.082344+00:00",
   "stage_8_2_status": "COMPLETE",
   "live_epl_standings_layer": "VERIFIED",
-  "stage_8_2_5_verified_at_utc": "2026-09-13T15:19:30.963698+00:00",
+  "stage_8_2_5_verified_at_utc": "2026-09-15T18:16:23.270430+00:00",
   "final_gate": {
     "status": "PASS",
     "stage": "8.2.5",
-    "verified_at_utc": "2026-09-13T15:19:30.963715+00:00",
+    "verified_at_utc": "2026-09-15T18:16:23.270459+00:00",
     "canonical_team_count": 20,
     "canonical_schema_verified": true,
     "provider_verified": true,
@@ -249,10 +249,10 @@
   "evidence_sha256": {
     "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
     "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
-    "current_standings": "870923ab711540e1dad15a2c97bd3d4410b10ea742a4e6fd03cca0d463428d66",
+    "current_standings": "100c1aedf37568379e70ce8d27e21358d7eadd9c55c1b6c809f99d2c729fac91",
     "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
-    "stage7_8_final_verification": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816",
+    "stage7_8_final_verification": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575",
     "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f",
-    "upcoming_fixtures_snapshot": "a147adf3f903513496f807762c8409c75f1232ea4cc902e87eec8be75bca58ef"
+    "upcoming_fixtures_snapshot": "c38fc0670c0e8e08c6708f3cd1ee7f7a012ec661bafbc8079c1880333c39e926"
   }
 }

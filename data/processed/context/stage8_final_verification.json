@@ -4,7 +4,7 @@
   "stage_8_complete": true,
   "stage_8_status": "COMPLETE",
   "stage8_context_layer": "VERIFIED",
-  "verified_at_utc": "2026-09-13T15:19:51.172033+00:00",
+  "verified_at_utc": "2026-09-15T18:16:43.681457+00:00",
   "sub_stages": {
     "8.8.1": "PASS",
     "8.8.2": "PASS",
@@ -29,7 +29,7 @@
     "fixture_context_service": "READY",
     "context_api": "READY",
     "team_count": 20,
-    "fixture_count": 342,
+    "fixture_count": 340,
     "standings_columns": 11,
     "team_form_columns": 29,
     "team_context_columns": 38,
@@ -59,7 +59,7 @@
   "dependency_identity": {
     "stage7_8_final_verification": {
       "path": "data/processed/production/stage7_8_final_verification.json",
-      "sha256": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816"
+      "sha256": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575"
     },
     "stage7_9_final_verification": {
       "path": "data/processed/production/stage7_9_final_verification.json",
@@ -75,27 +75,27 @@
     },
     "standings_report": {
       "path": "data/processed/context/standings_report.json",
-      "sha256": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10"
+      "sha256": "bd3f988c1b5295ca382afd8b3374f54a30a03353957d12eecb60cfd22a14a83c"
     },
     "team_form_report": {
       "path": "data/processed/context/team_form_report.json",
-      "sha256": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48"
+      "sha256": "cfe2dee847f73d53ef425e0492632f9bde9573c6d782569c73934ca462fc54fd"
     },
     "team_context_report": {
       "path": "data/processed/context/team_context_report.json",
-      "sha256": "d9f4a0a220bf5e174669a936de13d1cf065e5e50cb02c49cb7a62ec5f8e9bff3"
+      "sha256": "87f298b797575dc7ae360b7e137128d07d48571d76b0775f9cb26d66b67de213"
     },
     "fixture_context_report": {
       "path": "data/processed/context/fixture_context_report.json",
-      "sha256": "759110d07bf79df3e1b901e1aff3049ec9bd90428b878e1709ce85e7de46c8f7"
+      "sha256": "30b7a1703b8ea615ac0a6668f37f21d3261caae11b71a7709ea6942e09d653b4"
     },
     "context_api_verification": {
       "path": "data/processed/context/context_api_verification.json",
-      "sha256": "5aa70c47d50e74eb7dcfe2ab2824b97f5b42813676e7e18c89a9a96d4b164c11"
+      "sha256": "9eaa2301d06c826ad0d11fa88baead76010c488bd2b52100697369c72b36e31e"
     },
     "context_runtime_verification": {
       "path": "data/processed/context/context_runtime_verification.json",
-      "sha256": "6c08f63f395c66642fc845d704974428e01153a8a09016de089e72e1d428e3c3"
+      "sha256": "8eadbe4f552cd4e83e7cc5f13e57fcb6b0d803585040dfaf5fbeda27e6f45ff5"
     },
     "selected_model": {
       "path": "data/processed/model/selected/selected_model.joblib",
@@ -105,7 +105,7 @@
   "code_identity": {
     "flask_app": {
       "path": "backend/app.py",
-      "sha256": "65555f4407ed1bcb9808a737b8acb21beae55004f6926cd8f528ccecc92a51ac"
+      "sha256": "4af0e40b609bb88627c309421fb5c489dea8860e9ec677711e05012f7f8fb093"
     },
     "context_api": {
       "path": "backend/routes/context_api.py",

@@ -11,11 +11,11 @@
   },
   "upstream_context_readiness": "VERIFIED",
   "unified_team_context_builder": "VERIFIED",
-  "generated_at_utc": "2026-09-13T15:19:31.965554+00:00",
-  "source_as_of_utc": "2026-09-13T15:19:29.417494+00:00",
-  "standings_source_as_of_utc": "2026-09-13T15:19:29.417494+00:00",
-  "form_source_as_of_utc": "2026-09-13T13:00:00+00:00",
-  "form_history_cutoff_utc": "2026-09-13T13:00:00+00:00",
+  "generated_at_utc": "2026-09-15T18:16:24.522127+00:00",
+  "source_as_of_utc": "2026-09-15T18:16:21.719002+00:00",
+  "standings_source_as_of_utc": "2026-09-15T18:16:21.719002+00:00",
+  "form_source_as_of_utc": "2026-09-14T19:00:00+00:00",
+  "form_history_cutoff_utc": "2026-09-14T19:00:00+00:00",
   "competition": "Premier League",
   "competition_code": "PL",
   "season": 2026,
@@ -37,7 +37,7 @@
   },
   "team_context": {
     "path": "data/processed/context/team_context.csv",
-    "sha256": "e1a4c8f97cdec74bb0a5b6ec77e23d3aea1894b325c6165fbc5063fcf7f3e8e7",
+    "sha256": "672ade0bd6536481d78c4e2a9e72c7dbf5519a8a8dc221606b1ee5f00bf70328",
     "row_count": 20,
     "column_count": 38,
     "columns": [
@@ -94,22 +94,22 @@
     },
     "current_standings": {
       "path": "data/processed/context/current_standings.csv",
-      "sha256": "870923ab711540e1dad15a2c97bd3d4410b10ea742a4e6fd03cca0d463428d66",
+      "sha256": "100c1aedf37568379e70ce8d27e21358d7eadd9c55c1b6c809f99d2c729fac91",
       "usage": "FULL_STANDINGS_CONTEXT"
     },
     "standings_report": {
       "path": "data/processed/context/standings_report.json",
-      "sha256": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10",
+      "sha256": "bd3f988c1b5295ca382afd8b3374f54a30a03353957d12eecb60cfd22a14a83c",
       "usage": "VERIFIED_STANDINGS_PROVENANCE"
     },
     "current_team_form": {
       "path": "data/processed/context/current_team_form.csv",
-      "sha256": "c1ce1fb2df7a70444019a47d05bf60b229f50500a81c265506498c3f489385da",
+      "sha256": "a5b076bf16cbe87cae9897254fb92fe479d8a493479b40343584c27434111e82",
       "usage": "FULL_CURRENT_FORM_CONTEXT"
     },
     "team_form_report": {
       "path": "data/processed/context/team_form_report.json",
-      "sha256": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48",
+      "sha256": "cfe2dee847f73d53ef425e0492632f9bde9573c6d782569c73934ca462fc54fd",
       "usage": "VERIFIED_FORM_PROVENANCE"
     }
   },
@@ -152,7 +152,7 @@
     "provenance_verified": true,
     "safety_verified": true
   },
-  "stage_8_4_3_verified_at_utc": "2026-09-13T15:19:32.239965+00:00",
+  "stage_8_4_3_verified_at_utc": "2026-09-15T18:16:24.864124+00:00",
   "team_context_service": "VERIFIED",
   "service_freshness": {
     "status": "VERIFIED",
@@ -173,14 +173,14 @@
     "partial_unverified_output_allowed": false,
     "fail_closed": true
   },
-  "stage_8_4_4_verified_at_utc": "2026-09-13T15:19:32.973481+00:00",
+  "stage_8_4_4_verified_at_utc": "2026-09-15T18:16:25.783552+00:00",
   "stage_8_4_status": "COMPLETE",
   "unified_team_context_layer": "VERIFIED",
-  "stage_8_4_5_verified_at_utc": "2026-09-13T15:19:33.333460+00:00",
+  "stage_8_4_5_verified_at_utc": "2026-09-15T18:16:26.185967+00:00",
   "final_gate": {
     "stage": "8.4.5",
     "status": "PASS",
-    "verified_at_utc": "2026-09-13T15:19:33.333460+00:00",
+    "verified_at_utc": "2026-09-15T18:16:26.185967+00:00",
     "canonical_team_count": 20,
     "canonical_column_count": 38,
     "one_to_one_join_verified": true,
@@ -202,13 +202,13 @@
   "evidence_sha256": {
     "stage8_context_contract": "2e9be66fa912bf1594cd92506255cf240135ca3b756a3c0fee5fe40aee782b8d",
     "stage8_context_contract_verification": "60c547846b1f85e29ba8799158328a1c8b2cf6cf07ec3131f70228aa4af5b0b0",
-    "current_standings": "870923ab711540e1dad15a2c97bd3d4410b10ea742a4e6fd03cca0d463428d66",
-    "standings_report": "2914d2b1af4c04d1e3291b7c6621252f87005ee2f72b4e1ef43702aff9c06c10",
-    "current_team_form": "c1ce1fb2df7a70444019a47d05bf60b229f50500a81c265506498c3f489385da",
-    "team_form_report": "5998209786be7e5fee08bb02b4884c08c2a37c98b9b074309878526cc1d3fe48",
-    "team_context": "e1a4c8f97cdec74bb0a5b6ec77e23d3aea1894b325c6165fbc5063fcf7f3e8e7",
+    "current_standings": "100c1aedf37568379e70ce8d27e21358d7eadd9c55c1b6c809f99d2c729fac91",
+    "standings_report": "bd3f988c1b5295ca382afd8b3374f54a30a03353957d12eecb60cfd22a14a83c",
+    "current_team_form": "a5b076bf16cbe87cae9897254fb92fe479d8a493479b40343584c27434111e82",
+    "team_form_report": "cfe2dee847f73d53ef425e0492632f9bde9573c6d782569c73934ca462fc54fd",
+    "team_context": "672ade0bd6536481d78c4e2a9e72c7dbf5519a8a8dc221606b1ee5f00bf70328",
     "selected_model": "9c0f4fd04763ecacb9b3018f16d0eee4216dd457aa2a4279e20a72d35cd7ce5e",
-    "stage7_8_final_verification": "0e42a1c41c9f682ebbd7a55eb6cf50f31e0f416e2b0f0512626cdd120dc11816",
+    "stage7_8_final_verification": "9d3eddd9d4d333d7478901798603c4d3ee5b2c3aa0c4e6abfea5f1b57248a575",
     "stage7_9_final_verification": "64acc57471defbfa0a21ab1430e2d52f356aa008368a75555f423a978adb4e2f"
   }
 }
