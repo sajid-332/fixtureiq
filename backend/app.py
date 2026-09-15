@@ -9,6 +9,10 @@ from backend.routes.context_api import (
     context_api_bp,
 )
 
+from backend.routes.intelligence_api import (
+    intelligence_api_bp,
+)
+
 
 app = Flask(__name__)
 
@@ -25,6 +29,10 @@ app.register_blueprint(
 
 app.register_blueprint(
     context_api_bp
+)
+
+app.register_blueprint(
+    intelligence_api_bp
 )
 
 
