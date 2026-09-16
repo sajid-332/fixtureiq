@@ -1,0 +1,99 @@
+{
+  "stage": "10.1.4",
+  "version": "1.0.0",
+  "name": "FRONTEND_ROUTE_ARCHITECTURE",
+  "status": "LOCKED",
+  "router": "NEXTJS_APP_ROUTER",
+  "app_root": "frontend/app",
+  "routing_principles": {
+    "file_system_router": true,
+    "backend_is_prediction_authority": true,
+    "frontend_prediction_routes": false,
+    "frontend_api_route_handlers_required": false,
+    "direct_backend_artifact_routes": false,
+    "primary_user_data_source": "/api/v1/intelligence",
+    "server_first": true,
+    "client_components_only_when_required": true
+  },
+  "routes": [
+    {
+      "path": "/",
+      "kind": "INDEX",
+      "purpose": "UPCOMING_MATCHES_DASHBOARD",
+      "implementation_owner": "10.4",
+      "page_file": "frontend/app/page.tsx",
+      "dynamic_params": [],
+      "primary_backend_route": "/api/v1/intelligence/upcoming",
+      "readiness_backend_route": "/api/v1/intelligence/status",
+      "prediction_authority": "STAGE7",
+      "context_authority": "STAGE8",
+      "intelligence_authority": "STAGE9",
+      "presentation_authority": "STAGE10"
+    },
+    {
+      "path": "/matches/[fixtureId]",
+      "kind": "DYNAMIC_MATCH",
+      "purpose": "MATCH_INTELLIGENCE_DETAIL",
+      "implementation_owner": "10.5",
+      "page_file": "frontend/app/matches/[fixtureId]/page.tsx",
+      "dynamic_params": [
+        "fixtureId"
+      ],
+      "primary_backend_route": "/api/v1/intelligence/matches/<fixture_id>",
+      "readiness_backend_route": "/api/v1/intelligence/status",
+      "prediction_authority": "STAGE7",
+      "context_authority": "STAGE8",
+      "intelligence_authority": "STAGE9",
+      "presentation_authority": "STAGE10"
+    },
+    {
+      "path": "/teams/[teamName]",
+      "kind": "DYNAMIC_TEAM",
+      "purpose": "TEAM_INTELLIGENCE_VIEW",
+      "implementation_owner": "10.6",
+      "page_file": "frontend/app/teams/[teamName]/page.tsx",
+      "dynamic_params": [
+        "teamName"
+      ],
+      "primary_backend_route": "/api/v1/intelligence/team/<path:team_name>",
+      "readiness_backend_route": "/api/v1/intelligence/status",
+      "prediction_authority": "STAGE7",
+      "context_authority": "STAGE8",
+      "intelligence_authority": "STAGE9",
+      "presentation_authority": "STAGE10"
+    }
+  ],
+  "framework_files": {
+    "layout": "frontend/app/layout.tsx",
+    "not_found_owner": "10.8",
+    "loading_owner": "10.8",
+    "error_boundary_owner": "10.8",
+    "global_navigation_owner": "10.3"
+  },
+  "route_creation_policy": {
+    "10_1_4_creates_page_files": false,
+    "route_files_created_by_feature_stage": true,
+    "dashboard_page_owner": "10.4",
+    "match_page_owner": "10.5",
+    "team_page_owner": "10.6"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_audit.json": {
+      "sha256": "cc3ab7e1b9a02b3fe24622ab894cd0238579ea57f5f7ccdfa82f092433cb658a"
+    },
+    "docs/stage10/frontend_responsibility_contract.json": {
+      "sha256": "6c83d06e318053bb48dcb84fd10c90eeb51b2d41f9abeee159c6f86a2b2086ed"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "data/processed/frontend/stage10_1_3_verification.json": {
+      "sha256": "c00c0b908947f167a450b887ac88c3ce6bb4908d4e00167b9753e4f0a025d6c3"
+    }
+  },
+  "promotion": {
+    "stage10_1_4_complete": false,
+    "stage10_1_complete": false,
+    "stage10_complete": false
+  }
+}

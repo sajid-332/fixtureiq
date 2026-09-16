@@ -1,0 +1,98 @@
+{
+  "stage": "10.1.5",
+  "version": "1.0.0",
+  "name": "FRONTEND_TYPESCRIPT_DOMAIN_MODELS",
+  "status": "LOCKED",
+  "typescript_source": "frontend/lib/domain/types.ts",
+  "typescript_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+  "design": {
+    "immutable_models": true,
+    "typescript_readonly_utility": true,
+    "typescript_pick_utility": true,
+    "prediction_authority": "STAGE7",
+    "context_authority": "STAGE8",
+    "intelligence_authority": "STAGE9",
+    "presentation_authority": "STAGE10",
+    "frontend_prediction_logic": false,
+    "frontend_context_recalculation": false,
+    "frontend_intelligence_recalculation": false
+  },
+  "exported_domains": [
+    "OutcomeLabel",
+    "FiveLevelBand",
+    "ConfidenceBand",
+    "UncertaintyBand",
+    "ContextAlignment",
+    "ServiceState",
+    "FixtureId",
+    "NullableNumber",
+    "ContextSupportScore",
+    "FixtureIdentity",
+    "Stage7Prediction",
+    "Stage9Intelligence",
+    "MatchIntelligence",
+    "ComparisonMetric",
+    "MatchContextView",
+    "MatchCardModel",
+    "MatchDetailModel",
+    "TeamMatchModel",
+    "FixtureRouteParams",
+    "TeamRouteParams",
+    "UiDataState",
+    "ProbabilityDisplay"
+  ],
+  "core_stage9_fields": [
+    "fixture_id",
+    "home_team_name",
+    "away_team_name",
+    "stage7_prob_home_win",
+    "stage7_prob_draw",
+    "stage7_prob_away_win",
+    "stage7_predicted_label",
+    "stage7_confidence",
+    "stage9_top_probability",
+    "stage9_probability_margin",
+    "stage9_confidence_band",
+    "stage9_uncertainty_band",
+    "stage9_context_support_score",
+    "stage9_context_alignment",
+    "stage9_explanation_headline",
+    "stage9_explanation_summary"
+  ],
+  "route_param_models": {
+    "fixture": "FixtureRouteParams",
+    "team": "TeamRouteParams"
+  },
+  "display_rules": {
+    "display_rounding_allowed": true,
+    "display_rounding_may_change_source": false,
+    "raw_probability_retained": true
+  },
+  "runtime_validation": {
+    "implemented_in_10_1_5": false,
+    "owner": "10.2.6",
+    "reason": "10.1.5 defines compile-time domain models; runtime API response validation belongs to the API client layer."
+  },
+  "wire_schema": {
+    "fully_locked_in_10_1_5": false,
+    "finalization_owner": "10.2.6",
+    "domain_models_may_be_narrower_than_wire_payload": true
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    },
+    "docs/stage10/frontend_responsibility_contract.json": {
+      "sha256": "6c83d06e318053bb48dcb84fd10c90eeb51b2d41f9abeee159c6f86a2b2086ed"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    }
+  },
+  "promotion": {
+    "stage10_1_5_complete": false,
+    "stage10_1_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-16T18:08:25.464863+00:00"
+}
