@@ -1,0 +1,71 @@
+{
+  "stage": "10.1.3",
+  "name": "FRONTEND_ALLOWED_BACKEND_API_ENDPOINT_VERIFICATION",
+  "status": "PASS",
+  "stage_10_1_3_complete": true,
+  "endpoint_contract": "LOCKED_AND_VERIFIED",
+  "source_of_truth": "FLASK_APP_URL_MAP",
+  "route_count": 19,
+  "namespace_counts": {
+    "health": 1,
+    "production": 3,
+    "context": 10,
+    "intelligence": 5
+  },
+  "route_set": [
+    "/api/health",
+    "/api/v1/context/fixtures",
+    "/api/v1/context/fixtures/<fixture_id>",
+    "/api/v1/context/fixtures/team/<path:team_name>",
+    "/api/v1/context/form",
+    "/api/v1/context/form/<path:team_name>",
+    "/api/v1/context/standings",
+    "/api/v1/context/standings/<path:team_name>",
+    "/api/v1/context/status",
+    "/api/v1/context/teams",
+    "/api/v1/context/teams/<path:team_name>",
+    "/api/v1/intelligence/matches",
+    "/api/v1/intelligence/matches/<fixture_id>",
+    "/api/v1/intelligence/status",
+    "/api/v1/intelligence/team/<path:team_name>",
+    "/api/v1/intelligence/upcoming",
+    "/api/v1/production/health",
+    "/api/v1/production/readiness",
+    "/api/v1/production/status"
+  ],
+  "authority": {
+    "health": "SYSTEM_HEALTH",
+    "production": "STAGE7_PREDICTION_AUTHORITY",
+    "context": "STAGE8_CONTEXT_AUTHORITY",
+    "intelligence": "STAGE9_INTELLIGENCE_AUTHORITY",
+    "frontend": "PRESENTATION_ONLY"
+  },
+  "safety": {
+    "get_only": true,
+    "write_methods_allowed": false,
+    "direct_artifact_access": false,
+    "direct_provider_access": false,
+    "frontend_prediction_logic": false,
+    "frontend_context_recalculation": false,
+    "frontend_intelligence_recalculation": false,
+    "stale_fallback": false,
+    "unlisted_routes_allowed": false
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "docs/stage10/frontend_responsibility_contract.json": {
+      "sha256": "6c83d06e318053bb48dcb84fd10c90eeb51b2d41f9abeee159c6f86a2b2086ed"
+    },
+    "data/processed/frontend/stage10_1_1_10_1_2_verification.json": {
+      "sha256": "8b7c7224b49c78ac64db854703b7b6f096a44e24ddb9439e36db10282215c655"
+    }
+  },
+  "verified_at_utc": "2026-09-16T17:45:47.264992+00:00",
+  "stage10_ready_for_10_1_4": true,
+  "stage10_1_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.1.4",
+  "failures": []
+}

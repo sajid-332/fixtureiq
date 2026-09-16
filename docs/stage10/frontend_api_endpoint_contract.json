@@ -1,0 +1,428 @@
+{
+  "stage": "10.1.3",
+  "version": "1.0.0",
+  "name": "FRONTEND_ALLOWED_BACKEND_API_ENDPOINTS",
+  "status": "LOCKED",
+  "generated_at_utc": "2026-09-16T17:45:15.036476+00:00",
+  "source_of_truth": "FLASK_APP_URL_MAP",
+  "frontend_transport": "HTTP_JSON",
+  "allowed_http_methods": [
+    "GET"
+  ],
+  "framework_automatic_methods": [
+    "HEAD",
+    "OPTIONS"
+  ],
+  "allowed_namespaces": [
+    "/api/health",
+    "/api/v1/production",
+    "/api/v1/context",
+    "/api/v1/intelligence"
+  ],
+  "authority": {
+    "health": "SYSTEM_HEALTH",
+    "production": "STAGE7_PREDICTION_AUTHORITY",
+    "context": "STAGE8_CONTEXT_AUTHORITY",
+    "intelligence": "STAGE9_INTELLIGENCE_AUTHORITY",
+    "frontend": "PRESENTATION_ONLY"
+  },
+  "primary_user_facing_source": "/api/v1/intelligence",
+  "route_count": 19,
+  "namespace_counts": {
+    "health": 1,
+    "production": 3,
+    "context": 10,
+    "intelligence": 5
+  },
+  "route_set": [
+    "/api/v1/context/fixtures",
+    "/api/v1/context/fixtures/<fixture_id>",
+    "/api/v1/context/fixtures/team/<path:team_name>",
+    "/api/v1/context/form",
+    "/api/v1/context/form/<path:team_name>",
+    "/api/v1/context/standings",
+    "/api/v1/context/standings/<path:team_name>",
+    "/api/v1/context/status",
+    "/api/v1/context/teams",
+    "/api/v1/context/teams/<path:team_name>",
+    "/api/health",
+    "/api/v1/intelligence/matches",
+    "/api/v1/intelligence/matches/<fixture_id>",
+    "/api/v1/intelligence/status",
+    "/api/v1/intelligence/team/<path:team_name>",
+    "/api/v1/intelligence/upcoming",
+    "/api/v1/production/health",
+    "/api/v1/production/readiness",
+    "/api/v1/production/status"
+  ],
+  "routes": [
+    {
+      "route": "/api/v1/context/fixtures",
+      "endpoint": "context_api.fixtures_all",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/fixtures/<fixture_id>",
+      "endpoint": "context_api.fixtures_one",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/fixtures/team/<path:team_name>",
+      "endpoint": "context_api.fixtures_team",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/form",
+      "endpoint": "context_api.form_all",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/form/<path:team_name>",
+      "endpoint": "context_api.form_team",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/standings",
+      "endpoint": "context_api.standings_all",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/standings/<path:team_name>",
+      "endpoint": "context_api.standings_team",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/status",
+      "endpoint": "context_api.context_status",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/teams",
+      "endpoint": "context_api.teams_all",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/context/teams/<path:team_name>",
+      "endpoint": "context_api.teams_team",
+      "namespace": "context",
+      "authority": "STAGE8_CONTEXT_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/health",
+      "endpoint": "health",
+      "namespace": "health",
+      "authority": "SYSTEM_HEALTH",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/intelligence/matches",
+      "endpoint": "intelligence_api.intelligence_matches",
+      "namespace": "intelligence",
+      "authority": "STAGE9_INTELLIGENCE_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/intelligence/matches/<fixture_id>",
+      "endpoint": "intelligence_api.intelligence_match",
+      "namespace": "intelligence",
+      "authority": "STAGE9_INTELLIGENCE_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/intelligence/status",
+      "endpoint": "intelligence_api.intelligence_status",
+      "namespace": "intelligence",
+      "authority": "STAGE9_INTELLIGENCE_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/intelligence/team/<path:team_name>",
+      "endpoint": "intelligence_api.intelligence_team",
+      "namespace": "intelligence",
+      "authority": "STAGE9_INTELLIGENCE_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/intelligence/upcoming",
+      "endpoint": "intelligence_api.intelligence_upcoming",
+      "namespace": "intelligence",
+      "authority": "STAGE9_INTELLIGENCE_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/production/health",
+      "endpoint": "production_predictions_v1.production_health",
+      "namespace": "production",
+      "authority": "STAGE7_PREDICTION_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/production/readiness",
+      "endpoint": "production_predictions_v1.production_readiness",
+      "namespace": "production",
+      "authority": "STAGE7_PREDICTION_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    },
+    {
+      "route": "/api/v1/production/status",
+      "endpoint": "production_predictions_v1.production_status",
+      "namespace": "production",
+      "authority": "STAGE7_PREDICTION_AUTHORITY",
+      "methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "frontend_allowed_methods": [
+        "GET"
+      ],
+      "write_methods": [],
+      "read_only": true,
+      "frontend_allowed": true
+    }
+  ],
+  "verified_stage9_intelligence_routes": [
+    "/api/v1/intelligence/matches",
+    "/api/v1/intelligence/matches/<fixture_id>",
+    "/api/v1/intelligence/status",
+    "/api/v1/intelligence/team/<path:team_name>",
+    "/api/v1/intelligence/upcoming"
+  ],
+  "frontend_rules": {
+    "direct_backend_artifact_access": false,
+    "direct_provider_access": false,
+    "mutating_requests": false,
+    "frontend_prediction_logic": false,
+    "frontend_context_recalculation": false,
+    "frontend_intelligence_recalculation": false,
+    "stale_fallback": false,
+    "unlisted_api_route_access": false
+  },
+  "source_identity": {
+    "backend/app.py": {
+      "sha256": "4af0e40b609bb88627c309421fb5c489dea8860e9ec677711e05012f7f8fb093"
+    },
+    "backend/routes/production_prediction_api.py": {
+      "sha256": "0fd0d3d49bf07b1c19a79db6447a18bf13905de0c60086ae39f630598854367b"
+    },
+    "backend/routes/context_api.py": {
+      "sha256": "03f455515759c7bbbc5c69ce740bc7b1c37da6ce1b9c90451daf88fa23a4384c"
+    },
+    "backend/routes/intelligence_api.py": {
+      "sha256": "d2c6c7f917a6eb4dbc41004a53b6a3de264df3c8269b30d2280f98dc4e3f1a36"
+    }
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_responsibility_contract.json": {
+      "sha256": "6c83d06e318053bb48dcb84fd10c90eeb51b2d41f9abeee159c6f86a2b2086ed"
+    },
+    "data/processed/frontend/stage10_1_1_10_1_2_verification.json": {
+      "sha256": "8b7c7224b49c78ac64db854703b7b6f096a44e24ddb9439e36db10282215c655"
+    }
+  },
+  "promotion": {
+    "stage10_1_3_complete": false,
+    "stage10_1_complete": false,
+    "stage10_complete": false,
+    "promotion_authorized": false
+  }
+}
