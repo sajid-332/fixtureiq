@@ -1,0 +1,66 @@
+{
+  "stage": "10.1.1",
+  "name": "EXISTING_NEXTJS_FRONTEND_AUDIT",
+  "status": "PASS",
+  "generated_at_utc": "2026-09-16T17:33:26.583Z",
+  "frontend_root": "frontend",
+  "framework": {
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react_dom": "19.2.8",
+    "typescript": "^5",
+    "tailwindcss": "^4",
+    "eslint": "^9"
+  },
+  "package_manager": {
+    "manager": "npm",
+    "lockfile": "package-lock.json"
+  },
+  "config": {
+    "package_json": "frontend/package.json",
+    "tsconfig": true,
+    "next_config": "frontend/next.config.ts",
+    "eslint_config": "frontend/eslint.config.mjs",
+    "postcss_config": "frontend/postcss.config.mjs"
+  },
+  "routing": {
+    "app_router": true,
+    "app_root": "frontend/app",
+    "pages_router": false,
+    "pages_root": null,
+    "page_files": [
+      "frontend/app/page.tsx"
+    ],
+    "layout_files": [
+      "frontend/app/layout.tsx"
+    ],
+    "route_handler_files": []
+  },
+  "source": {
+    "source_file_count": 6,
+    "client_component_count": 0,
+    "client_components": [],
+    "public_directory": true
+  },
+  "api_usage": {
+    "fetch_files": [],
+    "axios_files": [],
+    "fixtureiq_api_reference_files": [],
+    "next_public_env_files": [],
+    "hardcoded_localhost_files": [],
+    "detailed_hits": []
+  },
+  "responsibility_boundary_risks": {
+    "count": 0,
+    "files": [],
+    "hits": []
+  },
+  "audit_scope": {
+    "ui_modified": false,
+    "dependencies_modified": false,
+    "backend_modified": false,
+    "stage7_modified": false,
+    "stage8_modified": false,
+    "stage9_modified": false
+  }
+}

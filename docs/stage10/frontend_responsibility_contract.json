@@ -1,0 +1,135 @@
+{
+  "stage": "10.1.2",
+  "version": "1.0.0",
+  "name": "FRONTEND_BACKEND_RESPONSIBILITY_BOUNDARY",
+  "status": "LOCKED",
+
+  "authority": {
+    "stage7": "PREDICTION_AUTHORITY",
+    "stage8": "CONTEXT_AUTHORITY",
+    "stage9": "INTELLIGENCE_AUTHORITY",
+    "stage10": "PRESENTATION_AUTHORITY"
+  },
+
+  "frontend_may": [
+    "READ_VERIFIED_BACKEND_JSON",
+    "FORMAT_VALUES_FOR_DISPLAY",
+    "ROUND_VALUES_FOR_VISUAL_DISPLAY",
+    "SORT_RECEIVED_FIXTURE_COLLECTIONS",
+    "FILTER_RECEIVED_FIXTURE_COLLECTIONS",
+    "MANAGE_LOCAL_UI_STATE",
+    "MANAGE_ROUTE_PARAMETERS",
+    "RETRY_READ_REQUESTS",
+    "DISPLAY_LOADING_STATE",
+    "DISPLAY_NOT_FOUND_STATE",
+    "DISPLAY_NOT_READY_STATE",
+    "DISPLAY_NETWORK_ERROR_STATE"
+  ],
+
+  "frontend_must_not": [
+    "LOAD_MODEL",
+    "EXECUTE_MODEL",
+    "RETRAIN_MODEL",
+    "RESELECT_MODEL",
+    "TUNE_MODEL",
+    "READ_BACKEND_ARTIFACT_FILES_DIRECTLY",
+    "READ_CSV_FILES_DIRECTLY",
+    "READ_JOBLIB_FILES_DIRECTLY",
+    "CALL_FOOTBALL_DATA_PROVIDER_DIRECTLY",
+    "CALL_API_FOOTBALL_DIRECTLY",
+    "RECOMPUTE_PREDICTION_PROBABILITIES",
+    "RECALIBRATE_PREDICTION_PROBABILITIES",
+    "CHANGE_PREDICTED_LABEL",
+    "CHANGE_STAGE7_CONFIDENCE",
+    "RECOMPUTE_CONFIDENCE",
+    "RECOMPUTE_UNCERTAINTY",
+    "RECOMPUTE_CONTEXT_SUPPORT_SCORE",
+    "RECOMPUTE_CONTEXT_ALIGNMENT",
+    "GENERATE_REPLACEMENT_EXPLANATION",
+    "USE_CONTEXT_AS_NEW_PREDICTION_INPUT",
+    "SERVE_STALE_FALLBACK_DATA",
+    "HIDE_BACKEND_NOT_READY_STATE",
+    "SEND_MUTATING_API_REQUESTS"
+  ],
+
+  "api_policy": {
+    "transport": "HTTP_JSON",
+    "allowed_methods": [
+      "GET"
+    ],
+    "allowed_namespaces": [
+      "/api/health",
+      "/api/v1/production",
+      "/api/v1/context",
+      "/api/v1/intelligence"
+    ],
+    "primary_user_facing_source": "/api/v1/intelligence",
+    "exact_endpoint_lock_owner": "10.1.3",
+    "direct_artifact_access": false,
+    "direct_provider_access": false,
+    "write_requests_allowed": false,
+    "stale_fallback": false
+  },
+
+  "prediction_integrity": {
+    "stage7_owns_probabilities": true,
+    "stage7_owns_predicted_label": true,
+    "stage7_owns_confidence": true,
+    "stage8_may_modify_prediction": false,
+    "stage9_may_modify_prediction": false,
+    "stage10_may_modify_prediction": false,
+    "display_rounding_allowed": true,
+    "display_rounding_changes_source_value": false,
+    "frontend_prediction_logic_allowed": false
+  },
+
+  "context_integrity": {
+    "stage8_owns_current_context": true,
+    "stage10_may_display_context": true,
+    "stage10_may_recalculate_context": false
+  },
+
+  "intelligence_integrity": {
+    "stage9_owns_uncertainty": true,
+    "stage9_owns_context_support_score": true,
+    "stage9_owns_context_alignment": true,
+    "stage9_owns_explanation": true,
+    "stage10_may_display_intelligence": true,
+    "stage10_may_recalculate_intelligence": false
+  },
+
+  "runtime_state_policy": {
+    "200": "READY",
+    "404": "NOT_FOUND",
+    "503": "NOT_READY",
+    "network_failure": "CONNECTION_ERROR",
+    "previous_successful_response_may_be_used_after_503": false,
+    "previous_successful_response_may_be_used_after_network_failure": false,
+    "backend_not_ready_must_be_visible_to_user": true
+  },
+
+  "cache_policy": {
+    "frontend_stale_prediction_cache_allowed": false,
+    "frontend_stale_intelligence_cache_allowed": false,
+    "backend_no_store_semantics_must_be_respected": true
+  },
+
+  "secrets_policy": {
+    "provider_api_keys_in_frontend": false,
+    "backend_secret_keys_in_frontend": false,
+    "secret_values_in_next_public_environment": false
+  },
+
+  "architecture": {
+    "stage7": "WHAT_THE_MODEL_PREDICTS",
+    "stage8": "WHAT_IS_HAPPENING_AROUND_THE_FIXTURE",
+    "stage9": "HOW_TO_INTERPRET_THE_VERIFIED_PREDICTION",
+    "stage10": "HOW_VERIFIED_INFORMATION_IS_PRESENTED_TO_THE_USER"
+  },
+
+  "promotion": {
+    "stage10_complete": false,
+    "stage10_1_complete": false,
+    "promotion_authorized": false
+  }
+}
