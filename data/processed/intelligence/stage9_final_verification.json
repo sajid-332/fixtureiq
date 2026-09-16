@@ -1,60 +1,142 @@
 {
-  "stage": "9.8",
+  "stage": "9.8.5",
+  "name": "FINAL_STAGE_9_PROMOTION",
   "status": "PASS",
+  "stage_9_8_5_complete": true,
   "stage_9_8_complete": true,
   "stage_9_complete": true,
   "match_intelligence_layer": "VERIFIED",
   "fixtureiq_stage9_final_gate": "PASS",
-  "stage_9_8_1": {
-    "status": "PASS",
-    "name": "FINAL_ARTIFACT_PROVENANCE_SEMANTIC_INTEGRITY",
-    "verified_at_utc": "2026-09-15T18:32:54.816097+00:00",
-    "fixture_count": 340,
-    "base_fixture_set_exact": true,
-    "fixture_order_exact": true,
-    "base_values_preserved_exactly": true,
-    "probabilities_preserved": true,
-    "derived_probability_metrics_exact": true,
-    "entropy_exact": true,
-    "confidence_bands_exact": true,
-    "uncertainty_bands_exact": true,
-    "context_score_range_valid": true,
-    "context_alignment_valid": true,
-    "explanations_complete": true,
-    "dependency_chain_current": true
+  "completed_at_utc": "2026-09-16T14:52:40.264713+00:00",
+  "runtime_policy": "DUAL_UPSTREAM_DEPENDENCY_PLUS_TEMPORAL_BOUNDARY",
+  "fixture_count": 340,
+  "final_gate": {
+    "9.8.1": {
+      "name": "FOUNDATION_VERIFICATION",
+      "status": "PASS",
+      "verified": true,
+      "sha256": "0e49448bd28cb380288f6288242edca35dcffb5c30cbbbdc1d525b949431f3dc"
+    },
+    "9.8.2": {
+      "name": "PREDICTION_INTEGRITY_VERIFICATION",
+      "status": "PASS",
+      "verified": true,
+      "sha256": "1684f77c1a2731e9a7a9fedba88a20ffe50cdea5ff2a4b1776c4ad1853cb7e1e"
+    },
+    "9.8.3": {
+      "name": "INTELLIGENCE_INTEGRITY_VERIFICATION",
+      "status": "PASS",
+      "verified": true,
+      "sha256": "4fc80da05de0b8978fc0e4898f512a42b888ada4f6ef5e1bc6e09e2bc21df023"
+    },
+    "9.8.4": {
+      "name": "API_RUNTIME_SAFETY_VERIFICATION",
+      "status": "PASS",
+      "verified": true,
+      "sha256": "dcbea4700c0ad236ad2c1de2015a61bbdbf266e8a3b044ece43ccbf16ba30f85"
+    }
   },
-  "stage_9_8_2": {
-    "status": "PASS",
-    "name": "FINAL_RUNTIME_API_SAFETY_GATE",
-    "verified_at_utc": "2026-09-15T18:33:13.996338+00:00",
-    "live_service_ready": true,
-    "runtime_policy_verified": true,
-    "api_surface_exact": true,
-    "healthy_api_verified": true,
-    "not_found_contract_verified": true,
-    "read_only_contract_verified": true,
-    "fail_closed_503_verified": true,
+  "stage_9": {
+    "stage_9_1": "COMPLETE",
+    "stage_9_2": "COMPLETE",
+    "stage_9_3": "COMPLETE",
+    "stage_9_4": "COMPLETE",
+    "stage_9_5": "COMPLETE",
+    "stage_9_6": "COMPLETE",
+    "stage_9_7": "COMPLETE",
+    "stage_9_8": "COMPLETE"
+  },
+  "verified_properties": {
+    "foundation_verified": true,
+    "prediction_integrity_verified": true,
+    "stage7_predictions_preserved_exactly": true,
+    "intelligence_integrity_verified": true,
+    "derived_intelligence_independently_recomputed": true,
+    "explanations_verified": true,
+    "rest_api_verified": true,
+    "runtime_safety_verified": true,
+    "runtime_freshness_verified": true,
+    "temporal_boundary_verified": true,
+    "fail_closed_verified": true,
+    "no_stale_fallback": true,
+    "same_process_recovery_verified": true,
     "no_store_verified": true,
-    "stale_fallback": false,
-    "same_process_recovery_verified": true
+    "read_only_api_verified": true,
+    "live_service_ready_at_promotion": true
   },
-  "dependency_identity": {
-    "data/processed/intelligence/stage9_intelligence_contract.json": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d",
-    "data/processed/intelligence/stage9_intelligence_contract_verification.json": "0ca41802170e6e91ccebb16eb10ef8bcccd94ceff0bf5fbffa5003c59948411a",
-    "data/processed/intelligence/match_intelligence_base.csv": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca",
-    "data/processed/intelligence/match_intelligence_base_report.json": "e8ba31798519950e55855141b2da7e6bd0ae2f99a32e4f12a5434c6642e00ad5",
-    "data/processed/intelligence/match_intelligence.csv": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d",
-    "data/processed/intelligence/match_intelligence_report.json": "1a294a794a348580857e1f7a7d0eb56bb8cd71c9dca60235a03c55c679bbca71",
-    "data/processed/intelligence/intelligence_api_verification.json": "5aa065f4a8193c650a291714ff03aecb6a43c76177349d6f09baa98a108aa7c3",
-    "data/processed/intelligence/intelligence_runtime_verification.json": "b0fdd6221c8065fb4e6dc64f53b5bb3891f4c37bdbe20219015e5e8a403cb435"
+  "safety": {
+    "model_loaded": false,
+    "model_executed": false,
+    "model_retrained": false,
+    "model_reselected": false,
+    "model_tuned": false,
+    "feature_schema_modified": false,
+    "probabilities_modified": false,
+    "probabilities_recalibrated": false,
+    "prediction_labels_modified": false,
+    "confidence_modified": false,
+    "context_modified": false,
+    "provider_fetch_performed": false,
+    "future_results_used": false,
+    "bookmaker_odds_used": false,
+    "intelligence_rebuilt": false,
+    "stale_data_served": false,
+    "protected_artifacts_modified": false,
+    "promotion_artifact_only_write": true
+  },
+  "core_artifact_identity": {
+    "data/processed/intelligence/stage9_intelligence_contract.json": {
+      "sha256": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d"
+    },
+    "data/processed/intelligence/stage9_intelligence_contract_verification.json": {
+      "sha256": "0ca41802170e6e91ccebb16eb10ef8bcccd94ceff0bf5fbffa5003c59948411a"
+    },
+    "data/processed/intelligence/match_intelligence_base.csv": {
+      "sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca"
+    },
+    "data/processed/intelligence/match_intelligence_base_report.json": {
+      "sha256": "e8ba31798519950e55855141b2da7e6bd0ae2f99a32e4f12a5434c6642e00ad5"
+    },
+    "data/processed/intelligence/match_intelligence.csv": {
+      "sha256": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d"
+    },
+    "data/processed/intelligence/match_intelligence_report.json": {
+      "sha256": "1a294a794a348580857e1f7a7d0eb56bb8cd71c9dca60235a03c55c679bbca71"
+    },
+    "data/processed/intelligence/intelligence_api_verification.json": {
+      "sha256": "5aa065f4a8193c650a291714ff03aecb6a43c76177349d6f09baa98a108aa7c3"
+    },
+    "data/processed/intelligence/intelligence_runtime_verification.json": {
+      "sha256": "b0fdd6221c8065fb4e6dc64f53b5bb3891f4c37bdbe20219015e5e8a403cb435"
+    }
+  },
+  "final_gate_evidence_identity": {
+    "data/processed/intelligence/stage9_8_1_foundation_verification.json": {
+      "sha256": "0e49448bd28cb380288f6288242edca35dcffb5c30cbbbdc1d525b949431f3dc"
+    },
+    "data/processed/intelligence/stage9_8_2_prediction_integrity_verification.json": {
+      "sha256": "1684f77c1a2731e9a7a9fedba88a20ffe50cdea5ff2a4b1776c4ad1853cb7e1e"
+    },
+    "data/processed/intelligence/stage9_8_3_intelligence_integrity_verification.json": {
+      "sha256": "4fc80da05de0b8978fc0e4898f512a42b888ada4f6ef5e1bc6e09e2bc21df023"
+    },
+    "data/processed/intelligence/stage9_8_4_api_runtime_safety_verification.json": {
+      "sha256": "dcbea4700c0ad236ad2c1de2015a61bbdbf266e8a3b044ece43ccbf16ba30f85"
+    }
   },
   "final_intelligence": {
     "path": "data/processed/intelligence/match_intelligence.csv",
     "sha256": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d",
-    "fixture_count": 340,
-    "column_count": 116
+    "fixture_count": 340
+  },
+  "promotion": {
+    "authorized": true,
+    "authority": "9.8.5",
+    "all_required_gates_passed": true,
+    "all_required_evidence_current": true,
+    "live_readiness_confirmed": true,
+    "final_stage9_status": "COMPLETE"
   },
   "next_stage": null,
-  "failures": [],
-  "completed_at_utc": "2026-09-15T18:33:13.996338+00:00"
+  "failures": []
 }
