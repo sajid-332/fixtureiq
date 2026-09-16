@@ -1,0 +1,62 @@
+{
+  "stage": "10.2.2",
+  "version": "1.0.0",
+  "name": "FRONTEND_API_BASE_URL_ENVIRONMENT_CONFIG",
+  "status": "LOCKED",
+  "source": "frontend/lib/api/config.ts",
+  "server_only": true,
+  "environment_variable": "FIXTUREIQ_API_BASE_URL",
+  "next_public_variable": false,
+  "development": {
+    "explicit_environment_value_preferred": true,
+    "fallback_allowed": true,
+    "fallback": "http://127.0.0.1:5000"
+  },
+  "production": {
+    "explicit_environment_value_required": true,
+    "fallback_allowed": false
+  },
+  "base_url_policy": {
+    "allowed_protocols": [
+      "http",
+      "https"
+    ],
+    "origin_only": true,
+    "credentials_allowed": false,
+    "path_allowed": false,
+    "query_allowed": false,
+    "fragment_allowed": false,
+    "normalization_uses": "URL_API",
+    "normalized_result": "ORIGIN"
+  },
+  "secrets_policy": {
+    "provider_key_exposed": false,
+    "backend_secret_exposed": false,
+    "next_public_secret": false
+  },
+  "environment_example": "frontend/.env.example",
+  "dependency_identity": {
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    },
+    "frontend/.env.example": {
+      "sha256": "a996d237ab069c18cd78d2e99264b36c68fc697a7800ba068e83deafd666448d"
+    },
+    "frontend/package.json": {
+      "sha256": "ef03d7f4597d20d09f26affbadfbbc2c2e04c5f4143587f6b795f0fc2ca6a2f9"
+    },
+    "frontend/package-lock.json": {
+      "sha256": "ef5358d75213d4a18725ce3785e4013265d555fb152a3fcc9b633ee3f7dbd270"
+    },
+    "data/processed/frontend/stage10_1_final_verification.json": {
+      "sha256": "da61eb13cc241bff45b5495d28dd7f4d80041c5f9c5dbca138eb2c99af455efe"
+    }
+  },
+  "source_sha256": "6804f07e419e3d7d675b923c5a6171e829fc3a803e9093824c4aefeab06b7d96",
+  "promotion": {
+    "stage10_2_2_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-16T18:51:21.815842+00:00"
+}

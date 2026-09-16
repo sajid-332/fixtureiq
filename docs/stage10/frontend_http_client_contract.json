@@ -1,0 +1,77 @@
+{
+  "stage": "10.2.1",
+  "version": "1.0.0",
+  "name": "FRONTEND_SHARED_HTTP_CLIENT",
+  "status": "LOCKED",
+  "source": "frontend/lib/api/client.ts",
+  "transport": "WEB_FETCH_API",
+  "server_only": true,
+  "allowed_methods": [
+    "GET"
+  ],
+  "allowed_namespaces": [
+    "/api/health",
+    "/api/v1/production",
+    "/api/v1/context",
+    "/api/v1/intelligence"
+  ],
+  "request_policy": {
+    "accept": "application/json",
+    "cache": "no-store",
+    "credentials": "omit",
+    "redirect": "error",
+    "stale_fallback": false,
+    "automatic_retry": false
+  },
+  "url_policy": {
+    "relative_api_paths_only": true,
+    "cross_origin_override": false,
+    "protocol_relative_override": false,
+    "unlisted_namespace_access": false,
+    "query_strings_supported": false,
+    "fragments_supported": false
+  },
+  "response_policy": {
+    "preserve_http_status": true,
+    "preserve_response_ok": true,
+    "parse_json": true,
+    "semantic_status_mapping_here": false,
+    "semantic_status_mapping_owner": "10.2.7",
+    "runtime_schema_validation_here": false,
+    "runtime_schema_validation_owner": "10.2.6"
+  },
+  "forbidden": {
+    "post": true,
+    "put": true,
+    "patch": true,
+    "delete": true,
+    "provider_fetch": true,
+    "model_access": true,
+    "artifact_access": true,
+    "stale_cache": true
+  },
+  "dependency_identity": {
+    "frontend/lib/api/config.ts": {
+      "sha256": "6804f07e419e3d7d675b923c5a6171e829fc3a803e9093824c4aefeab06b7d96"
+    },
+    "frontend/package.json": {
+      "sha256": "ef03d7f4597d20d09f26affbadfbbc2c2e04c5f4143587f6b795f0fc2ca6a2f9"
+    },
+    "frontend/package-lock.json": {
+      "sha256": "ef5358d75213d4a18725ce3785e4013265d555fb152a3fcc9b633ee3f7dbd270"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "data/processed/frontend/stage10_1_final_verification.json": {
+      "sha256": "da61eb13cc241bff45b5495d28dd7f4d80041c5f9c5dbca138eb2c99af455efe"
+    }
+  },
+  "source_sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4",
+  "promotion": {
+    "stage10_2_1_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-16T18:51:21.808704+00:00"
+}

@@ -1,0 +1,63 @@
+{
+  "stage": "10.2.1-10.2.2",
+  "name": "SHARED_HTTP_CLIENT_AND_API_ENVIRONMENT_VERIFICATION",
+  "status": "PASS",
+  "stage_10_2_1_complete": true,
+  "stage_10_2_2_complete": true,
+  "shared_http_client": "LOCKED_AND_VERIFIED",
+  "api_environment_config": "LOCKED_AND_VERIFIED",
+  "transport": "WEB_FETCH_API",
+  "server_only": true,
+  "environment_variable": "FIXTUREIQ_API_BASE_URL",
+  "production_env_required": true,
+  "development_fallback": "http://127.0.0.1:5000",
+  "request_policy": {
+    "method": "GET",
+    "cache": "no-store",
+    "credentials": "omit",
+    "redirect": "error",
+    "automatic_retry": false,
+    "stale_fallback": false
+  },
+  "safety": {
+    "next_public_backend_url": false,
+    "direct_provider_access": false,
+    "direct_artifact_access": false,
+    "write_requests": false,
+    "frontend_prediction_logic": false,
+    "runtime_schema_validation": false,
+    "semantic_error_mapping": false
+  },
+  "dependency_identity": {
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    },
+    "frontend/lib/api/config.ts": {
+      "sha256": "6804f07e419e3d7d675b923c5a6171e829fc3a803e9093824c4aefeab06b7d96"
+    },
+    "frontend/.env.example": {
+      "sha256": "a996d237ab069c18cd78d2e99264b36c68fc697a7800ba068e83deafd666448d"
+    },
+    "frontend/package.json": {
+      "sha256": "ef03d7f4597d20d09f26affbadfbbc2c2e04c5f4143587f6b795f0fc2ca6a2f9"
+    },
+    "frontend/package-lock.json": {
+      "sha256": "ef5358d75213d4a18725ce3785e4013265d555fb152a3fcc9b633ee3f7dbd270"
+    },
+    "docs/stage10/frontend_http_client_contract.json": {
+      "sha256": "b3cee57799f755760e87e42f699cfa8be8abb69336223fc3f4763a39421407c4"
+    },
+    "docs/stage10/frontend_api_environment_contract.json": {
+      "sha256": "47e01d3497ebea94f0575ced7836988d75f09bd85da33d0fca5dd349a95aa70a"
+    },
+    "data/processed/frontend/stage10_1_final_verification.json": {
+      "sha256": "da61eb13cc241bff45b5495d28dd7f4d80041c5f9c5dbca138eb2c99af455efe"
+    }
+  },
+  "verified_at_utc": "2026-09-16T19:01:50.750983+00:00",
+  "stage10_ready_for_10_2_3": true,
+  "stage10_2_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.2.3",
+  "failures": []
+}
