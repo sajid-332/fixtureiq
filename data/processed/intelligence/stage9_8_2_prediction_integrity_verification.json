@@ -1,0 +1,82 @@
+{
+  "stage": "9.8.2",
+  "name": "PREDICTION_INTEGRITY_VERIFICATION",
+  "status": "PASS",
+  "stage_9_8_2_complete": true,
+  "prediction_integrity": "VERIFIED",
+  "verified_at_utc": "2026-09-16T13:55:47.018135+00:00",
+  "fixture_count": 340,
+  "prediction_mapping": {
+    "prob_home_win": "stage7_prob_home_win",
+    "prob_draw": "stage7_prob_draw",
+    "prob_away_win": "stage7_prob_away_win",
+    "predicted_label": "stage7_predicted_label",
+    "confidence": "stage7_confidence"
+  },
+  "integrity": {
+    "stage7_source_snapshot_current": true,
+    "fixture_identity_exact": true,
+    "fixture_count_exact": true,
+    "stage7_to_stage9_base_copy_exact": true,
+    "stage9_base_to_final_copy_exact": true,
+    "stage7_to_final_copy_exact": true,
+    "probability_vectors_valid": true,
+    "predicted_labels_consistent": true,
+    "confidence_consistent": true,
+    "prediction_distribution_unchanged": true,
+    "prediction_artifacts_unchanged": true
+  },
+  "verification_counts": {
+    "source_to_base_field_checks": 1700,
+    "base_to_final_field_checks": 1700,
+    "source_to_final_field_checks": 1700,
+    "probability_vector_checks": 340,
+    "predicted_label_checks": 340,
+    "confidence_checks": 340
+  },
+  "prediction_distribution": {
+    "Away Win": 170,
+    "Home Win": 169,
+    "Draw": 1
+  },
+  "safety": {
+    "read_only": true,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_retrained": false,
+    "model_reselected": false,
+    "probabilities_modified": false,
+    "probabilities_recalibrated": false,
+    "prediction_labels_modified": false,
+    "confidence_modified": false,
+    "production_prediction_artifact_modified": false,
+    "stage9_base_modified": false,
+    "stage9_final_intelligence_modified": false
+  },
+  "dependency_identity": {
+    "data/processed/intelligence/stage9_8_1_foundation_verification.json": {
+      "sha256": "0e49448bd28cb380288f6288242edca35dcffb5c30cbbbdc1d525b949431f3dc"
+    },
+    "data/processed/production/production_predictions.csv": {
+      "sha256": "652ae4ee092b0005f9166183ffeff0f14a4fddd8a4612cdba7ff25ff15631d24"
+    },
+    "data/processed/intelligence/match_intelligence_base.csv": {
+      "sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca"
+    },
+    "data/processed/intelligence/match_intelligence_base_report.json": {
+      "sha256": "e8ba31798519950e55855141b2da7e6bd0ae2f99a32e4f12a5434c6642e00ad5"
+    },
+    "data/processed/intelligence/match_intelligence.csv": {
+      "sha256": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d"
+    }
+  },
+  "promotion": {
+    "stage_9_complete": false,
+    "stage_9_8_complete": false,
+    "promotion_authorized": false,
+    "promotion_owner": "9.8.5"
+  },
+  "stage9_ready_for_9_8_3": true,
+  "next_stage": "9.8.3",
+  "failures": []
+}

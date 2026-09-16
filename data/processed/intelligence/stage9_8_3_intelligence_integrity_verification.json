@@ -1,0 +1,108 @@
+{
+  "stage": "9.8.3",
+  "name": "INTELLIGENCE_INTEGRITY_VERIFICATION",
+  "status": "PASS",
+  "stage_9_8_3_complete": true,
+  "intelligence_integrity": "VERIFIED",
+  "verified_at_utc": "2026-09-16T14:41:08.242772+00:00",
+  "fixture_count": 340,
+  "integrity": {
+    "stage9_base_values_preserved_exactly": true,
+    "top_probability_verified": true,
+    "second_probability_verified": true,
+    "probability_margin_verified": true,
+    "league_position_gap_verified": true,
+    "points_gap_verified": true,
+    "goal_difference_gap_verified": true,
+    "recent_points_gap_verified": true,
+    "recent_goal_difference_gap_verified": true,
+    "venue_form_points_gap_verified": true,
+    "five_signal_support_score_verified": true,
+    "context_alignment_verified": true,
+    "entropy_verified": true,
+    "normalized_entropy_verified": true,
+    "confidence_band_verified": true,
+    "uncertainty_band_verified": true,
+    "explanation_headline_verified": true,
+    "explanation_summary_verified": true,
+    "intelligence_artifacts_unchanged": true
+  },
+  "verification_counts": {
+    "base_value_checks": 33660,
+    "semantic_fixture_checks": 340,
+    "context_signals_per_fixture": 5,
+    "derived_gap_fields_per_fixture": 6
+  },
+  "rules": {
+    "entropy": "SHANNON_NATURAL_LOG",
+    "normalized_entropy_denominator": "LN_3",
+    "support_score_min": -5,
+    "support_score_max": 5,
+    "support_signal_count": 5,
+    "alignment_values": [
+      "CONTRADICTORY",
+      "MIXED",
+      "NEUTRAL",
+      "SUPPORTIVE"
+    ],
+    "confidence_band_values": [
+      "HIGH",
+      "LOW",
+      "MODERATE",
+      "VERY_HIGH",
+      "VERY_LOW"
+    ],
+    "uncertainty_band_values": [
+      "HIGH",
+      "LOW",
+      "MODERATE",
+      "VERY_HIGH",
+      "VERY_LOW"
+    ]
+  },
+  "safety": {
+    "read_only": true,
+    "model_loaded": false,
+    "model_executed": false,
+    "model_modified": false,
+    "probabilities_modified": false,
+    "prediction_labels_modified": false,
+    "context_modified": false,
+    "provider_fetch_performed": false,
+    "future_results_used": false,
+    "bookmaker_odds_used": false,
+    "intelligence_rebuilt": false
+  },
+  "dependency_identity": {
+    "data/processed/intelligence/stage9_8_1_foundation_verification.json": {
+      "sha256": "0e49448bd28cb380288f6288242edca35dcffb5c30cbbbdc1d525b949431f3dc"
+    },
+    "data/processed/intelligence/stage9_8_2_prediction_integrity_verification.json": {
+      "sha256": "1684f77c1a2731e9a7a9fedba88a20ffe50cdea5ff2a4b1776c4ad1853cb7e1e"
+    },
+    "data/processed/intelligence/stage9_intelligence_contract.json": {
+      "sha256": "a6c47886fba9447031b06ce7c96a8ea3057e259431460ffc0d56432480c78a0d"
+    },
+    "data/processed/intelligence/match_intelligence_base.csv": {
+      "sha256": "63222de968ab4362fda212ee527476b8537cc8e44eb7a0fe0ed3f88da78fccca"
+    },
+    "data/processed/intelligence/match_intelligence_base_report.json": {
+      "sha256": "e8ba31798519950e55855141b2da7e6bd0ae2f99a32e4f12a5434c6642e00ad5"
+    },
+    "data/processed/intelligence/match_intelligence.csv": {
+      "sha256": "5f4869dd05f82dfb757d064cc1828a57df9851b8ce08849e855b41bf8c80c00d"
+    },
+    "data/processed/intelligence/match_intelligence_report.json": {
+      "sha256": "1a294a794a348580857e1f7a7d0eb56bb8cd71c9dca60235a03c55c679bbca71"
+    }
+  },
+  "promotion": {
+    "stage_9_complete": false,
+    "stage_9_8_complete": false,
+    "promotion_authorized": false,
+    "promotion_owner": "9.8.5"
+  },
+  "stage9_ready_for_9_8_4": true,
+  "next_stage": "9.8.4",
+  "failures": []
+}
