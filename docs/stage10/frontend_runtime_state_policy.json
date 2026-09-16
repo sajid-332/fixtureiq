@@ -1,0 +1,145 @@
+{
+  "stage": "10.1.6",
+  "version": "1.0.0",
+  "name": "FRONTEND_FRESHNESS_ERROR_STATE_POLICY",
+  "status": "LOCKED",
+  "authority": {
+    "prediction": "STAGE7",
+    "context": "STAGE8",
+    "intelligence": "STAGE9",
+    "presentation": "STAGE10",
+    "freshness": "BACKEND_RUNTIME_SERVICES"
+  },
+  "ui_states": [
+    "READY",
+    "LOADING",
+    "NOT_FOUND",
+    "NOT_READY",
+    "CONNECTION_ERROR"
+  ],
+  "http_mapping": {
+    "200": "READY",
+    "404": "NOT_FOUND",
+    "503": "NOT_READY"
+  },
+  "non_http_mapping": {
+    "REQUEST_START": "LOADING",
+    "NETWORK_FAILURE": "CONNECTION_ERROR",
+    "UNEXPECTED_HTTP_STATUS": "CONNECTION_ERROR",
+    "INVALID_RESPONSE": "CONNECTION_ERROR"
+  },
+  "state_rules": {
+    "READY": {
+      "backend_verified_payload_required": true,
+      "may_render_match_data": true,
+      "previous_payload_fallback": false
+    },
+    "LOADING": {
+      "may_render_previous_match_data": false,
+      "may_render_loading_ui": true
+    },
+    "NOT_FOUND": {
+      "source": "HTTP_404",
+      "may_render_previous_match_data": false,
+      "may_render_not_found_ui": true
+    },
+    "NOT_READY": {
+      "source": "HTTP_503",
+      "meaning": "VERIFIED_CURRENT_DATA_TEMPORARILY_UNAVAILABLE",
+      "may_render_previous_match_data": false,
+      "may_render_not_ready_ui": true
+    },
+    "CONNECTION_ERROR": {
+      "sources": [
+        "NETWORK_FAILURE",
+        "UNEXPECTED_HTTP_STATUS",
+        "INVALID_RESPONSE"
+      ],
+      "may_render_previous_match_data": false,
+      "may_render_connection_error_ui": true
+    }
+  },
+  "request_transition_policy": {
+    "every_new_request_enters_loading": true,
+    "previous_payload_cleared_before_refresh": true,
+    "200_to_ready": true,
+    "404_to_not_found": true,
+    "503_to_not_ready": true,
+    "network_failure_to_connection_error": true,
+    "unexpected_status_to_connection_error": true,
+    "invalid_response_to_connection_error": true
+  },
+  "retry_policy": {
+    "retry_allowed": true,
+    "allowed_from_states": [
+      "NOT_READY",
+      "CONNECTION_ERROR"
+    ],
+    "request_method": "GET",
+    "retry_enters_loading": true,
+    "previous_payload_may_remain_visible": false,
+    "automatic_retry_schedule_locked_here": false,
+    "automatic_retry_owner": "10.8.9"
+  },
+  "cache_policy": {
+    "frontend_fetch_cache_mode": "no-store",
+    "respect_backend_no_store": true,
+    "stale_prediction_cache": false,
+    "stale_context_cache": false,
+    "stale_intelligence_cache": false,
+    "local_storage_prediction_cache": false,
+    "session_storage_prediction_cache": false,
+    "service_worker_stale_fallback": false
+  },
+  "freshness_policy": {
+    "frontend_may_determine_fixture_freshness": false,
+    "frontend_may_override_not_ready": false,
+    "frontend_may_extend_backend_validity": false,
+    "frontend_may_reuse_old_ready_payload_after_failure": false,
+    "backend_status_is_authoritative": true,
+    "temporal_boundary_owned_by_backend": true
+  },
+  "display_policy": {
+    "loading_must_not_show_stale_values": true,
+    "not_found_must_not_show_stale_values": true,
+    "not_ready_must_not_show_stale_values": true,
+    "connection_error_must_not_show_stale_values": true,
+    "not_ready_state_visible_to_user": true,
+    "connection_error_state_visible_to_user": true
+  },
+  "implementation_boundary": {
+    "policy_only": true,
+    "network_client_implemented_here": false,
+    "runtime_validation_implemented_here": false,
+    "ui_components_implemented_here": false,
+    "api_client_owner": "10.2",
+    "failure_ui_owner": "10.8"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_responsibility_contract.json": {
+      "sha256": "6c83d06e318053bb48dcb84fd10c90eeb51b2d41f9abeee159c6f86a2b2086ed"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    },
+    "docs/stage10/frontend_domain_model_contract.json": {
+      "sha256": "a2b631cb4d411cac60fe77d30e854a13fd27a88a5b8906a97a611c1db4a00165"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    },
+    "data/processed/frontend/stage10_1_4_10_1_5_verification.json": {
+      "sha256": "4f7b48a08d66d88cc86ef91054f7b5c61fb2fee97ac3224a6b4b586a1dc10146"
+    }
+  },
+  "promotion": {
+    "stage10_1_6_complete": false,
+    "stage10_1_complete": false,
+    "stage10_complete": false,
+    "promotion_authorized": false
+  },
+  "generated_at_utc": "2026-09-16T18:21:10.692251+00:00"
+}
