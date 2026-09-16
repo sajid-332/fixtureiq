@@ -1,14 +1,18 @@
 # FixtureIQ
 
-FixtureIQ is a full-stack football match intelligence and prediction platform focused on explainable pre-match forecasting for the English Premier League.
+FixtureIQ is a full-stack English Premier League football prediction, context, and match-intelligence platform built around reproducible, leakage-safe, explainable pre-match forecasting.
 
-The project combines historical football data, leakage-safe feature engineering, machine learning, current football context, backend APIs, caching, and a web frontend. The first MVP is intentionally limited to the Premier League so that the complete prediction pipeline can be built and validated before additional competitions are added.
+The system now has three verified production-facing layers:
+
+1. **Stage 7 — Production Prediction Layer**: generates the locked Home Win / Draw / Away Win probabilities and prediction for upcoming EPL fixtures.
+2. **Stage 8 — Fixture Context Layer**: adds current standings, recent form, venue form, and fixture context without feeding that information back into the locked prediction model.
+3. **Stage 9 — Match Intelligence Layer**: interprets the Stage 7 prediction with verified Stage 8 context, derives confidence/uncertainty and context-alignment signals, creates deterministic explanations, and serves them through a fail-closed REST API.
 
 FixtureIQ produces probabilistic estimates, not guaranteed outcomes.
 
-## Current Development Status
+---
 
-FixtureIQ has completed the main implementation work for Stages 1 through 5.
+# Current Development Status
 
 | Stage | Component | Status |
 | --- | --- | --- |
@@ -16,80 +20,110 @@ FixtureIQ has completed the main implementation work for Stages 1 through 5.
 | 2 | Historical EPL Data | Complete |
 | 3 | Basic Feature Engineering | Complete |
 | 4 | H2H, Momentum and League Pressure | Complete |
-| 5 | Outcome ML Model | Implemented and validated on development windows |
-| 6 | Goal and Scoreline Model | Next |
-| 7 | Football API and Database/Cache | Planned |
-| 8 | Upcoming Fixtures, Standings and Current Form | Planned |
-| 9 | Players and Injuries | Planned |
-| 10 | Full Prediction Engine | Planned |
-| 11 | Flask REST API | Planned |
-| 12 | Next.js Website | Planned |
-| 13 | Testing and Deployment | Planned |
-| 14 | Documentation and Portfolio Presentation | Planned |
+| 5 | Outcome ML Model | Complete |
+| 6 | Goal and Scoreline Model | Complete / Final test recorded |
+| 7 | Production Prediction Layer | Complete / Verified |
+| 8 | Fixture Context Layer | Complete / Verified |
+| 9 | Match Intelligence Layer | Complete / Verified |
+| 10+ | Next development phase | Not yet locked in this README |
 
-## Main Goals
+The authoritative Stage 9 completion artifact is:
 
-FixtureIQ is designed to eventually provide:
+```text
+data/processed/intelligence/stage9_final_verification.json
+```
 
-- Automatic upcoming Premier League fixtures
-- Home Win, Draw and Away Win probabilities
-- Expected home and away goals
-- Likely final scorelines
-- Recent team form analysis
-- Home and away venue-strength analysis
-- League-table context and games-in-hand information
-- Head-to-head context
-- Momentum and upset-potential signals
-- League-pressure context
-- Player and key-player availability when reliable data is available
-- Human-readable reasons behind predictions
-- Confidence and data-completeness information
-- Model version and data cut-off information
+Final Stage 9 state:
 
-## Core Engineering Principles
-
-The project follows several rules that are important for reliable football forecasting:
-
-- Only information known before kickoff may be used to predict a fixture.
-- The target match must never influence its own feature values.
-- Historical matches are processed chronologically.
-- Model selection is based on chronological validation rather than random train/test shuffling.
-- Probability quality is more important than headline accuracy alone.
-- Missing information must be handled explicitly rather than invented.
-- Bookmaker odds are excluded from the core prediction model.
-- Advanced football-context features are only promoted into the core ML model when out-of-sample validation supports them.
-- The 2025/26 season is kept locked as the final unseen test set during model development.
+```text
+STAGE 9.8: COMPLETE
+STAGE 9: COMPLETE
+MATCH INTELLIGENCE LAYER: VERIFIED
+FIXTUREIQ STAGE 9 FINAL GATE: PASS
+```
 
 ---
 
-# Stage 1 - Project Setup
+# Architecture
+
+```text
+Historical EPL Data
+        |
+        v
+Leakage-Safe Historical Features
+        |
+        v
+Chronological Model Development
+        |
+        v
+Locked Production Prediction Model
+        |
+        v
+Stage 7 Production Predictions
+        |
+        +-----------------------------+
+        |                             |
+        v                             v
+Stage 8 Current Context        Stage 7 prediction remains locked
+        |                             |
+        +--------------+--------------+
+                       |
+                       v
+              Stage 9 Intelligence
+                       |
+                       v
+          Explanation + Runtime Safety
+                       |
+                       v
+                 Flask REST API
+```
+
+The separation is deliberate:
+
+- Stage 7 owns the prediction.
+- Stage 8 owns current football context.
+- Stage 9 may interpret the prediction with context.
+- Stage 9 may not retrain the model, change probabilities, change the predicted label, recalibrate confidence, or use current context as a hidden model feature.
+- Runtime services fail closed when verified dependency snapshots become stale.
+
+---
+
+# Core Engineering Principles
+
+- Only information known before kickoff may influence a prediction.
+- The target fixture must never influence its own feature values.
+- Historical matches are processed chronologically.
+- Random train/test shuffling is avoided for time-dependent football model selection.
+- Probability quality is more important than headline accuracy alone.
+- Missing information is handled explicitly rather than invented.
+- Bookmaker odds are excluded from the core prediction model.
+- H2H, momentum, pressure, standings, form, and other context are not silently promoted into the classifier.
+- Context may explain a prediction but may not modify it.
+- Provider IDs are not FixtureIQ's canonical team identity.
+- Production artifacts are verified through downstream SHA-256 dependency chains.
+- Runtime APIs fail closed instead of serving stale or partially valid intelligence.
+- The 2025/26 EPL season was held out during model development and evaluated at the final-test stage. Its results are retained without post-test tuning.
+- The current production season is **2026** (2026/27 EPL).
+
+---
+
+# Stage 1 — Project Setup
 
 ## Objective
 
-Create a clean development foundation for the historical data pipeline, machine-learning code, Flask backend, Next.js frontend and later API integration.
+Create a clean repository for historical data, ML code, backend services, frontend work, scripts, tests, and documentation.
 
-## Implemented Work
+## Implemented
 
-- Created the main `FixtureIQ` project structure.
-- Set up a Python development environment.
-- Added the initial Flask backend.
-- Added Flask-CORS support.
-- Added a backend health endpoint at `/api/health`.
-- Created the Next.js frontend project with TypeScript.
-- Added Tailwind CSS support to the frontend environment.
-- Created separate directories for data, ML code, scripts, backend, frontend and documentation.
-- Added Git ignore rules for Python environments, cache files, Node modules, Next.js build output, databases, logs and local environment files.
-- Established the English Premier League as the first MVP competition.
+- Python development environment
+- Flask backend and Flask-CORS
+- Health endpoint at `GET /api/health`
+- Next.js frontend shell
+- TypeScript and Tailwind CSS
+- Separate data, ML, backend, frontend, script, test, and documentation responsibilities
+- EPL selected as the first supported competition
 
-## Initial Backend Health Check
-
-The current Flask application provides:
-
-```text
-GET /api/health
-```
-
-Example response:
+Example health response:
 
 ```json
 {
@@ -98,48 +132,15 @@ Example response:
 }
 ```
 
-## Current Main Project Structure
-
-```text
-FixtureIQ/
-├── backend/
-│   ├── app.py
-│   └── requirements.txt
-├── frontend/
-│   ├── app/
-│   ├── public/
-│   ├── package.json
-│   └── package-lock.json
-├── ml/
-│   ├── features/
-│   ├── models/
-│   └── tests/
-├── data/
-│   ├── historical/
-│   │   ├── raw/
-│   │   └── processed/
-│   └── team_name_mapping.json
-├── scripts/
-├── docs/
-├── .gitignore
-└── README.md
-```
-
-## Stage 1 Result
-
-The repository can support independent development of the historical pipeline, machine-learning system, backend and frontend without mixing their responsibilities.
-
 ---
 
-# Stage 2 - Historical EPL Data Pipeline
+# Stage 2 — Historical EPL Data Pipeline
 
 ## Objective
 
-Build a clean, chronological and reproducible historical Premier League dataset for feature engineering, training and backtesting.
+Create a chronological and reproducible historical EPL dataset for feature engineering, model development, and backtesting.
 
-## Historical Data
-
-The current project contains five Premier League seasons from Football-Data.co.uk:
+Historical source seasons:
 
 - 2021/22
 - 2022/23
@@ -147,17 +148,14 @@ The current project contains five Premier League seasons from Football-Data.co.u
 - 2024/25
 - 2025/26
 
-The combined historical dataset contains:
+Original combined size:
 
-- 1,900 matches
-- 5 Premier League seasons
-- 27 unique clubs across the full period
+```text
+1,900 matches
+5 EPL seasons
+```
 
-Each raw season contains 380 Premier League matches.
-
-## Core Historical Fields
-
-The processed historical dataset currently keeps the fields required for the first prediction pipeline:
+Core fields:
 
 ```text
 Date
@@ -169,445 +167,86 @@ FTR
 Season
 ```
 
-Definitions:
-
-- `FTHG`: Full-Time Home Goals
-- `FTAG`: Full-Time Away Goals
-- `FTR`: Full-Time Result
-- `H`: Home Win
-- `D`: Draw
-- `A`: Away Win
-
-The raw Football-Data files contain additional fields such as shots and shots on target. These are not used as same-match inputs because they occur during the target fixture. They may only be used later if transformed into leakage-safe historical rolling features from previous matches.
-
-## Team Name Standardization
-
 Team names are standardized through:
 
 ```text
 data/team_name_mapping.json
 ```
 
-The historical preparation script checks that every team appearing in the raw datasets has a valid mapping before processing continues.
-
-## Historical Processing Script
-
-```text
-scripts/prepare_historical.py
-```
-
-The script:
-
-1. Loads all EPL season CSV files from `data/historical/raw/`.
-2. Keeps the required match fields.
-3. Adds the season identifier.
-4. Validates team-name mappings.
-5. Standardizes team names.
-6. Parses match dates.
-7. Combines the seasons.
-8. Sorts the full dataset chronologically.
-9. Saves the processed historical dataset.
-
-Output:
-
-```text
-data/historical/processed/epl_historical.csv
-```
-
-## Historical Validation
-
-The project includes:
-
-```text
-scripts/validate_historical.py
-```
-
-The validation checks:
-
-- Exactly 1,900 matches are present.
-- Required historical fields contain no missing values.
-- Duplicate rows are not present.
-- `FTR` contains only `H`, `D` or `A`.
-- The recorded result agrees with the full-time goal values.
-
-## Leakage Rule Established in Stage 2
-
-Historical data is ordered chronologically because football prediction is time dependent.
-
-For any historical target fixture, the prediction pipeline may only use information that existed before that fixture. Information from the target result or later fixtures is not allowed to flow backward into the prediction features.
-
-## Stage 2 Result
-
-A validated and chronologically ordered historical EPL dataset was created as the base dataset for all later feature engineering.
+Stage 2 established the project's main leakage rule: a historical target fixture may use only information that existed before that fixture.
 
 ---
 
-# Stage 3 - Basic Feature Engineering
+# Stage 3 — Basic Feature Engineering
 
-## Objective
+Stage 3 built leakage-safe recent-form and venue-form features.
 
-Transform raw historical match results into meaningful pre-match form features while preserving strict chronological leakage protection.
-
-## Generated Dataset
-
-Stage 3 creates:
+Output:
 
 ```text
 data/historical/processed/epl_features.csv
 ```
 
-Current shape:
-
-```text
-1,900 rows
-11 columns
-```
-
-## Recent Form Features
-
-Stage 3 creates recent team-form features based on the previous five completed matches within the current season.
+Important fields include:
 
 ```text
 HomeLast5Points
 AwayLast5Points
-```
-
-Football points are converted as:
-
-```text
-Win  = 3
-Draw = 1
-Loss = 0
-```
-
-Example:
-
-```text
-W W D L W
-3 + 3 + 1 + 0 + 3 = 10 points
-```
-
-## Venue-Specific Form Features
-
-The pipeline also creates home-only and away-only rolling form:
-
-```text
 Last5HomePoints
 Last5AwayPoints
 ```
 
-These features separate general form from venue performance. This is useful because teams can have substantially different home and away records.
-
-## Leakage-Safe Rolling Logic
-
-The rolling features use a one-match shift before calculating the rolling window.
-
-Conceptually:
-
-```text
-Previous completed matches
-        |
-        v
-Calculate pre-match feature
-        |
-        v
-Store feature for target fixture
-        |
-        v
-Target fixture is completed
-        |
-        v
-Its result may influence future fixtures only
-```
-
-This ensures that a target fixture never contributes to its own recent-form values.
-
-## Early-Season Missing Values
-
-At the start of a season there may not yet be five completed matches for a club. Stage 3 preserves these limited-history situations rather than filling them with future information.
-
-The early-season weakness created by season-reset form was later addressed more carefully in Stage 5 through historical-strength features.
-
-## Stage 3 Feature Validation
-
-The project includes:
-
-```text
-ml/features/validate_features.py
-```
-
-The validation checks:
-
-- 1,900 matches are preserved.
-- Required match columns exist.
-- No duplicate rows are present.
-- Core match data is complete.
-- Results contain only `H`, `D` and `A`.
-- Rolling points features remain within the valid 0 to 15 range.
-
-## Stage 3 Result
-
-FixtureIQ gained its first leakage-safe pre-match football features: recent team form and venue-specific form.
+Rolling features use a one-match shift so the target match never contributes to its own pre-match feature values.
 
 ---
 
-# Stage 4 - H2H, Momentum and League Pressure
+# Stage 4 — H2H, Momentum and League Pressure
 
-## Objective
+Stage 4 expanded the historical feature set with:
 
-Extend the basic form dataset with richer pre-match football context while keeping every calculation backtest safe.
+- pre-match league-table state
+- head-to-head context
+- momentum signals
+- upset-potential signals
+- title/top-four/relegation pressure context
 
-## Generated Dataset
-
-Stage 4 creates:
+Output:
 
 ```text
 data/historical/processed/epl_stage4_features.csv
 ```
 
-Current shape:
-
-```text
-1,900 rows
-57 columns
-```
-
-Stage 4 adds four major feature families:
-
-1. League-table state
-2. Head-to-head context
-3. Momentum and upset potential
-4. League pressure
-
-## League-Table State
-
-For every fixture, FixtureIQ reconstructs the table state before that match is processed.
-
-Key features include:
-
-```text
-HomeGamesPlayedBefore
-AwayGamesPlayedBefore
-HomeLeaguePointsBefore
-AwayLeaguePointsBefore
-LeaguePointsGap
-GamesPlayedGap
-HomePositionBefore
-AwayPositionBefore
-```
-
-The target fixture result is applied to the league table only after the pre-match feature snapshot is stored.
-
-This allows the model to know the actual table situation that existed before kickoff without using future table information.
-
-## Head-to-Head Features
-
-Recent historical meetings between the same two clubs are tracked using only meetings that occurred before the target fixture.
-
-Key fields include:
-
-```text
-HomeH2HLast5Points
-AwayH2HLast5Points
-H2HMatchesBefore
-H2HMatchesUsed
-```
-
-H2H is treated as contextual evidence rather than a dominant rule because old meetings can involve different managers, squads and team strengths.
-
-## Momentum Features
-
-Momentum is represented through measurable performance changes instead of subjective descriptions.
-
-Key fields include:
-
-```text
-HomeSeasonPPG
-HomeRecentPPG
-HomeMomentum
-AwaySeasonPPG
-AwayRecentPPG
-AwayMomentum
-MomentumGap
-SeasonStrengthGap
-RecentFormGap
-FormSwing
-```
-
-The basic idea is to compare recent performance with the team's broader season level.
-
-A team performing materially above its season baseline can therefore be identified as experiencing a positive momentum shift.
-
-## Upset Potential
-
-Stage 4 also creates:
-
-```text
-UpsetPotential
-UpsetDirection
-```
-
-These fields provide a structured signal for situations where recent form changes and strength differences may increase uncertainty around the favourite.
-
-They are not interpreted as a guaranteed upset prediction.
-
-## League Pressure Features
-
-The project converts title-race, European qualification and relegation pressure into measurable table-state variables.
-
-Key features include:
-
-```text
-HomePointsToLeader
-AwayPointsToLeader
-HomePointsToTop4
-AwayPointsToTop4
-HomePointsAboveRelegation
-AwayPointsAboveRelegation
-HomeRelegationDistance
-AwayRelegationDistance
-HomeInRelegationZone
-AwayInRelegationZone
-HomeMatchesRemaining
-AwayMatchesRemaining
-HomeSeasonProgress
-AwaySeasonProgress
-HomeTitlePressure
-AwayTitlePressure
-HomeTop4Distance
-AwayTop4Distance
-HomeTop4Pressure
-AwayTop4Pressure
-HomeRelegationPressure
-AwayRelegationPressure
-```
-
-This avoids treating motivation as an unmeasurable psychological variable. Instead, FixtureIQ uses observable league conditions such as points gaps, table zones, remaining matches and season progress.
-
-## Backtest-Safe Processing
-
-Stage 4 follows the same strict chronological pattern used throughout FixtureIQ:
-
-```text
-Read pre-match state
-        |
-        v
-Calculate feature snapshot
-        |
-        v
-Save target fixture features
-        |
-        v
-Process target result
-        |
-        v
-Allow result to affect future fixtures only
-```
-
-## Feature Creation Versus Model Inclusion
-
-An important Stage 4 design decision is that creating a football feature does not automatically mean that the feature belongs in the core ML classifier.
-
-H2H, momentum, upset potential and league-pressure features remain available in the historical dataset and can later support context and explanations.
-
-They are only included in the core probability model when chronological validation demonstrates an improvement in out-of-sample probability quality.
-
-This rule became important during Stage 5 model selection.
-
-## Stage 4 Result
-
-FixtureIQ finished Stage 4 with a broad pre-match contextual dataset containing team form, venue form, table state, H2H, momentum, upset potential and league-pressure information.
+Stage 4 also established a key governance rule: **creating a football feature does not automatically mean it belongs in the core classifier**. Model inclusion requires chronological out-of-sample evidence.
 
 ---
 
-# Stage 5 - Outcome Machine-Learning Model
+# Stage 5 — Outcome Machine-Learning Model
 
 ## Objective
 
-Train the first real FixtureIQ outcome model for:
+Build the first reproducible three-class outcome model:
 
 ```text
-Home Win / Draw / Away Win
+Home Win
+Draw
+Away Win
 ```
 
-The Stage 5 model returns probabilities for all three outcomes rather than only a single class label.
+Stage 5 added leakage-safe historical-strength features, including previous-season strength and cross-season recent form.
 
-## Stage 5 Historical-Strength Layer
-
-The Stage 3 recent-form features reset at each new season. This creates a problem during the first few matchweeks because current-season history is very limited.
-
-Stage 5 therefore adds leakage-safe historical-strength features.
-
-Generated dataset:
+Output:
 
 ```text
 data/historical/processed/epl_stage5_features.csv
 ```
 
-Current shape:
-
-```text
-1,900 rows
-65 columns
-```
-
-New historical-strength fields include:
-
-```text
-HomePreviousSeasonPPG
-AwayPreviousSeasonPPG
-HomePreviousSeasonDataAvailable
-AwayPreviousSeasonDataAvailable
-HomeCrossSeasonRecentPPG
-AwayCrossSeasonRecentPPG
-HomeCrossSeasonMatchesUsed
-AwayCrossSeasonMatchesUsed
-```
-
-## Previous-Season Strength
-
-Previous-season points per game provides a prior estimate of a team's strength before enough matches have been played in the new season.
-
-This reduces the early-season information gap without using future current-season matches.
-
-## Promoted and Returning Team Handling
-
-The historical-strength implementation does not invent previous Premier League information for newly promoted teams.
-
-It also avoids incorrectly carrying stale EPL form across a relegation gap. For example, if a club leaves the Premier League and returns later, old EPL last-five form is not treated as if it came directly before the new season.
-
-## Bookmaker Odds Policy
-
-Bookmaker odds are excluded from the core ML training features.
-
-They may be used later only as an external benchmark for comparing FixtureIQ against market expectations.
-
-This keeps FixtureIQ's own prediction model independent of bookmaker probabilities.
-
-## Core Model Feature Policy
-
-Stage 5 compared simple and advanced feature combinations rather than automatically using every Stage 4 variable.
-
-Candidate feature sets included:
-
-```text
-core_form_table
-core_plus_previous_season
-core_plus_cross_season
-core_plus_all_historical
-```
-
-Model selection used chronological validation log loss as the primary criterion.
-
-The selected feature set is:
+The selected development feature set was:
 
 ```text
 core_plus_previous_season
 ```
 
-## Selected Core Features
-
-The current outcome model uses 10 features:
+with ten features:
 
 ```text
 HomeLast5Points
@@ -622,294 +261,983 @@ HomePreviousSeasonPPG
 AwayPreviousSeasonPPG
 ```
 
-H2H, momentum/upset, league pressure and bookmaker odds are currently excluded from the core classifier.
+The Stage 5 development model was a multinomial Logistic Regression pipeline with median imputation and missingness indicators.
 
-They remain available for future context, explanations and further validation.
+Model selection used expanding chronological validation windows and prioritized multiclass log loss over accuracy alone.
 
-## Model Type
-
-The current Stage 5 model is a multinomial Logistic Regression pipeline implemented with scikit-learn.
-
-The pipeline uses:
-
-- Median imputation for missing numeric values
-- Missingness indicators
-- Logistic Regression for three-class outcome probabilities
-
-## Chronological Model Selection
-
-The project does not randomly shuffle football seasons for model selection.
-
-The feature candidates were compared through expanding chronological validation windows.
-
-### Validation Window 1
-
-```text
-Training:   2021/22 + 2022/23
-Validation: 2023/24
-```
-
-### Validation Window 2
-
-```text
-Training:   2021/22 + 2022/23 + 2023/24
-Validation: 2024/25
-```
-
-The mean log-loss comparison was:
-
-| Candidate | Mean Log Loss | Mean Accuracy | Mean Macro F1 |
-| --- | ---: | ---: | ---: |
-| core_plus_previous_season | 0.9864 | 54.34% | 0.4137 |
-| core_plus_all_historical | 0.9866 | 54.47% | 0.4151 |
-| core_plus_cross_season | 0.9878 | 54.74% | 0.4101 |
-| core_form_table | 0.9948 | 55.00% | 0.4114 |
-
-Although the simple core model had slightly higher mean accuracy, `core_plus_previous_season` produced the best mean log loss and was therefore selected.
-
-This reflects FixtureIQ's model-selection priority: probability quality is more important than accuracy alone.
-
-## Current 2024/25 Validation Performance
-
-Using the selected feature set:
-
-| Metric | Result |
-| --- | ---: |
-| Matches | 380 |
-| Accuracy | 52.37% |
-| Multiclass Log Loss | 1.0109 |
-| Macro F1 | 0.3894 |
-| Multiclass Brier Score | 0.6051 |
-| Home Recall | 84.52% |
-| Draw Recall | 0.00% |
-| Away Recall | 51.52% |
-
-Current validation confusion matrix:
-
-```text
-             Pred H   Pred D   Pred A
-Actual H       131       0       24
-Actual D        60       0       33
-Actual A        64       0       68
-```
-
-## Baseline Comparison
-
-The selected model is compared against simple baselines.
-
-```text
-Always-home baseline accuracy:       40.79%
-Training-frequency baseline log loss: 1.0826
-```
-
-Current FixtureIQ validation:
-
-```text
-Accuracy: 52.37%
-Log loss: 1.0109
-```
-
-The model therefore improves substantially on the trivial always-home accuracy baseline and improves probability quality over the naive class-frequency probability baseline.
-
-## Early-Season Validation
-
-Stage 5 specifically evaluates matches where both teams had fewer than five current-season matches before kickoff.
-
-Current early-season validation results:
-
-| Metric | Result |
-| --- | ---: |
-| Matches | 50 |
-| Accuracy | 50.00% |
-| Log Loss | 0.9830 |
-| Macro F1 | 0.3911 |
-| Brier Score | 0.5891 |
-
-The historical-strength layer was introduced specifically to make this early-season period more informative.
-
-## Locked Final Test Season
-
-The 2025/26 season is present in the historical data but remains locked as the final unseen test set.
-
-Current policy:
-
-```text
-2025/26 = locked_not_evaluated
-```
-
-No Stage 5 development metric is calculated on the 2025/26 season.
-
-This prevents repeated model decisions from indirectly tuning the project to the final test data.
-
-## Stage 5 Model Artifacts
-
-Training generates:
-
-```text
-ml/models/outcome_model.joblib
-ml/models/feature_columns.json
-ml/models/metrics.json
-ml/models/model_metadata.json
-```
-
-The metadata records:
-
-- Model version
-- Model type
-- Training seasons
-- Validation season
-- Locked test season
-- Selected feature set
-- Exact feature columns
-- Target definition
-- Model classes
-- Missing-value policy
-- Leakage policy
-- Bookmaker-odds policy
-- Calibration status
-
-Current model version:
-
-```text
-0.5.0-stage5
-```
-
-## Stage 5 Tests
-
-Automated ML tests are stored in:
-
-```text
-ml/tests/
-```
-
-The current Stage 5 test suite checks areas including:
-
-- Historical-strength leakage protection
-- Promoted-team handling
-- Relegation-gap handling
-- Early-season historical fallback
-- Chronological model selection
-- Probability sums
-- Finite evaluation metrics
-- Model artifact creation
-- Protection of the locked 2025/26 test season
-
-Current result:
-
-```text
-9 passed
-```
-
-## Current Stage 5 Limitation
-
-The major current weakness is draw classification.
-
-On the 2024/25 validation set, the model produces valid draw probabilities but never makes Draw the highest-probability class, resulting in 0% draw recall.
-
-This is being treated as a model-quality issue rather than hidden or artificially corrected. Probability calibration and broader outcome-quality analysis are deferred until Stage 6 and final pipeline validation.
-
-## Stage 5 Result
-
-FixtureIQ now has a working, reproducible and leakage-safe three-class outcome prediction pipeline that:
-
-- Builds model-ready historical features
-- Uses chronological validation
-- Selects features based primarily on log loss
-- Produces Home/Draw/Away probabilities
-- Saves reusable model artifacts
-- Preserves an untouched final test season
-- Includes automated tests for critical modelling assumptions
+A major observed limitation was draw classification, which remained weak despite valid draw probabilities.
 
 ---
 
-# Running the Current Pipeline
+# Stage 6 — Goal and Scoreline Model
 
-Run all commands from the `FixtureIQ` project root.
+## Objective
 
-## 1. Prepare Historical Data
+Add expected-goal and scoreline modelling and integrate it with the Stage 5 outcome layer.
 
-```bash
-python scripts/prepare_historical.py
-```
-
-## 2. Validate Historical Data
-
-```bash
-python scripts/validate_historical.py
-```
-
-Expected historical size:
+Completed work:
 
 ```text
-1900 matches
-5 seasons
+6.1    Goal feature preparation
+6.2    Goal prediction
+6.2.2  Lambda analysis
+6.3    Poisson scoreline engine
+6.4    Integrated prediction
+6.4.2  Integrated backtest
+6.4.3  Probability blend
+6.5.1  Freeze 30/70 blend
+6.5.2  Final production pipeline
+6.5.3  Validation reproduction
+6.5.4  2025/26 final test
+6.5.5  Final evaluation
+6.6    Detailed goal/scoreline analysis
+6.7    Documentation/final checkpoint
 ```
 
-## 3. Build Stage 3 Features
-
-```bash
-python ml/features/build_features.py
-```
-
-## 4. Validate Stage 3 Features
-
-```bash
-python ml/features/validate_features.py
-```
-
-## 5. Build Stage 4 Features
-
-```bash
-python ml/features/build_stage4_features.py
-```
-
-## 6. Build Stage 5 Features
-
-```bash
-python ml/features/build_stage5_features.py
-```
-
-Expected output dataset:
+## Frozen Stage 6 Blend
 
 ```text
-data/historical/processed/epl_stage5_features.csv
+Stage 5 outcome layer = 30%
+Stage 6 scoreline layer = 70%
 ```
 
-Expected size:
+## 2024/25 Validation
+
+| Metric | Result |
+| --- | ---: |
+| Accuracy | 53.16% |
+| Log Loss | 0.9965 |
+| Brier Score | 0.5962 |
+
+## 2025/26 Final Test
+
+| Metric | Result |
+| --- | ---: |
+| Accuracy | 48.42% |
+| Log Loss | 1.0473 |
+| Brier Score | 0.6321 |
+
+## Scoreline Performance
+
+| Metric | Result |
+| --- | ---: |
+| Exact Score | 11.84% |
+| Top-3 Coverage | 32.37% |
+| Top-5 Coverage | 45.53% |
+
+## Expected-Goal Performance
+
+| Metric | Result |
+| --- | ---: |
+| Home Goal MAE | 0.9798 |
+| Away Goal MAE | 0.8548 |
+
+## Calibration
+
+| Metric | Result |
+| --- | ---: |
+| ECE | 0.0798 |
+| MCE | 0.2068 |
+
+Draw performance remained weak:
 
 ```text
-1900 matches
-65 columns
+Precision = 0.0000
+Recall    = 0.0000
+F1        = 0.0000
 ```
 
-## 7. Train the Stage 5 Outcome Model
+The 2025/26 holdout was evaluated only at the final-test stage and was not used for post-test tuning.
+
+---
+
+# Stage 7 — Production Prediction Layer
+
+## Objective
+
+Turn the research pipeline into a reproducible, artifact-backed production prediction system for the live EPL season.
+
+Stage 7 is the authoritative prediction source consumed by Stage 9.
+
+## Production Season
+
+```text
+Competition: English Premier League
+API-Football league ID: 39
+Production season: 2026
+```
+
+This corresponds to the 2026/27 EPL campaign.
+
+## Current-Data Providers
+
+### API-Football
+
+API-Football integration and normalization were implemented, but the Free plan did not provide access to the required 2026 season. It is therefore not relied upon as the live 2026 production fixture source under the current plan constraint.
+
+### football-data.org
+
+`football-data.org` became the live production fixture/context provider for the EPL.
+
+Competition code:
+
+```text
+PL
+```
+
+The 2026 competition schedule contains 380 EPL fixtures.
+
+Provider credentials remain environment secrets and are never stored in README or committed source files.
+
+## Production History
+
+Production feature state is built from:
+
+```text
+Protected production historical base
++ full 2025/26 results
++ completed 2026/27 fixtures
+```
+
+The protected production base contains 760 matches from seasons 2023 and 2024. The live row count then grows as current-season fixtures are completed.
+
+## Team Identity
+
+Provider IDs are not used as FixtureIQ's canonical team identity.
+
+FixtureIQ uses deterministic UUID-based internal team IDs. Important normalization aliases include:
+
+```text
+Man City      -> Manchester City
+Man United    -> Manchester United
+Nott'm Forest -> Nottingham Forest
+```
+
+## Production Feature Contract
+
+The Stage 7 production feature schema contains 86 features.
+
+Target encoding:
+
+```text
+0 = Draw
+1 = Home Win
+2 = Away Win
+```
+
+Historical production features are generated using strict pre-match logic.
+
+## Locked Production Model
+
+Stage 7 performed final production model selection and locking. The selected production classifier is a locked Random Forest model.
+
+Governance rules:
+
+- no retraining after final locking
+- no reselection based on the final test
+- no tuning based on the final test
+- no bookmaker odds in the core model
+- Stage 8 context is not inserted into the Stage 7 feature vector
+- Stage 9 cannot alter Stage 7 probabilities
+
+The selected model artifact is verified by the production contract and SHA-based verification chain.
+
+## Final Locked Test Evidence
+
+| Metric | Result |
+| --- | ---: |
+| Accuracy | 0.442105 |
+| Log Loss | 1.046655 |
+| Brier Score | 0.629781 |
+| ECE | 0.070787 |
+| MCE | 0.274838 |
+| Macro Precision | 0.296683 |
+| Macro Recall | 0.410656 |
+| Macro F1 | 0.341003 |
+| Matches | 380 |
+
+Selected class-level results:
+
+```text
+Home precision = 0.5163
+Home recall    = 0.7840
+Draw F1        = 0.0000
+Away precision = 0.4254
+Away recall    = 0.5000
+```
+
+The draw weakness remains visible in the production evidence rather than being hidden by post-processing.
+
+## Production Refresh Flow
+
+```text
+Build production history
+        |
+        v
+Fetch current EPL fixtures
+        |
+        v
+Prepare production features
+        |
+        v
+Run locked model
+        |
+        v
+Verify prediction artifact
+        |
+        v
+Expose verified predictions
+```
+
+Typical commands:
 
 ```bash
-python scripts/train_models.py
+python scripts/build_production_history.py
+python scripts/fetch_production_fixtures.py
+python scripts/prepare_production_features.py
+python scripts/run_production_predictions.py
+python scripts/verify_production_predictions.py
+python scripts/verify_stage7_8.py
 ```
 
-The output should confirm that:
+## Stage 7 REST Layer
+
+Production services are exposed under:
 
 ```text
-Selected feature set: core_plus_previous_season
+/api/v1/production/
 ```
 
-and that:
+The API provides status and artifact-backed prediction access, including upcoming, fixture-level, and team-level prediction views.
+
+## Stage 7 Safety
+
+The production repository is fail-closed:
+
+- invalid artifacts are not served
+- verification failures produce a not-ready state
+- freshness is evaluated dynamically
+- only verified public fields are exposed
+- provider fetching and model execution are separated from read-only API access
+
+## Stage 7 Result
+
+Stage 7 converted FixtureIQ from model research into a verified production prediction layer for upcoming EPL fixtures.
+
+---
+
+# Stage 8 — Fixture Context Layer
+
+## Objective
+
+Describe the current football situation around a fixture without modifying the locked prediction.
+
+Stage 8 adds information such as:
+
+- current league position
+- league points
+- goal difference
+- recent form
+- recent goal difference
+- recent home form
+- recent away form
+- recent-history availability
+- fixture/context freshness state
+
+## Stage 8 Contract
+
+Stage 8 is context-only. It is forbidden from:
+
+- loading or executing the prediction model
+- retraining, tuning, or reselecting a model
+- changing probabilities or labels
+- mutating the Stage 7 feature schema
+- using standings/form as hidden model features
+- using future results
+- using bookmaker odds
+- using fuzzy or silent fallback joins
+
+## Current Standings
+
+Stage 8 builds a canonical 20-team EPL standings snapshot.
+
+## Current Team Form
+
+Current form is calculated from the current season only.
+
+Default rolling window:
 
 ```text
-2025/26 remains LOCKED
+5 matches
 ```
 
-## 8. Run ML Tests
+Short early-season histories are allowed when fewer than five completed matches are available.
+
+## Team Context
+
+Standings and form are joined into a canonical team-context artifact using strict identity matching.
+
+## Fixture Context
+
+Upcoming fixtures are enriched with home-team and away-team context.
+
+Primary artifact:
+
+```text
+data/processed/context/enriched_upcoming_fixtures.csv
+```
+
+Context families include:
+
+```text
+League position
+League points
+Goal difference
+Recent points
+Recent goal difference
+Recent home form
+Recent away form
+Matches available
+Freshness / identity metadata
+```
+
+## Runtime Freshness
+
+Stage 8 introduced:
+
+```text
+DEPENDENCY_BASED_PLUS_TEMPORAL_BOUNDARY
+```
+
+A fixture-context snapshot is valid only while:
+
+1. its verified dependency artifacts remain current, and
+2. the fixture is still in the future.
+
+When the temporal boundary is crossed, the service becomes:
+
+```text
+NOT_READY
+```
+
+It does not continue serving the stale snapshot.
+
+A valid refresh can restore readiness without restarting Flask.
+
+## Stage 8 REST Layer
+
+Context endpoints are exposed under:
+
+```text
+/api/v1/context/
+```
+
+The verified Stage 8 API has ten context routes.
+
+Runtime behavior:
+
+```text
+Healthy                 -> 200
+Unknown identity        -> 404
+Stale / invalid context -> 503
+Write methods           -> 405
+```
+
+Responses use a no-store policy.
+
+## Stage 8 Final Verification
+
+Authoritative Stage 8 evidence:
+
+```text
+data/processed/context/stage8_final_verification.json
+```
+
+Final state:
+
+```text
+STAGE 8: COMPLETE
+FIXTUREIQ CONTEXT LAYER: VERIFIED
+```
+
+---
+
+# Stage 9 — Match Intelligence Layer
+
+## Objective
+
+Interpret the locked Stage 7 prediction using verified Stage 8 context.
+
+Design principle:
+
+```text
+Stage 7: What does the model predict?
+Stage 8: What is happening around the fixture?
+Stage 9: How should the prediction be interpreted with verified context?
+```
+
+Stage 9 is **not another prediction model**.
+
+It never changes:
+
+```text
+Home probability
+Draw probability
+Away probability
+Predicted label
+Stage 7 confidence
+```
+
+## Stage 9 Roadmap
+
+```text
+9.1  Match Intelligence Contract
+9.2  Prediction + Context Join
+9.3  Derived Match Intelligence
+9.4  Confidence & Uncertainty
+9.5  Explanation Engine
+9.6  REST API
+9.7  Runtime Freshness / Safety
+9.8  Final Verification
+```
+
+The final Stage 9.8 gate is formally divided into:
+
+```text
+9.8.1  Foundation Verification
+9.8.2  Prediction Integrity Verification
+9.8.3  Intelligence Integrity Verification
+9.8.4  API / Runtime / Safety Verification
+9.8.5  Final Stage 9 Promotion
+```
+
+All five passed.
+
+---
+
+# Stage 9.1 — Match Intelligence Contract
+
+Stage 9.1 locks what the intelligence layer may read, derive, and serve.
+
+Forbidden operations include:
+
+- model loading/execution
+- model retraining/reselection/tuning
+- feature-schema mutation
+- probability modification or recalibration
+- prediction-label modification
+- context as a model feature
+- provider fetching
+- future-result use
+- bookmaker odds
+- fuzzy/fallback joins
+
+The contract uses a dynamic downstream snapshot policy:
+
+```text
+CAPTURE_AT_DOWNSTREAM_BUILD
+```
+
+The contract locks which dependencies are allowed. Downstream Stage 9 builds record the current SHA-256 identity of those inputs.
+
+A legitimate Stage 7/8 refresh therefore invalidates downstream Stage 9 artifacts and requires a rebuild, but does not require changing the Stage 9.1 contract.
+
+---
+
+# Stage 9.2 — Prediction + Context Join
+
+Stage 9.2 joins:
+
+```text
+Stage 7 production prediction
++
+Stage 8 verified fixture context
+```
+
+The five locked Stage 7 values are copied explicitly:
+
+```text
+prob_home_win   -> stage7_prob_home_win
+prob_draw       -> stage7_prob_draw
+prob_away_win   -> stage7_prob_away_win
+predicted_label -> stage7_predicted_label
+confidence      -> stage7_confidence
+```
+
+The join is strict and uses no fuzzy fallback.
+
+Artifacts:
+
+```text
+data/processed/intelligence/match_intelligence_base.csv
+data/processed/intelligence/match_intelligence_base_report.json
+```
+
+---
+
+# Stage 9.3 — Derived Match Intelligence
+
+Stage 9.3 derives deterministic interpretation fields.
+
+Probability metrics:
+
+```text
+stage9_top_probability
+stage9_second_probability
+stage9_probability_margin
+```
+
+Context gaps:
+
+```text
+stage9_league_position_gap
+stage9_points_gap
+stage9_goal_difference_gap
+stage9_recent_points_gap
+stage9_recent_goal_difference_gap
+stage9_venue_form_points_gap
+```
+
+## Five-Signal Context Support Score
+
+Signals:
+
+```text
+League position
+League points
+Goal difference
+Recent points
+Venue-specific recent points
+```
+
+Each contributes:
+
+```text
++1 = home-side context advantage
+-1 = away-side context advantage
+ 0 = tie or unavailable
+```
+
+Range:
+
+```text
+-5 to +5
+```
+
+## Context Alignment
+
+Possible values:
+
+```text
+SUPPORTIVE
+MIXED
+CONTRADICTORY
+NEUTRAL
+```
+
+Alignment is interpreted relative to the locked Stage 7 outcome and does not alter it.
+
+---
+
+# Stage 9.4 — Confidence and Uncertainty
+
+## Confidence Band
+
+Derived from the existing Stage 7 confidence value:
+
+```text
+< 0.40        VERY_LOW
+0.40 - <0.50  LOW
+0.50 - <0.60  MODERATE
+0.60 - <0.70  HIGH
+>= 0.70       VERY_HIGH
+```
+
+## Uncertainty Band
+
+Uncertainty is based on Shannon entropy of the full three-outcome probability vector:
+
+```text
+H = -Σ p ln(p)
+```
+
+Normalized entropy:
+
+```text
+H_normalized = H / ln(3)
+```
+
+Bands:
+
+```text
+< 0.20        VERY_LOW
+0.20 - <0.40  LOW
+0.40 - <0.60  MODERATE
+0.60 - <0.80  HIGH
+>= 0.80       VERY_HIGH
+```
+
+Confidence and uncertainty are intentionally separate concepts.
+
+---
+
+# Stage 9.5 — Deterministic Explanation Engine
+
+Stage 9.5 creates human-readable interpretation without using an LLM and without changing the prediction.
+
+Outputs:
+
+```text
+stage9_explanation_headline
+stage9_explanation_summary
+```
+
+The summary includes:
+
+- Stage 7 leading outcome
+- leading probability
+- margin over the next outcome
+- fixed context-support score
+- number of signals favoring each team
+- context alignment
+- confidence band
+- uncertainty band
+- an explicit statement that the explanation does not alter the prediction
+
+Example structure:
+
+```text
+Stage 7 gives [subject] the highest probability at X%, Y percentage
+points above the next outcome. The fixed context score is N: H signals
+favor [home team], A favor [away team], and Z are neutral or unavailable.
+Context alignment is ...; confidence is ... and uncertainty is ....
+This interprets the existing prediction and does not alter or replace it.
+```
+
+The explanation engine rejects certainty/guarantee language.
+
+---
+
+# Stage 9.6 — Match Intelligence REST API
+
+The final intelligence API has exactly five routes:
+
+```text
+GET /api/v1/intelligence/status
+GET /api/v1/intelligence/matches
+GET /api/v1/intelligence/matches/<fixture_id>
+GET /api/v1/intelligence/team/<path:team_name>
+GET /api/v1/intelligence/upcoming
+```
+
+The API is GET-only and exposes public fixture, context, prediction, uncertainty, alignment, and explanation fields while excluding internal model metadata.
+
+---
+
+# Stage 9.7 — Runtime Freshness / Safety
+
+Runtime policy:
+
+```text
+DUAL_UPSTREAM_DEPENDENCY_PLUS_TEMPORAL_BOUNDARY
+```
+
+Every intelligence read revalidates the required dependency state.
+
+Runtime checks include:
+
+- Stage 9.1 contract integrity
+- Stage 9.2 dependency snapshot identity
+- Stage 7 verification evidence
+- Stage 8 verification evidence
+- current `FixtureContextService` readiness
+- Stage 9.3–9.5 artifact integrity
+- Stage 9.6 API verification
+- final intelligence artifact SHA
+- canonical schema
+- fixture uniqueness
+- explanation completeness
+
+## Fail-Closed Behavior
+
+```text
+Healthy intelligence            -> 200 READY
+Unknown fixture/team            -> 404 NOT_FOUND
+Stale or invalid intelligence   -> 503 NOT_READY
+POST / PUT / DELETE             -> 405
+```
+
+No stale-row fallback is allowed.
+
+## Cache Policy
+
+```text
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+Pragma: no-cache
+Expires: 0
+```
+
+## Recovery
+
+Stage 9.7 verifies same-process recovery:
+
+```text
+READY
+  |
+upstream/context becomes stale
+  v
+NOT_READY
+  |
+valid snapshot restored
+  v
+READY
+```
+
+No Flask restart is required.
+
+---
+
+# Stage 9.8 — Final Verification
+
+## 9.8.1 — Foundation Verification
+
+Verifies the locked Stage 9 contract, exact allowed dependency set, dynamic snapshot policy, Stage 9.2 join foundation, Stage 9.3–9.5 verified state, Stage 9.6 API evidence, Stage 9.7 runtime evidence, and write protection.
+
+Evidence:
+
+```text
+data/processed/intelligence/stage9_8_1_foundation_verification.json
+```
+
+## 9.8.2 — Prediction Integrity Verification
+
+Independently proves that Stage 7 predictions were preserved exactly through Stage 9.
+
+It checks all five locked fields for every fixture:
+
+```text
+Home probability
+Draw probability
+Away probability
+Predicted label
+Confidence
+```
+
+It also verifies probability-vector validity, label consistency, confidence consistency, fixture identity, and prediction-distribution preservation.
+
+Evidence:
+
+```text
+data/processed/intelligence/stage9_8_2_prediction_integrity_verification.json
+```
+
+## 9.8.3 — Intelligence Integrity Verification
+
+Independently recomputes and validates:
+
+```text
+Top probability
+Second probability
+Probability margin
+Six context gaps
+Five-signal support score
+Context alignment
+Shannon entropy
+Normalized entropy
+Confidence band
+Uncertainty band
+Deterministic explanation headline
+Deterministic explanation summary
+```
+
+It also proves that Stage 9.2 base/context values were preserved exactly.
+
+Evidence:
+
+```text
+data/processed/intelligence/stage9_8_3_intelligence_integrity_verification.json
+```
+
+## 9.8.4 — API / Runtime / Safety Verification
+
+Independently verifies:
+
+- exact five-route API surface
+- GET-only contract
+- live service readiness
+- `200 READY`
+- `404 NOT_FOUND`
+- `405` write rejection
+- fail-closed `503 NOT_READY`
+- no-store headers
+- safe public projection
+- Stage 7/8 dependency revalidation
+- temporal-boundary propagation
+- no stale fallback
+- same-process stale-to-healthy recovery
+- no provider fetch
+- no model execution
+- no protected artifact mutation
+
+Evidence:
+
+```text
+data/processed/intelligence/stage9_8_4_api_runtime_safety_verification.json
+```
+
+## 9.8.5 — Final Stage 9 Promotion
+
+This is the only authoritative Stage 9 promotion gate.
+
+Promotion requires:
+
+```text
+9.8.1 = PASS
+9.8.2 = PASS
+9.8.3 = PASS
+9.8.4 = PASS
+```
+
+and all evidence snapshots must still be current at promotion time.
+
+Final result:
+
+```text
+STAGE 9.8.5: PASS
+FINAL STAGE 9 PROMOTION: VERIFIED
+
+STAGE 9.8: COMPLETE
+STAGE 9: COMPLETE
+MATCH INTELLIGENCE LAYER: VERIFIED
+FIXTUREIQ STAGE 9 FINAL GATE: PASS
+```
+
+Authoritative final artifact:
+
+```text
+data/processed/intelligence/stage9_final_verification.json
+```
+
+---
+
+# Important Stage 9 Artifacts
+
+Main directory:
+
+```text
+data/processed/intelligence/
+```
+
+Important files:
+
+```text
+stage9_intelligence_contract.json
+stage9_intelligence_contract_verification.json
+
+match_intelligence_base.csv
+match_intelligence_base_report.json
+
+match_intelligence.csv
+match_intelligence_report.json
+
+intelligence_api_verification.json
+intelligence_runtime_verification.json
+
+stage9_8_1_foundation_verification.json
+stage9_8_2_prediction_integrity_verification.json
+stage9_8_3_intelligence_integrity_verification.json
+stage9_8_4_api_runtime_safety_verification.json
+
+stage9_final_verification.json
+```
+
+`stage9_final_verification.json` is the authoritative proof of Stage 9 completion.
+
+---
+
+# Refreshing the Current Production Pipeline
+
+A live refresh must preserve dependency order.
+
+## 1. Refresh Stage 7 Predictions
 
 ```bash
-pytest ml/tests -q
+python scripts/build_production_history.py
+python scripts/fetch_production_fixtures.py
+python scripts/prepare_production_features.py
+python scripts/run_production_predictions.py
+python scripts/verify_production_predictions.py
+python scripts/verify_stage7_8.py
 ```
 
-Current expected result:
+A legitimate Stage 7 refresh changes production artifact hashes and therefore makes dependent Stage 8/9 snapshots stale until rebuilt.
 
-```text
-9 passed
+## 2. Rebuild Stage 8 Context
+
+```bash
+python scripts/verify_stage8_standings_source.py
+python scripts/build_current_standings.py
+python scripts/verify_canonical_standings.py
+python scripts/verify_standings_service.py
+python scripts/verify_stage8_2.py
+
+python scripts/verify_stage8_team_form_source.py
+python scripts/build_current_team_form.py
+python scripts/verify_canonical_team_form.py
+python scripts/verify_team_form_service.py
+python scripts/verify_stage8_3.py
+
+python scripts/build_team_context.py
+python scripts/verify_stage8_team_context_build.py
+python scripts/verify_team_context_independent.py
+python scripts/verify_team_context_service.py
+python scripts/verify_stage8_4.py
+
+python scripts/build_enriched_upcoming_fixtures.py
+python scripts/verify_stage8_fixture_context_build.py
+python scripts/verify_fixture_context_independent.py
+python scripts/verify_fixture_context_service.py
+python scripts/verify_stage8_5.py
+
+python scripts/verify_context_api.py
+python scripts/verify_context_runtime_fail_closed.py
+python scripts/verify_context_runtime_remaining.py
+python scripts/verify_stage8_final.py
+```
+
+Before rebuilding Stage 9, `FixtureContextService` should report `READY`.
+
+## 3. Rebuild Stage 9 Intelligence
+
+Stage 9.1 remains locked during an ordinary production refresh.
+
+```bash
+python scripts/verify_stage9_prediction_context_foundation.py
+python scripts/build_match_intelligence_base.py
+python scripts/verify_match_intelligence_base.py
+python scripts/verify_stage9_2.py
+
+python scripts/build_match_intelligence.py
+python scripts/verify_match_intelligence.py
+
+python scripts/build_match_uncertainty.py
+python scripts/verify_match_uncertainty.py
+
+python scripts/build_match_explanations.py
+python scripts/verify_match_explanations.py
+
+python scripts/verify_intelligence_api.py
+python scripts/verify_intelligence_runtime.py
+```
+
+For a canonical promoted Stage 9 snapshot, rerun the final five-gate chain:
+
+```bash
+python scripts/verify_stage9_8_1_foundation.py
+python scripts/verify_stage9_8_2_prediction_integrity.py
+python scripts/verify_stage9_8_3_intelligence_integrity.py
+python scripts/verify_stage9_8_4_api_runtime_safety.py
+python scripts/verify_stage9_8_5_final_promotion.py
 ```
 
 ---
@@ -922,13 +1250,16 @@ From the project root:
 python backend/app.py
 ```
 
-The current backend health endpoint is:
+Registered API families include:
 
 ```text
-GET /api/health
+/api/health
+/api/v1/production/...
+/api/v1/context/...
+/api/v1/intelligence/...
 ```
 
-The larger prediction REST API is planned for Stage 11.
+The backend uses separate blueprints for production predictions, fixture context, and match intelligence.
 
 ---
 
@@ -940,7 +1271,7 @@ npm install
 npm run dev
 ```
 
-The current Next.js frontend is still an early project shell. Automatic fixture and prediction pages are planned for Stage 12 after the data/API and prediction-engine stages are complete.
+The frontend remains separate from the verified backend prediction/context/intelligence pipeline and should consume public REST contracts rather than reading ML artifacts directly.
 
 ---
 
@@ -959,7 +1290,7 @@ The current Next.js frontend is still an early project shell. Automatic fixture 
 - Flask
 - Flask-CORS
 
-## Data and Machine Learning
+## Data and ML
 
 - pandas
 - NumPy
@@ -970,142 +1301,97 @@ The current Next.js frontend is still an early project shell. Automatic fixture 
 
 ## Historical Data
 
-- Football-Data.co.uk Premier League CSV files
+- Football-Data.co.uk EPL CSV files
 
-## Planned Current Data
+## Current EPL Data
 
-- API-Football / API-SPORTS as the primary current-data provider
-- football-data.org as a possible limited fallback for basic fixture/table data
+- football-data.org for the current production fixture/context flow
+- API-Football integration retained subject to plan/season-access constraints
 
-## Planned Storage and Cache
+## Verification / Runtime Design
 
-- SQLite for current data snapshots and quota-aware API caching
-
----
-
-# Data Files
-
-## Raw Historical Data
-
-```text
-data/historical/raw/epl_2021_22.csv
-data/historical/raw/epl_2022_23.csv
-data/historical/raw/epl_2023_24.csv
-data/historical/raw/epl_2024_25.csv
-data/historical/raw/epl_2025_26.csv
-```
-
-## Processed Data
-
-```text
-data/historical/processed/epl_historical.csv
-data/historical/processed/epl_features.csv
-data/historical/processed/epl_stage4_features.csv
-data/historical/processed/epl_stage5_features.csv
-```
+- SHA-256 artifact identity
+- deterministic downstream build snapshots
+- artifact-backed services
+- dependency freshness checks
+- temporal fixture boundaries
+- fail-closed REST behavior
+- no-store API responses
 
 ---
 
-# Current Model Features
+# Model and Prediction Governance
 
-The production candidate selected at Stage 5 currently uses:
+The currently served prediction is owned by Stage 7.
 
-```text
-HomeLast5Points
-AwayLast5Points
-Last5HomePoints
-Last5AwayPoints
-LeaguePointsGap
-GamesPlayedGap
-HomePositionBefore
-AwayPositionBefore
-HomePreviousSeasonPPG
-AwayPreviousSeasonPPG
-```
+Stage 8 and Stage 9 may not improve-looking results by altering the prediction after it has been produced.
 
-The following engineered feature groups exist but are currently excluded from the core classifier pending stronger validation evidence:
+The context/intelligence path prohibits:
 
 ```text
-H2H
-Momentum
-Upset potential
-League pressure
+Model retraining
+Model reselection
+Model tuning
+Feature-schema mutation
+Probability modification
+Probability recalibration
+Prediction-label modification
+Confidence modification
+Context-as-hidden-model-feature
+Bookmaker-odds injection
+Future-result use
+Provider fetch inside read-only intelligence serving
+Fuzzy or silent fallback joins
 ```
 
-Bookmaker odds are intentionally excluded from model training.
+This separation is one of FixtureIQ's main architectural guarantees.
 
 ---
 
-# Model Evaluation Strategy
+# Evaluation Philosophy
 
-FixtureIQ evaluates football models chronologically.
+FixtureIQ does not judge models only by accuracy.
 
-The project avoids random shuffling because a random split can allow a model-development process to learn patterns using future football periods that would not have been known at prediction time.
-
-Current priorities are:
+Important metrics include:
 
 1. Multiclass log loss
-2. Calibration / probability reliability
-3. Accuracy
-4. Macro F1
-5. Per-class recall
-6. Brier-style probability quality
-7. Baseline comparison
+2. Brier score
+3. Calibration error
+4. Accuracy
+5. Macro precision / recall / F1
+6. Per-class performance
+7. Goal MAE where applicable
+8. Scoreline coverage where applicable
+9. Baseline comparison
+10. Final holdout integrity
 
-The final 2025/26 test evaluation remains locked until the broader prediction pipeline is finalized.
-
----
-
-# Next Stage
-
-The next development phase is Stage 6: Goal and Scoreline Model.
-
-Planned work includes:
-
-- Separate expected home-goals and away-goals models
-- Poisson-style count modelling
-- Expected-goals output
-- Scoreline probability matrix
-- Top likely final scorelines
-- Goal MAE evaluation
-- Integration of outcome probabilities with the scoreline layer
-- Probability/calibration analysis before final model locking
-
-Stage 6 will not replace the Stage 5 Home/Draw/Away model. It will add the goal and likely-scoreline layer required by the full FixtureIQ prediction output.
+A model can have acceptable overall accuracy while still showing a serious class-specific weakness such as Draw. Those weaknesses remain visible rather than being hidden by post-processing.
 
 ---
 
-# Future Roadmap
+# Current Known Limitations
 
-After Stage 6, the planned development sequence is:
+## Draw Prediction
 
-```text
-Stage 7  - Football API + Database/Cache
-Stage 8  - Upcoming Fixtures + Standings + Current Form
-Stage 9  - Players + Injuries
-Stage 10 - Full Prediction Engine
-Stage 11 - Flask REST API
-Stage 12 - Next.js Website
-Stage 13 - Testing + Deployment
-Stage 14 - Documentation + Portfolio Presentation
-```
+Draw remains the clearest model-quality weakness. Stage 9 deliberately does not repair it by modifying the locked prediction.
 
-The project will remain Premier League focused until the complete automatic fixture-to-prediction flow works reliably.
+## Provider Access
 
----
+API-Football Free-plan season access is insufficient for the live 2026 production season, so the current production pipeline relies on football-data.org for live EPL fixture/context data.
 
-# Known Current Limitations
+## Temporal Freshness
 
-- Draw classification remains weak in the Stage 5 development model.
-- Probability calibration has not yet been finalized.
-- The 2025/26 final test season has intentionally not been evaluated.
-- Current player, injury and lineup data are not yet integrated.
-- Current upcoming-fixture data are not yet connected to an external football API.
-- The current Flask backend only contains the initial health endpoint.
-- The current Next.js frontend is not yet connected to the prediction pipeline.
-- Previous-season EPL strength is unavailable for newly promoted teams unless comparable historical data are added later.
+A verified context/intelligence artifact is intentionally temporary. Once its fixture temporal boundary is crossed, runtime becomes `NOT_READY` until the upstream/downstream refresh chain is completed.
 
-These limitations are intentionally documented rather than hidden because FixtureIQ is designed as an explainable and reproducible forecasting project.
+This is a safety feature, not a condition to bypass.
+
+## Player / Injury Data
+
+The verified Stage 7–9 production path does not currently depend on player/injury data. Any future integration should have its own leakage-safe and freshness-aware contract.
+
+## Frontend Integration
+
+The backend prediction/context/intelligence stack is currently more mature than the frontend. The UI still needs to be developed against the verified public APIs.
 
 ---
 
@@ -1113,71 +1399,77 @@ These limitations are intentionally documented rather than hidden because Fixtur
 
 FixtureIQ is a football analytics and probabilistic forecasting project.
 
-It is not designed as a guaranteed betting system, a "sure win" service or an in-play betting product.
+It is not a guaranteed betting system, a "sure win" service, or an in-play certainty engine.
 
-A future prediction should communicate:
+A useful FixtureIQ response should communicate:
 
-- The probability of each outcome
-- The likely scoreline distribution
-- The evidence supporting the leading outcome
-- Evidence supporting the opponent
-- Important uncertainties
-- Missing or stale data
-- Model version
-- Data update time
+- Home Win probability
+- Draw probability
+- Away Win probability
+- predicted outcome
+- confidence
+- uncertainty
+- current team/table context
+- whether context supports or contradicts the prediction
+- deterministic explanation
+- data freshness
+- missing information where relevant
 
-All predictions should be treated as estimates rather than certainties.
+Every prediction remains an estimate.
 
-Stage 6 final status
-6.1       Goal feature preparation              DONE
-6.2       Goal prediction                       DONE
-6.2.2     Lambda analysis                       DONE
-6.3       Poisson scoreline engine              DONE
-6.4       Integrated prediction                 DONE
-6.4.2     Integrated backtest                   DONE
-6.4.3     Probability blend                     DONE
-6.5.1     Freeze 30/70 blend                    DONE
-6.5.2     Final production pipeline             DONE
-6.5.3     Validation reproduction                DONE
-6.5.4     2025/26 final test                    DONE
-6.5.5     Final evaluation                      DONE
-6.6       Detailed goal/scoreline analysis      DONE
-6.7       Documentation + final checkpoint      NEXT
+The explanation layer must never transform an estimate into a certainty claim.
 
-What we'll record as the official Stage 6 result
+---
 
-Frozen blend:
-Stage 5 = 30%
-Stage 6 = 70%
+# Current Project State
 
-Validation: 2024/25
-Accuracy  = 53.16%
-Log Loss  = 0.9965
-Brier     = 0.5962
+```text
+Stage 1  — Project Setup                         COMPLETE
+Stage 2  — Historical EPL Data                   COMPLETE
+Stage 3  — Basic Feature Engineering             COMPLETE
+Stage 4  — H2H / Momentum / League Pressure      COMPLETE
+Stage 5  — Outcome ML Model                      COMPLETE
+Stage 6  — Goal and Scoreline Model              COMPLETE
+Stage 7  — Production Prediction Layer           COMPLETE / VERIFIED
+Stage 8  — Fixture Context Layer                 COMPLETE / VERIFIED
+Stage 9  — Match Intelligence Layer              COMPLETE / VERIFIED
+```
 
-Final Test: 2025/26
-Accuracy  = 48.42%
-Log Loss  = 1.0473
-Brier     = 0.6321
+Final Stage 9 verification:
 
-Scoreline:
-Exact     = 11.84%
-Top-3     = 32.37%
-Top-5     = 45.53%
+```text
+9.8.1  Foundation Verification                  PASS
+9.8.2  Prediction Integrity Verification        PASS
+9.8.3  Intelligence Integrity Verification      PASS
+9.8.4  API / Runtime / Safety Verification      PASS
+9.8.5  Final Stage 9 Promotion                  PASS
+```
 
-Expected Goals:
-Home MAE  = 0.9798
-Away MAE  = 0.8548
+Authoritative evidence:
 
-Calibration:
-ECE       = 0.0798
-MCE       = 0.2068
+```text
+data/processed/intelligence/stage9_final_verification.json
+```
 
-Draw:
-Precision = 0.0000
-Recall    = 0.0000
-F1        = 0.0000
+---
 
-Final Stage 6 conclusion
+# Next Development Checkpoint
 
-Stage 6 successfully integrates goal prediction, Poisson scoreline probabilities, and the Stage 5 outcome model through a frozen 30/70 probability blend. On the untouched 2025/26 test season, the integrated system achieved 48.42% outcome accuracy, with 1.0473 log loss and a 0.6321 Brier score. The goal layer produced reasonably close expected-goal estimates, while the scoreline layer achieved 11.84% exact-score accuracy and 45.53% top-five coverage. The primary weakness is draw identification, with zero draw recall, alongside noticeable probability-calibration error. These final-test results are retained without post-test tuning.
+Stage 9 is now a locked, verified foundation.
+
+Before beginning the next major stage, its scope should be explicitly defined and documented instead of reusing the old pre-Stage-7 roadmap.
+
+Any future stage should preserve these guarantees:
+
+```text
+Stage 7 prediction integrity
+Stage 8 context isolation
+Stage 9 interpretation-only behavior
+Artifact provenance
+Temporal freshness
+Fail-closed serving
+No stale fallback
+No silent probability mutation
+```
+
+That gives FixtureIQ a stable base for the next product-facing or analytical layer.
