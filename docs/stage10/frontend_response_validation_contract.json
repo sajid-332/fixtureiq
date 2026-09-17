@@ -1,0 +1,90 @@
+{
+  "stage": "10.2.6",
+  "version": "1.0.0",
+  "name": "FRONTEND_TYPED_RUNTIME_RESPONSE_VALIDATION",
+  "status": "LOCKED",
+  "validation_source": "frontend/lib/api/validation.ts",
+  "validated_client_source": "frontend/lib/api/validated.ts",
+  "runtime_test_source": "frontend/scripts/verify-stage10-api-validation.mjs",
+  "implementation": {
+    "approach": "NATIVE_TYPESCRIPT_RUNTIME_GUARDS",
+    "new_dependency_installed": false,
+    "package_lock_mutated": false,
+    "json_structure_validation": true,
+    "finite_number_validation": true,
+    "probability_range_validation": true,
+    "outcome_enum_validation": true,
+    "confidence_band_validation": true,
+    "uncertainty_band_validation": true,
+    "context_alignment_validation": true,
+    "context_support_range_validation": true,
+    "production_record_validation": true,
+    "intelligence_record_validation": true,
+    "context_identity_validation": true,
+    "error_payloads_supported": true,
+    "validated_transport_wrappers": true
+  },
+  "authority_preservation": {
+    "stage7_prediction": true,
+    "stage8_context": true,
+    "stage9_intelligence": true,
+    "stage10_presentation_only": true,
+    "probabilities_recalculated": false,
+    "context_recalculated": false,
+    "intelligence_recalculated": false
+  },
+  "semantic_http_mapping": {
+    "implemented_here": false,
+    "owner": "10.2.7"
+  },
+  "runtime_tests": {
+    "valid_production_accepted": true,
+    "invalid_production_rejected": true,
+    "valid_intelligence_accepted": true,
+    "invalid_intelligence_rejected": true,
+    "valid_context_accepted": true,
+    "invalid_context_rejected": true,
+    "not_ready_payload_supported": true,
+    "invalid_json_value_rejected": true
+  },
+  "source_identity": {
+    "frontend/lib/api/validation.ts": {
+      "sha256": "b778e0a2a0132ec0b41eab9489fb3b8d4bbc78b6940bf7e0b90b40ef1adef879"
+    },
+    "frontend/lib/api/validated.ts": {
+      "sha256": "10ce490b9a0fdfa1a038a6198f7dac69357e3a3864d3899c0b610dee401aa8c3"
+    },
+    "frontend/scripts/verify-stage10-api-validation.mjs": {
+      "sha256": "60a3c2fa2ab315ff89cfde0e3a71f2b02073390541a3822f73b50c82d1b6bab7"
+    }
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_context_api_client_contract.json": {
+      "sha256": "845d6ef378235e88b2b0d1928bf53c6a8b71f6f87fa7838e394bf6b2ec7e3eb9"
+    },
+    "docs/stage10/frontend_intelligence_api_client_contract.json": {
+      "sha256": "2a879e76495b1ce9eac275b762637180bb20f4c6e63a9632b2fd9db1f1df121e"
+    },
+    "docs/stage10/frontend_production_api_client_contract.json": {
+      "sha256": "d6e7a34252f42dfd3cd17112b65e968c62e19e64fde76779f98f6707fe6e6202"
+    },
+    "frontend/lib/api/intelligence.ts": {
+      "sha256": "c2c2b2fa773f31fd3fafce24c15f7f6d3c40ee2b4655a8c6c993969af1b6b61f"
+    },
+    "frontend/lib/api/production.ts": {
+      "sha256": "790b62c699c81b5c7d32c5234b233558b9d99fcf066726a50a57bc0a5c7a3da3"
+    },
+    "frontend/package.json": {
+      "sha256": "ef03d7f4597d20d09f26affbadfbbc2c2e04c5f4143587f6b795f0fc2ca6a2f9"
+    },
+    "frontend/package-lock.json": {
+      "sha256": "ef5358d75213d4a18725ce3785e4013265d555fb152a3fcc9b633ee3f7dbd270"
+    }
+  },
+  "promotion": {
+    "stage10_2_6_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T14:48:37.797479+00:00"
+}

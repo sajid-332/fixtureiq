@@ -1,0 +1,128 @@
+{
+  "stage": "10.2.5",
+  "version": "1.0.0",
+  "name": "FRONTEND_CONTEXT_API_CLIENT",
+  "status": "LOCKED",
+  "source": "frontend/lib/api/context.ts",
+  "server_only": true,
+  "authority": "STAGE8_CONTEXT",
+  "shared_transport": "frontend/lib/api/client.ts",
+  "route_source": "STAGE10_1_3_LOCKED_ENDPOINT_CONTRACT",
+  "routes": [
+    "/api/v1/context/fixtures",
+    "/api/v1/context/fixtures/<fixture_id>",
+    "/api/v1/context/fixtures/team/<path:team_name>",
+    "/api/v1/context/form",
+    "/api/v1/context/form/<path:team_name>",
+    "/api/v1/context/standings",
+    "/api/v1/context/standings/<path:team_name>",
+    "/api/v1/context/status",
+    "/api/v1/context/teams",
+    "/api/v1/context/teams/<path:team_name>"
+  ],
+  "route_count": 10,
+  "generated_functions": [
+    {
+      "key": "FIXTURES",
+      "function": "getContextFixtures",
+      "route": "/api/v1/context/fixtures",
+      "parameters": []
+    },
+    {
+      "key": "FIXTURES_BY_FIXTURE_ID",
+      "function": "getContextFixturesByFixtureId",
+      "route": "/api/v1/context/fixtures/<fixture_id>",
+      "parameters": [
+        "fixture_id"
+      ]
+    },
+    {
+      "key": "FIXTURES_TEAM_BY_TEAM_NAME",
+      "function": "getContextFixturesTeamByTeamName",
+      "route": "/api/v1/context/fixtures/team/<path:team_name>",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "key": "FORM",
+      "function": "getContextForm",
+      "route": "/api/v1/context/form",
+      "parameters": []
+    },
+    {
+      "key": "FORM_BY_TEAM_NAME",
+      "function": "getContextFormByTeamName",
+      "route": "/api/v1/context/form/<path:team_name>",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "key": "STANDINGS",
+      "function": "getContextStandings",
+      "route": "/api/v1/context/standings",
+      "parameters": []
+    },
+    {
+      "key": "STANDINGS_BY_TEAM_NAME",
+      "function": "getContextStandingsByTeamName",
+      "route": "/api/v1/context/standings/<path:team_name>",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "key": "STATUS",
+      "function": "getContextStatus",
+      "route": "/api/v1/context/status",
+      "parameters": []
+    },
+    {
+      "key": "TEAMS",
+      "function": "getContextTeams",
+      "route": "/api/v1/context/teams",
+      "parameters": []
+    },
+    {
+      "key": "TEAMS_BY_TEAM_NAME",
+      "function": "getContextTeamsByTeamName",
+      "route": "/api/v1/context/teams/<path:team_name>",
+      "parameters": [
+        "team_name"
+      ]
+    }
+  ],
+  "implementation": {
+    "routes_manually_guessed": false,
+    "shared_http_client_only": true,
+    "direct_fetch": false,
+    "get_only": true,
+    "dynamic_segments_encoded": true,
+    "context_recalculation": false,
+    "model_access": false,
+    "provider_access": false,
+    "stale_fallback": false
+  },
+  "source_sha256": "5799b11152f43e68024443efde11e20ccdffe86ba4734fb79920aefc60de8d62",
+  "dependency_identity": {
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "docs/stage10/frontend_http_client_contract.json": {
+      "sha256": "b3cee57799f755760e87e42f699cfa8be8abb69336223fc3f4763a39421407c4"
+    },
+    "data/processed/frontend/stage10_2_3_10_2_4_verification.json": {
+      "sha256": "986df93aa2601aa8c7fef99193b7c89f32c2c0143803135c8172867d6e4ae59a"
+    },
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    }
+  },
+  "promotion": {
+    "stage10_2_5_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T14:48:37.784438+00:00"
+}

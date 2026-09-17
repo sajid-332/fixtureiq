@@ -1,0 +1,59 @@
+{
+  "stage": "10.2.5-10.2.6",
+  "name": "CONTEXT_API_CLIENT_AND_TYPED_RESPONSE_VALIDATION_VERIFICATION",
+  "status": "PASS",
+  "stage_10_2_5_complete": true,
+  "stage_10_2_6_complete": true,
+  "context_api_client": "LOCKED_AND_VERIFIED",
+  "typed_response_validation": "LOCKED_AND_VERIFIED",
+  "context_route_count": 10,
+  "validation_runtime_tests": "PASS",
+  "typescript_compiler": "PASS",
+  "validation": {
+    "json_structure": true,
+    "production_records": true,
+    "intelligence_records": true,
+    "context_identity": true,
+    "probability_ranges": true,
+    "enum_domains": true,
+    "support_score_range": true,
+    "validated_wrappers": true
+  },
+  "safety": {
+    "new_dependency_added": false,
+    "direct_fetch": false,
+    "direct_provider_access": false,
+    "model_access": false,
+    "prediction_recalculation": false,
+    "context_recalculation": false,
+    "intelligence_recalculation": false,
+    "stale_fallback": false,
+    "semantic_error_mapping": false
+  },
+  "dependency_identity": {
+    "frontend/lib/api/context.ts": {
+      "sha256": "5799b11152f43e68024443efde11e20ccdffe86ba4734fb79920aefc60de8d62"
+    },
+    "frontend/lib/api/validation.ts": {
+      "sha256": "b778e0a2a0132ec0b41eab9489fb3b8d4bbc78b6940bf7e0b90b40ef1adef879"
+    },
+    "frontend/lib/api/validated.ts": {
+      "sha256": "10ce490b9a0fdfa1a038a6198f7dac69357e3a3864d3899c0b610dee401aa8c3"
+    },
+    "docs/stage10/frontend_context_api_client_contract.json": {
+      "sha256": "845d6ef378235e88b2b0d1928bf53c6a8b71f6f87fa7838e394bf6b2ec7e3eb9"
+    },
+    "docs/stage10/frontend_response_validation_contract.json": {
+      "sha256": "d79740b7aeffc2165496ce8cbce8df283538cbf22dda4629ad0faaf92f296512"
+    },
+    "data/processed/frontend/stage10_2_3_10_2_4_verification.json": {
+      "sha256": "986df93aa2601aa8c7fef99193b7c89f32c2c0143803135c8172867d6e4ae59a"
+    }
+  },
+  "verified_at_utc": "2026-09-17T14:49:47.700226+00:00",
+  "stage10_ready_for_10_2_7": true,
+  "stage10_2_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.2.7",
+  "failures": []
+}
