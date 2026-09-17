@@ -1,0 +1,58 @@
+{
+  "stage": "10.3.4",
+  "version": "1.0.0",
+  "name": "SITE_FOOTER",
+  "status": "LOCKED",
+  "source": "frontend/components/shell/site-footer.tsx",
+  "component": "SiteFooter",
+  "semantic_element": "footer",
+  "content": {
+    "brand": "FixtureIQ",
+    "product_context": "Premier League match intelligence",
+    "disclaimer": "Predictions are estimates, not guaranteed outcomes.",
+    "invented_navigation": false
+  },
+  "responsibility": {
+    "global_shell_footer": true,
+    "data_fetching": false,
+    "api_access": false,
+    "prediction_logic": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "mobile_navigation": false
+  },
+  "layout_transition": {
+    "before_footer_sha256": "b0ef6d26cb0901c5323b41e2bd7123e99704f0c549b0d73d494ec7d8aa3e1d2c",
+    "after_footer_sha256": "45e07f440c5a6d47da2422adcb8b81411572808abda42a1f28d6f7a01df05ab5"
+  },
+  "source_sha256": "a22c72ced81bc0bb96d947da0d3672486d13324dad7a0b865c99e0b2784277dc",
+  "protected_state": {
+    "globals_css_sha256": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "site_header_sha256": "760ca48bc7b59e6d7896fc384348852a59a24a8c3613deeb69f15f9bbb54653e",
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    }
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_3_1_10_3_2_verification.json": {
+      "sha256": "75fce19756334f01da8d645d64537938c3815b865c4b8b7c49918479d6b1c778"
+    },
+    "docs/stage10/frontend_main_container_contract.json": {
+      "sha256": "c66a0041bfc5f520da8233a88810b08ab3679ab3783f1075f1f74f6bd66664af"
+    },
+    "docs/stage10/frontend_header_navigation_contract.json": {
+      "sha256": "83945a2147549dad30b740a52bf0e1612593a3456d6cc4b5c96b5c33d6e43eda"
+    },
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    }
+  },
+  "promotion": {
+    "stage10_3_4_complete": false,
+    "stage10_3_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T15:33:08.212562+00:00"
+}
