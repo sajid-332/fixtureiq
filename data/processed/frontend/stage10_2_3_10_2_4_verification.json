@@ -1,0 +1,48 @@
+{
+  "stage": "10.2.3-10.2.4",
+  "name": "INTELLIGENCE_AND_PRODUCTION_API_CLIENT_VERIFICATION",
+  "status": "PASS",
+  "stage_10_2_3_complete": true,
+  "stage_10_2_4_complete": true,
+  "intelligence_api_client": "LOCKED_AND_VERIFIED",
+  "production_api_client": "LOCKED_AND_VERIFIED",
+  "intelligence_route_count": 5,
+  "production_route_count": 3,
+  "transport": "SHARED_FIXTUREIQ_HTTP_CLIENT",
+  "safety": {
+    "get_only": true,
+    "direct_fetch": false,
+    "direct_provider_access": false,
+    "model_access": false,
+    "prediction_recalculation": false,
+    "runtime_validation": false,
+    "semantic_error_mapping": false,
+    "stale_fallback": false
+  },
+  "dependency_identity": {
+    "frontend/lib/api/intelligence.ts": {
+      "sha256": "c2c2b2fa773f31fd3fafce24c15f7f6d3c40ee2b4655a8c6c993969af1b6b61f"
+    },
+    "frontend/lib/api/production.ts": {
+      "sha256": "790b62c699c81b5c7d32c5234b233558b9d99fcf066726a50a57bc0a5c7a3da3"
+    },
+    "docs/stage10/frontend_intelligence_api_client_contract.json": {
+      "sha256": "2a879e76495b1ce9eac275b762637180bb20f4c6e63a9632b2fd9db1f1df121e"
+    },
+    "docs/stage10/frontend_production_api_client_contract.json": {
+      "sha256": "d6e7a34252f42dfd3cd17112b65e968c62e19e64fde76779f98f6707fe6e6202"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "data/processed/frontend/stage10_2_1_10_2_2_verification.json": {
+      "sha256": "d220750976edb126cf102d01b0cb6e17fc6ebbc497eae76887d13320724c4802"
+    }
+  },
+  "verified_at_utc": "2026-09-17T14:05:53.329625+00:00",
+  "stage10_ready_for_10_2_5": true,
+  "stage10_2_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.2.5",
+  "failures": []
+}

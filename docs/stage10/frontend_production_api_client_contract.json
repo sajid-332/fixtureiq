@@ -1,0 +1,75 @@
+{
+  "stage": "10.2.4",
+  "version": "1.0.0",
+  "name": "FRONTEND_PRODUCTION_API_CLIENT",
+  "status": "LOCKED",
+  "source": "frontend/lib/api/production.ts",
+  "server_only": true,
+  "shared_transport": "frontend/lib/api/client.ts",
+  "authority": "STAGE7_PREDICTION",
+  "route_source": "STAGE10_1_3_LOCKED_ENDPOINT_CONTRACT",
+  "routes": [
+    "/api/v1/production/health",
+    "/api/v1/production/readiness",
+    "/api/v1/production/status"
+  ],
+  "route_count": 3,
+  "generated_functions": [
+    {
+      "key": "HEALTH",
+      "function": "getProductionHealth",
+      "route": "/api/v1/production/health",
+      "parameters": []
+    },
+    {
+      "key": "READINESS",
+      "function": "getProductionReadiness",
+      "route": "/api/v1/production/readiness",
+      "parameters": []
+    },
+    {
+      "key": "STATUS",
+      "function": "getProductionStatus",
+      "route": "/api/v1/production/status",
+      "parameters": []
+    }
+  ],
+  "implementation": {
+    "routes_manually_guessed": false,
+    "shared_http_client_only": true,
+    "direct_fetch": false,
+    "get_only": true,
+    "dynamic_segments_encoded": true,
+    "prediction_recalculation": false,
+    "model_access": false,
+    "runtime_schema_validation": false,
+    "runtime_schema_validation_owner": "10.2.6",
+    "semantic_error_mapping": false,
+    "semantic_error_mapping_owner": "10.2.7",
+    "stale_fallback": false
+  },
+  "source_sha256": "790b62c699c81b5c7d32c5234b233558b9d99fcf066726a50a57bc0a5c7a3da3",
+  "dependency_identity": {
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "docs/stage10/frontend_http_client_contract.json": {
+      "sha256": "b3cee57799f755760e87e42f699cfa8be8abb69336223fc3f4763a39421407c4"
+    },
+    "docs/stage10/frontend_api_environment_contract.json": {
+      "sha256": "47e01d3497ebea94f0575ced7836988d75f09bd85da33d0fca5dd349a95aa70a"
+    },
+    "data/processed/frontend/stage10_2_1_10_2_2_verification.json": {
+      "sha256": "d220750976edb126cf102d01b0cb6e17fc6ebbc497eae76887d13320724c4802"
+    },
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    }
+  },
+  "promotion": {
+    "stage10_2_4_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T14:00:46.431972+00:00"
+}

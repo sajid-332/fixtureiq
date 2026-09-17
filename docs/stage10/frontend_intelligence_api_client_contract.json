@@ -1,0 +1,60 @@
+{
+  "stage": "10.2.3",
+  "version": "1.0.0",
+  "name": "FRONTEND_INTELLIGENCE_API_CLIENT",
+  "status": "LOCKED",
+  "source": "frontend/lib/api/intelligence.ts",
+  "server_only": true,
+  "shared_transport": "frontend/lib/api/client.ts",
+  "authority": "STAGE9_INTELLIGENCE",
+  "routes": [
+    "/api/v1/intelligence/matches",
+    "/api/v1/intelligence/matches/<fixture_id>",
+    "/api/v1/intelligence/status",
+    "/api/v1/intelligence/team/<path:team_name>",
+    "/api/v1/intelligence/upcoming"
+  ],
+  "route_count": 5,
+  "functions": {
+    "getIntelligenceStatus": "/api/v1/intelligence/status",
+    "getIntelligenceMatches": "/api/v1/intelligence/matches",
+    "getIntelligenceMatch": "/api/v1/intelligence/matches/<fixture_id>",
+    "getTeamIntelligence": "/api/v1/intelligence/team/<path:team_name>",
+    "getUpcomingIntelligence": "/api/v1/intelligence/upcoming"
+  },
+  "implementation": {
+    "shared_http_client_only": true,
+    "direct_fetch": false,
+    "get_only": true,
+    "dynamic_segments_encoded": true,
+    "runtime_schema_validation": false,
+    "runtime_schema_validation_owner": "10.2.6",
+    "semantic_error_mapping": false,
+    "semantic_error_mapping_owner": "10.2.7",
+    "stale_fallback": false
+  },
+  "source_sha256": "c2c2b2fa773f31fd3fafce24c15f7f6d3c40ee2b4655a8c6c993969af1b6b61f",
+  "dependency_identity": {
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "docs/stage10/frontend_http_client_contract.json": {
+      "sha256": "b3cee57799f755760e87e42f699cfa8be8abb69336223fc3f4763a39421407c4"
+    },
+    "docs/stage10/frontend_api_environment_contract.json": {
+      "sha256": "47e01d3497ebea94f0575ced7836988d75f09bd85da33d0fca5dd349a95aa70a"
+    },
+    "data/processed/frontend/stage10_2_1_10_2_2_verification.json": {
+      "sha256": "d220750976edb126cf102d01b0cb6e17fc6ebbc497eae76887d13320724c4802"
+    },
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    }
+  },
+  "promotion": {
+    "stage10_2_3_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T14:00:46.425553+00:00"
+}
