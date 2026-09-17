@@ -1,0 +1,44 @@
+{
+  "stage": "10.4.5-10.4.6",
+  "name": "HDA_PROBABILITIES_AND_PREDICTED_OUTCOME_VERIFICATION",
+  "status": "PASS",
+  "stage_10_4_5_complete": true,
+  "stage_10_4_6_complete": true,
+  "hda_probabilities": "LOCKED_AND_VERIFIED",
+  "predicted_outcome": "LOCKED_AND_VERIFIED",
+  "stage7_authority": {
+    "probabilities": [
+      "stage7_prob_home_win",
+      "stage7_prob_draw",
+      "stage7_prob_away_win"
+    ],
+    "predicted_label": "stage7_predicted_label",
+    "frontend_argmax": false,
+    "frontend_recalculation": false,
+    "frontend_normalization": false,
+    "probability_mutation": false
+  },
+  "probability_display": {
+    "formatter": "Intl.NumberFormat",
+    "style": "percent",
+    "decimal_places": 1,
+    "source_values_unchanged": true
+  },
+  "safety": {
+    "route_pages_modified": false,
+    "dashboard_loader_modified": false,
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "frontend_prediction_logic": false,
+    "probability_recalibration": false,
+    "predicted_label_recalculation": false
+  },
+  "typescript_compiler": "PASS",
+  "verified_at_utc": "2026-09-17T20:45:59.066170+00:00",
+  "stage10_ready_for_10_4_7": true,
+  "stage10_4_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.4.7",
+  "failures": []
+}

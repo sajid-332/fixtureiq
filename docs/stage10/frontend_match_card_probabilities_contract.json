@@ -1,0 +1,79 @@
+{
+  "stage": "10.4.5",
+  "version": "1.0.0",
+  "name": "MATCH_HDA_PROBABILITIES",
+  "status": "LOCKED",
+  "source": "frontend/components/matches/match-card.tsx",
+  "formatter_source": "frontend/lib/formatters/probability.ts",
+  "authority": "STAGE_7_PREDICTION",
+  "source_fields": [
+    "stage7_prob_home_win",
+    "stage7_prob_draw",
+    "stage7_prob_away_win"
+  ],
+  "display_mapping": {
+    "stage7_prob_home_win": "Home",
+    "stage7_prob_draw": "Draw",
+    "stage7_prob_away_win": "Away"
+  },
+  "formatting": {
+    "library": "Intl.NumberFormat",
+    "style": "percent",
+    "locale": "en-GB",
+    "minimum_fraction_digits": 1,
+    "maximum_fraction_digits": 1,
+    "display_only": true,
+    "source_values_modified": false
+  },
+  "validation": {
+    "finite_required": true,
+    "minimum": 0,
+    "maximum": 1,
+    "invalid_value_policy": "THROW_RANGE_ERROR",
+    "normalization": false,
+    "renormalization": false
+  },
+  "implementation": {
+    "server_component": true,
+    "frontend_prediction_logic": false,
+    "argmax": false,
+    "probability_arithmetic": false,
+    "probability_recalibration": false,
+    "sorting": false,
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "transition": {
+    "match_card_before_probabilities_sha256": "c271a463fb4e628e5694f2b00bd8b34c3ddb429985c67432a1bc3c13412de10f",
+    "match_card_after_probabilities_sha256": "f0ec88c85a3f41b7e4cd551fdd7b4771b849ad967b903ca04846ab0e86af26fd"
+  },
+  "match_card_after_probabilities_sha256": "f0ec88c85a3f41b7e4cd551fdd7b4771b849ad967b903ca04846ab0e86af26fd",
+  "probability_formatter_sha256": "64117f193c92252d0bc20c31aea51597cff3818df2cca669db7386bf7a7b4688",
+  "protected_state": {
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    },
+    "loader_sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_4_3_10_4_4_verification.json": {
+      "sha256": "884e0234b8451acb399090242483bbea3aa64f3e10495b9a1c1643cddcd36a7f"
+    },
+    "docs/stage10/frontend_match_card_kickoff_contract.json": {
+      "sha256": "de93892c78ab10508ee5b22a19142944ac99842a0830d6868a665bf193db3f4d"
+    },
+    "frontend/lib/dashboard/load-upcoming-matches.ts": {
+      "sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203"
+    }
+  },
+  "promotion": {
+    "stage10_4_5_complete": false,
+    "stage10_4_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T20:44:09.306217+00:00"
+}
