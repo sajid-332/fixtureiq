@@ -7,12 +7,32 @@ import {
 } from "../../../components/matches/match-fixture-header";
 
 import {
+  MatchPredictionOverview,
+} from "../../../components/matches/match-prediction-overview";
+
+import {
+  MatchProbabilityVisualization,
+} from "../../../components/matches/match-probability-visualization";
+
+import {
+  MatchConfidence,
+} from "../../../components/matches/match-confidence";
+
+import {
+  MatchUncertainty,
+} from "../../../components/matches/match-uncertainty";
+
+import {
   loadMatchIntelligence,
 } from "../../../lib/matches/load-match-intelligence";
 
 import {
   extractMatchFixtureHeader,
 } from "../../../lib/matches/match-header-record";
+
+import {
+  extractMatchPredictionRecord,
+} from "../../../lib/matches/match-prediction-record";
 
 import type {
   FixtureRouteParams,
@@ -99,6 +119,13 @@ export default async function MatchDetailPage({
     );
 
 
+  const prediction =
+    extractMatchPredictionRecord(
+      result.data,
+      fixtureId,
+    );
+
+
   return (
     <article
       data-fixtureiq-route="match-detail"
@@ -118,6 +145,51 @@ export default async function MatchDetailPage({
           header.date
         }
       />
+      <div
+        className="
+          mt-6 space-y-6
+        "
+      >
+        <MatchPredictionOverview
+          predictedLabel={
+            prediction.stage7_predicted_label
+          }
+        />
+
+        <MatchProbabilityVisualization
+          homeProbability={
+            prediction.stage7_prob_home_win
+          }
+          drawProbability={
+            prediction.stage7_prob_draw
+          }
+          awayProbability={
+            prediction.stage7_prob_away_win
+          }
+        />
+
+        <div
+          className="
+            grid gap-6
+            md:grid-cols-2
+          "
+        >
+          <MatchConfidence
+            confidence={
+              prediction.stage7_confidence
+            }
+            confidenceBand={
+              prediction.stage9_confidence_band
+            }
+          />
+
+          <MatchUncertainty
+            uncertaintyBand={
+              prediction.stage9_uncertainty_band
+            }
+          />
+        </div>
+      </div>
     </article>
   );
 }

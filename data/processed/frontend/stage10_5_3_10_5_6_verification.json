@@ -1,0 +1,40 @@
+{
+  "stage": "10.5.3-10.5.6",
+  "name": "MATCH_PREDICTION_DETAIL_VERIFICATION",
+  "status": "PASS",
+  "stage_10_5_3_complete": true,
+  "stage_10_5_4_complete": true,
+  "stage_10_5_5_complete": true,
+  "stage_10_5_6_complete": true,
+  "prediction_overview": "LOCKED_AND_VERIFIED",
+  "three_way_probability_visualization": "LOCKED_AND_VERIFIED",
+  "confidence": "LOCKED_AND_VERIFIED",
+  "uncertainty": "LOCKED_AND_VERIFIED",
+  "authority": {
+    "probabilities": "STAGE_7",
+    "predicted_label": "STAGE_7",
+    "confidence": "STAGE_7",
+    "confidence_band": "STAGE_9",
+    "uncertainty_band": "STAGE_9"
+  },
+  "integrity": {
+    "transport_string_to_number_only": true,
+    "probabilities_modified": false,
+    "probabilities_normalized": false,
+    "probabilities_recalibrated": false,
+    "prediction_rederived": false,
+    "confidence_band_derived_frontend": false,
+    "uncertainty_band_derived_frontend": false,
+    "direct_fetch": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "stale_fallback": false
+  },
+  "typescript_compiler": "PASS",
+  "stage10_ready_for_10_5_7": true,
+  "stage10_5_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.5.7",
+  "verified_at_utc": "2026-09-17T23:02:31.567651+00:00",
+  "failures": []
+}

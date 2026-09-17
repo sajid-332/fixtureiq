@@ -1,0 +1,52 @@
+{
+  "stage": "10.5.3",
+  "version": "1.0.0",
+  "name": "MATCH_PREDICTION_OVERVIEW",
+  "status": "LOCKED",
+  "component_source": "frontend/components/matches/match-prediction-overview.tsx",
+  "record_source": "frontend/lib/matches/match-prediction-record.ts",
+  "authority": "STAGE_7_PREDICTION",
+  "source_field": "stage7_predicted_label",
+  "presentation": {
+    "direct_source_label": true,
+    "frontend_argmax": false,
+    "frontend_prediction_derivation": false,
+    "probability_visualization_owned_by": "10.5.4"
+  },
+  "component_sha256": "86a512ccbce1a7f6fdf25ceff1786ffd8b469f697df1e02141c84b404273b01f",
+  "record_source_sha256": "4012af6557eb07fdd8f83551d1b354e86a81a384df18a87f758825eeaacaeb2c",
+  "route_page_before_10_5_3_sha256": "936dbd13435d5c59be0a215bc1f146b82214972e03072844ea1ff72ea2eab3f5",
+  "route_page_after_10_5_3_to_10_5_6_sha256": "1ec35b5a072d3e39be1b913c4956dcb9d7626f9f6b147af11671bb30d612aad7",
+  "protected_state": {
+    "header_component_sha256": "cd22a2d1bf0f761938ae6ebe5aa4a8921a024978f5cf0da4957ea091b1736a0d",
+    "header_record_sha256": "3a25dd0943747458ff1645a12cbe797c330777bfd6ea749cbf91ca710f2c58c8",
+    "match_loader_sha256": "55792a9cf5623fc24cbda4fb463c86d4ee7b50a07bc0eb1ff304e198d574898a",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "kickoff_formatter_sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249",
+    "probability_formatter_sha256": "64117f193c92252d0bc20c31aea51597cff3818df2cca669db7386bf7a7b4688",
+    "dashboard_page_sha256": "959836840193a50cc3f391a39ff04895616dd6b8a749b5eb36efd126d903f992",
+    "dashboard_match_card_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_5_1_10_5_2_verification.json": {
+      "sha256": "6fe543cebd2a53fe4f7aba807925d58ad01501e748a9634186765c1fb9b04398"
+    },
+    "docs/stage10/frontend_match_fixture_header_contract.json": {
+      "sha256": "2d148a60a046625e292a6995c565435a4923e8e94ce26673f7073f5105a6e69b"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    },
+    "frontend/lib/formatters/probability.ts": {
+      "sha256": "64117f193c92252d0bc20c31aea51597cff3818df2cca669db7386bf7a7b4688"
+    }
+  },
+  "promotion": {
+    "stage10_5_3_complete": false,
+    "stage10_5_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T23:01:57.774082+00:00"
+}
