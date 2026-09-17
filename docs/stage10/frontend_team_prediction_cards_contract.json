@@ -1,0 +1,72 @@
+{
+  "stage": "10.6.4",
+  "version": "1.0.0",
+  "name": "TEAM_PREDICTION_CARDS",
+  "status": "LOCKED",
+  "authorities": {
+    "fixture_identity": "STAGE_9_API_JOIN",
+    "kickoff": "STAGE_9_API_JOIN",
+    "probabilities": "STAGE_7",
+    "predicted_label": "STAGE_7",
+    "confidence": "STAGE_7",
+    "confidence_band": "STAGE_9",
+    "uncertainty_band": "STAGE_9",
+    "context_alignment": "STAGE_9"
+  },
+  "component_source": "frontend/components/teams/team-prediction-card.tsx",
+  "source_fields": [
+    "fixture_id",
+    "date",
+    "home_team_name",
+    "away_team_name",
+    "stage7_prob_home_win",
+    "stage7_prob_draw",
+    "stage7_prob_away_win",
+    "stage7_predicted_label",
+    "stage7_confidence",
+    "stage9_confidence_band",
+    "stage9_uncertainty_band",
+    "stage9_context_alignment"
+  ],
+  "integrity": {
+    "transport_string_to_number_only": true,
+    "probability_recalculation": false,
+    "probability_normalization": false,
+    "frontend_argmax": false,
+    "confidence_band_derivation": false,
+    "uncertainty_band_derivation": false,
+    "alignment_derivation": false,
+    "fixture_links": false
+  },
+  "component_sha256": "30edac74c7ded2e3bd11f8be80b03fcd5ff5b7a7491741c3838d3e7fda9449dc",
+  "record_source_sha256": "e28d30187300dd13b799a7c94c190713a6b1ed7b5b0abbb89208a30d23117ea9",
+  "route_page_after_10_6_4_sha256": "f4278c50a71d13751449dce6a78f740d7b81d821049f236da8cb2c01a9100e41",
+  "protected_state": {
+    "stage10_5_match_route_sha256": "a9d0cae9064ba3ce042cf2ee3b4ec2e6a6b77a85d653400a6f4ac9da05d76517",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "kickoff_formatter_sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249",
+    "probability_formatter_sha256": "64117f193c92252d0bc20c31aea51597cff3818df2cca669db7386bf7a7b4688"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_team_upcoming_matches_contract.json": {
+      "sha256": "499a31743643ff770e4d7d7415f67200f479f0fc895ef3acfe5a239c8599b26d"
+    },
+    "frontend/lib/teams/team-records.ts": {
+      "sha256": "e28d30187300dd13b799a7c94c190713a6b1ed7b5b0abbb89208a30d23117ea9"
+    },
+    "frontend/lib/formatters/probability.ts": {
+      "sha256": "64117f193c92252d0bc20c31aea51597cff3818df2cca669db7386bf7a7b4688"
+    },
+    "frontend/lib/formatters/kickoff.ts": {
+      "sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249"
+    }
+  },
+  "promotion": {
+    "stage10_6_4_complete": false,
+    "stage10_6_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T23:43:19.189240+00:00"
+}
