@@ -1,0 +1,61 @@
+{
+  "stage": "10.4.4",
+  "version": "1.0.0",
+  "name": "MATCH_KICKOFF",
+  "status": "LOCKED",
+  "source": "frontend/components/matches/match-card.tsx",
+  "formatter_source": "frontend/lib/formatters/kickoff.ts",
+  "kickoff_field": "kickoffUtc",
+  "presentation": {
+    "semantic_time_element": true,
+    "date_time_attribute": true,
+    "display_timezone": "UTC",
+    "locale": "en-GB",
+    "formatter": "Intl.DateTimeFormat",
+    "manual_date_formatting": false
+  },
+  "validation": {
+    "invalid_timestamp": "THROW_RANGE_ERROR",
+    "fallback_timestamp": false,
+    "invented_timestamp": false
+  },
+  "implementation": {
+    "server_component": true,
+    "client_timezone_detection": false,
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "prediction_logic": false
+  },
+  "transition": {
+    "match_card_before_kickoff_sha256": "b5d349e8054cfb1bc26419107d764045114d74ef94a09961cf451699e359dd93",
+    "match_card_after_kickoff_sha256": "c271a463fb4e628e5694f2b00bd8b34c3ddb429985c67432a1bc3c13412de10f"
+  },
+  "match_card_after_kickoff_sha256": "c271a463fb4e628e5694f2b00bd8b34c3ddb429985c67432a1bc3c13412de10f",
+  "formatter_sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249",
+  "protected_state": {
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    },
+    "loader_sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_4_1_10_4_2_verification.json": {
+      "sha256": "90bb07e3e483292cca8cf9e4fd99f6e56aa0634f493dee1795a643e4a369a6b1"
+    },
+    "docs/stage10/frontend_match_card_identity_contract.json": {
+      "sha256": "992729605be4a703d4c01fddaefad404e5909c8b01d107512f5dc7e49ac5b970"
+    },
+    "frontend/lib/dashboard/load-upcoming-matches.ts": {
+      "sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203"
+    }
+  },
+  "promotion": {
+    "stage10_4_4_complete": false,
+    "stage10_4_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T20:20:40.783280+00:00"
+}
