@@ -39,6 +39,22 @@ import {
 } from "../../../components/matches/match-recent-form";
 
 import {
+  MatchVenueForm,
+} from "../../../components/matches/match-venue-form";
+
+import {
+  MatchContextSupport,
+} from "../../../components/matches/match-context-support";
+
+import {
+  MatchContextAlignment,
+} from "../../../components/matches/match-context-alignment";
+
+import {
+  MatchIntelligenceExplanation,
+} from "../../../components/matches/match-intelligence-explanation";
+
+import {
   loadMatchIntelligence,
 } from "../../../lib/matches/load-match-intelligence";
 
@@ -53,6 +69,10 @@ import {
 import {
   extractMatchContextRecord,
 } from "../../../lib/matches/match-context-record";
+
+import {
+  extractMatchIntelligenceDetailRecord,
+} from "../../../lib/matches/match-intelligence-detail-record";
 
 import type {
   FixtureRouteParams,
@@ -148,6 +168,13 @@ export default async function MatchDetailPage({
 
   const context =
     extractMatchContextRecord(
+      result.data,
+      fixtureId,
+    );
+
+
+  const intelligence =
+    extractMatchIntelligenceDetailRecord(
       result.data,
       fixtureId,
     );
@@ -292,6 +319,66 @@ export default async function MatchDetailPage({
           }
           awayMatchesAvailable={
             context.away_team_form_matches_available
+          }
+        />
+      </div>
+      <div
+        className="
+          mt-6
+        "
+      >
+        <MatchVenueForm
+          homeTeamName={
+            header.home_team_name
+          }
+          awayTeamName={
+            header.away_team_name
+          }
+          homeRecentPoints={
+            intelligence.home_team_home_recent_points
+          }
+          awayRecentPoints={
+            intelligence.away_team_away_recent_points
+          }
+          homeMatchesAvailable={
+            intelligence.home_team_home_form_matches_available
+          }
+          awayMatchesAvailable={
+            intelligence.away_team_away_form_matches_available
+          }
+        />
+      </div>
+
+      <div
+        className="
+          mt-6 grid gap-6
+          md:grid-cols-2
+        "
+      >
+        <MatchContextSupport
+          supportScore={
+            intelligence.stage9_context_support_score
+          }
+        />
+
+        <MatchContextAlignment
+          alignment={
+            intelligence.stage9_context_alignment
+          }
+        />
+      </div>
+
+      <div
+        className="
+          mt-6
+        "
+      >
+        <MatchIntelligenceExplanation
+          headline={
+            intelligence.stage9_explanation_headline
+          }
+          summary={
+            intelligence.stage9_explanation_summary
           }
         />
       </div>

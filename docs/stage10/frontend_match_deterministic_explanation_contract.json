@@ -1,0 +1,57 @@
+{
+  "stage": "10.5.14",
+  "version": "1.0.0",
+  "name": "MATCH_DETERMINISTIC_EXPLANATION",
+  "status": "LOCKED",
+  "source_authority": "STAGE_9_INTELLIGENCE",
+  "component_source": "frontend/components/matches/match-intelligence-explanation.tsx",
+  "source_fields": [
+    "stage9_explanation_headline",
+    "stage9_explanation_summary"
+  ],
+  "rule_authority": "STAGE9_5_DETERMINISTIC_EXPLANATION_V1",
+  "presentation": {
+    "headline_verbatim": true,
+    "summary_verbatim": true,
+    "frontend_generation": false,
+    "frontend_rewrite": false,
+    "frontend_truncation": false,
+    "llm_usage": false,
+    "fallback_explanation": false
+  },
+  "component_sha256": "ffa80dcfebc4af48660465cfeb0f894fdf1d4dff7f432ac72ee3a098f234d511",
+  "record_source_sha256": "db4de2a1b631ff5c25a1baf5d634f8dd427f771147ada8ac66fd50dfc3fd70b7",
+  "route_page_after_10_5_14_sha256": "6ce7e2593f2dcbb47da64eda575a21c47959048360cf1911fe5c7d507a2832db",
+  "protected_state": {
+    "header_component_sha256": "cd22a2d1bf0f761938ae6ebe5aa4a8921a024978f5cf0da4957ea091b1736a0d",
+    "header_record_sha256": "3a25dd0943747458ff1645a12cbe797c330777bfd6ea749cbf91ca710f2c58c8",
+    "match_loader_sha256": "55792a9cf5623fc24cbda4fb463c86d4ee7b50a07bc0eb1ff304e198d574898a",
+    "prediction_record_sha256": "4012af6557eb07fdd8f83551d1b354e86a81a384df18a87f758825eeaacaeb2c",
+    "context_record_sha256": "ff2fc24c5dd291e1e409e7f7fe27256af894aff6da0fbe024c94eaf742e5737f",
+    "prediction_overview_sha256": "86a512ccbce1a7f6fdf25ceff1786ffd8b469f697df1e02141c84b404273b01f",
+    "probability_visualization_sha256": "4131823364c8a9058ffd1867c0846d2bdadac2a76dd545c738106b0225fd3663",
+    "confidence_sha256": "7010ad88bb96a351257712230a2227a5a74e52f3bd4b1ebe920d5338c487c83a",
+    "uncertainty_sha256": "8bdc7a555533d4b20f79f0d4ab6c7a1c68283c7002e107274de1cf08f8bd1182",
+    "league_position_sha256": "a26e95b8ec8bc91a5394148b25b0a1615abb6ae45eac13b062d284fb567ebbd9",
+    "points_sha256": "e3e0c5a239d3ba2d1bc2e07c10b1ef2b9b85f88f64ddd5342c721e8fa19dd00d",
+    "goal_difference_sha256": "322750b6e2c2a223138201747d452e48e8e8bf50faada0c82f56feb62ddaa1cd",
+    "recent_form_sha256": "0d1ba24ed7e84cc8cc32793aecbaa79b833ab36e5beacc17134f2d4ef5575e9d",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_match_context_alignment_contract.json": {
+      "sha256": "7b5127748861499295ac35144bf66d2952c96f64e251016d30a16c6015ec3903"
+    },
+    "frontend/lib/matches/match-intelligence-detail-record.ts": {
+      "sha256": "db4de2a1b631ff5c25a1baf5d634f8dd427f771147ada8ac66fd50dfc3fd70b7"
+    }
+  },
+  "promotion": {
+    "stage10_5_14_complete": false,
+    "stage10_5_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T23:23:01.289632+00:00"
+}
