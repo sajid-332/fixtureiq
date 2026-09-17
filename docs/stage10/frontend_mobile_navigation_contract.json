@@ -1,0 +1,71 @@
+{
+  "stage": "10.3.6",
+  "version": "1.0.0",
+  "name": "MOBILE_NAVIGATION",
+  "status": "LOCKED",
+  "source": "frontend/components/shell/mobile-navigation.tsx",
+  "header_source": "frontend/components/shell/site-header.tsx",
+  "component": "MobileNavigation",
+  "implementation": {
+    "server_component": true,
+    "next_link": true,
+    "javascript_menu_state": false,
+    "hamburger_required": false,
+    "reason": "Only one valid static navigation destination currently exists.",
+    "mobile_breakpoint": "sm",
+    "mobile_visibility": "sm:hidden",
+    "desktop_navigation_visibility": "hidden sm:block"
+  },
+  "navigation": {
+    "aria_label": "Mobile navigation",
+    "links": [
+      {
+        "label": "Upcoming",
+        "href": "/"
+      }
+    ],
+    "invented_matches_index": false,
+    "invented_teams_index": false
+  },
+  "responsibility": {
+    "presentation_only": true,
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "prediction_logic": false
+  },
+  "header_before_sha256": "760ca48bc7b59e6d7896fc384348852a59a24a8c3613deeb69f15f9bbb54653e",
+  "header_after_sha256": "3072a00e3f1933774218f5996dfd602ef5438f135012d0dd9f9a69f8c2dea9f3",
+  "mobile_navigation_sha256": "8e45b7fe101e9a571e1a8d8fefe77a356036770a76cc9fea7a82ba607d8dd2ab",
+  "protected_state": {
+    "layout_sha256": "45e07f440c5a6d47da2422adcb8b81411572808abda42a1f28d6f7a01df05ab5",
+    "globals_sha256": "b080905dfa64be9eb51fc27ba8839d9d35cf3ab8483dd9acb653aa95d63f5a7a",
+    "main_sha256": "8a3a8424543056b93b896e44dae16dce733fe5dd411a7e6e9bec8911e6c0bab4",
+    "footer_sha256": "a22c72ced81bc0bb96d947da0d3672486d13324dad7a0b865c99e0b2784277dc",
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    }
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_3_3_10_3_4_verification.json": {
+      "sha256": "a28d1a293e225bed0ee56f958e4695f89f8ff4d637d8e31a48be22a864c292a1"
+    },
+    "docs/stage10/frontend_header_navigation_contract.json": {
+      "sha256": "83945a2147549dad30b740a52bf0e1612593a3456d6cc4b5c96b5c33d6e43eda"
+    },
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    },
+    "docs/stage10/frontend_typography_layout_contract.json": {
+      "sha256": "9997170fb81528d69b28193097fbb2d551d78b588c28166107cee7099161d34e"
+    }
+  },
+  "promotion": {
+    "stage10_3_6_complete": false,
+    "stage10_3_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T19:34:04.252995+00:00"
+}

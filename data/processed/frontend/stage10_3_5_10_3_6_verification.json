@@ -1,0 +1,34 @@
+{
+  "stage": "10.3.5-10.3.6",
+  "name": "TYPOGRAPHY_LAYOUT_AND_MOBILE_NAVIGATION_VERIFICATION",
+  "status": "PASS",
+  "stage_10_3_5_complete": true,
+  "stage_10_3_6_complete": true,
+  "typography_layout": "LOCKED_AND_VERIFIED",
+  "mobile_navigation": "LOCKED_AND_VERIFIED",
+  "mobile_navigation_design": {
+    "server_rendered": true,
+    "hamburger_menu": false,
+    "javascript_state": false,
+    "valid_static_route": "/"
+  },
+  "shell_preservation": {
+    "layout": true,
+    "main_container": true,
+    "footer": true,
+    "route_pages": true
+  },
+  "safety": {
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "prediction_logic": false
+  },
+  "typescript_compiler": "PASS",
+  "verified_at_utc": "2026-09-17T19:35:16.749383+00:00",
+  "stage10_ready_for_10_3_7": true,
+  "stage10_3_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.3.7",
+  "failures": []
+}

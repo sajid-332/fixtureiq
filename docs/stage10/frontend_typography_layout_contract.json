@@ -1,0 +1,55 @@
+{
+  "stage": "10.3.5",
+  "version": "1.0.0",
+  "name": "TYPOGRAPHY_LAYOUT",
+  "status": "LOCKED",
+  "source": "frontend/app/globals.css",
+  "policy": {
+    "minimum_document_width_px": 320,
+    "minimum_body_height": "100vh",
+    "page_background": "#f8fafc",
+    "default_text": "#0f172a",
+    "font_smoothing": true,
+    "balanced_headings": true,
+    "pretty_paragraph_wrapping": true,
+    "selection_style": true
+  },
+  "responsibility": {
+    "global_visual_baseline": true,
+    "feature_page_styles": false,
+    "component_specific_styles": false,
+    "mobile_navigation": false,
+    "data_fetching": false,
+    "prediction_logic": false
+  },
+  "globals_before_sha256": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+  "globals_after_sha256": "b080905dfa64be9eb51fc27ba8839d9d35cf3ab8483dd9acb653aa95d63f5a7a",
+  "protected_state": {
+    "layout_sha256": "45e07f440c5a6d47da2422adcb8b81411572808abda42a1f28d6f7a01df05ab5",
+    "header_before_10_3_6_sha256": "760ca48bc7b59e6d7896fc384348852a59a24a8c3613deeb69f15f9bbb54653e",
+    "main_sha256": "8a3a8424543056b93b896e44dae16dce733fe5dd411a7e6e9bec8911e6c0bab4",
+    "footer_sha256": "a22c72ced81bc0bb96d947da0d3672486d13324dad7a0b865c99e0b2784277dc",
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    }
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_3_3_10_3_4_verification.json": {
+      "sha256": "a28d1a293e225bed0ee56f958e4695f89f8ff4d637d8e31a48be22a864c292a1"
+    },
+    "docs/stage10/frontend_main_container_contract.json": {
+      "sha256": "c66a0041bfc5f520da8233a88810b08ab3679ab3783f1075f1f74f6bd66664af"
+    },
+    "docs/stage10/frontend_footer_contract.json": {
+      "sha256": "93c2329d902b0701d4f66c0b7e52a3add29839d1e208d3fb06d38e23b387b3da"
+    }
+  },
+  "promotion": {
+    "stage10_3_5_complete": false,
+    "stage10_3_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T19:34:04.240496+00:00"
+}

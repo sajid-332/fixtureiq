@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 
+import { MobileNavigation } from "./mobile-navigation";
 export function SiteHeader() {
   return (
     <header
@@ -43,6 +44,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="Primary navigation"
+          className="hidden sm:block"
         >
           <Link
             href="/"
@@ -62,7 +64,8 @@ export function SiteHeader() {
           >
             Upcoming
           </Link>
-        </nav>
+                </nav>
+        <MobileNavigation />
       </div>
     </header>
   );
