@@ -4,6 +4,8 @@ import type {
 
 import type {
   OutcomeLabel,
+  ConfidenceBand,
+  UncertaintyBand,
 } from "../../lib/domain/types";
 
 import {
@@ -28,6 +30,13 @@ type MatchCardProps =
     stage7_predicted_label:
       OutcomeLabel;
 
+    stage7_confidence: number;
+    confidence_band:
+      ConfidenceBand;
+
+    uncertainty_band:
+      UncertaintyBand;
+
     children?: ReactNode;
   }>;
 
@@ -40,6 +49,9 @@ export function MatchCard({
   stage7_prob_draw,
   stage7_prob_away_win,
   stage7_predicted_label,
+  stage7_confidence,
+  confidence_band,
+  uncertainty_band,
   children,
 }: MatchCardProps) {
   const kickoffLabel =
@@ -278,6 +290,90 @@ export function MatchCard({
           >
             {stage7_predicted_label}
           </p>
+        </section>
+
+        <section
+          aria-label="Prediction confidence"
+          className="
+            rounded-lg
+            border border-slate-200
+            px-4 py-3
+          "
+        >
+          <div
+            className="
+              flex items-end
+              justify-between gap-4
+            "
+          >
+            <div>
+              <p
+                className="
+                  text-xs font-medium uppercase
+                  tracking-wide text-slate-500
+                "
+              >
+                Confidence
+              </p>
+
+              <p
+                className="
+                  mt-1 text-base font-semibold
+                  tabular-nums text-slate-950
+                "
+                data-stage7-field="stage7_confidence"
+              >
+                {formatProbability(
+                  stage7_confidence,
+                )}
+              </p>
+            </div>
+
+            <p
+              className="
+                text-sm font-semibold
+                text-slate-700
+              "
+              data-stage9-field="confidence_band"
+            >
+              {confidence_band}
+            </p>
+          </div>
+        </section>
+
+        <section
+          aria-label="Prediction uncertainty"
+          className="
+            rounded-lg
+            border border-slate-200
+            px-4 py-3
+          "
+        >
+          <div
+            className="
+              flex items-center
+              justify-between gap-4
+            "
+          >
+            <p
+              className="
+                text-xs font-medium uppercase
+                tracking-wide text-slate-500
+              "
+            >
+              Uncertainty
+            </p>
+
+            <p
+              className="
+                text-sm font-semibold
+                text-slate-700
+              "
+              data-stage9-field="uncertainty_band"
+            >
+              {uncertainty_band}
+            </p>
+          </div>
         </section>
 
         {children ? (
