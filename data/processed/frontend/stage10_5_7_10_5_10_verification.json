@@ -1,0 +1,41 @@
+{
+  "stage": "10.5.7-10.5.10",
+  "name": "MATCH_CONTEXT_COMPARISON_VERIFICATION",
+  "status": "PASS",
+  "stage_10_5_7_complete": true,
+  "stage_10_5_8_complete": true,
+  "stage_10_5_9_complete": true,
+  "stage_10_5_10_complete": true,
+  "league_position_comparison": "LOCKED_AND_VERIFIED",
+  "points_comparison": "LOCKED_AND_VERIFIED",
+  "goal_difference_comparison": "LOCKED_AND_VERIFIED",
+  "recent_form": "LOCKED_AND_VERIFIED",
+  "authority": {
+    "league_position": "STAGE_8",
+    "points": "STAGE_8",
+    "goal_difference": "STAGE_8",
+    "recent_form": "STAGE_8",
+    "transport": "STAGE_9_JOINED_INTELLIGENCE_API"
+  },
+  "integrity": {
+    "transport_string_to_integer_only": true,
+    "league_position_gap_recalculated": false,
+    "points_gap_recalculated": false,
+    "goal_difference_gap_recalculated": false,
+    "recent_points_calculated": false,
+    "venue_form_used": false,
+    "context_support_used": false,
+    "context_alignment_used": false,
+    "explanation_used": false,
+    "direct_fetch": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "typescript_compiler": "PASS",
+  "stage10_ready_for_10_5_11": true,
+  "stage10_5_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.5.11",
+  "verified_at_utc": "2026-09-17T23:12:38.084940+00:00",
+  "failures": []
+}

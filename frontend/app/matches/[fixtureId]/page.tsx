@@ -23,6 +23,22 @@ import {
 } from "../../../components/matches/match-uncertainty";
 
 import {
+  MatchLeaguePositionComparison,
+} from "../../../components/matches/match-league-position-comparison";
+
+import {
+  MatchPointsComparison,
+} from "../../../components/matches/match-points-comparison";
+
+import {
+  MatchGoalDifferenceComparison,
+} from "../../../components/matches/match-goal-difference-comparison";
+
+import {
+  MatchRecentForm,
+} from "../../../components/matches/match-recent-form";
+
+import {
   loadMatchIntelligence,
 } from "../../../lib/matches/load-match-intelligence";
 
@@ -33,6 +49,10 @@ import {
 import {
   extractMatchPredictionRecord,
 } from "../../../lib/matches/match-prediction-record";
+
+import {
+  extractMatchContextRecord,
+} from "../../../lib/matches/match-context-record";
 
 import type {
   FixtureRouteParams,
@@ -126,6 +146,13 @@ export default async function MatchDetailPage({
     );
 
 
+  const context =
+    extractMatchContextRecord(
+      result.data,
+      fixtureId,
+    );
+
+
   return (
     <article
       data-fixtureiq-route="match-detail"
@@ -189,6 +216,84 @@ export default async function MatchDetailPage({
             }
           />
         </div>
+      </div>
+      <div
+        className="
+          mt-6 grid gap-6
+          lg:grid-cols-3
+        "
+      >
+        <MatchLeaguePositionComparison
+          homeTeamName={
+            header.home_team_name
+          }
+          awayTeamName={
+            header.away_team_name
+          }
+          homePosition={
+            context.home_team_position
+          }
+          awayPosition={
+            context.away_team_position
+          }
+        />
+
+        <MatchPointsComparison
+          homeTeamName={
+            header.home_team_name
+          }
+          awayTeamName={
+            header.away_team_name
+          }
+          homePoints={
+            context.home_team_points
+          }
+          awayPoints={
+            context.away_team_points
+          }
+        />
+
+        <MatchGoalDifferenceComparison
+          homeTeamName={
+            header.home_team_name
+          }
+          awayTeamName={
+            header.away_team_name
+          }
+          homeGoalDifference={
+            context.home_team_goal_difference
+          }
+          awayGoalDifference={
+            context.away_team_goal_difference
+          }
+        />
+      </div>
+
+      <div
+        className="
+          mt-6
+        "
+      >
+        <MatchRecentForm
+          homeTeamName={
+            header.home_team_name
+          }
+          awayTeamName={
+            header.away_team_name
+          }
+          homeResults={
+            context.home_team_recent_results
+          }
+          awayResults={
+            context.away_team_recent_results
+          }
+          homeMatchesAvailable={
+            context.home_team_form_matches_available
+          }
+          awayMatchesAvailable={
+            context.away_team_form_matches_available
+          }
+        />
       </div>
     </article>
   );
