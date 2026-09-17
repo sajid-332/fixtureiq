@@ -1,0 +1,73 @@
+{
+  "stage": "10.4.1",
+  "version": "1.0.0",
+  "name": "UPCOMING_MATCHES_DASHBOARD_LOADER",
+  "status": "LOCKED",
+  "source": "frontend/lib/dashboard/load-upcoming-matches.ts",
+  "export": "loadUpcomingMatches",
+  "upstream": {
+    "mapped_api_source": "frontend/lib/api/mapped.ts",
+    "mapped_export": "getUpcomingIntelligenceResult",
+    "backend_authority": "STAGE_9_INTELLIGENCE",
+    "endpoint_authority": "/api/v1/intelligence/upcoming"
+  },
+  "implementation": {
+    "server_only": true,
+    "shared_mapped_api_client": true,
+    "direct_fetch": false,
+    "direct_backend_url": false,
+    "response_transformation": false,
+    "probability_transformation": false,
+    "sorting": false,
+    "filtering": false,
+    "retry": false,
+    "stale_fallback": false,
+    "cache_storage": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "data_state_authority": "STAGE_10_2_MAPPED_API_RESULT",
+  "deferred_to_later_stages": [
+    "dashboard rendering",
+    "match identity",
+    "kickoff display",
+    "probability display",
+    "predicted outcome",
+    "confidence",
+    "uncertainty",
+    "context alignment",
+    "explanation preview",
+    "detail links"
+  ],
+  "source_sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203",
+  "protected_state": {
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    },
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_api_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "validated_api_sha256": "10ce490b9a0fdfa1a038a6198f7dac69357e3a3864d3899c0b610dee401aa8c3"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_3_final_verification.json": {
+      "sha256": "d99946acfc0f6a5522d29e723ff294d6334e9fa60a84d0dcbba0f35eb85892c4"
+    },
+    "frontend/lib/api/mapped.ts": {
+      "sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c"
+    },
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    },
+    "frontend/lib/api/validated.ts": {
+      "sha256": "10ce490b9a0fdfa1a038a6198f7dac69357e3a3864d3899c0b610dee401aa8c3"
+    }
+  },
+  "promotion": {
+    "stage10_4_1_complete": false,
+    "stage10_4_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T20:10:56.713748+00:00"
+}

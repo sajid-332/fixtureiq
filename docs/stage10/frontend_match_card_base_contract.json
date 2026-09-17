@@ -1,0 +1,66 @@
+{
+  "stage": "10.4.2",
+  "version": "1.0.0",
+  "name": "MATCH_CARD_BASE",
+  "status": "LOCKED",
+  "source": "frontend/components/matches/match-card.tsx",
+  "component": "MatchCard",
+  "semantic_element": "article",
+  "role": {
+    "structural_container_only": true,
+    "accepts_children": true,
+    "server_component": true
+  },
+  "base_visual_structure": {
+    "border": true,
+    "rounded": true,
+    "background": true,
+    "shadow": true,
+    "responsive_feature_logic": false
+  },
+  "not_implemented_yet": {
+    "identity": "10.4.3",
+    "kickoff": "10.4.4",
+    "probabilities": "10.4.5",
+    "predicted_outcome": "10.4.6",
+    "confidence": "10.4.7",
+    "uncertainty": "10.4.8",
+    "context_alignment": "10.4.9",
+    "explanation_preview": "10.4.10",
+    "detail_links": "10.4.11"
+  },
+  "safety": {
+    "api_access": false,
+    "provider_access": false,
+    "artifact_access": false,
+    "prediction_logic": false,
+    "probability_logic": false,
+    "frontend_prediction": false
+  },
+  "source_sha256": "f2e42eb28d7b98b68f6d8755a612ef949f02003b2b4054089828b9e4e028f4a6",
+  "protected_state": {
+    "route_page_identity": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    },
+    "loader_sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_3_final_verification.json": {
+      "sha256": "d99946acfc0f6a5522d29e723ff294d6334e9fa60a84d0dcbba0f35eb85892c4"
+    },
+    "docs/stage10/frontend_upcoming_dashboard_loader_contract.json": {
+      "sha256": "019e474163dfbd4e05cc4edbcfe7ca15a6102df38129fc82d8737582a25d167d"
+    },
+    "frontend/lib/dashboard/load-upcoming-matches.ts": {
+      "sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203"
+    }
+  },
+  "promotion": {
+    "stage10_4_2_complete": false,
+    "stage10_4_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T20:10:56.719923+00:00"
+}
