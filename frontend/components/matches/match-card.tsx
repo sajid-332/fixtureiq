@@ -6,6 +6,7 @@ import type {
   OutcomeLabel,
   ConfidenceBand,
   UncertaintyBand,
+  ContextAlignment,
 } from "../../lib/domain/types";
 
 import {
@@ -37,6 +38,12 @@ type MatchCardProps =
     uncertainty_band:
       UncertaintyBand;
 
+    context_alignment:
+      ContextAlignment;
+
+    explanation_headline: string;
+    explanation_summary: string;
+
     children?: ReactNode;
   }>;
 
@@ -52,6 +59,9 @@ export function MatchCard({
   stage7_confidence,
   confidence_band,
   uncertainty_band,
+  context_alignment,
+  explanation_headline,
+  explanation_summary,
   children,
 }: MatchCardProps) {
   const kickoffLabel =
@@ -374,6 +384,79 @@ export function MatchCard({
               {uncertainty_band}
             </p>
           </div>
+        </section>
+
+        <section
+          aria-label="Context alignment"
+          className="
+            rounded-lg
+            border border-slate-200
+            px-4 py-3
+          "
+        >
+          <div
+            className="
+              flex items-center
+              justify-between gap-4
+            "
+          >
+            <p
+              className="
+                text-xs font-medium uppercase
+                tracking-wide text-slate-500
+              "
+            >
+              Context alignment
+            </p>
+
+            <p
+              className="
+                text-sm font-semibold
+                text-slate-700
+              "
+              data-stage9-field="context_alignment"
+            >
+              {context_alignment}
+            </p>
+          </div>
+        </section>
+
+        <section
+          aria-label="Explanation preview"
+          className="
+            rounded-lg
+            border border-slate-200
+            px-4 py-4
+          "
+        >
+          <p
+            className="
+              text-xs font-medium uppercase
+              tracking-wide text-slate-500
+            "
+          >
+            Match intelligence
+          </p>
+
+          <h3
+            className="
+              mt-2 text-base font-semibold
+              text-slate-950
+            "
+            data-stage9-field="explanation_headline"
+          >
+            {explanation_headline}
+          </h3>
+
+          <p
+            className="
+              mt-2 text-sm leading-6
+              text-slate-600
+            "
+            data-stage9-field="explanation_summary"
+          >
+            {explanation_summary}
+          </p>
         </section>
 
         {children ? (
