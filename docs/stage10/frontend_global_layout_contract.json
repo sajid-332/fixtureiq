@@ -1,0 +1,49 @@
+{
+  "stage": "10.3.1",
+  "version": "1.0.0",
+  "name": "GLOBAL_APPLICATION_LAYOUT",
+  "status": "LOCKED",
+  "framework": "NEXTJS_APP_ROUTER",
+  "root_layout": "frontend/app/layout.tsx",
+  "global_styles": "frontend/app/globals.css",
+  "shell_structure": {
+    "html_root": true,
+    "body_root": true,
+    "global_header": true,
+    "children_slot": true,
+    "main_container_owned_by": "10.3.3",
+    "footer_owned_by": "10.3.4",
+    "typography_polish_owned_by": "10.3.5",
+    "mobile_navigation_owned_by": "10.3.6"
+  },
+  "implementation": {
+    "existing_layout_patched": true,
+    "existing_layout_replaced_blindly": false,
+    "globals_css_preserved": true,
+    "route_pages_modified": false,
+    "data_fetching_added": false,
+    "api_calls_added": false,
+    "client_component_required": false
+  },
+  "layout_before_sha256": "ac0a51f726d23d255be241c5f37e47119736c2c3cdf5feac57f85de677686ee5",
+  "layout_after_sha256": "c44b6f6a29c5bc874e3e2488c570941d97303eb62aacf5850a910df755d2c4b7",
+  "protected_route_page_identity": {
+    "frontend/app/page.tsx": {
+      "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+    }
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_2_final_verification.json": {
+      "sha256": "0ea7ec1de7f86c0560ad6824c7d441b239d0ac1808187189957014be60af4fc9"
+    },
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    }
+  },
+  "promotion": {
+    "stage10_3_1_complete": false,
+    "stage10_3_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T15:22:27.224132+00:00"
+}

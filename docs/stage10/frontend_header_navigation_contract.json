@@ -1,0 +1,54 @@
+{
+  "stage": "10.3.2",
+  "version": "1.0.0",
+  "name": "HEADER_NAVIGATION",
+  "status": "LOCKED",
+  "source": "frontend/components/shell/site-header.tsx",
+  "component": "SiteHeader",
+  "framework_primitives": {
+    "next_link": true,
+    "server_component": true
+  },
+  "brand": {
+    "name": "FixtureIQ",
+    "home_href": "/"
+  },
+  "navigation": {
+    "aria_label": "Primary navigation",
+    "static_links": [
+      {
+        "label": "Upcoming",
+        "href": "/"
+      }
+    ],
+    "dynamic_match_index_invented": false,
+    "dynamic_team_index_invented": false,
+    "placeholder_navigation": false
+  },
+  "boundaries": {
+    "mobile_menu_implemented": false,
+    "mobile_menu_owner": "10.3.6",
+    "api_access": false,
+    "prediction_logic": false,
+    "direct_artifact_access": false,
+    "provider_access": false
+  },
+  "source_sha256": "760ca48bc7b59e6d7896fc384348852a59a24a8c3613deeb69f15f9bbb54653e",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_2_final_verification.json": {
+      "sha256": "0ea7ec1de7f86c0560ad6824c7d441b239d0ac1808187189957014be60af4fc9"
+    },
+    "docs/stage10/frontend_route_architecture.json": {
+      "sha256": "c4ddc41a591e5b2b2cfb40ed4444376599db4b31723004a4c4c26727fa3e960f"
+    },
+    "docs/stage10/frontend_global_layout_contract.json": {
+      "sha256": "1d9b38ba84f359764c0ba723fc24184bec2558fb9bcb248751596c507a8efad2"
+    }
+  },
+  "promotion": {
+    "stage10_3_2_complete": false,
+    "stage10_3_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T15:22:27.227524+00:00"
+}
