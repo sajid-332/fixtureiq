@@ -2,11 +2,14 @@ import type {
   ReactNode,
 } from "react";
 
+import Link from "next/link";
+
 import type {
   OutcomeLabel,
   ConfidenceBand,
   UncertaintyBand,
   ContextAlignment,
+  FixtureId,
 } from "../../lib/domain/types";
 
 import {
@@ -20,6 +23,7 @@ import {
 
 type MatchCardProps =
   Readonly<{
+    fixtureId: FixtureId;
     homeTeamName: string;
     awayTeamName: string;
     kickoffUtc: string;
@@ -49,6 +53,7 @@ type MatchCardProps =
 
 
 export function MatchCard({
+  fixtureId,
   homeTeamName,
   awayTeamName,
   kickoffUtc,
@@ -458,6 +463,32 @@ export function MatchCard({
             {explanation_summary}
           </p>
         </section>
+
+        <div
+          className="
+            border-t border-slate-100
+            pt-5
+          "
+        >
+          <Link
+            href={`/matches/${encodeURIComponent(
+              String(fixtureId),
+            )}`}
+            className="
+              inline-flex items-center
+              text-sm font-semibold
+              text-slate-900
+              underline-offset-4
+              hover:underline
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-slate-400
+              focus-visible:ring-offset-2
+            "
+          >
+            View match intelligence
+          </Link>
+        </div>
 
         {children ? (
           <div

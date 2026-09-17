@@ -1,0 +1,53 @@
+{
+  "stage": "10.4.11",
+  "version": "1.0.0",
+  "name": "MATCH_DETAIL_LINK",
+  "status": "LOCKED",
+  "source": "frontend/components/matches/match-card.tsx",
+  "route_contract": "/matches/[fixtureId]",
+  "source_field": "fixtureId",
+  "domain_type": "FixtureId",
+  "implementation": {
+    "next_link": true,
+    "encodeURIComponent": true,
+    "String": true,
+    "server_component": true,
+    "api_access": false,
+    "prediction_logic": false,
+    "navigation_only": true
+  },
+  "transition": {
+    "match_card_before_detail_link_sha256": "e3b56e63a7e2c3a0b751c9aef9bfb5ad03d29b0a237a6db7b05ac7e23abf1fc1",
+    "match_card_after_detail_link_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1"
+  },
+  "match_card_after_detail_link_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1",
+  "protected_state": {
+    "route_page_identity_before_dashboard": {
+      "frontend/app/page.tsx": {
+        "sha256": "5a51fdb3f4c514f83e3415b8568d481455656afec2167d61167181c6483c62ff"
+      }
+    },
+    "loader_sha256": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "validation_sha256": "b778e0a2a0132ec0b41eab9489fb3b8d4bbc78b6940bf7e0b90b40ef1adef879",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_4_9_10_4_10_verification.json": {
+      "sha256": "028c92ccf634e02621848037b453759f6ab0d2b057aa71bfac79740d7c57718d"
+    },
+    "docs/stage10/frontend_match_card_explanation_preview_contract.json": {
+      "sha256": "bbc34295387fa95a0bd7aa5d38402eb5e26bd49a7ae2818e17fc40dec735ae1c"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_4_11_complete": false,
+    "stage10_4_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T21:57:55.126930+00:00"
+}
