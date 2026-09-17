@@ -55,8 +55,16 @@ import {
 } from "../../../components/matches/match-intelligence-explanation";
 
 import {
+  MatchFreshnessStatus,
+} from "../../../components/matches/match-freshness-status";
+
+import {
   loadMatchIntelligence,
 } from "../../../lib/matches/load-match-intelligence";
+
+import {
+  loadIntelligenceStatus,
+} from "../../../lib/matches/load-intelligence-status";
 
 import {
   extractMatchFixtureHeader,
@@ -150,6 +158,10 @@ export default async function MatchDetailPage({
       </section>
     );
   }
+
+
+  const statusResult =
+    await loadIntelligenceStatus();
 
 
   const header =
@@ -379,6 +391,20 @@ export default async function MatchDetailPage({
           }
           summary={
             intelligence.stage9_explanation_summary
+          }
+        />
+      </div>
+      <div
+        className="
+          mt-6
+        "
+      >
+        <MatchFreshnessStatus
+          state={
+            statusResult.state
+          }
+          httpStatus={
+            statusResult.status
           }
         />
       </div>
