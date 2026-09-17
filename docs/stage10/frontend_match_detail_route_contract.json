@@ -1,0 +1,68 @@
+{
+  "stage": "10.5.1",
+  "version": "1.0.0",
+  "name": "DYNAMIC_MATCH_ROUTE",
+  "status": "LOCKED",
+  "route": "/matches/[fixtureId]",
+  "route_source": "frontend/app/matches/[fixtureId]/page.tsx",
+  "loader_source": "frontend/lib/matches/load-match-intelligence.ts",
+  "record_extractor_source": "frontend/lib/matches/match-header-record.ts",
+  "backend_endpoint": "/api/v1/intelligence/matches/<fixture_id>",
+  "mapped_client": "getIntelligenceMatchResult",
+  "route_parameter": {
+    "name": "fixtureId",
+    "domain_type": "FixtureRouteParams",
+    "next_major": 16,
+    "next_version": "16.3.0",
+    "async_params": true
+  },
+  "runtime": {
+    "server_component": true,
+    "force_dynamic": true,
+    "not_found_mapping": true,
+    "non_ready_fail_closed": true,
+    "stale_fallback": false,
+    "direct_fetch": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "authority": {
+    "prediction": "STAGE_7",
+    "context": "STAGE_8",
+    "intelligence": "STAGE_9",
+    "presentation": "STAGE_10"
+  },
+  "protected_state": {
+    "route_pages_before_10_5_1": {
+      "frontend/app/page.tsx": {
+        "sha256": "959836840193a50cc3f391a39ff04895616dd6b8a749b5eb36efd126d903f992"
+      }
+    },
+    "dashboard_page_sha256": "959836840193a50cc3f391a39ff04895616dd6b8a749b5eb36efd126d903f992",
+    "dashboard_match_card_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_4_final_verification.json": {
+      "sha256": "a108a2a9fe7694d4fcba5d7a549820b318eefefd7e5659bd720e5461880dae2f"
+    },
+    "docs/stage10/frontend_upcoming_dashboard_contract.json": {
+      "sha256": "f83ef411609e05c604fb2b9ab6b1f5d52a84419056b4edbfd7d0a50bc141be48"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    },
+    "frontend/lib/api/mapped.ts": {
+      "sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c"
+    }
+  },
+  "route_page_after_10_5_1_sha256": "936dbd13435d5c59be0a215bc1f146b82214972e03072844ea1ff72ea2eab3f5",
+  "promotion": {
+    "stage10_5_1_complete": false,
+    "stage10_5_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T22:49:58.042044+00:00"
+}

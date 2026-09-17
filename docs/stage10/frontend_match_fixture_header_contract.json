@@ -1,0 +1,64 @@
+{
+  "stage": "10.5.2",
+  "version": "1.0.0",
+  "name": "MATCH_FIXTURE_HEADER",
+  "status": "LOCKED",
+  "component_source": "frontend/components/matches/match-fixture-header.tsx",
+  "route_source": "frontend/app/matches/[fixtureId]/page.tsx",
+  "source_fields": [
+    "fixture_id",
+    "home_team_name",
+    "away_team_name",
+    "date"
+  ],
+  "kickoff": {
+    "backend_field": "date",
+    "frontend_prop": "kickoffUtc",
+    "formatter": "formatKickoffUtc",
+    "display_timezone": "UTC",
+    "source_value_modified": false
+  },
+  "presentation": {
+    "home_team": true,
+    "away_team": true,
+    "kickoff": true,
+    "probabilities": false,
+    "prediction_overview": false,
+    "confidence": false,
+    "uncertainty": false,
+    "context_comparison": false,
+    "explanation": false
+  },
+  "implementation": {
+    "server_component": true,
+    "direct_fetch": false,
+    "prediction_logic": false,
+    "intelligence_derivation": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "route_page_after_header_sha256": "936dbd13435d5c59be0a215bc1f146b82214972e03072844ea1ff72ea2eab3f5",
+  "header_component_sha256": "cd22a2d1bf0f761938ae6ebe5aa4a8921a024978f5cf0da4957ea091b1736a0d",
+  "header_record_sha256": "3a25dd0943747458ff1645a12cbe797c330777bfd6ea749cbf91ca710f2c58c8",
+  "match_loader_sha256": "55792a9cf5623fc24cbda4fb463c86d4ee7b50a07bc0eb1ff304e198d574898a",
+  "protected_state": {
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "kickoff_formatter_sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_match_detail_route_contract.json": {
+      "sha256": "682ea7a579d79827d59321d5707b13dfee6173319b07ad18f63cdf3528930ef4"
+    },
+    "frontend/lib/formatters/kickoff.ts": {
+      "sha256": "330920ed5daa3dcdbfa1246cbc959f7a3eea0b6e107b6df91d3595aaff9fe249"
+    }
+  },
+  "promotion": {
+    "stage10_5_2_complete": false,
+    "stage10_5_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T22:49:58.063857+00:00"
+}
