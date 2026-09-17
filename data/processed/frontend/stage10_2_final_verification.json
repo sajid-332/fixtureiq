@@ -1,0 +1,149 @@
+{
+  "stage": "10.2.8",
+  "stage_group": "10.2",
+  "name": "BACKEND_API_CLIENT_LAYER_FINAL_VERIFICATION",
+  "status": "PASS",
+  "stage_10_2_1_complete": true,
+  "stage_10_2_2_complete": true,
+  "stage_10_2_3_complete": true,
+  "stage_10_2_4_complete": true,
+  "stage_10_2_5_complete": true,
+  "stage_10_2_6_complete": true,
+  "stage_10_2_7_complete": true,
+  "stage_10_2_8_complete": true,
+  "stage_10_2_complete": true,
+  "backend_api_client_layer": "VERIFIED",
+  "transport": {
+    "method": "GET_ONLY",
+    "cache": "NO_STORE",
+    "credentials": "OMIT",
+    "redirects": "REJECT",
+    "server_only": true
+  },
+  "api_clients": {
+    "intelligence": "VERIFIED",
+    "production": "VERIFIED",
+    "context": "VERIFIED"
+  },
+  "validation": {
+    "runtime_validation": "VERIFIED",
+    "invalid_payloads_fail_closed": true,
+    "probability_values_modified": false
+  },
+  "state_mapping": {
+    "200": "READY",
+    "404": "NOT_FOUND",
+    "503": "NOT_READY",
+    "network": "CONNECTION_ERROR",
+    "invalid_response": "CONNECTION_ERROR",
+    "unexpected_http": "CONNECTION_ERROR"
+  },
+  "safety": {
+    "direct_provider_access": false,
+    "direct_artifact_access": false,
+    "frontend_prediction_logic": false,
+    "prediction_probability_mutation": false,
+    "context_mutation": false,
+    "intelligence_mutation": false,
+    "stale_fallback": false,
+    "previous_ready_payload_reuse_on_failure": false,
+    "mutating_http_methods": false
+  },
+  "authority": {
+    "stage7": "PREDICTION",
+    "stage8": "CONTEXT",
+    "stage9": "INTELLIGENCE",
+    "stage10": "PRESENTATION"
+  },
+  "typescript_compiler": "PASS",
+  "runtime_validation_tests": "PASS",
+  "runtime_mapping_tests": "PASS",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_1_final_verification.json": {
+      "sha256": "da61eb13cc241bff45b5495d28dd7f4d80041c5f9c5dbca138eb2c99af455efe"
+    },
+    "docs/stage10/frontend_api_endpoint_contract.json": {
+      "sha256": "0f1dca59368782000f0063cef2d56bf451c99ec86f0267e75236213b7c0abb26"
+    },
+    "data/processed/frontend/stage10_2_1_10_2_2_verification.json": {
+      "sha256": "d220750976edb126cf102d01b0cb6e17fc6ebbc497eae76887d13320724c4802"
+    },
+    "data/processed/frontend/stage10_2_3_10_2_4_verification.json": {
+      "sha256": "986df93aa2601aa8c7fef99193b7c89f32c2c0143803135c8172867d6e4ae59a"
+    },
+    "data/processed/frontend/stage10_2_5_10_2_6_verification.json": {
+      "sha256": "590abe201d4df0bfc93c7832ad7ffd5c9592184e223a1ca900207e15a333c13f"
+    },
+    "data/processed/frontend/stage10_2_7_verification.json": {
+      "sha256": "d06a4b93376801a5006b09b4e3b07eaa29751eb436df2be3d86b1356c504deda"
+    },
+    "docs/stage10/frontend_http_client_contract.json": {
+      "sha256": "b3cee57799f755760e87e42f699cfa8be8abb69336223fc3f4763a39421407c4"
+    },
+    "docs/stage10/frontend_api_environment_contract.json": {
+      "sha256": "47e01d3497ebea94f0575ced7836988d75f09bd85da33d0fca5dd349a95aa70a"
+    },
+    "docs/stage10/frontend_intelligence_api_client_contract.json": {
+      "sha256": "2a879e76495b1ce9eac275b762637180bb20f4c6e63a9632b2fd9db1f1df121e"
+    },
+    "docs/stage10/frontend_production_api_client_contract.json": {
+      "sha256": "d6e7a34252f42dfd3cd17112b65e968c62e19e64fde76779f98f6707fe6e6202"
+    },
+    "docs/stage10/frontend_context_api_client_contract.json": {
+      "sha256": "845d6ef378235e88b2b0d1928bf53c6a8b71f6f87fa7838e394bf6b2ec7e3eb9"
+    },
+    "docs/stage10/frontend_response_validation_contract.json": {
+      "sha256": "d79740b7aeffc2165496ce8cbce8df283538cbf22dda4629ad0faaf92f296512"
+    },
+    "docs/stage10/frontend_http_error_mapping_contract.json": {
+      "sha256": "2d00baee2ef01b4916c4b788b1662d6f930700813c953f5fb0413dc3178b76b8"
+    },
+    "frontend/lib/api/config.ts": {
+      "sha256": "6804f07e419e3d7d675b923c5a6171e829fc3a803e9093824c4aefeab06b7d96"
+    },
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    },
+    "frontend/lib/api/intelligence.ts": {
+      "sha256": "c2c2b2fa773f31fd3fafce24c15f7f6d3c40ee2b4655a8c6c993969af1b6b61f"
+    },
+    "frontend/lib/api/production.ts": {
+      "sha256": "790b62c699c81b5c7d32c5234b233558b9d99fcf066726a50a57bc0a5c7a3da3"
+    },
+    "frontend/lib/api/context.ts": {
+      "sha256": "5799b11152f43e68024443efde11e20ccdffe86ba4734fb79920aefc60de8d62"
+    },
+    "frontend/lib/api/validation.ts": {
+      "sha256": "b778e0a2a0132ec0b41eab9489fb3b8d4bbc78b6940bf7e0b90b40ef1adef879"
+    },
+    "frontend/lib/api/validated.ts": {
+      "sha256": "10ce490b9a0fdfa1a038a6198f7dac69357e3a3864d3899c0b610dee401aa8c3"
+    },
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    },
+    "frontend/lib/api/mapped.ts": {
+      "sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c"
+    },
+    "frontend/.env.example": {
+      "sha256": "a996d237ab069c18cd78d2e99264b36c68fc697a7800ba068e83deafd666448d"
+    },
+    "frontend/package.json": {
+      "sha256": "ef03d7f4597d20d09f26affbadfbbc2c2e04c5f4143587f6b795f0fc2ca6a2f9"
+    },
+    "frontend/package-lock.json": {
+      "sha256": "ef5358d75213d4a18725ce3785e4013265d555fb152a3fcc9b633ee3f7dbd270"
+    },
+    "frontend/scripts/verify-stage10-api-validation.mjs": {
+      "sha256": "60a3c2fa2ab315ff89cfde0e3a71f2b02073390541a3822f73b50c82d1b6bab7"
+    },
+    "frontend/scripts/verify-stage10-api-result-mapping.mjs": {
+      "sha256": "57e2b09e0935090cc3c04b41f74d4942113ffb75e2fc49992feee371e497c8db"
+    }
+  },
+  "verified_at_utc": "2026-09-17T15:09:15.183887+00:00",
+  "stage10_ready_for_10_3_1": true,
+  "stage10_complete": false,
+  "next_stage": "10.3.1",
+  "failures": []
+}

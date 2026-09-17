@@ -1,0 +1,28 @@
+{
+  "stage": "10.2.7",
+  "name": "HTTP_ERROR_STATE_MAPPING_VERIFICATION",
+  "status": "PASS",
+  "stage_10_2_7_complete": true,
+  "http_error_state_mapping": "LOCKED_AND_VERIFIED",
+  "mapping": {
+    "200": "READY",
+    "404": "NOT_FOUND",
+    "503": "NOT_READY",
+    "network": "CONNECTION_ERROR",
+    "invalid_response": "CONNECTION_ERROR",
+    "unexpected_http": "CONNECTION_ERROR"
+  },
+  "runtime_tests": "PASS",
+  "typescript_compiler": "PASS",
+  "stale_data_protection": {
+    "failure_contains_ready_data": false,
+    "previous_ready_payload_reused": false,
+    "stale_fallback": false
+  },
+  "verified_at_utc": "2026-09-17T14:59:05.908415+00:00",
+  "stage10_ready_for_10_2_8": true,
+  "stage10_2_complete": false,
+  "stage10_complete": false,
+  "next_stage": "10.2.8",
+  "failures": []
+}

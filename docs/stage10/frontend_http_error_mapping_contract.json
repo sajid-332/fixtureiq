@@ -1,0 +1,210 @@
+{
+  "stage": "10.2.7",
+  "version": "1.0.0",
+  "name": "FRONTEND_HTTP_ERROR_STATE_MAPPING",
+  "status": "LOCKED",
+  "result_mapper_source": "frontend/lib/api/result.ts",
+  "mapped_api_source": "frontend/lib/api/mapped.ts",
+  "runtime_test_source": "frontend/scripts/verify-stage10-api-result-mapping.mjs",
+  "mapping": {
+    "HTTP_200": "READY",
+    "HTTP_404": "NOT_FOUND",
+    "HTTP_503": "NOT_READY",
+    "NETWORK_FAILURE": "CONNECTION_ERROR",
+    "INVALID_RESPONSE": "CONNECTION_ERROR",
+    "UNEXPECTED_HTTP_STATUS": "CONNECTION_ERROR"
+  },
+  "ready_policy": {
+    "requires_http_200": true,
+    "requires_response_ok": true,
+    "payload_preserved": true,
+    "payload_recalculated": false,
+    "payload_mutated": false
+  },
+  "failure_policy": {
+    "failure_payload_exposed_as_ready_data": false,
+    "previous_ready_payload_preserved": false,
+    "stale_fallback": false,
+    "automatic_retry": false,
+    "silent_status_coercion": false,
+    "fail_closed": true
+  },
+  "error_classification": {
+    "ApiValidationError": "INVALID_RESPONSE",
+    "SyntaxError": "INVALID_RESPONSE",
+    "non_json_backend_response": "INVALID_RESPONSE",
+    "fetch_or_transport_failure": "NETWORK_ERROR",
+    "other_http_status": "UNEXPECTED_HTTP_STATUS"
+  },
+  "mapped_functions": [
+    {
+      "source_function": "getIntelligenceStatus",
+      "validated_function": "getValidatedIntelligenceStatus",
+      "result_function": "getIntelligenceStatusResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getIntelligenceMatches",
+      "validated_function": "getValidatedIntelligenceMatches",
+      "result_function": "getIntelligenceMatchesResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getIntelligenceMatch",
+      "validated_function": "getValidatedIntelligenceMatch",
+      "result_function": "getIntelligenceMatchResult",
+      "parameters": [
+        "fixture_id"
+      ]
+    },
+    {
+      "source_function": "getTeamIntelligence",
+      "validated_function": "getValidatedTeamIntelligence",
+      "result_function": "getTeamIntelligenceResult",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "source_function": "getUpcomingIntelligence",
+      "validated_function": "getValidatedUpcomingIntelligence",
+      "result_function": "getUpcomingIntelligenceResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getProductionHealth",
+      "validated_function": "getValidatedProductionHealth",
+      "result_function": "getProductionHealthResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getProductionReadiness",
+      "validated_function": "getValidatedProductionReadiness",
+      "result_function": "getProductionReadinessResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getProductionStatus",
+      "validated_function": "getValidatedProductionStatus",
+      "result_function": "getProductionStatusResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextFixtures",
+      "validated_function": "getValidatedContextFixtures",
+      "result_function": "getContextFixturesResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextFixturesByFixtureId",
+      "validated_function": "getValidatedContextFixturesByFixtureId",
+      "result_function": "getContextFixturesByFixtureIdResult",
+      "parameters": [
+        "fixture_id"
+      ]
+    },
+    {
+      "source_function": "getContextFixturesTeamByTeamName",
+      "validated_function": "getValidatedContextFixturesTeamByTeamName",
+      "result_function": "getContextFixturesTeamByTeamNameResult",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "source_function": "getContextForm",
+      "validated_function": "getValidatedContextForm",
+      "result_function": "getContextFormResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextFormByTeamName",
+      "validated_function": "getValidatedContextFormByTeamName",
+      "result_function": "getContextFormByTeamNameResult",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "source_function": "getContextStandings",
+      "validated_function": "getValidatedContextStandings",
+      "result_function": "getContextStandingsResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextStandingsByTeamName",
+      "validated_function": "getValidatedContextStandingsByTeamName",
+      "result_function": "getContextStandingsByTeamNameResult",
+      "parameters": [
+        "team_name"
+      ]
+    },
+    {
+      "source_function": "getContextStatus",
+      "validated_function": "getValidatedContextStatus",
+      "result_function": "getContextStatusResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextTeams",
+      "validated_function": "getValidatedContextTeams",
+      "result_function": "getContextTeamsResult",
+      "parameters": []
+    },
+    {
+      "source_function": "getContextTeamsByTeamName",
+      "validated_function": "getValidatedContextTeamsByTeamName",
+      "result_function": "getContextTeamsByTeamNameResult",
+      "parameters": [
+        "team_name"
+      ]
+    }
+  ],
+  "mapped_function_count": 18,
+  "responsibility": {
+    "stage7_prediction_authority": true,
+    "stage8_context_authority": true,
+    "stage9_intelligence_authority": true,
+    "stage10_presentation_authority": true,
+    "prediction_logic_added": false,
+    "probabilities_modified": false,
+    "context_modified": false,
+    "intelligence_modified": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "source_identity": {
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    },
+    "frontend/lib/api/mapped.ts": {
+      "sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c"
+    },
+    "frontend/scripts/verify-stage10-api-result-mapping.mjs": {
+      "sha256": "57e2b09e0935090cc3c04b41f74d4942113ffb75e2fc49992feee371e497c8db"
+    }
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_2_5_10_2_6_verification.json": {
+      "sha256": "590abe201d4df0bfc93c7832ad7ffd5c9592184e223a1ca900207e15a333c13f"
+    },
+    "docs/stage10/frontend_response_validation_contract.json": {
+      "sha256": "d79740b7aeffc2165496ce8cbce8df283538cbf22dda4629ad0faaf92f296512"
+    },
+    "docs/stage10/frontend_intelligence_api_client_contract.json": {
+      "sha256": "2a879e76495b1ce9eac275b762637180bb20f4c6e63a9632b2fd9db1f1df121e"
+    },
+    "docs/stage10/frontend_production_api_client_contract.json": {
+      "sha256": "d6e7a34252f42dfd3cd17112b65e968c62e19e64fde76779f98f6707fe6e6202"
+    },
+    "docs/stage10/frontend_context_api_client_contract.json": {
+      "sha256": "845d6ef378235e88b2b0d1928bf53c6a8b71f6f87fa7838e394bf6b2ec7e3eb9"
+    }
+  },
+  "promotion": {
+    "stage10_2_7_complete": false,
+    "stage10_2_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T14:58:31.973193+00:00"
+}
