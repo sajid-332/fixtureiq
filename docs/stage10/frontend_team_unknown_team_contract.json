@@ -1,0 +1,63 @@
+{
+  "stage": "10.6.9",
+  "version": "1.0.0",
+  "name": "TEAM_UNKNOWN_TEAM_HANDLING",
+  "status": "LOCKED",
+  "route": "/teams/[teamName]",
+  "not_found_source": "frontend/app/teams/[teamName]/not-found.tsx",
+  "authority": {
+    "team_intelligence_404": "STAGE_9_INTELLIGENCE_API",
+    "standings_404": "STAGE_8_CONTEXT_API",
+    "form_404": "STAGE_8_CONTEXT_API",
+    "routing": "NEXT_NOT_FOUND"
+  },
+  "behavior": {
+    "not_found_maps_to_404": true,
+    "route_uses_notFound": true,
+    "nearest_not_found_boundary": true,
+    "fuzzy_matching": false,
+    "team_name_guessing": false,
+    "automatic_redirect": false,
+    "suggested_team_substitution": false,
+    "stale_fallback": false,
+    "direct_fetch": false,
+    "provider_access": false,
+    "artifact_access": false
+  },
+  "navigation": {
+    "back_to_upcoming_matches": true,
+    "target": "/"
+  },
+  "team_route_sha256": "6388f4243d05976f0905e081977d63bbc307cedf9ebbda697801ff54b0b8edd1",
+  "not_found_page_sha256": "38f1a749c6bea24fe4c6f80e79e3f82c2cd37fad727172b610ba84c70ee7b43e",
+  "protected_state": {
+    "team_route_sha256": "6388f4243d05976f0905e081977d63bbc307cedf9ebbda697801ff54b0b8edd1",
+    "team_loader_sha256": "ce21b77d6b385d4cf7d3085f48011119614bbd36bc01db650c49378681c3223e",
+    "team_context_loader_sha256": "3d6a66cdef9d41c01f2d850f1e22b3f9f05df048a44f618f0de053e3a0b8736b",
+    "team_records_sha256": "e28d30187300dd13b799a7c94c190713a6b1ed7b5b0abbb89208a30d23117ea9",
+    "team_context_records_sha256": "4416b1b3c0a194240c4bf9abab61045a830a64ad6de1cb777f4eda3cf36a4e5a",
+    "team_header_sha256": "82a21f1ce74a011481bd63064b60761b8e318dd475007d1ecaea1c0ded27441d",
+    "team_upcoming_sha256": "a1defb197cc8f4a3087513515c1a6f0bb94fce47e316fe5890dcc2c17696fabc",
+    "team_prediction_card_sha256": "5d6d7d710362a2eb152c6684c92db0834105b977f69c109eb60cfe07a842acfa",
+    "team_standings_sha256": "66a8a026706fe85d131162c967d454eb4f5b294f54ae10d250a3d13436c00dd5",
+    "team_recent_form_sha256": "b048eb3108d19e0bbc908fbfb0814e2d28321d95e3418f5756e85b373ca30281",
+    "team_home_away_form_sha256": "e9eb53009fafd67b962407d5c7fc612bf3d1cf6d45a072dcc1b2cb42cb7f3121",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_6_5_10_6_8_verification.json": {
+      "sha256": "6c2bf256653e3507801664a1aa302c9f8be64c514dbbbf73670d18bcff05dc0e"
+    },
+    "docs/stage10/frontend_team_fixture_links_contract.json": {
+      "sha256": "d0ec548bc680601e9dd0451bc0b9795ea7cad9af0403efdf68b4798d24d3a79a"
+    }
+  },
+  "promotion": {
+    "stage10_6_9_complete": false,
+    "stage10_6_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T00:15:19.074437+00:00"
+}
