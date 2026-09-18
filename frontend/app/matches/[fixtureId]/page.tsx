@@ -1,4 +1,8 @@
 import {
+  ServiceNotReadyState,
+} from "../../../components/runtime/service-not-ready-state";
+
+import {
   notFound,
 } from "next/navigation";
 
@@ -120,6 +124,23 @@ export default async function MatchDetailPage({
     "NOT_FOUND"
   ) {
     notFound();
+  }
+
+
+  if (
+    result.state ===
+    "NOT_READY"
+  ) {
+
+    return (
+      <ServiceNotReadyState
+        state="NOT_READY"
+        httpStatus={
+          result.status
+        }
+        resource="Match intelligence"
+      />
+    );
   }
 
 

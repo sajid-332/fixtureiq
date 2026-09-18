@@ -1,0 +1,40 @@
+{
+  "stage": "10.8.3",
+  "version": "1.0.0",
+  "name": "NOT_FOUND_404_UX",
+  "status": "LOCKED",
+  "mapped_state": "NOT_FOUND",
+  "mapped_http_status": 404,
+  "boundary_sha256": {
+    "frontend/app/not-found.tsx": "feff129be637efd735e60b13ceeca6c06a69dd2519944995864af3d91c97ab6c",
+    "frontend/app/matches/[fixtureId]/not-found.tsx": "42c806e4d930eea33d9b7dfabd8bacbc1cb8371e4782415190f39c3ac0e10c81"
+  },
+  "existing_team_boundary": {
+    "source": "frontend/app/teams/[teamName]/not-found.tsx",
+    "sha256": "38f1a749c6bea24fe4c6f80e79e3f82c2cd37fad727172b610ba84c70ee7b43e"
+  },
+  "route_behavior": {
+    "match_not_found_uses_next_notFound": true,
+    "team_not_found_uses_next_notFound": true,
+    "fuzzy_matching": false,
+    "automatic_substitution": false,
+    "stale_fallback": false
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_runtime_loading_ux_contract.json": {
+      "sha256": "3d64822594c0f5f6753835b8d8d7854779e477cbc2b4e4dbe2667e41b2892acc"
+    },
+    "docs/stage10/frontend_team_unknown_team_contract.json": {
+      "sha256": "d487611996e3b2a4185cd1938a43e3570368de305bd0feb439565d63193d207d"
+    },
+    "docs/stage10/frontend_empty_state_contract.json": {
+      "sha256": "54f33e76e4003cee0080360ff9cb4db900562d54b6665141df3a05049b00d944"
+    }
+  },
+  "promotion": {
+    "stage10_8_3_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:38:34.386046+00:00"
+}

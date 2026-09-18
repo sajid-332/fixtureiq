@@ -1,4 +1,8 @@
 import {
+  ServiceNotReadyState,
+} from "../../../components/runtime/service-not-ready-state";
+
+import {
   notFound,
 } from "next/navigation";
 
@@ -85,6 +89,23 @@ export default async function TeamPage({
 
 
   if (
+    result.state ===
+    "NOT_READY"
+  ) {
+
+    return (
+      <ServiceNotReadyState
+        state="NOT_READY"
+        httpStatus={
+          result.status
+        }
+        resource="Team intelligence"
+      />
+    );
+  }
+
+
+  if (
     result.state !==
     "READY"
   ) {
@@ -145,6 +166,30 @@ export default async function TeamPage({
     "NOT_FOUND"
   ) {
     notFound();
+  }
+
+
+  if (
+    standingsResult.state ===
+    "NOT_READY"
+    ||
+    formResult.state ===
+    "NOT_READY"
+  ) {
+
+    return (
+      <ServiceNotReadyState
+        state="NOT_READY"
+        httpStatus={
+          standingsResult.state === "NOT_READY"
+            ? standingsResult.status
+            : formResult.state === "NOT_READY"
+              ? formResult.status
+              : null
+        }
+        resource="Team context"
+      />
+    );
   }
 
 

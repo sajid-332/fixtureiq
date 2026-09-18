@@ -1,4 +1,8 @@
 import {
+  ServiceNotReadyState,
+} from "../components/runtime/service-not-ready-state";
+
+import {
   MatchCard,
 } from "../components/matches/match-card";
 
@@ -19,6 +23,23 @@ export default async function Home() {
 
   const result =
     await loadUpcomingMatches();
+
+
+  if (
+    result.state ===
+    "NOT_READY"
+  ) {
+
+    return (
+      <ServiceNotReadyState
+        state="NOT_READY"
+        httpStatus={
+          result.status
+        }
+        resource="Upcoming match intelligence"
+      />
+    );
+  }
 
 
   if (

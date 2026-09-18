@@ -1,0 +1,38 @@
+{
+  "stage": "10.8.2",
+  "version": "1.0.0",
+  "name": "NEXT_APP_ROUTER_LOADING_UX",
+  "status": "LOCKED",
+  "reusable_component": "frontend/components/ui/loading-state.tsx",
+  "boundary_sha256": {
+    "frontend/app/loading.tsx": "270d50b78a71cb311814971a0abe0033c24eb97962cb5a7daa315e3e037cc99c",
+    "frontend/app/matches/[fixtureId]/loading.tsx": "56281cce3bfbf03585a207e766e76c7919a8b5e17a8b2f3fff88d28be8517975",
+    "frontend/app/teams/[teamName]/loading.tsx": "be00c59161410b57a0cce2900fa5e4231ae75f291aeafd7707534f64d113c225"
+  },
+  "routes": [
+    "/",
+    "/matches/[fixtureId]",
+    "/teams/[teamName]"
+  ],
+  "behavior": {
+    "next_loading_boundaries": true,
+    "aria_busy": true,
+    "client_timer": false,
+    "data_fetch": false,
+    "stale_content": false
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_runtime_ready_state_contract.json": {
+      "sha256": "d1b9df95b49e997024662b4863dc75c5b74802e2a0d850ae13ae52c838d3878d"
+    },
+    "docs/stage10/frontend_loading_state_contract.json": {
+      "sha256": "29feeb8e5d1fa5aad06a6c1dd68d306e877aea00c26e2e055d610b3ccd678bdd"
+    }
+  },
+  "promotion": {
+    "stage10_8_2_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:38:34.377336+00:00"
+}
