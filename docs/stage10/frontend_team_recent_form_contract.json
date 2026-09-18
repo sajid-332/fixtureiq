@@ -1,0 +1,49 @@
+{
+  "stage": "10.6.6",
+  "version": "1.0.0",
+  "name": "TEAM_RECENT_FORM",
+  "status": "LOCKED",
+  "source_authority": "STAGE_8_CONTEXT",
+  "backend_endpoint": "/api/v1/context/form/<path:team_name>",
+  "mapped_client": "getContextFormByTeamNameResult",
+  "component_source": "frontend/components/teams/team-recent-form.tsx",
+  "source_fields": [
+    "form_matches_available",
+    "recent_results",
+    "recent_points",
+    "recent_wins",
+    "recent_draws",
+    "recent_losses",
+    "recent_goals_for",
+    "recent_goals_against",
+    "recent_goal_difference"
+  ],
+  "presentation": {
+    "backend_results_direct": true,
+    "backend_aggregates_direct": true,
+    "frontend_form_calculation": false,
+    "frontend_points_calculation": false
+  },
+  "component_sha256": "b048eb3108d19e0bbc908fbfb0814e2d28321d95e3418f5756e85b373ca30281",
+  "route_page_sha256": "6388f4243d05976f0905e081977d63bbc307cedf9ebbda697801ff54b0b8edd1",
+  "protected_state": {
+    "team_loader_sha256": "ce21b77d6b385d4cf7d3085f48011119614bbd36bc01db650c49378681c3223e",
+    "team_records_sha256": "e28d30187300dd13b799a7c94c190713a6b1ed7b5b0abbb89208a30d23117ea9",
+    "team_header_sha256": "82a21f1ce74a011481bd63064b60761b8e318dd475007d1ecaea1c0ded27441d",
+    "team_upcoming_sha256": "a1defb197cc8f4a3087513515c1a6f0bb94fce47e316fe5890dcc2c17696fabc",
+    "mapped_api_sha256": "61c4f5359418390557744bd9b8c6fa430c45b52580ab51471c1a086b39a9568c",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_team_standings_contract.json": {
+      "sha256": "725f637e2e526fe409ea0ce1643eb4f7da835c2b39ea6a54973628ca3eecdcac"
+    }
+  },
+  "promotion": {
+    "stage10_6_6_complete": false,
+    "stage10_6_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-17T23:53:23.492343+00:00"
+}

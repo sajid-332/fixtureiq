@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type {
   ConfidenceBand,
   ContextAlignment,
@@ -366,6 +368,31 @@ export function TeamPredictionCard({
           </dd>
         </div>
       </dl>
+      <div
+        className="
+          mt-5 border-t
+          border-slate-100
+          pt-4
+        "
+      >
+        <Link
+          href={`/matches/${encodeURIComponent(
+            String(
+              fixtureId,
+            ),
+          )}`}
+          className="
+            inline-flex items-center
+            text-sm font-semibold
+            text-slate-900
+            underline
+            underline-offset-4
+          "
+        >
+          View match intelligence
+        </Link>
+      </div>
+
     </article>
   );
 }

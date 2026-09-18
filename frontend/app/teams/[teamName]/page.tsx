@@ -15,12 +15,33 @@ import {
 } from "../../../components/teams/team-prediction-card";
 
 import {
+  TeamStandings,
+} from "../../../components/teams/team-standings";
+
+import {
+  TeamRecentForm,
+} from "../../../components/teams/team-recent-form";
+
+import {
+  TeamHomeAwayForm,
+} from "../../../components/teams/team-home-away-form";
+
+import {
   loadTeamIntelligence,
 } from "../../../lib/teams/load-team-intelligence";
 
 import {
+  loadTeamContext,
+} from "../../../lib/teams/load-team-context";
+
+import {
   extractTeamPageData,
 } from "../../../lib/teams/team-records";
+
+import {
+  extractTeamFormRecord,
+  extractTeamStandingsRecord,
+} from "../../../lib/teams/team-context-records";
 
 import type {
   TeamRouteParams,
@@ -108,6 +129,78 @@ export default async function TeamPage({
     );
 
 
+  const [
+    standingsResult,
+    formResult,
+  ] = await loadTeamContext(
+    teamName,
+  );
+
+
+  if (
+    standingsResult.state ===
+    "NOT_FOUND"
+    ||
+    formResult.state ===
+    "NOT_FOUND"
+  ) {
+    notFound();
+  }
+
+
+  if (
+    standingsResult.state !==
+    "READY"
+    ||
+    formResult.state !==
+    "READY"
+  ) {
+
+    return (
+      <section
+        aria-labelledby="team-context-unavailable-heading"
+        data-fixtureiq-team-context-state="UNAVAILABLE"
+      >
+        <h1
+          id="team-context-unavailable-heading"
+          className="
+            text-2xl font-bold
+            tracking-tight
+            text-slate-950
+          "
+        >
+          Team context unavailable
+        </h1>
+
+        <p
+          className="
+            mt-3 max-w-2xl
+            text-sm leading-6
+            text-slate-600
+          "
+        >
+          Current standings or form
+          cannot be displayed right now.
+        </p>
+      </section>
+    );
+  }
+
+
+  const standings =
+    extractTeamStandingsRecord(
+      standingsResult.data,
+      teamName,
+    );
+
+
+  const form =
+    extractTeamFormRecord(
+      formResult.data,
+      teamName,
+    );
+
+
   return (
     <article
       data-fixtureiq-route="team-intelligence"
@@ -118,6 +211,136 @@ export default async function TeamPage({
           team.teamName
         }
       />
+
+      <div
+        className="
+          mt-6 grid gap-6
+          lg:grid-cols-2
+        "
+      >
+        <TeamStandings
+          position={
+            standings.position
+          }
+          points={
+            standings.points
+          }
+          played={
+            standings.played
+          }
+          won={
+            standings.won
+          }
+          drawn={
+            standings.drawn
+          }
+          lost={
+            standings.lost
+          }
+          goalsFor={
+            standings.goals_for
+          }
+          goalsAgainst={
+            standings.goals_against
+          }
+          goalDifference={
+            standings.goal_difference
+          }
+        />
+
+        <TeamRecentForm
+          matchesAvailable={
+            form.form_matches_available
+          }
+          results={
+            form.recent_results
+          }
+          points={
+            form.recent_points
+          }
+          wins={
+            form.recent_wins
+          }
+          draws={
+            form.recent_draws
+          }
+          losses={
+            form.recent_losses
+          }
+          goalsFor={
+            form.recent_goals_for
+          }
+          goalsAgainst={
+            form.recent_goals_against
+          }
+          goalDifference={
+            form.recent_goal_difference
+          }
+        />
+      </div>
+
+      <div
+        className="
+          mt-6
+        "
+      >
+        <TeamHomeAwayForm
+          homeMatchesAvailable={
+            form.home_form_matches_available
+          }
+          homeResults={
+            form.home_recent_results
+          }
+          homePoints={
+            form.home_recent_points
+          }
+          homeWins={
+            form.home_recent_wins
+          }
+          homeDraws={
+            form.home_recent_draws
+          }
+          homeLosses={
+            form.home_recent_losses
+          }
+          homeGoalsFor={
+            form.home_recent_goals_for
+          }
+          homeGoalsAgainst={
+            form.home_recent_goals_against
+          }
+          homeGoalDifference={
+            form.home_recent_goal_difference
+          }
+          awayMatchesAvailable={
+            form.away_form_matches_available
+          }
+          awayResults={
+            form.away_recent_results
+          }
+          awayPoints={
+            form.away_recent_points
+          }
+          awayWins={
+            form.away_recent_wins
+          }
+          awayDraws={
+            form.away_recent_draws
+          }
+          awayLosses={
+            form.away_recent_losses
+          }
+          awayGoalsFor={
+            form.away_recent_goals_for
+          }
+          awayGoalsAgainst={
+            form.away_recent_goals_against
+          }
+          awayGoalDifference={
+            form.away_recent_goal_difference
+          }
+        />
+      </div>
 
       <TeamUpcomingMatches
         teamName={
