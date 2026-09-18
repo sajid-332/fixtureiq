@@ -1,0 +1,42 @@
+{
+  "stage": "10.7.1",
+  "version": "1.0.0",
+  "name": "REUSABLE_MATCH_CARD",
+  "status": "LOCKED",
+  "canonical_existing_component": true,
+  "source": "frontend/components/matches/match-card.tsx",
+  "component": "MatchCard",
+  "authority_boundary": {
+    "fixture_identity": "STAGE_9_JOIN",
+    "probabilities": "STAGE_7",
+    "predicted_outcome": "STAGE_7",
+    "confidence_value": "STAGE_7",
+    "confidence_band": "STAGE_9",
+    "uncertainty_band": "STAGE_9",
+    "context_alignment": "STAGE_9",
+    "explanation": "STAGE_9",
+    "stage10_role": "PRESENTATION_ONLY"
+  },
+  "integrity": {
+    "existing_component_rewritten": false,
+    "prediction_logic": false,
+    "probability_recalculation": false,
+    "frontend_argmax": false,
+    "direct_fetch": false
+  },
+  "component_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_6_final_verification.json": {
+      "sha256": "d5991fd4e2e4be3f427f4a6260fdd4f5f5021240c3931f667bf176863975ff3c"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_1_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T09:53:07.806781+00:00"
+}

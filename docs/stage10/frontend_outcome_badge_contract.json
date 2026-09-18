@@ -1,0 +1,32 @@
+{
+  "stage": "10.7.3",
+  "version": "1.0.0",
+  "name": "REUSABLE_OUTCOME_BADGE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/outcome-badge.tsx",
+  "component": "OutcomeBadge",
+  "domain_type": "OutcomeLabel",
+  "authority": "STAGE_7_PREDICTED_LABEL",
+  "presentation": {
+    "label_direct": true,
+    "frontend_argmax": false,
+    "probability_inspection": false,
+    "outcome_reclassification": false,
+    "text_always_present": true
+  },
+  "component_sha256": "1eec392e78493f5b91637fca5e6ae4ca74e4927099a3b1c17b8cbd24342351c0",
+  "dependency_identity": {
+    "docs/stage10/frontend_probability_bar_contract.json": {
+      "sha256": "b75e767e8fc5feb350e4c73d8451e9621db87cf0792b45865c5f487361d9ad6c"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_3_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T09:53:07.817844+00:00"
+}

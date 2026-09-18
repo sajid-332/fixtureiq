@@ -1,0 +1,32 @@
+{
+  "stage": "10.7.4",
+  "version": "1.0.0",
+  "name": "REUSABLE_CONFIDENCE_BADGE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/confidence-badge.tsx",
+  "component": "ConfidenceBadge",
+  "domain_type": "ConfidenceBand",
+  "authority": "STAGE_9_CONFIDENCE_BAND",
+  "presentation": {
+    "band_direct": true,
+    "threshold_logic": false,
+    "band_derivation": false,
+    "confidence_recalculation": false,
+    "text_always_present": true
+  },
+  "component_sha256": "92498ccac9a4ab9ad80d3aee05777cd48e308415d957511a834b415efeb1b4c3",
+  "dependency_identity": {
+    "docs/stage10/frontend_outcome_badge_contract.json": {
+      "sha256": "d7b0ec2bfc5a415449a69d1b5473238d30ea074077b99c7fd7959ed359b2706f"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_4_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T09:53:07.823131+00:00"
+}
