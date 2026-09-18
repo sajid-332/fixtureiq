@@ -1,0 +1,42 @@
+{
+  "stage": "10.7.7",
+  "version": "1.0.0",
+  "name": "REUSABLE_CONTEXT_SCORE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/context-score.tsx",
+  "component": "ContextScore",
+  "domain_type": "ContextSupportScore",
+  "authority": "STAGE_9_CONTEXT_SUPPORT_SCORE",
+  "allowed_range": [
+    -5,
+    5
+  ],
+  "presentation": {
+    "score_direct": true,
+    "signed_display_only": true,
+    "signal_counting": false,
+    "score_calculation": false,
+    "alignment_derivation": false
+  },
+  "component_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+  "protected_state": {
+    "probability_bar_sha256": "b0a0d6d4754f8c874f87f558b5b457f076037e9511a493c953cecfcd1063f895",
+    "outcome_badge_sha256": "1eec392e78493f5b91637fca5e6ae4ca74e4927099a3b1c17b8cbd24342351c0",
+    "confidence_badge_sha256": "92498ccac9a4ab9ad80d3aee05777cd48e308415d957511a834b415efeb1b4c3",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_context_alignment_badge_contract.json": {
+      "sha256": "33334cc6e06662080f1acd2c99738682872e710a16a506d074d06a6657f2b4d1"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_7_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:05:19.704245+00:00"
+}

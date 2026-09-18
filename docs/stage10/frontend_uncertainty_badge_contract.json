@@ -1,0 +1,41 @@
+{
+  "stage": "10.7.5",
+  "version": "1.0.0",
+  "name": "REUSABLE_UNCERTAINTY_BADGE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/uncertainty-badge.tsx",
+  "component": "UncertaintyBadge",
+  "domain_type": "UncertaintyBand",
+  "authority": "STAGE_9_UNCERTAINTY_BAND",
+  "presentation": {
+    "band_direct": true,
+    "threshold_logic": false,
+    "entropy_calculation": false,
+    "band_derivation": false,
+    "text_always_present": true
+  },
+  "component_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+  "protected_state": {
+    "probability_bar_sha256": "b0a0d6d4754f8c874f87f558b5b457f076037e9511a493c953cecfcd1063f895",
+    "outcome_badge_sha256": "1eec392e78493f5b91637fca5e6ae4ca74e4927099a3b1c17b8cbd24342351c0",
+    "confidence_badge_sha256": "92498ccac9a4ab9ad80d3aee05777cd48e308415d957511a834b415efeb1b4c3",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_7_1_10_7_4_verification.json": {
+      "sha256": "e357173027063a4bc4ab4dccba628f5f1d3d957e0dec135bf9c58adf62bc208e"
+    },
+    "docs/stage10/frontend_confidence_badge_contract.json": {
+      "sha256": "50b3a35f0923851cfb53c5b90d7e5d6f5d0c107acc40a3f7451f27ba8575d1d8"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_5_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:05:19.695740+00:00"
+}

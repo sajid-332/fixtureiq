@@ -1,0 +1,38 @@
+{
+  "stage": "10.7.6",
+  "version": "1.0.0",
+  "name": "REUSABLE_CONTEXT_ALIGNMENT_BADGE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/context-alignment-badge.tsx",
+  "component": "ContextAlignmentBadge",
+  "domain_type": "ContextAlignment",
+  "authority": "STAGE_9_CONTEXT_ALIGNMENT",
+  "presentation": {
+    "alignment_direct": true,
+    "support_score_inspection": false,
+    "alignment_rules": false,
+    "classification_logic": false,
+    "text_always_present": true
+  },
+  "component_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+  "protected_state": {
+    "probability_bar_sha256": "b0a0d6d4754f8c874f87f558b5b457f076037e9511a493c953cecfcd1063f895",
+    "outcome_badge_sha256": "1eec392e78493f5b91637fca5e6ae4ca74e4927099a3b1c17b8cbd24342351c0",
+    "confidence_badge_sha256": "92498ccac9a4ab9ad80d3aee05777cd48e308415d957511a834b415efeb1b4c3",
+    "domain_types_sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_uncertainty_badge_contract.json": {
+      "sha256": "cd9600472c0b74cbd32437eb750f9f625125e1016ca9b24204362c0a458c57cd"
+    },
+    "frontend/lib/domain/types.ts": {
+      "sha256": "242a51dfb0e383ba88db565973d7f2db9751083fa20b30701ac94a69ae25dabf"
+    }
+  },
+  "promotion": {
+    "stage10_7_6_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:05:19.700625+00:00"
+}
