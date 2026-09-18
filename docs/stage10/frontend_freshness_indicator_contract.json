@@ -1,0 +1,41 @@
+{
+  "stage": "10.7.11",
+  "version": "1.0.0",
+  "name": "REUSABLE_FRESHNESS_INDICATOR",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/freshness-indicator.tsx",
+  "component": "FreshnessIndicator",
+  "domain_type": "ApiTerminalState",
+  "authority": "BACKEND_RUNTIME_STATE",
+  "presentation": {
+    "state_direct": true,
+    "http_status_direct": true,
+    "null_http_status_supported": true,
+    "frontend_ttl": false,
+    "frontend_clock_calculation": false,
+    "frontend_staleness_derivation": false,
+    "previous_state_reuse": false
+  },
+  "component_sha256": "b0fb61e1f44722ad1cc9fbe4f5b59a6e420d30122e30c75e574e40dfb8748709",
+  "protected_state": {
+    "uncertainty_badge_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+    "context_alignment_badge_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+    "context_score_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+    "team_comparison_row_sha256": "def604f75bc7c5258dc1dbd98015480487e814123abc9b1e84bbd8437dd1b11b",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_intelligence_explanation_contract.json": {
+      "sha256": "587fc0b31d996ad874d266fae596fe241a549c4e976f088a19071a87422965ff"
+    },
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    }
+  },
+  "promotion": {
+    "stage10_7_11_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:11:30.906735+00:00"
+}

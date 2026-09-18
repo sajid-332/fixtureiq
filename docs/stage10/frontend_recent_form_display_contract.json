@@ -1,0 +1,39 @@
+{
+  "stage": "10.7.9",
+  "version": "1.0.0",
+  "name": "REUSABLE_RECENT_FORM_DISPLAY",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/recent-form-display.tsx",
+  "component": "RecentFormDisplay",
+  "authority": "CALLER_PROVIDED_STAGE_8_FORM",
+  "presentation": {
+    "results_direct": true,
+    "matches_available_direct": true,
+    "points_calculation": false,
+    "result_aggregation": false,
+    "form_scoring": false,
+    "sorting": false
+  },
+  "component_sha256": "5fd6b84d938953edbc436baa321a16b068c2758973b4f7abd3cd06fbdfc53a55",
+  "protected_state": {
+    "uncertainty_badge_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+    "context_alignment_badge_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+    "context_score_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+    "team_comparison_row_sha256": "def604f75bc7c5258dc1dbd98015480487e814123abc9b1e84bbd8437dd1b11b",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_7_5_10_7_8_verification.json": {
+      "sha256": "58b1ea732e896f3e29a5934b5c6a4e60834b7de7b330a76b07f47d76b7cc4f19"
+    },
+    "docs/stage10/frontend_team_comparison_row_contract.json": {
+      "sha256": "1565faa2a7bca1577754f81c27fec514b1bedcf97a40aea75848b80bad3fb655"
+    }
+  },
+  "promotion": {
+    "stage10_7_9_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:11:30.898804+00:00"
+}

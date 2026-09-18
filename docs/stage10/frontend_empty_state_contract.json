@@ -1,0 +1,37 @@
+{
+  "stage": "10.7.12",
+  "version": "1.0.0",
+  "name": "REUSABLE_EMPTY_STATE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/empty-state.tsx",
+  "component": "EmptyState",
+  "responsibility": "PRESENT_CALLER_PROVIDED_EMPTY_STATE",
+  "presentation": {
+    "title_direct": true,
+    "message_direct": true,
+    "optional_action": true,
+    "data_fetch": false,
+    "retry_logic": false,
+    "fallback_data": false,
+    "empty_condition_derivation": false
+  },
+  "component_sha256": "25b2308f40c14e378d9a70974fb4af4595e38cb4e4d33dd8fa39eb6222288085",
+  "protected_state": {
+    "uncertainty_badge_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+    "context_alignment_badge_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+    "context_score_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+    "team_comparison_row_sha256": "def604f75bc7c5258dc1dbd98015480487e814123abc9b1e84bbd8437dd1b11b",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_freshness_indicator_contract.json": {
+      "sha256": "029d25057ec9c59014e491712b59a78b1966fc1edbb4512fa34e5da0eb6b71fc"
+    }
+  },
+  "promotion": {
+    "stage10_7_12_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:11:30.909945+00:00"
+}

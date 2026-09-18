@@ -1,0 +1,38 @@
+{
+  "stage": "10.7.10",
+  "version": "1.0.0",
+  "name": "REUSABLE_INTELLIGENCE_EXPLANATION",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/intelligence-explanation.tsx",
+  "component": "IntelligenceExplanation",
+  "authority": "STAGE_9_DETERMINISTIC_EXPLANATION",
+  "rule_version": "STAGE9_5_DETERMINISTIC_EXPLANATION_V1",
+  "presentation": {
+    "headline_direct": true,
+    "summary_direct": true,
+    "generation": false,
+    "rewriting": false,
+    "truncation": false,
+    "fallback_explanation": false,
+    "llm_execution": false
+  },
+  "component_sha256": "b74961eece2123afadb06fa0bf07e5700ea208f00fce991cad56bba167836882",
+  "protected_state": {
+    "uncertainty_badge_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+    "context_alignment_badge_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+    "context_score_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+    "team_comparison_row_sha256": "def604f75bc7c5258dc1dbd98015480487e814123abc9b1e84bbd8437dd1b11b",
+    "result_mapping_sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_recent_form_display_contract.json": {
+      "sha256": "47f7c6e06a4e4440e479950eaac8c8156e713b3282e57cefb51ab4abdfcc993e"
+    }
+  },
+  "promotion": {
+    "stage10_7_10_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:11:30.902265+00:00"
+}
