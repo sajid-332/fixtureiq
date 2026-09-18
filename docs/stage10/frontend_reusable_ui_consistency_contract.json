@@ -1,0 +1,136 @@
+{
+  "stage": "10.7.15",
+  "version": "1.0.0",
+  "name": "REUSABLE_UI_CONSISTENCY",
+  "status": "LOCKED_PENDING_VERIFICATION",
+  "expected_component_count": 14,
+  "components": {
+    "MatchCard": {
+      "source": "frontend/components/matches/match-card.tsx",
+      "contract": "docs/stage10/frontend_reusable_match_card_contract.json",
+      "component_sha256": "2efd1e539e9d48dce71a57d81bc933a21376581375017e68ad5e0c6b51ca0bc1",
+      "contract_sha256": "315a2f62116630ebc0f977ab5c236ed0ea83dbf91e25106fcf0a8ab6fd0505bd"
+    },
+    "ProbabilityBar": {
+      "source": "frontend/components/ui/probability-bar.tsx",
+      "contract": "docs/stage10/frontend_probability_bar_contract.json",
+      "component_sha256": "b0a0d6d4754f8c874f87f558b5b457f076037e9511a493c953cecfcd1063f895",
+      "contract_sha256": "b75e767e8fc5feb350e4c73d8451e9621db87cf0792b45865c5f487361d9ad6c"
+    },
+    "OutcomeBadge": {
+      "source": "frontend/components/ui/outcome-badge.tsx",
+      "contract": "docs/stage10/frontend_outcome_badge_contract.json",
+      "component_sha256": "1eec392e78493f5b91637fca5e6ae4ca74e4927099a3b1c17b8cbd24342351c0",
+      "contract_sha256": "d7b0ec2bfc5a415449a69d1b5473238d30ea074077b99c7fd7959ed359b2706f"
+    },
+    "ConfidenceBadge": {
+      "source": "frontend/components/ui/confidence-badge.tsx",
+      "contract": "docs/stage10/frontend_confidence_badge_contract.json",
+      "component_sha256": "92498ccac9a4ab9ad80d3aee05777cd48e308415d957511a834b415efeb1b4c3",
+      "contract_sha256": "50b3a35f0923851cfb53c5b90d7e5d6f5d0c107acc40a3f7451f27ba8575d1d8"
+    },
+    "UncertaintyBadge": {
+      "source": "frontend/components/ui/uncertainty-badge.tsx",
+      "contract": "docs/stage10/frontend_uncertainty_badge_contract.json",
+      "component_sha256": "b80fc1fa42283a6680e66b3669de17109bc493c5c26436d20f0d4f2af269f1fc",
+      "contract_sha256": "cd9600472c0b74cbd32437eb750f9f625125e1016ca9b24204362c0a458c57cd"
+    },
+    "ContextAlignmentBadge": {
+      "source": "frontend/components/ui/context-alignment-badge.tsx",
+      "contract": "docs/stage10/frontend_context_alignment_badge_contract.json",
+      "component_sha256": "00f52f8560f69530ecff729d7cf88437f083cea137cd4bc0d199a7790b3d2758",
+      "contract_sha256": "33334cc6e06662080f1acd2c99738682872e710a16a506d074d06a6657f2b4d1"
+    },
+    "ContextScore": {
+      "source": "frontend/components/ui/context-score.tsx",
+      "contract": "docs/stage10/frontend_context_score_contract.json",
+      "component_sha256": "4ec11ba4029b58134bf17befc50985ed18728fb90e87fa7afc97458c9ad5d4b7",
+      "contract_sha256": "f77328c79dd2413ace08c9ee525654131f07e3a0baf94469aeab07bddfdf1286"
+    },
+    "TeamComparisonRow": {
+      "source": "frontend/components/ui/team-comparison-row.tsx",
+      "contract": "docs/stage10/frontend_team_comparison_row_contract.json",
+      "component_sha256": "def604f75bc7c5258dc1dbd98015480487e814123abc9b1e84bbd8437dd1b11b",
+      "contract_sha256": "1565faa2a7bca1577754f81c27fec514b1bedcf97a40aea75848b80bad3fb655"
+    },
+    "RecentFormDisplay": {
+      "source": "frontend/components/ui/recent-form-display.tsx",
+      "contract": "docs/stage10/frontend_recent_form_display_contract.json",
+      "component_sha256": "5fd6b84d938953edbc436baa321a16b068c2758973b4f7abd3cd06fbdfc53a55",
+      "contract_sha256": "47f7c6e06a4e4440e479950eaac8c8156e713b3282e57cefb51ab4abdfcc993e"
+    },
+    "IntelligenceExplanation": {
+      "source": "frontend/components/ui/intelligence-explanation.tsx",
+      "contract": "docs/stage10/frontend_intelligence_explanation_contract.json",
+      "component_sha256": "b74961eece2123afadb06fa0bf07e5700ea208f00fce991cad56bba167836882",
+      "contract_sha256": "587fc0b31d996ad874d266fae596fe241a549c4e976f088a19071a87422965ff"
+    },
+    "FreshnessIndicator": {
+      "source": "frontend/components/ui/freshness-indicator.tsx",
+      "contract": "docs/stage10/frontend_freshness_indicator_contract.json",
+      "component_sha256": "b0fb61e1f44722ad1cc9fbe4f5b59a6e420d30122e30c75e574e40dfb8748709",
+      "contract_sha256": "029d25057ec9c59014e491712b59a78b1966fc1edbb4512fa34e5da0eb6b71fc"
+    },
+    "EmptyState": {
+      "source": "frontend/components/ui/empty-state.tsx",
+      "contract": "docs/stage10/frontend_empty_state_contract.json",
+      "component_sha256": "25b2308f40c14e378d9a70974fb4af4595e38cb4e4d33dd8fa39eb6222288085",
+      "contract_sha256": "54f33e76e4003cee0080360ff9cb4db900562d54b6665141df3a05049b00d944"
+    },
+    "ErrorState": {
+      "source": "frontend/components/ui/error-state.tsx",
+      "contract": "docs/stage10/frontend_error_state_contract.json",
+      "component_sha256": "d4276fcd1b68781f0b248193a02d783c228affaafc1d5e2356597e5100149bca",
+      "contract_sha256": "4218f2c457e89c6992613f47bc27d379e16f46c441c8d562ab39b6396cd441e3"
+    },
+    "LoadingState": {
+      "source": "frontend/components/ui/loading-state.tsx",
+      "contract": "docs/stage10/frontend_loading_state_contract.json",
+      "component_sha256": "eeef87a77175c8756908dd952bdd9dd60abfaef6567803ef9094c83175764802",
+      "contract_sha256": "29feeb8e5d1fa5aad06a6c1dd68d306e877aea00c26e2e055d610b3ccd678bdd"
+    }
+  },
+  "consistency_rules": {
+    "stage10_presentation_only": true,
+    "direct_provider_access": false,
+    "direct_artifact_access": false,
+    "direct_fetch": false,
+    "probability_recalculation": false,
+    "prediction_derivation": false,
+    "context_recalculation": false,
+    "explanation_generation": false,
+    "frontend_freshness_derivation": false,
+    "built_in_retry_logic": false,
+    "server_safe_by_default": true
+  },
+  "verification_chain": {
+    "10.7.1-10.7.4": "data/processed/frontend/stage10_7_1_10_7_4_verification.json",
+    "10.7.5-10.7.8": "data/processed/frontend/stage10_7_5_10_7_8_verification.json",
+    "10.7.9-10.7.12": "data/processed/frontend/stage10_7_9_10_7_12_verification.json"
+  },
+  "error_state_sha256": "d4276fcd1b68781f0b248193a02d783c228affaafc1d5e2356597e5100149bca",
+  "loading_state_sha256": "eeef87a77175c8756908dd952bdd9dd60abfaef6567803ef9094c83175764802",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_7_1_10_7_4_verification.json": {
+      "sha256": "e357173027063a4bc4ab4dccba628f5f1d3d957e0dec135bf9c58adf62bc208e"
+    },
+    "data/processed/frontend/stage10_7_5_10_7_8_verification.json": {
+      "sha256": "58b1ea732e896f3e29a5934b5c6a4e60834b7de7b330a76b07f47d76b7cc4f19"
+    },
+    "data/processed/frontend/stage10_7_9_10_7_12_verification.json": {
+      "sha256": "9c4ee8965b2e357401fc1877066b1934fee3eb1dfd155c589d12ea8253fc5d95"
+    },
+    "docs/stage10/frontend_error_state_contract.json": {
+      "sha256": "4218f2c457e89c6992613f47bc27d379e16f46c441c8d562ab39b6396cd441e3"
+    },
+    "docs/stage10/frontend_loading_state_contract.json": {
+      "sha256": "29feeb8e5d1fa5aad06a6c1dd68d306e877aea00c26e2e055d610b3ccd678bdd"
+    }
+  },
+  "promotion": {
+    "stage10_7_15_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:26:12.144959+00:00"
+}

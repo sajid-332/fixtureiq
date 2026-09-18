@@ -1,0 +1,33 @@
+{
+  "stage": "10.7.13",
+  "version": "1.0.0",
+  "name": "REUSABLE_ERROR_STATE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/error-state.tsx",
+  "component": "ErrorState",
+  "responsibility": "PRESENT_CALLER_PROVIDED_ERROR",
+  "presentation": {
+    "title_direct": true,
+    "message_direct": true,
+    "optional_action": true,
+    "built_in_retry_logic": false,
+    "data_fetch": false,
+    "stale_fallback": false,
+    "error_classification": false
+  },
+  "component_sha256": "d4276fcd1b68781f0b248193a02d783c228affaafc1d5e2356597e5100149bca",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_7_9_10_7_12_verification.json": {
+      "sha256": "9c4ee8965b2e357401fc1877066b1934fee3eb1dfd155c589d12ea8253fc5d95"
+    },
+    "docs/stage10/frontend_empty_state_contract.json": {
+      "sha256": "54f33e76e4003cee0080360ff9cb4db900562d54b6665141df3a05049b00d944"
+    }
+  },
+  "promotion": {
+    "stage10_7_13_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:26:12.109480+00:00"
+}

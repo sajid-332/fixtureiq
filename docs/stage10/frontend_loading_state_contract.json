@@ -1,0 +1,31 @@
+{
+  "stage": "10.7.14",
+  "version": "1.0.0",
+  "name": "REUSABLE_LOADING_STATE",
+  "status": "LOCKED",
+  "source": "frontend/components/ui/loading-state.tsx",
+  "component": "LoadingState",
+  "responsibility": "PRESENT_LOADING_STATE_ONLY",
+  "presentation": {
+    "caller_label_supported": true,
+    "default_label": "Loading FixtureIQ data...",
+    "role_status": true,
+    "aria_live": "polite",
+    "aria_busy": true,
+    "client_state": false,
+    "timers": false,
+    "data_fetch": false
+  },
+  "component_sha256": "eeef87a77175c8756908dd952bdd9dd60abfaef6567803ef9094c83175764802",
+  "dependency_identity": {
+    "docs/stage10/frontend_error_state_contract.json": {
+      "sha256": "4218f2c457e89c6992613f47bc27d379e16f46c441c8d562ab39b6396cd441e3"
+    }
+  },
+  "promotion": {
+    "stage10_7_14_complete": false,
+    "stage10_7_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-18T10:26:12.112060+00:00"
+}
