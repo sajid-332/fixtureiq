@@ -1,0 +1,32 @@
+{
+  "stage": "10.8.9",
+  "version": "1.0.0",
+  "name": "CURRENT_REQUEST_RETRY",
+  "status": "LOCKED",
+  "retry_component": "frontend/components/runtime/retry-action.tsx",
+  "mechanism": "NEXT_ROUTER_REFRESH",
+  "behavior": {
+    "not_ready_retry": true,
+    "connection_error_retry": true,
+    "reload_entire_window": false,
+    "direct_fetch": false,
+    "browser_storage": false,
+    "stale_response_reuse": false,
+    "previous_ready_data_retained": false
+  },
+  "source_identity": {
+    "frontend/components/runtime/retry-action.tsx": "639a2748ce18ace332850c6c258727e1aa17ae09103bfab624887d5cb2b1083e",
+    "frontend/components/runtime/service-not-ready-state.tsx": "cb0a37e9e52dff242ba4812f99a50a85441f15d61295fa411b87a514365ae244",
+    "frontend/components/runtime/connection-error-state.tsx": "d4203c53f2f50eb4a4d314b3713d2205d9ce37253638d4dc7860cc1693d9a0a3"
+  },
+  "previous_identity": {
+    "frontend/components/runtime/service-not-ready-state.tsx": "ef665b45247f90933702e9199e250e94da56d98efc2ebdb600e2659c8aa63b9a",
+    "frontend/components/runtime/connection-error-state.tsx": "4916c43e4895695de3b2017a453aacdbe49eaa5dc9c218d26e5796d1b2c0dd71"
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_8_5_10_8_8_verification.json": "8b7818d8e389c43f06c0b28447e7eb361df45a59cd106b78067cd6979a0811dd"
+  },
+  "stage10_8_complete": false,
+  "stage10_complete": false,
+  "generated_at_utc": "2026-09-20T06:52:23.946802+00:00"
+}

@@ -1,0 +1,38 @@
+{
+  "stage": "10.8",
+  "name": "FRESHNESS_LOADING_FAILURE_UX_FINAL_VERIFICATION",
+  "status": "PASS",
+  "stage_10_8_1_complete": true,
+  "stage_10_8_2_complete": true,
+  "stage_10_8_3_complete": true,
+  "stage_10_8_4_complete": true,
+  "stage_10_8_5_complete": true,
+  "stage_10_8_6_complete": true,
+  "stage_10_8_7_complete": true,
+  "stage_10_8_8_complete": true,
+  "stage_10_8_9_complete": true,
+  "stage_10_8_10_complete": true,
+  "runtime_policy": {
+    "ready": true,
+    "loading": true,
+    "not_found_404": true,
+    "not_ready_503": true,
+    "connection_error": true,
+    "empty_fixtures": true,
+    "stale_fallback": false,
+    "old_data_after_failed_refresh": false,
+    "retry": "NEXT_ROUTER_REFRESH",
+    "retry_reuses_old_data": false
+  },
+  "typescript": "PASS",
+  "production_build": "PASS",
+  "stage10_8_complete": true,
+  "stage10_ready_for_10_9_1": true,
+  "stage10_complete": false,
+  "next_stage": "10.9.1",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_8_5_10_8_8_verification.json": "8b7818d8e389c43f06c0b28447e7eb361df45a59cd106b78067cd6979a0811dd",
+    "docs/stage10/frontend_runtime_retry_contract.json": "86bde6f4dbc99ffb136ebaa6e243bbebe56e07667248e6426610d09b20fdc1ab"
+  },
+  "verified_at_utc": "2026-09-20T06:52:43.276654+00:00"
+}

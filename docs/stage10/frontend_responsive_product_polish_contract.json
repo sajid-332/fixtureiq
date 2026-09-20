@@ -1,0 +1,49 @@
+{
+  "stage": "10.9.1-10.9.10",
+  "version": "1.0.0",
+  "name": "RESPONSIVE_UI_PRODUCT_POLISH",
+  "status": "LOCKED",
+  "presentation_authority_only": true,
+  "stages": {
+    "10.9.1": "MOBILE_DASHBOARD",
+    "10.9.2": "MOBILE_DETAIL",
+    "10.9.3": "TABLET",
+    "10.9.4": "DESKTOP",
+    "10.9.5": "PROBABILITY_RESPONSIVENESS",
+    "10.9.6": "LONG_TEAM_NAMES",
+    "10.9.7": "LONG_EXPLANATIONS",
+    "10.9.8": "ACCESSIBILITY_BASICS",
+    "10.9.9": "KEYBOARD_NAVIGATION",
+    "10.9.10": "VISUAL_CONSISTENCY"
+  },
+  "breakpoints": {
+    "mobile_max_px": 639,
+    "tablet_min_px": 640,
+    "tablet_max_px": 1023,
+    "desktop_min_px": 1024
+  },
+  "source_identity": {
+    "frontend/app/stage10-responsive.css": "4e07d48c01aa51021c9d11cc235d39a3790b57fb7bf9a7e0a1b6f02b607fcac4",
+    "frontend/app/layout.tsx": "2cde9700e912e82ec89d6fed5277549e5e65b046ded30a4bd7192532ec0e448f"
+  },
+  "layout_before_sha256": "45e07f440c5a6d47da2422adcb8b81411572808abda42a1f28d6f7a01df05ab5",
+  "rules": {
+    "horizontal_scroll_required": false,
+    "probability_value_modified": false,
+    "prediction_logic_added": false,
+    "context_logic_added": false,
+    "explanation_rewritten": false,
+    "responsive_probability_container": true,
+    "long_team_name_wrap": true,
+    "long_explanation_wrap": true,
+    "focus_visible": true,
+    "reduced_motion": true,
+    "touch_target_minimum_px": 44
+  },
+  "dependency_identity": {
+    "data/processed/frontend/stage10_8_final_verification.json": "ca639c33bc3d1947753197cc2a3243e7b34a2f9b3ec51c31c29a856bd5ab9baf"
+  },
+  "stage10_9_complete": false,
+  "stage10_complete": false,
+  "generated_at_utc": "2026-09-20T06:52:43.293514+00:00"
+}

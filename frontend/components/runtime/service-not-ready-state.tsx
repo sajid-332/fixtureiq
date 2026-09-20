@@ -1,4 +1,8 @@
 import {
+  RetryAction,
+} from "./retry-action";
+
+import {
   ErrorState,
 } from "../ui/error-state";
 
@@ -38,6 +42,9 @@ export function ServiceNotReadyState({
           +
           "for this resource. No older result is being shown."
         }
+      action={
+        <RetryAction />
+      }
       />
 
       <div className="mt-4">

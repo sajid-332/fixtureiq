@@ -1,0 +1,292 @@
+/*
+ * FixtureIQ Stage 10.9 responsive product polish.
+ *
+ * Presentation authority only.
+ * No prediction, probability, context, freshness,
+ * explanation or API logic belongs here.
+ */
+
+:root {
+  --fixtureiq-content-max: 80rem;
+  --fixtureiq-radius-card: 0.875rem;
+  --fixtureiq-border: rgb(226 232 240);
+  --fixtureiq-focus: rgb(15 23 42);
+  --fixtureiq-space-mobile: 1rem;
+  --fixtureiq-space-tablet: 1.5rem;
+  --fixtureiq-space-desktop: 2rem;
+}
+
+
+html {
+  min-width: 320px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+
+body {
+  overflow-x: hidden;
+}
+
+
+main,
+main > *,
+[data-fixtureiq-dashboard-state],
+[data-fixtureiq-component] {
+  min-width: 0;
+}
+
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+
+[data-fixtureiq-dashboard-state="READY"] {
+  width: 100%;
+}
+
+
+[data-fixtureiq-component="match-card"] {
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--fixtureiq-radius-card);
+}
+
+
+[data-fixtureiq-component="match-card"] *,
+[data-fixtureiq-component="team-comparison-row"] *,
+[data-fixtureiq-component="intelligence-explanation"] *,
+[data-fixtureiq-component="recent-form-display"] *,
+[data-fixtureiq-component="empty-state"] *,
+[data-fixtureiq-component="error-state"] * {
+  min-width: 0;
+}
+
+
+[data-fixtureiq-component="match-card"] h1,
+[data-fixtureiq-component="match-card"] h2,
+[data-fixtureiq-component="match-card"] h3,
+[data-fixtureiq-component="team-comparison-row"],
+[data-fixtureiq-component="team-comparison-row"] *,
+[data-fixtureiq-component="intelligence-explanation"],
+[data-fixtureiq-component="intelligence-explanation"] *,
+[data-fixtureiq-component="team-identity-header"],
+[data-fixtureiq-component="team-identity-header"] * {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+
+[data-fixtureiq-component="intelligence-explanation"] {
+  max-width: 100%;
+  line-height: 1.65;
+}
+
+
+[data-fixtureiq-component="probability-bar"] {
+  width: 100%;
+  min-width: 0;
+}
+
+
+[data-fixtureiq-component="probability-bar"] progress {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+[data-fixtureiq-component="team-comparison-row"] {
+  width: 100%;
+  min-width: 0;
+}
+
+
+[data-fixtureiq-component="freshness-indicator"],
+[data-fixtureiq-component="confidence-badge"],
+[data-fixtureiq-component="uncertainty-badge"],
+[data-fixtureiq-component="context-alignment-badge"],
+[data-fixtureiq-component="outcome-badge"] {
+  max-width: 100%;
+}
+
+
+[data-fixtureiq-component="loading-state"],
+[data-fixtureiq-component="empty-state"],
+[data-fixtureiq-component="error-state"],
+[data-fixtureiq-component="service-not-ready-state"],
+[data-fixtureiq-component="connection-error-state"] {
+  width: 100%;
+  min-width: 0;
+}
+
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+button,
+a[href] {
+  touch-action: manipulation;
+}
+
+
+button:focus-visible,
+a[href]:focus-visible {
+  outline: 3px solid var(--fixtureiq-focus);
+  outline-offset: 3px;
+}
+
+
+button {
+  min-height: 44px;
+}
+
+
+progress {
+  vertical-align: middle;
+}
+
+
+/*
+ * 10.9.1 + 10.9.2
+ * Mobile dashboard + match detail
+ */
+@media (max-width: 639px) {
+
+  main {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  [data-fixtureiq-dashboard-state="READY"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="match-card"] {
+    width: 100%;
+  }
+
+
+  /*
+   * MatchCard team identity header is a three-column
+   * home / versus / away layout on wider screens.
+   * Stack it on narrow phones to protect long names.
+   */
+  [data-fixtureiq-component="match-card"] > header > div {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+
+  [data-fixtureiq-component="match-card"] > header > div > * {
+    width: 100%;
+    text-align: left;
+  }
+
+
+  [data-fixtureiq-component="team-comparison-row"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+
+  [data-fixtureiq-component="probability-bar"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="intelligence-explanation"] {
+    font-size: 0.9375rem;
+  }
+
+
+  main section,
+  main article {
+    max-width: 100%;
+  }
+}
+
+
+/*
+ * 10.9.3
+ * Tablet
+ */
+@media (min-width: 640px) and (max-width: 1023px) {
+
+  [data-fixtureiq-dashboard-state="READY"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="match-card"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="team-comparison-row"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="intelligence-explanation"] {
+    max-width: 72ch;
+  }
+}
+
+
+/*
+ * 10.9.4
+ * Desktop
+ */
+@media (min-width: 1024px) {
+
+  [data-fixtureiq-dashboard-state="READY"],
+  main {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="match-card"] {
+    width: 100%;
+  }
+
+
+  [data-fixtureiq-component="intelligence-explanation"] {
+    max-width: 80ch;
+  }
+}
+
+
+/*
+ * 10.9.8 + 10.9.9
+ * Accessibility + keyboard/navigation.
+ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+@media (prefers-contrast: more) {
+
+  button:focus-visible,
+  a[href]:focus-visible {
+    outline-width: 4px;
+  }
+}
