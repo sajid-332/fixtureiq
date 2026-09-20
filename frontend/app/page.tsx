@@ -1,4 +1,12 @@
 import {
+  EmptyFixturesState,
+} from "../components/runtime/empty-fixtures-state";
+
+import {
+  ConnectionErrorState,
+} from "../components/runtime/connection-error-state";
+
+import {
   ServiceNotReadyState,
 } from "../components/runtime/service-not-ready-state";
 
@@ -33,6 +41,22 @@ export default async function Home() {
     return (
       <ServiceNotReadyState
         state="NOT_READY"
+        httpStatus={
+          result.status
+        }
+        resource="Upcoming match intelligence"
+      />
+    );
+  }
+
+
+  if (
+    result.state ===
+    "CONNECTION_ERROR"
+  ) {
+
+    return (
+      <ConnectionErrorState
         httpStatus={
           result.status
         }
@@ -87,35 +111,12 @@ export default async function Home() {
 
 
   if (
-    matches.length === 0
+    matches.length ===
+    0
   ) {
 
     return (
-      <section
-        aria-labelledby="upcoming-heading"
-        data-fixtureiq-dashboard-state="READY"
-        data-fixtureiq-dashboard-empty="true"
-      >
-        <h1
-          id="upcoming-heading"
-          className="
-            text-2xl font-bold
-            tracking-tight text-slate-950
-            sm:text-3xl
-          "
-        >
-          Upcoming matches
-        </h1>
-
-        <p
-          className="
-            mt-3 text-sm
-            text-slate-600
-          "
-        >
-          No upcoming matches are available.
-        </p>
-      </section>
+      <EmptyFixturesState />
     );
   }
 

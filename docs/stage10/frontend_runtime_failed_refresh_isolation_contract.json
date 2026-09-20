@@ -1,0 +1,47 @@
+{
+  "stage": "10.8.8",
+  "version": "1.0.0",
+  "name": "FAILED_REFRESH_RESULT_ISOLATION",
+  "status": "LOCKED",
+  "policy": "FAILURE_REPLACES_PRIOR_READY_VIEW",
+  "routes": {
+    "/": {
+      "sha256": "0c7002fd5d38e2b987ea0ba6d588e90c7ef80d0c3b28ffc8af7d6b389552ba1c",
+      "failure_before_result_data": true
+    },
+    "/matches/[fixtureId]": {
+      "sha256": "e04f54f92c7064a0f6a913549ef0aa9d9b188a7717463505b3377e40ef82e6e7",
+      "failure_before_result_data": true
+    },
+    "/teams/[teamName]": {
+      "sha256": "7b797e8f7d01ea36aa99ddd9329478eb3fc2f784fd70685f278cb847375cd85f",
+      "failure_before_result_data": true
+    }
+  },
+  "behavior": {
+    "failed_refresh_keeps_old_match": false,
+    "failed_refresh_keeps_old_fixture_list": false,
+    "failed_refresh_keeps_old_team_data": false,
+    "client_state_retention": false,
+    "browser_storage_retention": false,
+    "stale_fallback": false,
+    "current_request_failure_rendered": true
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_runtime_no_stale_fallback_contract.json": {
+      "sha256": "69cf9c2d3281c1934a40d056aedd383bf642c183c44e0ebb0e28fb623c1044fe"
+    },
+    "docs/stage10/frontend_runtime_connection_error_contract.json": {
+      "sha256": "1709b2e4d53bd11a0b327d7aa63ee8d4c5aef9f14badb3e9403ec2870f5e3583"
+    },
+    "docs/stage10/frontend_runtime_not_ready_ux_contract.json": {
+      "sha256": "a73c244ff0f2e5edf09b3204223c94dd2ddf9753b5840442e54734cf4b7bd5a2"
+    }
+  },
+  "promotion": {
+    "stage10_8_8_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-20T06:08:09.403385+00:00"
+}

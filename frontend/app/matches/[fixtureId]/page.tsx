@@ -1,4 +1,8 @@
 import {
+  ConnectionErrorState,
+} from "../../../components/runtime/connection-error-state";
+
+import {
   ServiceNotReadyState,
 } from "../../../components/runtime/service-not-ready-state";
 
@@ -145,38 +149,17 @@ export default async function MatchDetailPage({
 
 
   if (
-    result.state !==
-    "READY"
+    result.state ===
+    "CONNECTION_ERROR"
   ) {
 
     return (
-      <section
-        aria-labelledby="match-unavailable-heading"
-        data-fixtureiq-match-state={
-          result.state
+      <ConnectionErrorState
+        httpStatus={
+          result.status
         }
-      >
-        <h1
-          id="match-unavailable-heading"
-          className="
-            text-2xl font-bold
-            tracking-tight text-slate-950
-          "
-        >
-          Match intelligence unavailable
-        </h1>
-
-        <p
-          className="
-            mt-3 max-w-2xl
-            text-sm leading-6
-            text-slate-600
-          "
-        >
-          This match cannot be displayed
-          right now.
-        </p>
-      </section>
+        resource="Match intelligence"
+      />
     );
   }
 

@@ -1,4 +1,8 @@
 import {
+  ConnectionErrorState,
+} from "../../../components/runtime/connection-error-state";
+
+import {
   ServiceNotReadyState,
 } from "../../../components/runtime/service-not-ready-state";
 
@@ -106,39 +110,17 @@ export default async function TeamPage({
 
 
   if (
-    result.state !==
-    "READY"
+    result.state ===
+    "CONNECTION_ERROR"
   ) {
 
     return (
-      <section
-        aria-labelledby="team-unavailable-heading"
-        data-fixtureiq-team-state={
-          result.state
+      <ConnectionErrorState
+        httpStatus={
+          result.status
         }
-      >
-        <h1
-          id="team-unavailable-heading"
-          className="
-            text-2xl font-bold
-            tracking-tight
-            text-slate-950
-          "
-        >
-          Team intelligence unavailable
-        </h1>
-
-        <p
-          className="
-            mt-3 max-w-2xl
-            text-sm leading-6
-            text-slate-600
-          "
-        >
-          This team cannot be displayed
-          right now.
-        </p>
-      </section>
+        resource="Team intelligence"
+      />
     );
   }
 
@@ -184,6 +166,29 @@ export default async function TeamPage({
           standingsResult.state === "NOT_READY"
             ? standingsResult.status
             : formResult.state === "NOT_READY"
+              ? formResult.status
+              : null
+        }
+        resource="Team context"
+      />
+    );
+  }
+
+
+  if (
+    standingsResult.state ===
+    "CONNECTION_ERROR"
+    ||
+    formResult.state ===
+    "CONNECTION_ERROR"
+  ) {
+
+    return (
+      <ConnectionErrorState
+        httpStatus={
+          standingsResult.state === "CONNECTION_ERROR"
+            ? standingsResult.status
+            : formResult.state === "CONNECTION_ERROR"
               ? formResult.status
               : null
         }

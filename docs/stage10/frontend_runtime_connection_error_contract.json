@@ -1,0 +1,45 @@
+{
+  "stage": "10.8.5",
+  "version": "1.0.0",
+  "name": "NETWORK_UNAVAILABLE_UX",
+  "status": "LOCKED",
+  "mapped_state": "CONNECTION_ERROR",
+  "component": "ConnectionErrorState",
+  "source": "frontend/components/runtime/connection-error-state.tsx",
+  "behavior": {
+    "dashboard_explicit": true,
+    "match_explicit": true,
+    "team_explicit": true,
+    "team_context_explicit": true,
+    "old_data_displayed": false,
+    "stale_fallback": false,
+    "retry_logic": false
+  },
+  "component_sha256": "4916c43e4895695de3b2017a453aacdbe49eaa5dc9c218d26e5796d1b2c0dd71",
+  "root_page_before_sha256": "2b1a9a051bd9aa226054062730c4ad391ffc01e21c03109038e5bb3638e34033",
+  "match_page_before_sha256": "d8a2a297d0a60bc9d8a9ab28b79db0a085c5a2ac73cb266c568b3ae495517f99",
+  "team_page_before_sha256": "a2e5b48a6343429ba12fa06247a14a5bf6e156ba1b336ef50a7d5de6b3e5f92d",
+  "root_page_after_sha256": "0c7002fd5d38e2b987ea0ba6d588e90c7ef80d0c3b28ffc8af7d6b389552ba1c",
+  "match_page_after_sha256": "e04f54f92c7064a0f6a913549ef0aa9d9b188a7717463505b3377e40ef82e6e7",
+  "team_page_after_sha256": "7b797e8f7d01ea36aa99ddd9329478eb3fc2f784fd70685f278cb847375cd85f",
+  "dependency_identity": {
+    "data/processed/frontend/stage10_8_1_10_8_4_verification.json": {
+      "sha256": "01323a2e017ae3af7d0ee3e90d45d083a28fc8508a31047053e2394ea7d7d669"
+    },
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    },
+    "docs/stage10/frontend_error_state_contract.json": {
+      "sha256": "4218f2c457e89c6992613f47bc27d379e16f46c441c8d562ab39b6396cd441e3"
+    },
+    "docs/stage10/frontend_freshness_indicator_contract.json": {
+      "sha256": "029d25057ec9c59014e491712b59a78b1966fc1edbb4512fa34e5da0eb6b71fc"
+    }
+  },
+  "promotion": {
+    "stage10_8_5_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-20T06:08:09.386730+00:00"
+}

@@ -1,0 +1,48 @@
+{
+  "stage": "10.8.7",
+  "version": "1.0.0",
+  "name": "NO_STALE_FALLBACK_POLICY",
+  "status": "LOCKED",
+  "policy": "CURRENT_REQUEST_ONLY_FAIL_CLOSED",
+  "http_client": {
+    "source": "frontend/lib/api/client.ts",
+    "cache_mode": "no-store",
+    "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+  },
+  "routes": {
+    "/": "0c7002fd5d38e2b987ea0ba6d588e90c7ef80d0c3b28ffc8af7d6b389552ba1c",
+    "/matches/[fixtureId]": "e04f54f92c7064a0f6a913549ef0aa9d9b188a7717463505b3377e40ef82e6e7",
+    "/teams/[teamName]": "7b797e8f7d01ea36aa99ddd9329478eb3fc2f784fd70685f278cb847375cd85f"
+  },
+  "loaders": {
+    "frontend/lib/dashboard/load-upcoming-matches.ts": "2bfc17eb922fd2a3ea60316c0ae2cf9380b83e22c2cff79a0cf490064c13c203",
+    "frontend/lib/teams/load-team-intelligence.ts": "ce21b77d6b385d4cf7d3085f48011119614bbd36bc01db650c49378681c3223e",
+    "frontend/lib/teams/load-team-context.ts": "3d6a66cdef9d41c01f2d850f1e22b3f9f05df048a44f618f0de053e3a0b8736b"
+  },
+  "behavior": {
+    "force_dynamic_routes": true,
+    "browser_storage": false,
+    "module_response_cache": false,
+    "previous_response_reuse": false,
+    "fallback_data": false,
+    "failed_request_contains_ready_data": false,
+    "stale_fallback": false
+  },
+  "dependency_identity": {
+    "docs/stage10/frontend_runtime_empty_fixtures_contract.json": {
+      "sha256": "c361b9626ada37935aa131b9f0811a4905a1cd8d8e5a4b080d86db88550741c9"
+    },
+    "frontend/lib/api/client.ts": {
+      "sha256": "203a8961fa57f2fcffac57151f07b9e647ee74c68d767985ae93c8a4ffec2ad4"
+    },
+    "frontend/lib/api/result.ts": {
+      "sha256": "d09d858a0555be1ff07887fc1e6f353f873d6ae927fad4ec0e62703a575493a5"
+    }
+  },
+  "promotion": {
+    "stage10_8_7_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-20T06:08:09.399964+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "stage": "10.8.6",
+  "version": "1.0.0",
+  "name": "EMPTY_UPCOMING_FIXTURES_UX",
+  "status": "LOCKED",
+  "required_parent_state": "READY",
+  "component": "EmptyFixturesState",
+  "source": "frontend/components/runtime/empty-fixtures-state.tsx",
+  "behavior": {
+    "zero_records_only": true,
+    "empty_is_not_error": true,
+    "old_fixture_list_reused": false,
+    "fallback_fixture_list": false,
+    "synthetic_fixture": false
+  },
+  "component_sha256": "94a493a7617a8861cc6b2ffbb3ee98c9cce9da3414054aa3c5dd207a4c161430",
+  "root_page_sha256": "0c7002fd5d38e2b987ea0ba6d588e90c7ef80d0c3b28ffc8af7d6b389552ba1c",
+  "dependency_identity": {
+    "docs/stage10/frontend_runtime_connection_error_contract.json": {
+      "sha256": "1709b2e4d53bd11a0b327d7aa63ee8d4c5aef9f14badb3e9403ec2870f5e3583"
+    },
+    "docs/stage10/frontend_empty_state_contract.json": {
+      "sha256": "54f33e76e4003cee0080360ff9cb4db900562d54b6665141df3a05049b00d944"
+    }
+  },
+  "promotion": {
+    "stage10_8_6_complete": false,
+    "stage10_8_complete": false,
+    "stage10_complete": false
+  },
+  "generated_at_utc": "2026-09-20T06:08:09.390912+00:00"
+}
